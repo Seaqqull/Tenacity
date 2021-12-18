@@ -1,7 +1,7 @@
 
 
 
-namespace Tenacit.Utility.Constants
+namespace Tenacity.Utility.Constants
 {
     /// <summary>
     /// Animation hashed ids

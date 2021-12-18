@@ -1,12 +1,13 @@
 using UnityEngine;
 
 
-namespace Tenacit.Utility.Constants
+namespace Tenacity.Utility.Base
 {
     public class SingleBehaviour<T> : MonoBehaviour where T : SingleBehaviour<T>
     {
         [Header("Rewritable")] 
         [SerializeField] private bool _rewritable;
+        [SerializeField] private bool _dontDestroyOnLoad;
         
         public static T Instance { get; private set; }
 
@@ -21,6 +22,8 @@ namespace Tenacit.Utility.Constants
             
             if (Instance != null)
                 Destroy(Instance);
+            if(_dontDestroyOnLoad)
+                DontDestroyOnLoad(this);
             Instance = (T)this;
         }
     }
