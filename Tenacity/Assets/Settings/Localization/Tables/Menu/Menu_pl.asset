@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Menu_pl
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: 92bdc921a56734634bbf66148dd79c1e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1943073185792
+    m_Localized: "Rozpocz\u0105\u0107 gr\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1943123517440
+    m_Localized: Ustawienia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1943131906048
+    m_Localized: Autorski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1943131906049
+    m_Localized: "Wyj\u015Bcie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31473695449088
+    m_Localized: Muzyka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31473712226304
+    m_Localized: Efekty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31473712226305
+    m_Localized: "J\u0119zyk"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
