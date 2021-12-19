@@ -5,7 +5,7 @@ namespace Tenacity.Utility.Base
 {
     public class SingleBehaviour<T> : MonoBehaviour where T : SingleBehaviour<T>
     {
-        [Header("Rewritable")] 
+        [Header("Specific")] 
         [SerializeField] private bool _rewritable;
         [SerializeField] private bool _dontDestroyOnLoad;
         
