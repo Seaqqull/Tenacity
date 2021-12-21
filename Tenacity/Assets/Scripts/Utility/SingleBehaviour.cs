@@ -23,7 +23,7 @@ namespace Tenacity.Utility.Base
             if (Instance != null)
                 Destroy(Instance);
             if(_dontDestroyOnLoad)
-                DontDestroyOnLoad(this);
+                DontDestroyOnLoad((this as T));
             Instance = (T)this;
         }
     }
