@@ -1,6 +1,7 @@
 using Tenacity.Utility.Base;
 using Tenacity.Input.Data;
 using System;
+using UnityEngine;
 
 
 namespace Tenacity.Managers
@@ -172,17 +173,17 @@ namespace Tenacity.Managers
             if (space != InputHasValue((byte)PressedButton.Space))
             {
                 _pressedButtons = SwitchInput((byte)PressedButton.Space);
-                _spaceButtonAction?.Invoke(interaction);
+                _spaceButtonAction?.Invoke(space);
             }
             if (back != InputHasValue((byte)PressedButton.Back))
             {
                 _pressedButtons = SwitchInput((byte)PressedButton.Back);
-                _backButtonAction?.Invoke(interaction);
+                _backButtonAction?.Invoke(back);
             }
             if (shift != InputHasValue((byte)PressedButton.Shift))
             {
                 _pressedButtons = SwitchInput((byte)PressedButton.Shift);
-                _shiftButtonAction?.Invoke(interaction);
+                _shiftButtonAction?.Invoke(shift);
             }
         }
         

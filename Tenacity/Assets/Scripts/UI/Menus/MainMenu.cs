@@ -1,4 +1,3 @@
-using UnityEngine.SceneManagement;
 using Tenacity.Managers;
 using UnityEditor;
 
@@ -16,7 +15,7 @@ namespace Tenacity.UI.Menus
         public void OnStartAction()
         {
             MenuManager.Instance.CloseMenu(this);
-            SceneManager.LoadScene(1);// Change later for dedicated class
+            SceneManager.Instance.LoadMainGame();
         }
 
         public void OnSettingsAction()

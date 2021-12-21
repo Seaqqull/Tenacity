@@ -32,4 +32,10 @@ namespace Tenacity.Utility.Constants
     {
         public const string LOCALE = "language";
     }
+
+    public static class Scenes
+    {
+        public const int MAIN_MENU = 0;
+        public const int MAIN_GAME = 0;
+    }
 }
