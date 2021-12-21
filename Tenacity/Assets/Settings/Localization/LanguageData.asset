@@ -33,7 +33,7 @@ MonoBehaviour:
     00000000:
       type: {class: PlayerPrefLocaleSelector, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data:
-        m_PlayerPreferenceKey: selected-locale
+        m_PlayerPreferenceKey: language
     00000001:
       type: {class: CommandLineLocaleSelector, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data:
