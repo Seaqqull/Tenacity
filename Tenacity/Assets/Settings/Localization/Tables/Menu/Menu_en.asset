@@ -46,5 +46,13 @@ MonoBehaviour:
     m_Localized: Language
     m_Metadata:
       m_Items: []
+  - m_Id: 1044209640398848
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1047748957691904
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

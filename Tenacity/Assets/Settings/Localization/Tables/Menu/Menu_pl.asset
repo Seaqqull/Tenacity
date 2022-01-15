@@ -46,5 +46,13 @@ MonoBehaviour:
     m_Localized: "J\u0119zyk"
     m_Metadata:
       m_Items: []
+  - m_Id: 1044209640398848
+    m_Localized: Pauza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1047748957691904
+    m_Localized: "Menu g\u0142\xF3wne"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
