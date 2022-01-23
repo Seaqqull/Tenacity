@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Tenacity.Managers
 {
-    public class MenuManager : Utility.Base.SingleBehaviour<MenuManager>
+    public class MenuManager : Base.SingleBehaviour<MenuManager>
     {
         /*
          * Contains menu fields that can be showed or hidden

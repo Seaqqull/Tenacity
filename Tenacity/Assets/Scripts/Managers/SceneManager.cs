@@ -3,7 +3,7 @@ using UnityScenes = UnityEngine.SceneManagement;
 
 namespace Tenacity.Managers
 {
-    public class SceneManager : Utility.Base.SingleBehaviour<SceneManager>
+    public class SceneManager : Base.SingleBehaviour<SceneManager>
     {
         public void LoadMainMenu()
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Tenacity.UI
 {
-    public abstract class Menu : Utility.Base.BaseMono
+    public abstract class Menu : Base.BaseMono
     {
         [SerializeField] protected bool _destroyOnClose = true;
         [SerializeField] protected bool _disableBelowMenus = true;

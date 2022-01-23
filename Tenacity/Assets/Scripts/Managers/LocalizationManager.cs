@@ -1,7 +1,7 @@
 using UnityEngine.Localization.Settings;
 using System.Collections.Generic;
 using UnityEngine.Localization;
-using Tenacity.Utility.Base;
+using Tenacity.Base;
 
 
 namespace Tenacity.Managers

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace Tenacity.Utility.Base
+namespace Tenacity.Base
 {
     public class BaseMono : MonoBehaviour
     {
