@@ -38,4 +38,9 @@ namespace Tenacity.Utility.Constants
         public const int MAIN_MENU = 0;
         public const int MAIN_GAME = 0;
     }
+
+    public static class Debug
+    {
+        public const string EVENT_SYSTEM = "Event";
+    }
 }

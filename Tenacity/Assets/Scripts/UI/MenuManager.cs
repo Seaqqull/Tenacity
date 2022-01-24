@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using Tenacity.UI;
 using UnityEngine;
 
 
-namespace Tenacity.Managers
+namespace Tenacity.UI
 {
     public class MenuManager : Base.SingleBehaviour<MenuManager>
     {

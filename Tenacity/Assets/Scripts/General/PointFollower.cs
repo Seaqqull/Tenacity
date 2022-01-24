@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace Tenacity.Utility
+namespace Tenacity.General
 {
     public class PointFollower : MonoBehaviour
     {
