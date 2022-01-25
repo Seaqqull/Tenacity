@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Tenacity.Dummy
 {
     [RequireComponent(typeof(Collider2D))]
-    public class ColliderAction : MonoBehaviour
+    public class ColliderListener : MonoBehaviour
     {
         [field: SerializeField] public Collider2D Collider { get; private set; }
         [field: SerializeField] public bool InInteraction { get; private set; }

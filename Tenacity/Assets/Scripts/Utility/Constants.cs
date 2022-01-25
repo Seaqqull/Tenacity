@@ -16,6 +16,8 @@ namespace Tenacity.Utility.Constants
         public static readonly int JUMP = Animator.StringToHash("IsJump");
         public static readonly int DEAD = Animator.StringToHash("Die");
         public static readonly int HIT = Animator.StringToHash("Hit");
+        public static readonly int OFF = Animator.StringToHash("Off");
+        public static readonly int ON = Animator.StringToHash("On");
     }
 
     public static class Audio
@@ -41,6 +43,7 @@ namespace Tenacity.Utility.Constants
 
     public static class Debug
     {
+        public const string DIALOG_SYSTEM = "Dialog";
         public const string EVENT_SYSTEM = "Event";
     }
 }
