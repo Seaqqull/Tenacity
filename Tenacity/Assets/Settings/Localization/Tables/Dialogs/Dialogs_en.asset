@@ -32,6 +32,15 @@ MonoBehaviour:
       fermentum magna vel pulvinar.
     m_Metadata:
       m_Items: []
+  - m_Id: 2860088564899840
+    m_Localized: This is example of the first dialog. You can press "Ok" in order
+      to see next dialog or "Cancel" to close current.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2860088564899841
+    m_Localized: This is the second dialog. You only can press "Ok" here.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

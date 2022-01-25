@@ -35,6 +35,17 @@ MonoBehaviour:
       fermentum magna vel pulvinar."
     m_Metadata:
       m_Items: []
+  - m_Id: 2860088564899840
+    m_Localized: "To jest przyk\u0142ad pierwszego okna dialogowego. Mo\u017Cesz
+      nacisn\u0105\u0107 \u201EOK\u201D, aby wy\u015Bwietli\u0107 nast\u0119pne okno
+      dialogowe lub \u201EAnuluj\u201D, aby zamkn\u0105\u0107 bie\u017C\u0105ce."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2860088564899841
+    m_Localized: "To jest drugie okno dialogowe. Tutaj mo\u017Cesz tylko nacisn\u0105\u0107
+      \u201EOK\u201D."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
