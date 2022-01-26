@@ -1,10 +1,13 @@
 using System;
 
-[Flags]
-public enum CardPowerType
+namespace Tenacity.Cards
 {
-    None,
-    Magician,
-    Phisical,
-    Combined = Magician | Phisical
+    [Flags]
+    public enum CardPowerType
+    {
+        None,
+        Magician,
+        Phisical,
+        Combined = Magician | Phisical
+    }
 }

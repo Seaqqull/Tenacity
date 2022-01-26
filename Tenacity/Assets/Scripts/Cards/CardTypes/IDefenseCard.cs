@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IDefenseCard
+namespace Tenacity.Cards
 {
-    int Defense { get; set; }
-    CardPowerType TypeOfDefense { get; set; }
+    public interface IDefenseCard
+    {
+        int Defense { get; set; }
+        CardPowerType TypeOfDefense { get; set; }
+    }
 }
