@@ -15,7 +15,7 @@ namespace Tenacity.Cards
             AttackCard = 0x2,
             CombinedCard = DefenseCard | AttackCard
         }
-        public CardType Type = CardType.AttackCard;
+        public CardType Type = CardType.Standard;
 
         public CardTemplate CardTemplate = new CardTemplate();
         public AttackCard AttackCard = new AttackCard();
