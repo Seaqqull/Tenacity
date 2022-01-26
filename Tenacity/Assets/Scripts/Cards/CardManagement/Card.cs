@@ -32,7 +32,7 @@ namespace Tenacity.Cards
 
         private void UpdateCardView()
         {
-            GameObject.Find("ID").GetComponent<TextMeshPro>().text = card.CardID.ToString();
+            //GameObject.Find("ID").GetComponent<TextMeshPro>().text = card.CardID.ToString();
             GameObject.Find("Name").GetComponent<TextMeshPro>().text = card.CardName.ToString();
             GameObject.Find("Cost").GetComponent<TextMeshPro>().text = card.CardCost.ToString();
            
