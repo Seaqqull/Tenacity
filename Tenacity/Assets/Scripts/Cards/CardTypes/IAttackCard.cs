@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IAttackCard
+namespace Tenacity.Cards
 {
-    int Attack { get; set; }
-    CardPowerType TypeOfAttack { get; set;}
+    public interface IAttackCard
+    {
+        int Attack { get; set; }
+        CardPowerType TypeOfAttack { get; set; }
+    }
 }
