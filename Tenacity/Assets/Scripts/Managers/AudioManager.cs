@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Tenacity.Managers
 {
-    public class AudioManager : Utility.Base.SingleBehaviour<AudioManager>
+    public class AudioManager : Base.SingleBehaviour<AudioManager>
     {
         [SerializeField] private AudioMixerGroup _music;
         [SerializeField] private AudioMixerGroup _effects;

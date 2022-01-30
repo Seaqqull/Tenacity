@@ -1,5 +1,5 @@
 using EngineInput = UnityEngine.Input;
-using Tenacity.Utility.Base;
+using Tenacity.Base;
 using UnityEngine;
 
 
@@ -7,6 +7,20 @@ namespace Tenacity.Input
 {
     public class OrdinalInputHandler : SingleBehaviour<OrdinalInputHandler>
     {
+        private byte _mouseButtons;
+        
+        public bool MiddleMouseButton
+        {
+            get { return (_mouseButtons & 2) != 0; }
+        }
+        public bool RightMouseButton
+        {
+            get { return (_mouseButtons & 4) != 0; }
+        }
+        public bool LeftMouseButton
+        {
+            get { return (_mouseButtons & 1) != 0; }
+        }
         public float Horizontal
         {
             get; private set;
@@ -38,6 +52,11 @@ namespace Tenacity.Input
             // General
             Horizontal = EngineInput.GetAxisRaw("Horizontal");
             Vertical = EngineInput.GetAxisRaw("Vertical");
+            
+            // Mouse
+            _mouseButtons = (byte) ((EngineInput.GetKey(KeyCode.Mouse0) ? 1 : 0) |
+                                    (EngineInput.GetKey(KeyCode.Mouse1) ? 2 : 0) |
+                                    (EngineInput.GetKey(KeyCode.Mouse2) ? 4 : 0));
             
             // Special
             Shift = EngineInput.GetKey(KeyCode.LeftShift) || EngineInput.GetKey(KeyCode.RightShift);

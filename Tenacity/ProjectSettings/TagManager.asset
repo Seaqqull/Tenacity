@@ -15,7 +15,7 @@ TagManager:
   - Character
   - Enemy
   - Obstacle
-  - 
+  - Interaction
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Card
+    uniqueID: 255355815
     locked: 0

@@ -6,7 +6,7 @@ namespace Tenacity.Animation
     /// <summary>
     /// Updated direction of the GameObject using LocalScale and Animator property
     /// </summary>
-    public class AnimationDirection : Utility.Base.BaseMono
+    public class AnimationDirection : Base.BaseMono
     {
         [SerializeField] private bool _reverse;
 

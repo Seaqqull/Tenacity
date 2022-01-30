@@ -1,7 +1,6 @@
-using Tenacity.Utility.Base;
 using Tenacity.Input.Data;
+using Tenacity.Base;
 using System;
-using UnityEngine;
 
 
 namespace Tenacity.Managers
@@ -86,75 +85,75 @@ namespace Tenacity.Managers
         {
             // Base buttons
             var horizontal = (UnityEngine.Mathf.Approximately(Input.OrdinalInputHandler.Instance.Horizontal, 1.0f)) ? 
-                HorizontalButton.RightButton : 
+                HorizontalButton.Right : 
                 UnityEngine.Mathf.Approximately(Input.OrdinalInputHandler.Instance.Horizontal, -1.0f) ?
-                    HorizontalButton.LeftButton :
+                    HorizontalButton.Left :
                     HorizontalButton.Nothing;
-            var horizontalNum = (byte)horizontal;
+            var horizontalNum = (int)horizontal;
             var vertical = (UnityEngine.Mathf.Approximately(Input.OrdinalInputHandler.Instance.Vertical, 1.0f)) ? 
-                VerticalButton.TopButton : 
+                VerticalButton.Top : 
                 UnityEngine.Mathf.Approximately(Input.OrdinalInputHandler.Instance.Vertical, -1.0f) ?
-                    VerticalButton.BottomButton :
+                    VerticalButton.Bottom :
                     VerticalButton.Nothing;
-            var verticalNum = (byte)vertical;
+            var verticalNum = (int)vertical;
 
             if (!InputHasValue(horizontalNum))
             {
                 // If previously input had horizontal value 
-                if((horizontal == HorizontalButton.Nothing) && InputHasValue((byte)HorizontalButton.RightButton))
+                if((horizontal == HorizontalButton.Nothing) && InputHasValue((int)HorizontalButton.Right))
                 {
-                    _pressedButtons = SwitchInput((byte)HorizontalButton.RightButton);
+                    _pressedButtons = SwitchInput((int)HorizontalButton.Right);
                     _horizontalButtonAction?.Invoke(horizontal);
                 }
-                else if((horizontal == HorizontalButton.Nothing) && InputHasValue((byte)HorizontalButton.LeftButton))
+                else if((horizontal == HorizontalButton.Nothing) && InputHasValue((int)HorizontalButton.Left))
                 {
-                    _pressedButtons = SwitchInput((byte)HorizontalButton.LeftButton);
+                    _pressedButtons = SwitchInput((int)HorizontalButton.Left);
                     _horizontalButtonAction?.Invoke(horizontal);
                 }
-                else if((horizontal == HorizontalButton.RightButton))
+                else if((horizontal == HorizontalButton.Right))
                 {
-                    if(InputHasValue((byte)VerticalButton.BottomButton))
-                        _pressedButtons = SwitchInput((byte)(HorizontalButton.RightButton | HorizontalButton.LeftButton));
+                    if(InputHasValue((int)VerticalButton.Bottom))
+                        _pressedButtons = SwitchInput((int)(HorizontalButton.Right | HorizontalButton.Left));
                     else
-                        _pressedButtons = AddInput((byte)HorizontalButton.RightButton);
+                        _pressedButtons = AddInput((int)HorizontalButton.Right);
                     _horizontalButtonAction?.Invoke(horizontal);
                 }
-                else if((horizontal == HorizontalButton.LeftButton))
+                else if((horizontal == HorizontalButton.Left))
                 {
-                    if(InputHasValue((byte)VerticalButton.BottomButton))
-                        _pressedButtons = SwitchInput((byte)(HorizontalButton.RightButton | HorizontalButton.LeftButton));
+                    if(InputHasValue((int)VerticalButton.Bottom))
+                        _pressedButtons = SwitchInput((int)(HorizontalButton.Right | HorizontalButton.Left));
                     else
-                        _pressedButtons = AddInput((byte)HorizontalButton.LeftButton);
+                        _pressedButtons = AddInput((int)HorizontalButton.Left);
                     _horizontalButtonAction?.Invoke(horizontal);
                 }
             }
             if (!InputHasValue(verticalNum))
             {
                 // If previously input had vertical value 
-                if((vertical == VerticalButton.Nothing) && InputHasValue((byte)VerticalButton.TopButton))
+                if((vertical == VerticalButton.Nothing) && InputHasValue((int)VerticalButton.Top))
                 {
-                    _pressedButtons = SwitchInput((byte)VerticalButton.TopButton);
+                    _pressedButtons = SwitchInput((int)VerticalButton.Top);
                     _verticalButtonAction?.Invoke(vertical);
                 }
-                else if((vertical == VerticalButton.Nothing) && InputHasValue((byte)VerticalButton.BottomButton))
+                else if((vertical == VerticalButton.Nothing) && InputHasValue((int)VerticalButton.Bottom))
                 {
-                    _pressedButtons = SwitchInput((byte)VerticalButton.BottomButton);
+                    _pressedButtons = SwitchInput((int)VerticalButton.Bottom);
                     _verticalButtonAction?.Invoke(vertical);
                 }
-                else if((vertical == VerticalButton.TopButton))
+                else if((vertical == VerticalButton.Top))
                 {
-                    if(InputHasValue((byte)VerticalButton.BottomButton))
-                        _pressedButtons = SwitchInput((byte)(VerticalButton.TopButton | VerticalButton.BottomButton));
+                    if(InputHasValue((int)VerticalButton.Bottom))
+                        _pressedButtons = SwitchInput((int)(VerticalButton.Top | VerticalButton.Bottom));
                     else
-                        _pressedButtons = AddInput((byte)VerticalButton.TopButton);
+                        _pressedButtons = AddInput((int)VerticalButton.Top);
                     _verticalButtonAction?.Invoke(vertical);
                 }
-                else if((vertical == VerticalButton.BottomButton))
+                else if((vertical == VerticalButton.Bottom))
                 {
-                    if(InputHasValue((byte)VerticalButton.BottomButton))
-                        _pressedButtons = SwitchInput((byte)(VerticalButton.TopButton | VerticalButton.BottomButton));
+                    if(InputHasValue((int)VerticalButton.Bottom))
+                        _pressedButtons = SwitchInput((int)(VerticalButton.Top | VerticalButton.Bottom));
                     else
-                        _pressedButtons = AddInput((byte)VerticalButton.BottomButton);
+                        _pressedButtons = AddInput((int)VerticalButton.Bottom);
                     _verticalButtonAction?.Invoke(vertical);
                 }
             }
@@ -165,42 +164,42 @@ namespace Tenacity.Managers
             var shift = Input.OrdinalInputHandler.Instance.Shift;
             var back = Input.OrdinalInputHandler.Instance.Esc;
 
-            if (interaction != InputHasValue((byte)PressedButton.Interact))
+            if (interaction != InputHasValue((int)PressedButton.Interact))
             {
-                _pressedButtons = SwitchInput((byte)PressedButton.Interact);
+                _pressedButtons = SwitchInput((int)PressedButton.Interact);
                 _interactButtonAction?.Invoke(interaction);
             }
-            if (space != InputHasValue((byte)PressedButton.Space))
+            if (space != InputHasValue((int)PressedButton.Space))
             {
-                _pressedButtons = SwitchInput((byte)PressedButton.Space);
+                _pressedButtons = SwitchInput((int)PressedButton.Space);
                 _spaceButtonAction?.Invoke(space);
             }
-            if (back != InputHasValue((byte)PressedButton.Back))
+            if (back != InputHasValue((int)PressedButton.Back))
             {
-                _pressedButtons = SwitchInput((byte)PressedButton.Back);
+                _pressedButtons = SwitchInput((int)PressedButton.Back);
                 _backButtonAction?.Invoke(back);
             }
-            if (shift != InputHasValue((byte)PressedButton.Shift))
+            if (shift != InputHasValue((int)PressedButton.Shift))
             {
-                _pressedButtons = SwitchInput((byte)PressedButton.Shift);
+                _pressedButtons = SwitchInput((int)PressedButton.Shift);
                 _shiftButtonAction?.Invoke(shift);
             }
         }
         
         
-        private bool InputHasValue(byte valueToCompare)
+        private bool InputHasValue(int valueToCompare)
         {
-            return  ((byte)_pressedButtons & valueToCompare) != 0;
+            return  ((int)_pressedButtons & valueToCompare) != 0;
         }
 
-        private Input.Data.PressedButton SwitchInput(byte valueToUpdate)
+        private Input.Data.PressedButton SwitchInput(int valueToUpdate)
         {
-            return (PressedButton)((byte)_pressedButtons ^ valueToUpdate);
+            return (PressedButton)((int)_pressedButtons ^ valueToUpdate);
         }
         
-        private Input.Data.PressedButton AddInput(byte valueToUpdate)
+        private Input.Data.PressedButton AddInput(int valueToUpdate)
         {
-            return (PressedButton)((byte)_pressedButtons | valueToUpdate);
+            return (PressedButton)((int)_pressedButtons | valueToUpdate);
         }
     }
 }

@@ -1,42 +1,50 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class CardFactory
+namespace Tenacity.Cards
 {
-    [Flags]
-    public enum CardType
+    [Serializable]
+    public class CardFactory
     {
-        None,
-        DefenseCard,
-        AttackCard,
-        CombinedCard = AttackCard | DefenseCard
-    }
-    public CardType Type = CardType.None;
-
-    public Card Card = new Card();
-    public AttackCard AttackCard = new AttackCard();
-    public DefenseCard DefenseCard = new DefenseCard();
-    public CombinedCard CombinedCard = new CombinedCard();
-
-    public Card InitDefaultCard()
-    {
-        return GetCardByCardType(CardType.DefenseCard);
-    }
-    public Type GetClassByCardType(CardType cardType)
-    {
-        return (GetCardByCardType(cardType)).GetType();
-    }
-
-    private Card GetCardByCardType(CardType cardType)
-    {
-        switch(cardType)
+        [Flags]
+        public enum CardType
         {
-            case CardType.None: return Card;
-            case CardType.AttackCard: return AttackCard;
-            case CardType.DefenseCard: return DefenseCard;
-            case CardType.CombinedCard: return CombinedCard;
-            default: return CombinedCard;
+            None = 0x0,
+            Standard = None,
+            DefenseCard = 0x1,
+            AttackCard = 0x2,
+            CombinedCard = DefenseCard | AttackCard
+        }
+        public CardType Type = CardType.Standard;
+
+        public CardTemplate CardTemplate = new CardTemplate();
+        public AttackCard AttackCard = new AttackCard();
+        public DefenseCard DefenseCard = new DefenseCard();
+        public CombinedCard CombinedCard = new CombinedCard();
+
+        public CardTemplate InitDefaultCard()
+        {
+            return GetCardByCardType(CardType.DefenseCard);
+        }
+        public Type GetClassByCardType(CardType cardType)
+        {
+            return GetCardByCardType(cardType).GetType();
+        }
+        public CardTemplate GetCurrentCardClass()
+        {
+            return GetCardByCardType(Type);
+        }
+
+        private CardTemplate GetCardByCardType(CardType cardType)
+        {
+            switch (cardType)
+            {
+                case CardType.AttackCard: return AttackCard;
+                case CardType.DefenseCard: return DefenseCard;
+                case CardType.CombinedCard: return CombinedCard;
+                case CardType.Standard: return CardTemplate;
+                default: return CombinedCard;
+            }
         }
     }
 }

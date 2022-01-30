@@ -1021,7 +1021,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:92bdc921a56734634bbf66148dd79c1e
     m_TableEntryReference:
-      m_KeyId: 1943073185792
+      m_KeyId: 1047748957691904
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1204,7 +1204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1780699451407765343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1337,7 +1337,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:92bdc921a56734634bbf66148dd79c1e
     m_TableEntryReference:
-      m_KeyId: 1943123517440
+      m_KeyId: 1044209640398848
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
