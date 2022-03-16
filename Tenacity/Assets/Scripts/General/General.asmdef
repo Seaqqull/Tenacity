@@ -1,6 +1,6 @@
 {
     "name": "General",
-    "rootNamespace": "",
+    "rootNamespace": "Tenacity.General",
     "references": [
         "GUID:05d9f1ff5db24456dbb33be62d4cb618"
     ],
