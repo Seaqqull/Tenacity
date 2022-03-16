@@ -1,0 +1,33 @@
+using UnityEngine;
+
+namespace Tenacity.Cards
+{
+    public enum CardState
+    {
+        InCardDeck,
+        OnBoard
+    }
+
+    public class Card : MonoBehaviour
+    {
+        [SerializeField] private CardData data;
+        [SerializeField] private bool isAvailable;
+        [SerializeField] private CardState state;
+
+        public CardData Data
+        {
+            get => data;
+            set => data = value;
+        }
+        public bool IsAvailable
+        {
+            get => isAvailable;
+            set => isAvailable = value;
+        }
+        public CardState State
+        {
+            get => state;
+            set => state = value;
+        }
+    }
+}
