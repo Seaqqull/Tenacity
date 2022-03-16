@@ -14,11 +14,13 @@ namespace Tenacity.Cards
         private bool[] availableCardPositions;
         private IEnumerator cardDrawingCoroutine;
 
+        private readonly float _coroutineTime = 0.5f;
+
         private void Start()
         {
             availableCardPositions = Enumerable.Range(0, cardPositions.Length).Select(x => true).ToArray();
 
-            cardDrawingCoroutine = DrawCardPack(0.5f);
+            cardDrawingCoroutine = DrawCardPack(_coroutineTime);
             StartCoroutine(cardDrawingCoroutine);
         }
 
@@ -46,13 +48,11 @@ namespace Tenacity.Cards
         }
         private void CreateCardOnDeckFromPackItems(int slotId)
         {
-            Card card = Instantiate(cardPrefab);
+            Card card = Instantiate(cardPrefab, cardPositions[slotId]);
             var cardData = cardPack[Random.Range(0, cardPack.Count)];
 
             card.Data = cardData;
-            card.IsAvailable = true;
             card.transform.parent = cardPositions[slotId];
-            card.transform.position = cardPositions[slotId].position;
             card.gameObject.SetActive(true);
 
             cardPack.Remove(cardData);
