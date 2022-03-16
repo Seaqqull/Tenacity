@@ -15,7 +15,7 @@ namespace Tenacity.Input.Data
 
     public enum MouseButton
     {
-        Left = 256, Middle = 512, Right = 1024
+        Nothing, Left = 256, Middle = 512, Right = 1024
     }
 
     [Flags]
