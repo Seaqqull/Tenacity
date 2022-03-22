@@ -103,14 +103,12 @@ public class StyledRemapSliderDrawer : MaterialPropertyDrawer
                 GUILayout.Space(-1);
                 GUILayout.Label("      Remap Min", GUILayout.Width(EditorGUIUtility.labelWidth));
                 propVector.x = EditorGUILayout.Slider(propVector.x, min, max);
-                GUILayout.Space(2);
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
                 GUILayout.Space(-1);
                 GUILayout.Label("      Remap Max", GUILayout.Width(EditorGUIUtility.labelWidth));
                 propVector.y = EditorGUILayout.Slider(propVector.y, min, max);
-                GUILayout.Space(2);
                 GUILayout.EndHorizontal();
             }
 
@@ -126,6 +124,7 @@ public class StyledRemapSliderDrawer : MaterialPropertyDrawer
             }
 
             EditorGUI.showMixedValue = false;
+
             if (EditorGUI.EndChangeCheck())
             {
                 prop.vectorValue = propVector;

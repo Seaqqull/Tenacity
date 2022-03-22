@@ -74,11 +74,11 @@ public class StyledOptionsSliderDrawer : MaterialPropertyDrawer
             }
             else
             {
-                if (internalValueMin < internalValueMax)
+                if (internalValueMin <= internalValueMax)
                 {
                     propVector.w = 0;
                 }
-                else if (internalValueMin < internalValueMax)
+                else if (internalValueMin > internalValueMax)
                 {
                     propVector.w = 1;
                 }
@@ -129,21 +129,18 @@ public class StyledOptionsSliderDrawer : MaterialPropertyDrawer
                 GUILayout.Space(-1);
                 GUILayout.Label("      Remap Min", GUILayout.Width(EditorGUIUtility.labelWidth));
                 propVector.x = EditorGUILayout.Slider(propVector.x, min, max);
-                GUILayout.Space(2);
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
                 GUILayout.Space(-1);
                 GUILayout.Label("      Remap Max", GUILayout.Width(EditorGUIUtility.labelWidth));
                 propVector.y = EditorGUILayout.Slider(propVector.y, min, max);
-                GUILayout.Space(2);
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
                 GUILayout.Space(-1);
                 GUILayout.Label("      Simple Value", GUILayout.Width(EditorGUIUtility.labelWidth));
                 propVector.z = EditorGUILayout.Slider(propVector.z, min, max);
-                GUILayout.Space(2);
                 GUILayout.EndHorizontal();
             }
 
@@ -167,6 +164,7 @@ public class StyledOptionsSliderDrawer : MaterialPropertyDrawer
             }
 
             EditorGUI.showMixedValue = false;
+
             if (EditorGUI.EndChangeCheck())
             {
                 prop.vectorValue = propVector;

@@ -67,8 +67,6 @@ public class StyledEmissiveIntensityDrawer : MaterialPropertyDrawer
             propVector.z = EditorGUILayout.FloatField(propVector.z);
         }
 
-        GUI.enabled = true;
-
         GUILayout.Space(2);
 
         propVector.w = (float)EditorGUILayout.Popup((int)propVector.w, new string[] { "Nits", "EV100" }, stylePopup, GUILayout.Width(50));

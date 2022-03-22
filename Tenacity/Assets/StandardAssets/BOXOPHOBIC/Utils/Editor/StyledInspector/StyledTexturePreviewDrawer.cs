@@ -52,8 +52,6 @@ namespace Boxophobic.StyledGUI
             };
 
             var rect = GUILayoutUtility.GetRect(0, 0, Screen.width, 0);
-            var rectParams = GUILayoutUtility.GetRect(0, 20, 0, 0);
-
 
             EditorGUI.DrawPreviewTexture(rect, tex, null, ScaleMode.ScaleAndCrop, 1, 0, channelMask);
 

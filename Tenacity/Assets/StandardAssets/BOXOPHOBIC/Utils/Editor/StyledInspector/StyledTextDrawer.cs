@@ -24,14 +24,7 @@ namespace Boxophobic.StyledGUI
 
             GUILayout.Space(a.top);
 
-            if (a.disabled == true)
-            {
-                GUI.enabled = false;
-            }
-
             GUILayout.Label(property.stringValue, styleLabel);
-
-            GUI.enabled = true;
 
             GUILayout.Space(a.down);
         }

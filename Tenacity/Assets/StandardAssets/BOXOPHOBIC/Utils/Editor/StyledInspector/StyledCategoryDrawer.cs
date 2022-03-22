@@ -14,9 +14,6 @@ namespace Boxophobic.StyledGUI
         {
             a = (StyledCategory)attribute;
 
-            GUI.enabled = true;
-            EditorGUI.indentLevel = 0;
-
             property.boolValue = StyledGUI.DrawInspectorCategory(a.category, property.boolValue, a.top, a.down, a.colapsable);
         }
 

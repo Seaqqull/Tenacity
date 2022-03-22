@@ -2,31 +2,20 @@
 
 using UnityEngine;
 using UnityEditor;
-using System;
 using System.IO;
 using System.Collections.Generic;
 
 namespace Boxophobic.StyledGUI
 {
-    public class StyledEnumDrawer : MaterialPropertyDrawer
+    [CustomPropertyDrawer(typeof(StyledEnum))]
+    public class StyledEnumAttributeDrawer : PropertyDrawer
     {
-        public string file = "";
-        public string options = "";
+        StyledEnum a;
 
-        public float top = 0;
-        public float down = 0;
-
-        public StyledEnumDrawer(string file, string options, float top, float down)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            this.file = file;
-            this.options = options;
+            a = (StyledEnum)attribute;
 
-            this.top = top;
-            this.down = down;
-        }
-
-        public override void OnGUI(Rect position, MaterialProperty prop, String label, MaterialEditor materialEditor)
-        {
             GUIStyle styleLabel = new GUIStyle(EditorStyles.label)
             {
                 richText = true,
@@ -34,18 +23,18 @@ namespace Boxophobic.StyledGUI
                 wordWrap = true
             };
 
-            if (Resources.Load<TextAsset>(file) != null)
+            if (Resources.Load<TextAsset>(a.file) != null)
             {
-                var layersPath = AssetDatabase.GetAssetPath(Resources.Load<TextAsset>(file));
+                var layersPath = AssetDatabase.GetAssetPath(Resources.Load<TextAsset>(a.file));
 
                 StreamReader reader = new StreamReader(layersPath);
 
-                options = reader.ReadLine();
+                a.options = reader.ReadLine();
 
                 reader.Close();
             }
 
-            string[] enumSplit = options.Split(char.Parse(" "));
+            string[] enumSplit = a.options.Split(char.Parse(" "));
             List<string> enumOptions = new List<string>(enumSplit.Length / 2);
             List<int> enumIndices = new List<int>(enumSplit.Length / 2);
 
@@ -61,9 +50,9 @@ namespace Boxophobic.StyledGUI
                 }
             }
 
-            GUILayout.Space(top);
+            GUILayout.Space(a.top);
 
-            int index = (int)prop.floatValue;
+            int index = property.intValue;
             int realIndex = enumIndices[0];
 
             for (int i = 0; i < enumIndices.Count; i++)
@@ -74,17 +63,22 @@ namespace Boxophobic.StyledGUI
                 }
             }
 
-            realIndex = EditorGUILayout.Popup(prop.displayName, realIndex, enumOptions.ToArray());
+            if (a.display == "")
+            {
+                a.display = property.displayName;
+            }
+
+            realIndex = EditorGUILayout.Popup(a.display, realIndex, enumOptions.ToArray());
 
             //Debug Value
             //EditorGUILayout.LabelField(enumIndices[realIndex].ToString());
 
-            prop.floatValue = enumIndices[realIndex];
+            property.intValue = enumIndices[realIndex];
 
-            GUILayout.Space(down);
+            GUILayout.Space(a.down);
         }
 
-        public override float GetPropertyHeight(MaterialProperty prop, string label, MaterialEditor editor)
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             return -2;
         }

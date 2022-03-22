@@ -3,26 +3,22 @@
 using UnityEngine;
 using UnityEditor;
 using System;
+using System.IO;
+using System.Collections.Generic;
 
 namespace Boxophobic.StyledGUI
 {
     public class StyledMaskDrawer : MaterialPropertyDrawer
     {
+        public string file = "";
         public string options = "";
 
         public float top = 0;
         public float down = 0;
 
-        public StyledMaskDrawer(string options)
+        public StyledMaskDrawer(string file, string options, float top, float down)
         {
-            this.options = options;
-
-            this.top = 0;
-            this.down = 0;
-        }
-
-        public StyledMaskDrawer(string options, float top, float down)
-        {
+            this.file = file;
             this.options = options;
 
             this.top = top;
@@ -38,25 +34,43 @@ namespace Boxophobic.StyledGUI
                 wordWrap = true
             };
 
-            string[] enums = options.Split(char.Parse("_"));
+            if (Resources.Load<TextAsset>(file) != null)
+            {
+                var layersPath = AssetDatabase.GetAssetPath(Resources.Load<TextAsset>(file));
+
+                StreamReader reader = new StreamReader(layersPath);
+
+                options = reader.ReadLine();
+
+                reader.Close();
+            }
+
+            string[] enumSplit = options.Split(char.Parse(" "));
+            List<string> enumOptions = new List<string>(enumSplit.Length / 2);
+
+            for (int i = 0; i < enumSplit.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    enumOptions.Add(enumSplit[i].Replace("_", " "));
+                }
+            }
 
             GUILayout.Space(top);
 
-            int mask = (int)prop.floatValue;
+            int index = (int)prop.floatValue;
 
-            mask = EditorGUILayout.MaskField(prop.displayName, mask, enums);
+            index = EditorGUILayout.MaskField(prop.displayName, index, enumOptions.ToArray());
 
-            if (mask < 0)
+            if (index < 0)
             {
-                mask = -1;
+                index = -1;
             }
 
-            // Debug Value
-            //EditorGUILayout.LabelField(mask.ToString());
+            //Debug Value
+            //EditorGUILayout.LabelField(index.ToString());
 
-            prop.floatValue = mask;
-
-            GUI.enabled = true;
+            prop.floatValue = index;
 
             GUILayout.Space(down);
         }

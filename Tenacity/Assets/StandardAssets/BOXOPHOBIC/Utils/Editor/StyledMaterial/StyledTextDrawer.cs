@@ -11,7 +11,6 @@ namespace Boxophobic.StyledGUI
         public string text = "";
         public string alignment = "Center";
         public string font = "Normal";
-        public string disabled = "";
         public float size = 11;
         public float top = 0;
         public float down = 0;
@@ -21,21 +20,19 @@ namespace Boxophobic.StyledGUI
             this.text = text;
         }
 
-        public StyledTextDrawer(string text, string alignment, string font, string disabled, float size)
+        public StyledTextDrawer(string text, string alignment, string font, float size)
         {
             this.text = text;
             this.alignment = alignment;
             this.font = font;
-            this.disabled = disabled;
             this.size = size;
         }
 
-        public StyledTextDrawer(string text, string alignment, string font, string disabled, float size, float top, float down)
+        public StyledTextDrawer(string text, string alignment, string font, float size, float top, float down)
         {
             this.text = text;
             this.alignment = alignment;
             this.font = font;
-            this.disabled = disabled;
             this.size = size;
             this.top = top;
             this.down = down;
@@ -87,14 +84,7 @@ namespace Boxophobic.StyledGUI
 
             styleLabel.fontSize = (int)size;
 
-            if (disabled == "Disabled")
-            {
-                GUI.enabled = false;
-            }
-
             GUILayout.Label(text, styleLabel);
-
-            GUI.enabled = true;
 
             GUILayout.Space(down);
         }

@@ -19,7 +19,7 @@ namespace Boxophobic.StyledGUI
             styleMid.normal.textColor = Color.gray;
             styleMid.fontSize = 7;
 
-            if (a.displayLabel.Length > 0)
+            if (a.display.Length > 0)
             {
                 EditorGUI.PropertyField(position, property, label, true);
                 GUILayout.Space(5);
@@ -58,7 +58,7 @@ namespace Boxophobic.StyledGUI
         {
             a = (StyledRangeOptions)attribute;
 
-            if (a.displayLabel.Length > 0)
+            if (a.display.Length > 0)
             {
                 return 18;
             }

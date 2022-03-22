@@ -5,13 +5,16 @@ using UnityEditor;
 
 namespace Boxophobic.StyledGUI
 {
-    [CustomPropertyDrawer(typeof(StyledPopupLayers))]
-    public class StyledPopupLayersAttributeDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(StyledLayers))]
+    public class StyledLayersAttributeDrawer : PropertyDrawer
     {
+        StyledLayers a;
         private int index;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            a = (StyledLayers)attribute;
+
             index = property.intValue;
 
             string[] allLayers = new string[32];
@@ -28,7 +31,13 @@ namespace Boxophobic.StyledGUI
                 }
             }
 
-            index = EditorGUILayout.Popup(property.displayName, index, allLayers);
+            if (a.display == "")
+            {
+                a.display = property.displayName;
+            }
+
+            index = EditorGUILayout.Popup(a.display, index, allLayers);
+
             property.intValue = index;
         }
 
