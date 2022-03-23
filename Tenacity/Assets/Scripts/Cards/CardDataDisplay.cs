@@ -21,7 +21,7 @@ namespace Tenacity.Cards
 
         public void DisplayCardValues()
         {
-            if (card.Data == null) return;
+            if (card == null ||  card.Data == null) return;
 
             cardComponents = transform.GetComponentsInChildren<Transform>().ToDictionary(item => item.name, item => item);
             foreach (var prop in card.Data.CardProperties)

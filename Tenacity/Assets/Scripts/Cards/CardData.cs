@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using Tenacity.Items;
 using Tenacity.Lands;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Tenacity.Cards
     }
 
     [CreateAssetMenu(fileName = "Card Template", menuName = "Card")]
-    public class CardData : ScriptableObject
+    public class CardData : ScriptableObject, IItem
     {
 
         [SerializeField] private int cardId;
@@ -33,6 +34,8 @@ namespace Tenacity.Cards
         [SerializeField] private string cardText;
         [SerializeField] private LandType landType;
         [SerializeField] private int landCost;
+
+        public ItemType ItemType => ItemType.Card;
 
         public int Life => life;
         public int Power => power;
@@ -48,6 +51,6 @@ namespace Tenacity.Cards
         public string CardLandSprite => $"fraction_{landType}";
         public string CardSprite => type + "_" +cardId.ToString();
         public PropertyInfo[] CardProperties => GetType().GetProperties();
- 
+
     }
 }

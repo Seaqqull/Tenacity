@@ -7,7 +7,10 @@ namespace Tenacity
 {
     public abstract class DragAndDropController : MonoBehaviour
     {
-        private readonly float _selectedGOyPos = 7f;
+        //[SerializeField] private LayerMask layerOfObjectToDrag;
+        //[SerializeField] private LayerMask layerOfObjectToDrop;
+
+        [SerializeField] private float selectedObjectYPos = 7f;
 
         protected RaycastHit GetHitWithRaycast(LayerMask layerMask, float distance)
         {
@@ -28,7 +31,7 @@ namespace Tenacity
         {
             Vector3 pos = new Vector3(UnityEngine.Input.mousePosition.x, UnityEngine.Input.mousePosition.y, Camera.main.WorldToScreenPoint(selectedGO.transform.position).z);
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
-            selectedGO.transform.position = new Vector3(worldPos.x, _selectedGOyPos, worldPos.z);
+            selectedGO.transform.position = new Vector3(worldPos.x, selectedObjectYPos, worldPos.z);
         }
 
     }

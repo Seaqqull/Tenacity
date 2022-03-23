@@ -20,5 +20,5 @@ MonoBehaviour:
   type: 0
   rarity: 0
   cardText: Jump Deal 3 damage to all adjacent enemies where this lands.
-  landType: 8
+  landType: 2
   landCost: 2

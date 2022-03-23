@@ -1,5 +1,6 @@
 using System;
 using Tenacity.Lands;
+using Tenacity.PlayerInventory;
 using UnityEditor;
 using UnityEngine;
 
@@ -51,16 +52,34 @@ namespace Tenacity.Cards
 
         private void TryDropSelectedCard()
         {
-            Land land = DetectLandHitWithRaycast();
+            GameObject detectedObject = DetectObjectHitWithRaycast(~cardLayer, rayLandDetectionDistance);
 
-            if (land != null && land.IsAvailable && land.Type == _selectedCard.Data.Land)
+            if (detectedObject == null)
             {
-                DropSelectedCardIntoLand(land);
+                SelectCardOnClick(null);
+                return;
             }
-            else
+
+            if (detectedObject.GetComponent<Land>() != null)
             {
-                _selectedCard.transform.position = _previousSeletedCardPos;
+                Land land = detectedObject.GetComponent<Land>();
+
+                if (land.IsAvailable && land.Type == _selectedCard.Data.Land) 
+                    DropSelectedCardIntoLand(land);
+                else 
+                    _selectedCard.transform.position = _previousSeletedCardPos;
             }
+            else if (detectedObject.GetComponent<Inventory>() != null)
+            {
+                Inventory inventory = detectedObject.GetComponent<Inventory>();
+
+                bool isDropped = inventory.AddItem(_selectedCard);
+                if (isDropped) 
+                    Destroy(_selectedCard.gameObject);
+                else
+                    _selectedCard.transform.position = _previousSeletedCardPos;
+            }
+
             SelectCardOnClick(null);
         }
 
@@ -83,10 +102,12 @@ namespace Tenacity.Cards
 
         private void DropSelectedCardIntoLand(Land land)
         {
-
-            if (_selectedCard.transform.parent.TryGetComponent<Land>(out Land currentLand))
+            if (_selectedCard.transform.parent != null)
             {
-                currentLand.IsAvailable = true;
+                if (_selectedCard.transform.parent.TryGetComponent<Land>(out Land currentLand))
+                {
+                    currentLand.IsAvailable = true;
+                }
             }
             land.IsAvailable = false;
 

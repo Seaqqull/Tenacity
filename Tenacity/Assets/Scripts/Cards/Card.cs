@@ -1,3 +1,4 @@
+using Tenacity.Items;
 using UnityEngine;
 
 namespace Tenacity.Cards
@@ -5,7 +6,9 @@ namespace Tenacity.Cards
     public enum CardState
     {
         InCardDeck,
-        OnBoard
+        OnBoard,
+        InHub,
+        InInventory
     }
 
     public class Card : MonoBehaviour
@@ -19,15 +22,17 @@ namespace Tenacity.Cards
             get => data;
             set => data = value;
         }
-        public bool IsAvailable
-        {
-            get => isAvailable;
-            set => isAvailable = value;
-        }
         public CardState State
         {
             get => state;
             set => state = value;
         }
+        public bool IsAvailable
+        {
+            get => isAvailable;
+            set => isAvailable = value;
+        }
+
+
     }
 }
