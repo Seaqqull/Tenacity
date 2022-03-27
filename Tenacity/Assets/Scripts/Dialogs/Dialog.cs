@@ -2,6 +2,7 @@ using UnityEngine.Localization.Components;
 using System.Collections.Generic;
 using UnityEngine.Localization;
 using Tenacity.Dialogs.Data;
+using UnityEngine.Events;
 using UnityEngine;
 
 
@@ -15,12 +16,16 @@ namespace Tenacity.Dialogs
         [Header("Answer")]
         [SerializeField] private Answer _answerPrefab;
         [SerializeField] private GameObject _answersParent;
+        [Header("Events")] 
+        [SerializeField] private UnityEvent _onInitialize;
+        [SerializeField] private UnityEvent _onShow;
+        [SerializeField] private UnityEvent _onHide;
 
         private List<Answer> _availableAnswers =
             new List<Answer>();
         private bool _initialized;
-        
 
+        
         private void ClearDialog()
         {
             _text.StringReference = new LocalizedString();
@@ -71,13 +76,21 @@ namespace Tenacity.Dialogs
         
         public void ShowDialog()
         {
+            if (!_initialized)
+            {
+                _initialized = true;
+                _onInitialize?.Invoke();
+            }
+            
             UpdateDialogData();
+            _actionObject.SetActive(true);
+            _onShow?.Invoke();
         }
 
         public void CloseDialog()
         {
-            _actionObject.SetActive(true);
-            gameObject.SetActive(false);
+            _actionObject.SetActive(false);
+            _onHide?.Invoke();
         }
     }
 }

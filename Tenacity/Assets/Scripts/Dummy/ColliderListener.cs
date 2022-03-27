@@ -7,10 +7,13 @@ namespace Tenacity.Dummy
     [RequireComponent(typeof(Collider2D))]
     public class ColliderListener : MonoBehaviour
     {
+        [System.Serializable]
+        public class ColliderInteraction : UnityEvent<Collider2D> { }
+        
         [field: SerializeField] public Collider2D Collider { get; private set; }
         [field: SerializeField] public bool InInteraction { get; private set; }
-        [SerializeField] private Data.ColliderInteraction _onEnter;
-        [SerializeField] private Data.ColliderInteraction _onExit;
+        [SerializeField] private ColliderInteraction _onEnter;
+        [SerializeField] private ColliderInteraction _onExit;
         
         public event UnityAction<Collider2D> OnEnter
         {
