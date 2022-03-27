@@ -1,0 +1,23 @@
+{
+    "name": "Tenacity.Managers",
+    "rootNamespace": "Tenacity.Managers",
+    "references": [
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618",
+        "GUID:3817323b3c348451694b42effa363562",
+        "GUID:df11cc85634ef42cfa7c1abca4e6a97d",
+        "GUID:8787326a5efad476aaec551f7f85b830",
+        "GUID:d313dee798d614ecda05fb5df95042a9",
+        "GUID:c4b5b46528e004e0c8b18a6278b0510f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

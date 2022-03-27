@@ -69,13 +69,6 @@ namespace Tenacity.Behaviour
             Health.ModifyHealth(amount);
         }
 
-        public virtual void ApplyForce(Vector3 direction, ForceMode2D force = ForceMode2D.Force)
-        {
-            _movementPossible = false;
-
-            _body.AddForce(direction * _body.mass, force);
-        }
-        
         #region RunLater
         public void RunLater(Action method, float waitSeconds)
         {

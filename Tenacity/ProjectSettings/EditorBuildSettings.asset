@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/StaticAssets/Scenes/DZ/scn_game3D.unity
     guid: c5229808e1ac64dec91e1b77fe8b37a0
-  - enabled: 1
-    path: Assets/StaticAssets/Scenes/scn_game.unity
-    guid: 762dc4b90237e4311a8e6da1d5ac56bd
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 5612c2a28c469493e80326a8ee5691d9, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 96c971d58871c4d1b9cf033471335881, type: 2}
