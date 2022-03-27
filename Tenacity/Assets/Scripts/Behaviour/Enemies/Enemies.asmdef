@@ -1,6 +1,6 @@
 {
     "name": "Enemies",
-    "rootNamespace": "",
+    "rootNamespace": "Tenacity.Behaviour.Enemies",
     "references": [
         "GUID:a8d94637c5da1491aa673f9679e5841b",
         "GUID:efa45043feb7e4147a305b73b5cea642",

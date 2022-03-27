@@ -1,6 +1,6 @@
 {
     "name": "Animation",
-    "rootNamespace": "",
+    "rootNamespace": "Tenacity.Animation",
     "references": [
         "GUID:05d9f1ff5db24456dbb33be62d4cb618",
         "GUID:df11cc85634ef42cfa7c1abca4e6a97d"

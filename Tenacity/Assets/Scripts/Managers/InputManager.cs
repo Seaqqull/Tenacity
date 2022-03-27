@@ -1,6 +1,8 @@
 using Tenacity.Input.Data;
 using Tenacity.Base;
 using System;
+using Tenacity.Input;
+using UnityEngine;
 
 
 namespace Tenacity.Managers
@@ -11,6 +13,7 @@ namespace Tenacity.Managers
         private Input.Data.PressedButton _pressedButtons;
 
         // Specific buttons
+        private static Action<bool> _mouseLeftButtonAction;
         private static Action<bool> _interactButtonAction;
         private static Action<bool> _spaceButtonAction;
         private static Action<bool> _shiftButtonAction;
@@ -20,6 +23,11 @@ namespace Tenacity.Managers
         private static Action<Input.Data.HorizontalButton> _horizontalButtonAction;
         private static Action<Input.Data.VerticalButton> _verticalButtonAction;
         
+        public static event Action<bool> MouseLeftButtonAction
+        {
+            add => _mouseLeftButtonAction += value;
+            remove => _mouseLeftButtonAction -= value;
+        }
         public static event Action<Input.Data.HorizontalButton> HorizontalButtonAction
         {
             add => _horizontalButtonAction += value;
@@ -78,6 +86,15 @@ namespace Tenacity.Managers
         public static bool BackButtonPressed
         {
             get => (Instance._pressedButtons & Input.Data.PressedButton.Back) != 0;
+        }
+        public static bool LeftMousePressed
+        {
+            get => OrdinalInputHandler.Instance.LeftMouseButton;
+        }
+
+        public static Vector2 MousePosition
+        {
+            get => OrdinalInputHandler.Instance.MousePosition;
         }
 
 
@@ -183,6 +200,14 @@ namespace Tenacity.Managers
             {
                 _pressedButtons = SwitchInput((int)PressedButton.Shift);
                 _shiftButtonAction?.Invoke(shift);
+            }
+            
+            // Mouse
+            var mouseLeft = Input.OrdinalInputHandler.Instance.LeftMouseButton;
+            if (mouseLeft !=  InputHasValue((int)PressedButton.LeftMouseButton))
+            {
+                _pressedButtons = SwitchInput((int)PressedButton.LeftMouseButton);
+                _mouseLeftButtonAction?.Invoke(mouseLeft);
             }
         }
         
