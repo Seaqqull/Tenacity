@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace Tenacity.Genral
+namespace Tenacity.General
 {
     public class ObjectSaver : MonoBehaviour
     {

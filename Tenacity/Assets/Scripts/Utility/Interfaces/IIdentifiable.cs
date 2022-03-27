@@ -1,7 +1,7 @@
 
 
 
-namespace Tenacity.Utility.Interdaces
+namespace Tenacity.Utility.Interfaces
 {
     /// <summary>
     /// Signalize that entity have its unique id

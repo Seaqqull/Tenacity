@@ -5,7 +5,7 @@ using System;
 
 namespace Tenacity.Behaviour
 {
-    public class Entity : Base.BaseMono, Utility.Interdaces.IIdentifiable, Utility.Interdaces.IRunLater, Utility.Interdaces.IDamageable
+    public class Entity : Base.BaseMono, Utility.Interfaces.IIdentifiable, Utility.Interfaces.IRunLater, Utility.Interfaces.IDamageable
     {
         [field: SerializeField] public Health Health { get; protected set; }
         [SerializeField] protected Transform _gFX;

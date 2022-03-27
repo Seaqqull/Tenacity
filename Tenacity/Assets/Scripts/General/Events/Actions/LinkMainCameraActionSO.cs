@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Tenacity.General.Events.Actions
 {
-    [CreateAssetMenu(menuName = "Events/Actions/CameraToCanvas", fileName = "CameraToCanvas", order = 0)]
+    [CreateAssetMenu(menuName = "Events/Actions/CanvasToCamera", fileName = "CameraToCanvas", order = 0)]
     public class LinkCameraActionSO : ActionSO<bool>
     {
         public override bool Perform()

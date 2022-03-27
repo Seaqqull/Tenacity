@@ -1,8 +1,6 @@
-using Tenacity.Managers;
 using Tenacity.Base;
 using UnityEngine;
 using Pathfinding;
-using System;
 
 
 namespace Tenacity.Test

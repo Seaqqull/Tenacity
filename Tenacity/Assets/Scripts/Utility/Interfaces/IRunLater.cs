@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 
-namespace Tenacity.Utility.Interdaces
+namespace Tenacity.Utility.Interfaces
 {
     /// <summary>
     /// Identifies that entity can perform actions with some delay
