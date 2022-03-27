@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Tenacity.General.Events.Actions
 {
-    [CreateAssetMenu(menuName = "Events/Actions/CanvasToMainCamera", fileName = "CameraToCanvas", order = 0)]
-    public class LinkMainCameraActionSO : ActionSO<bool>
+    [CreateAssetMenu(menuName = "Events/Actions/CanvasToUICamera", fileName = "CameraToCanvas", order = 0)]
+    public class LinkUICameraActionSO : ActionSO<bool>
     {
         public override bool Perform()
         {
@@ -23,7 +23,7 @@ namespace Tenacity.General.Events.Actions
 
         public void Perform(Canvas inputData)
         {
-            inputData.worldCamera = Managers.StorageManager.Instance.MainCamera;
+            inputData.worldCamera = Managers.StorageManager.Instance.UICamera;
         }
     }
 }

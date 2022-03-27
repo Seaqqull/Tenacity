@@ -7,6 +7,11 @@ namespace Tenacity.General.Interactions
     {
         protected bool _isInteractable;
         protected Collider _collision;
+        
+        public override bool IsActive
+        {
+            get { return base.IsActive && _isInteractable; }
+        }
 
 
         public override void OnTriggerEnter(Collider collision)
@@ -23,6 +28,17 @@ namespace Tenacity.General.Interactions
             _collision = null;
 
             _action.OnExit(this, collision);
+        }
+
+
+        public override void Interact(Collider collision = null)
+        {
+            base.Interact((collision == null) ? _collision : collision);
+        }
+        
+        public override void InteractAnyway(Collider collision = null)
+        {
+            base.Interact((collision == null) ? _collision : collision);
         }
     }
 }

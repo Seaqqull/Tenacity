@@ -21,7 +21,7 @@ namespace Tenacity.General.Interactions
         {
             get { return this._owner; }
         }
-        public bool IsActive
+        public virtual bool IsActive
         {
             get { return gameObject.activeSelf; }
         }
@@ -31,7 +31,7 @@ namespace Tenacity.General.Interactions
         {
             base.Awake();
 
-            _modes = GetComponents<Sequence.SequentialExecutor>();
+            _modes = GetComponentsInChildren<Sequence.SequentialExecutor>();
         }
 
         protected virtual void Start()
@@ -57,6 +57,17 @@ namespace Tenacity.General.Interactions
         {
             for (int i = 0; i < _modes.Length; i++)
                 _modes[i].enabled = flag;
+        }
+        
+        public virtual void Interact(Collider collision = null)
+        {
+            if (IsActive)
+                _action.Execute(this, collision);
+        }
+        
+        public virtual void InteractAnyway(Collider collision = null)
+        {
+            _action.Execute(this, collision);
         }
     }
 }

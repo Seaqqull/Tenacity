@@ -7,7 +7,6 @@ namespace Tenacity.General.Interactions
     {
         [Header("Ui")]
         [SerializeField] private GameObject _objectToShow;
-        [SerializeField] private KeyCode _interactionButton; // Will be changed to some click action
 
 
         protected override void Start()
@@ -30,13 +29,7 @@ namespace Tenacity.General.Interactions
 
             NeedToShow(false);
         }
-
-        protected virtual void FixedUpdate()
-        {
-            if ((_action != null) && _isInteractable && Input.GetKeyDown(_interactionButton))
-                _action.Execute(this, _collision);
-        }
-
+        
 
         protected virtual void NeedToShow(bool flag)
         {
