@@ -370,6 +370,38 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onShow:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: adae3fbc3b99a4e999d9dbd0717a30d8, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.AddDialogToStackSO,
+          Tenacity.General.Events
+        m_MethodName: Perform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: Tenacity.Dialogs.Dialog, Tenacity.Dialogs
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onHide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7c8723cf7d54e437aad6fea0fd2f3a80, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.RemoveDialogFromStackSO,
+          Tenacity.General.Events
+        m_MethodName: Perform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: Tenacity.Dialogs.Dialog, Tenacity.Dialogs
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!223 &7262046473895867886
 Canvas:
   m_ObjectHideFlags: 0
