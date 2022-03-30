@@ -10,6 +10,7 @@ namespace Tenacity.Utility.Constants
     {
         public static readonly int MOVE_SPEED = Animator.StringToHash("MovementSpeed");
         public static readonly int DIRECTION = Animator.StringToHash("Direction");
+        public static readonly int IS_ACTIVE = Animator.StringToHash("IsActive");
         public static readonly int RUNNING = Animator.StringToHash("IsRunning");
         public static readonly int WALKING = Animator.StringToHash("IsWalking");
         public static readonly int FALLING = Animator.StringToHash("IsFalling");
