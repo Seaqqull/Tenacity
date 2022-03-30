@@ -26,8 +26,15 @@ namespace Tenacity.Dialogs
         private List<Answer> _availableAnswers =
             new List<Answer>();
         private bool _initialized;
+        private bool _showed;
 
-        
+
+        private void OnDisable()
+        {
+            if (_showed)
+                CloseDialog();
+        }
+
         private void ClearDialog()
         {
             _text.StringReference = new LocalizedString();
@@ -88,6 +95,9 @@ namespace Tenacity.Dialogs
                 _initialized = true;
                 _onInitialize?.Invoke();
             }
+
+            
+            _showed = true;
             
             UpdateDialogData();
             _actionObject.SetActive(true);
@@ -96,6 +106,8 @@ namespace Tenacity.Dialogs
 
         public void CloseDialog()
         {
+            _showed = false;
+            
             _actionObject.SetActive(false);
             _onHide?.Invoke();
         }
