@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 4868155546954413578}
   - component: {fileID: 4948082440320660235}
   - component: {fileID: 2502280608629530764}
-  - component: {fileID: 40267963563025705}
   - component: {fileID: 6979307580710804196}
   m_Layer: 11
   m_Name: Creature_3
@@ -152,7 +151,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2505642851634945670, guid: 0a869a932a5f1c54dba77bb39ad4d58c, type: 3}
+  - {fileID: 2100000, guid: 7e37e6616c97e97488d1b10f4e5d8da8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,18 +201,7 @@ MonoBehaviour:
   data: {fileID: 0}
   isAvailable: 0
   state: 0
---- !u!114 &40267963563025705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595900282914907814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 519461e2b946d32439b140d7f3a70a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isDraggable: 0
 --- !u!114 &6979307580710804196
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,8 +20,8 @@ TagManager:
   - Creature
   - Card
   - Land
-  - 
-  - 
+  - CardLand
+  - tmpCardLandLayer
   - 
   - 
   - 
