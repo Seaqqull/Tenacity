@@ -5376,6 +5376,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoToHubDialog
       objectReference: {fileID: 0}
+    - target: {fileID: 6919787636805659770, guid: 1cde1948895ce4228afdd6ad6469f78c, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919787636805659770, guid: 1cde1948895ce4228afdd6ad6469f78c, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Perform
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919787636805659770, guid: 1cde1948895ce4228afdd6ad6469f78c, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Tenacity.General.Events.Actions.LoadLevelSO, Tenacity.General.Events
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919787636805659770, guid: 1cde1948895ce4228afdd6ad6469f78c, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d0ae8dd5c0e04a4caf2d2c35cc3c15b, type: 2}
+    - target: {fileID: 6919787636805659770, guid: 1cde1948895ce4228afdd6ad6469f78c, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Tenacity.Properties.IntegerVariable, Properties
+      objectReference: {fileID: 0}
     - target: {fileID: 6919787636805659771, guid: 1cde1948895ce4228afdd6ad6469f78c, type: 3}
       propertyPath: m_Pivot.x
       value: 0

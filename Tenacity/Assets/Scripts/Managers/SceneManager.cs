@@ -7,6 +7,7 @@ using System.Collections;
 using Tenacity.Dialogs;
 using UnityEngine;
 using System;
+using Tenacity.General.Loading;
 
 
 namespace Tenacity.Managers
@@ -45,9 +46,10 @@ namespace Tenacity.Managers
             add { _onMouseMove.AddListener(value); }
             remove { _onMouseMove.RemoveListener(value); }
         }
+        public bool MouseClickBlocked { get; set; }
         public bool MouseActionAllowed
         {
-            get => (_activeDialogs.Count == 0) && (_hideDialogDelayCoroutine == null);
+            get => (_activeDialogs.Count == 0) && (_hideDialogDelayCoroutine == null) && !MouseClickBlocked;
         }
 
 
@@ -110,17 +112,29 @@ namespace Tenacity.Managers
             }
         }
 
-        private IEnumerator LoadScene(int sceneToUnload, int sceneToLoad)
+        private IEnumerator LoadScene(int sceneToUnload, int sceneToLoad, string loadSceneName = "")
         {
-            AsyncOperation asyncLoad = UnityScenes.SceneManager.LoadSceneAsync(sceneToLoad, UnityScenes.LoadSceneMode.Additive);
+            MouseClickBlocked = true;
+            // Load loading scene
+            var asyncLoad = UnityScenes.SceneManager.LoadSceneAsync(0, UnityScenes.LoadSceneMode.Additive);
             while (!asyncLoad.isDone)
                 yield return null;
+            
+            var loader = FindObjectOfType<SceneLoader>();
+            loader.SceneName = loadSceneName;
+            loader.OnLoad += () =>
+            {
+                UnityScenes.SceneManager.UnloadScene(0);
+                _onLoadScene?.Invoke();
+                
+                MouseClickBlocked = false;
+            };
+            yield return null;
             
             if (sceneToUnload != -1)
                 UnityScenes.SceneManager.UnloadScene(sceneToUnload);
             
-            yield return null;
-            _onLoadScene?.Invoke();
+            loader.Load(sceneToLoad);
         }
 
 
@@ -130,9 +144,9 @@ namespace Tenacity.Managers
             _levelIndex = -1;
         }
 
-        public void LoadMainGame(int levelIndex = 1)
+        public void LoadMainGame(int levelIndex = 1, string sceenName = "")
         {
-            StartCoroutine(LoadScene((_levelIndex == -1) ? 0 : _levelIndex, levelIndex));
+            StartCoroutine(LoadScene((_levelIndex == -1) ? 1 : _levelIndex, levelIndex, sceenName));
             _levelIndex = levelIndex;
         }
         
