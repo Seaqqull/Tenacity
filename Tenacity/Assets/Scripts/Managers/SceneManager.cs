@@ -1,12 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Tenacity.Dialogs;
-using Tenacity.General.Interactions;
-using Tenacity.Utility.Data;
-using UnityEngine;
-using UnityEngine.Events;
 using UnityScenes = UnityEngine.SceneManagement;
+using Tenacity.General.Interactions;
+using System.Collections.Generic;
+using Tenacity.Utility.Data;
+using UnityEngine.Events;
+using System.Collections;
+using Tenacity.Dialogs;
+using UnityEngine;
+using System;
 
 
 namespace Tenacity.Managers
@@ -128,30 +128,11 @@ namespace Tenacity.Managers
         {
             StartCoroutine(LoadScene(_levelIndex, 0));
             _levelIndex = -1;
-            // UnityScenes.SceneManager.LoadScene(0, UnityScenes.LoadSceneMode.Additive);
-            // if (_levelIndex != -1)
-            // {
-            //     UnityScenes.SceneManager.UnloadScene(_levelIndex);
-            //     _levelIndex = -1;
-            // }
         }
 
         public void LoadMainGame(int levelIndex = 1)
         {
             StartCoroutine(LoadScene((_levelIndex == -1) ? 0 : _levelIndex, levelIndex));
-            _levelIndex = -1;
-            
-            // UnityScenes.SceneManager.LoadScene(levelIndex, UnityScenes.LoadSceneMode.Additive);
-            // if (_levelIndex != -1)
-            // {
-            //     UnityScenes.SceneManager.UnloadScene(_levelIndex);
-            //     _levelIndex = -1;
-            // }
-            // else
-            // {
-            //     UnityScenes.SceneManager.UnloadScene(0);
-            // }
-
             _levelIndex = levelIndex;
         }
         

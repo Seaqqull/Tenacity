@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Localized: This is the second dialog. You only can press "Ok" here.
     m_Metadata:
       m_Items: []
+  - m_Id: 25745058509611008
+    m_Localized: Do you want to enter the town?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

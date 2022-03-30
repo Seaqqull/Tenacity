@@ -46,6 +46,10 @@ MonoBehaviour:
       \u201EOK\u201D."
     m_Metadata:
       m_Items: []
+  - m_Id: 25745058509611008
+    m_Localized: "Chcesz wej\u015B\u0107 do miasta?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
