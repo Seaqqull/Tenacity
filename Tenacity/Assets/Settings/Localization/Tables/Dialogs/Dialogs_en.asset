@@ -45,6 +45,15 @@ MonoBehaviour:
     m_Localized: Do you want to enter the town?
     m_Metadata:
       m_Items: []
+  - m_Id: 25960193354358784
+    m_Localized: Greetings stranger.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25960193358553088
+    m_Localized: Currently, I don't have any items to trade with you, can come back
+      later.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
