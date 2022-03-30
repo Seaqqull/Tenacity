@@ -75,8 +75,6 @@ namespace Tenacity.Draggable
             cardComponent.Data = card.Data;
             cardComponent.IsDraggable = card.IsDraggable;
             cardComponent.State = CardState.OnBoard;
-
-            cardDeckManager.ReplaceCard(card, cardComponent);
             Destroy(card.gameObject);
         }
 

@@ -30,8 +30,6 @@ namespace Tenacity.Battle
         public bool IsGameOver()
         {
             int count = _playerCards.FindAll((c) => c.State == CardState.InCardDeck).Count;
-            Debug.Log(count);
-            Debug.Log(_playerCards.FindAll((c) => c.State == CardState.InCardDeck));
             if (count == 0) return true;
             return false;
         }
