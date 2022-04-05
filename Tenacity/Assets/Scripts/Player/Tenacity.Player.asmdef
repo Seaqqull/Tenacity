@@ -1,0 +1,19 @@
+{
+    "name": "Tenacity.Player",
+    "rootNamespace": "Tenacity.Player",
+    "references": [
+        "GUID:efa45043feb7e4147a305b73b5cea642",
+        "GUID:df11cc85634ef42cfa7c1abca4e6a97d",
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618",
+        "GUID:af8157267ee6c4108bc3bacbe8366672"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

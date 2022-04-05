@@ -453,14 +453,6 @@ PrefabInstance:
       value: Perform
       objectReference: {fileID: 0}
     - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
-      propertyPath: _onHide.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Tenacity.General.Events.Actions.RemoveDialogFromStackSO, Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
-      propertyPath: _onShow.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Tenacity.General.Events.Actions.AddDialogToStackSO, Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: _onHide.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 5219455134112840302}
@@ -468,14 +460,6 @@ PrefabInstance:
       propertyPath: _onShow.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 5219455134112840302}
-    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
-      propertyPath: _onHide.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Tenacity.Dialogs.Dialog, Dialogs
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
-      propertyPath: _onShow.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Tenacity.Dialogs.Dialog, Dialogs
-      objectReference: {fileID: 0}
     - target: {fileID: 7262046474265085314, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -198.91191
@@ -522,7 +506,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6e8a84b6f11aa4834b58669e51dc4c7b, type: 2}
     - target: {fileID: 8888353554260748229, guid: 3e4265c7fd336424084a258026544bc0, type: 3}
       propertyPath: m_Name
-      value: SimpleBook
+      value: SimpleCup
       objectReference: {fileID: 0}
     - target: {fileID: 8888353554260748229, guid: 3e4265c7fd336424084a258026544bc0, type: 3}
       propertyPath: m_Layer

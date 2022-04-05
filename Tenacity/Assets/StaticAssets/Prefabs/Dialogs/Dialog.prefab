@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 7262046473895867889}
   - component: {fileID: 7262046473895867886}
   - component: {fileID: 7262046473895867891}
+  - component: {fileID: 2448265242257381399}
   m_Layer: 5
   m_Name: Dialog
   m_TagString: Untagged
@@ -354,6 +355,7 @@ MonoBehaviour:
   _actionObject: {fileID: 1953453123975985152}
   _answerPrefab: {fileID: 6066046829481615186, guid: 6e66fd48ac6044e2981625b338f3252c, type: 3}
   _answersParent: {fileID: 7262046473945182491}
+  _reponses: []
   _onInitialize:
     m_PersistentCalls:
       m_Calls:
@@ -365,6 +367,38 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 7262046473895867886}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onShow:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: adae3fbc3b99a4e999d9dbd0717a30d8, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.AddDialogToStackSO,
+          Tenacity.General.Events
+        m_MethodName: Perform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7262046473895867889}
+          m_ObjectArgumentAssemblyTypeName: Tenacity.Dialogs.Dialog, Tenacity.Dialogs
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onHide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7c8723cf7d54e437aad6fea0fd2f3a80, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.RemoveDialogFromStackSO,
+          Tenacity.General.Events
+        m_MethodName: Perform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7262046473895867889}
+          m_ObjectArgumentAssemblyTypeName: Tenacity.Dialogs.Dialog, Tenacity.Dialogs
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -408,6 +442,29 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2448265242257381399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7262046473895867887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 0.5
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.5
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!1 &7262046473945182491
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00049591064}
+  m_AnchoredPosition: {x: 0, y: -0.00048828125}
   m_SizeDelta: {x: -4, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7262046474265085316

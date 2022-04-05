@@ -9,7 +9,7 @@ namespace Tenacity.General.Interactions
     {
         [SerializeField] protected Item _itemToInteract;
         [SerializeField] protected GameObject _owner;
-        [SerializeField] protected Action.InteractionAction _action;
+        [SerializeField] protected Actions.InteractionAction _action;
         
         protected Sequence.SequentialExecutor[] _modes;
         
@@ -17,14 +17,15 @@ namespace Tenacity.General.Interactions
         {
             get { return _itemToInteract; }
         }
-        public GameObject Owner
-        {
-            get { return this._owner; }
-        }
         public virtual bool IsActive
         {
             get { return gameObject.activeSelf; }
         }
+        public GameObject Owner
+        {
+            get { return this._owner; }
+        }
+
 
 
         protected override void Awake()

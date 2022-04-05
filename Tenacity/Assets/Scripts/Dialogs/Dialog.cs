@@ -1,5 +1,6 @@
 using UnityEngine.Localization.Components;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.Localization;
 using Tenacity.Dialogs.Data;
 using UnityEngine.Events;
@@ -16,6 +17,7 @@ namespace Tenacity.Dialogs
         [Header("Answer")]
         [SerializeField] private Answer _answerPrefab;
         [SerializeField] private GameObject _answersParent;
+        [SerializeField] private AnswerResponse[] _reponses;
         [Header("Events")] 
         [SerializeField] private UnityEvent _onInitialize;
         [SerializeField] private UnityEvent _onShow;
@@ -24,8 +26,15 @@ namespace Tenacity.Dialogs
         private List<Answer> _availableAnswers =
             new List<Answer>();
         private bool _initialized;
+        private bool _showed;
 
-        
+
+        private void OnDisable()
+        {
+            if (_showed)
+                CloseDialog();
+        }
+
         private void ClearDialog()
         {
             _text.StringReference = new LocalizedString();
@@ -58,7 +67,12 @@ namespace Tenacity.Dialogs
                     newAnswer.AnswerAction += () => { NextDialog(currentAnswerIndex); };
                 else if (answer.Action == AnswerAction.Close)
                     newAnswer.AnswerAction += CloseDialog;
-                
+                else if (answer.Action == AnswerAction.Custom)
+                {
+                    var response = _reponses.SingleOrDefault((response) => response.AnswerId.Value == answer.SpecialId.Value);
+                    newAnswer.AnswerAction += (response == null) ? CloseDialog : response.Action.Invoke;
+                }
+
                 _availableAnswers.Add(newAnswer);
             }
         }
@@ -81,6 +95,9 @@ namespace Tenacity.Dialogs
                 _initialized = true;
                 _onInitialize?.Invoke();
             }
+
+            
+            _showed = true;
             
             UpdateDialogData();
             _actionObject.SetActive(true);
@@ -89,6 +106,8 @@ namespace Tenacity.Dialogs
 
         public void CloseDialog()
         {
+            _showed = false;
+            
             _actionObject.SetActive(false);
             _onHide?.Invoke();
         }

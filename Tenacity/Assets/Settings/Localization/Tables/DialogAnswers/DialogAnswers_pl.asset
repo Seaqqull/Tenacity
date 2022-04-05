@@ -26,6 +26,22 @@ MonoBehaviour:
     m_Localized: Anulowanie
     m_Metadata:
       m_Items: []
+  - m_Id: 25725379397279744
+    m_Localized: Tak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25725379397279745
+    m_Localized: Nie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25940520218910720
+    m_Localized: "Cze\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25940520223105024
+    m_Localized: "Zrozumia\u0142em, dzi\u0119kuj\u0119"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

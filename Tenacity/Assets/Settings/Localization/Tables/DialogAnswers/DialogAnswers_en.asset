@@ -26,6 +26,22 @@ MonoBehaviour:
     m_Localized: Cancel
     m_Metadata:
       m_Items: []
+  - m_Id: 25725379397279744
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25725379397279745
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25940520218910720
+    m_Localized: Hi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25940520223105024
+    m_Localized: Got it, thanks
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
