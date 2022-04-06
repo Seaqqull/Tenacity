@@ -26,24 +26,6 @@ namespace Tenacity.Draggable
             if (EngineInput.GetMouseButtonUp(0)) DropSelectedObject();
         }
 
-        private void DropSelectedObject()
-        {   
-            GameObject target = DetectObjectHitWithRaycast(targetLayer, rayDetectionDistance);
-            if (target == null) GetBackSelectedObject();
-            else
-            {
-                DropSelectedObject(target);
-                SelectObjectOnClick(null);
-            }
-        }
-
-        private void DragSelectedObject(GameObject selectedGO)
-        {
-            Vector3 pos = new Vector3(UnityEngine.Input.mousePosition.x, UnityEngine.Input.mousePosition.y, Camera.main.WorldToScreenPoint(selectedGO.transform.position).z);
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
-            selectedGO.transform.position = new Vector3(worldPos.x, droppedObjectYPos, worldPos.z);
-        }
-
         private void SelectObjectOnClick(GameObject clickedObject)
         {
             if (clickedObject != null) clickedObject.transform.localScale *= selectedObjectRescaleDt;
@@ -66,32 +48,13 @@ namespace Tenacity.Draggable
             return hit.collider.gameObject;
         }
 
+
         protected void GetBackSelectedObject()
         {
             _selectedGO.transform.position = _previousSelectedObjectPos;
             SelectObjectOnClick(null);
         }
 
-        protected virtual bool StartDraggingObject()
-        {
-            GameObject clickedObject = DetectObjectHitWithRaycast(draggableObjectLayer, rayDetectionDistance);
-
-            if ((clickedObject != null) && (_selectedGO != clickedObject) && IsDraggable(clickedObject))
-            {
-                OnStartDragging(clickedObject);
-                return true;
-            }
-
-            if (_selectedGO != null) GetBackSelectedObject();
-            return false;
-        }
-
-        protected void OnStartDragging(GameObject clickedObject)
-        {
-            SelectObjectOnClick(clickedObject);
-            _previousSelectedObjectPos = clickedObject.transform.position;
-        }
-        
         protected GameObject DetectObjectHitWithRaycast()
         {
             return DetectObjectHitWithRaycast(draggableObjectLayer, rayDetectionDistance);
@@ -101,6 +64,47 @@ namespace Tenacity.Draggable
         {
             _selectedGO.transform.parent = target.transform;
             _selectedGO.transform.localPosition = new Vector3(0, DroppedObjectYPos, 0);
+        }
+
+
+        protected virtual bool StartDraggingObject()
+        {
+            GameObject clickedObject = DetectObjectHitWithRaycast(draggableObjectLayer, rayDetectionDistance);
+
+            if ((clickedObject != null)
+                && (_selectedGO != clickedObject) 
+                && IsDraggable(clickedObject))
+            {
+                OnStartDragging(clickedObject);
+                return true;
+            }
+
+            if (_selectedGO != null) GetBackSelectedObject();
+            return false;
+        }
+
+        protected virtual void DropSelectedObject()
+        {
+            GameObject target = DetectObjectHitWithRaycast(targetLayer, rayDetectionDistance);
+            if (target == null) GetBackSelectedObject();
+            else
+            {
+                DropSelectedObject(target);
+                SelectObjectOnClick(null);
+            }
+        }
+
+        protected virtual void DragSelectedObject(GameObject selectedGO)
+        {
+            Vector3 pos = new Vector3(EngineInput.mousePosition.x, EngineInput.mousePosition.y, Camera.main.WorldToScreenPoint(selectedGO.transform.position).z);
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
+            selectedGO.transform.position = new Vector3(worldPos.x, droppedObjectYPos, worldPos.z);
+        }
+
+        protected virtual void OnStartDragging(GameObject clickedObject)
+        {
+            SelectObjectOnClick(clickedObject);
+            _previousSelectedObjectPos = clickedObject.transform.position;
         }
 
         protected abstract bool DropSelectedObject(GameObject target);

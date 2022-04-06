@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Tenacity.Cards;
 using Tenacity.Draggable;
 using Tenacity.Lands;
@@ -52,9 +53,7 @@ namespace Tenacity.Battle
         {
             turnStateUI.text = _turnStateText[1];
             yield return new WaitForSeconds(1.0f);
-            enemy.PlaceLandOnBoard(board.LandCells, waitTime);
-            yield return new WaitForSeconds(1.0f);
-            enemy.PlaceCardIntoLand(board.LandCells, waitTime);
+            yield return enemy.MakeMove(board.LandCells, waitTime);
             yield return new WaitForSeconds(waitTime);
 
             if (enemy.IsGameOver())

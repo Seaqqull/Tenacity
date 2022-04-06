@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using Tenacity.Lands;
-using TMPro;
 using UnityEngine;
+using EngineInput = UnityEngine.Input;
 
-namespace Tenacity.Battle {
-
+namespace Tenacity.Battle
+{
     public class BoardController : MonoBehaviour
     {
         [SerializeField] private Board board;
         [SerializeField] private Land emptyLandPrefab;
-        [SerializeField] private int mapRadius = 4;
-
-        [SerializeField] private TextMeshPro textPro;
 
         private void Start()
         {
@@ -23,13 +20,28 @@ namespace Tenacity.Battle {
 
         private void InitBoard()
         {
-            float colLimit = 2 * (mapRadius - 1);
-            for (float row = -mapRadius + 1; row < mapRadius; row++)
+            CreateCells();
+            SetNeighbors();
+        }
+
+        private void CreateCells()
+        {
+            int size = board.MapRadius;
+            float colLimit = 2 * (size - 1);
+            for (float row = -size + 1; row < size; row++)
             {
                 for (float col = -(colLimit - Mathf.Abs(row)) / 2; col <= (colLimit - Mathf.Abs(row)) / 2; col++)
                 {
                     CreateLandCell(row, col);
                 }
+            }
+        }
+
+        private void SetNeighbors()
+        {
+            foreach (Land land in board.LandCells)
+            {
+                land.NeighborLands = board.GetCellNeighbors(land);
             }
         }
 
@@ -41,11 +53,7 @@ namespace Tenacity.Battle {
                 Quaternion.identity);
             landGO.transform.parent = transform;
             landGO.GetComponent<Land>().IsPlacedOnBoard = true;
-            TextMeshPro text = Instantiate(textPro, landGO.transform, true);
-            text.text = $"[{x}; {y}]";
-            text.transform.localPosition = new Vector3(0, 1, 0);
-            board.AddCell(landGO.GetComponent<Land>());
+            board.AddCell(landGO.GetComponent<Land>(), x, y);
         }
-
     }
 }

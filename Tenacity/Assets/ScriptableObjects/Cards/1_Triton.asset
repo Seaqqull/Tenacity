@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardId: 1
   cardName: Triton
-  castingCost: 7
+  castingCost: 1
   life: 4
   power: 3
   type: 0

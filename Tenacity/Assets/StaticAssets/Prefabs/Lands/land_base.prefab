@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3067498461874239918}
   - component: {fileID: 2773802611596123478}
   - component: {fileID: -6244353112499013735}
+  - component: {fileID: -8172319697550827261}
   m_Layer: 12
   m_Name: land_base
   m_TagString: Untagged
@@ -63,6 +64,19 @@ MonoBehaviour:
   type: 0
   isAvailableForCards: 0
   isPlacedOnBoard: 0
+  outliner: {fileID: 2100000, guid: 187e51dd11615fc449d303413e431e12, type: 2}
+--- !u!114 &-8172319697550827261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439298663242162964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8603e565710f31c4ba3f28a283415bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6654045177600089037
 GameObject:
   m_ObjectHideFlags: 0

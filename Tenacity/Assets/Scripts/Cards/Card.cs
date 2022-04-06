@@ -38,6 +38,22 @@ namespace Tenacity.Cards
             get => isDraggable;
             set => isDraggable = value;
         }
+        public int CurrentLife => _currentLife;
 
+        private int _currentLife;
+
+
+        private void Start()
+        {
+            _currentLife = Data.Life;
+        }
+
+        public void GetDamaged(int power)
+        {
+            Debug.Log("Damage");
+            _currentLife -= power;
+            GetComponent<CardDataDisplay>()?.UpdateLife();
+            if (_currentLife <= 0) Destroy(gameObject, 1.0f);
+        }
     }
 }

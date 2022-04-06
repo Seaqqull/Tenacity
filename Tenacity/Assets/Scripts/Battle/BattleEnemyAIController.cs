@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Tenacity.Cards;
 using Tenacity.Lands;
-using UnityEditor;
+using TMPro;
 using UnityEngine;
+
+/*
+ * If there are player's cards near selected card, decide to move or to take damage.
+ * */
 
 namespace Tenacity.Battle
 {
     public class BattleEnemyAIController : MonoBehaviour
     {
+        [SerializeField] private BattleEnemy enemy;
         [SerializeField] private CardDeckManager enemyCardDeck;
         [SerializeField] private List<Land> enemyLandDeck = new List<Land>();
+        [SerializeField] private TextMeshProUGUI manaUI;
         [SerializeField] private float yPos = 0.61f;
+        [SerializeField] private float skipPobability;
 
-        //tmp 'public'
-        public List<Card> _enemyCards;
+        private List<Card> _enemyCards;
 
         private void Start()
         {
@@ -22,22 +29,10 @@ namespace Tenacity.Battle
             _enemyCards = enemyCardDeck.CardPack;
         }
 
-        private Card SelectCard()
+        private bool DecideToAttak()
         {
-            if (_enemyCards.Count == 0) return null;
-            int cardId = Random.Range(0, _enemyCards.Count);
-            Card selectedCard = _enemyCards[cardId];
-            return selectedCard;
-        }
-
-        private Card SelectCardByLandType(LandType type)
-        {
-            if (_enemyCards.Count == 0) return null;
-            List<Card> availableCards = _enemyCards.FindAll((el) => el.Data.Land == type);
-            if (availableCards.Count == 0) return null;
-            int cardId = Random.Range(0, availableCards.Count);
-            Card selectedCard = availableCards[cardId];
-            return selectedCard;
+            return true;
+                //Random.value < skipPobability;
         }
 
         private Land TakeLandFromDeck()
@@ -48,22 +43,19 @@ namespace Tenacity.Battle
             return land;
         }
 
-        private Land SelectAvailableLandByType(List<Land> landList, LandType landType)
+        private Land SelectNeighborLand(Land land)
         {
-            List<Land> availableLands = new List<Land>();
-            if (landType != LandType.Neutral)
-                availableLands = landList.FindAll((el) => el.IsAvailableForCards && el.Type == landType);
-            else
-                availableLands = landList.FindAll((el) => el.IsAvailableForCards);
-
-            int landId = Random.Range(0, availableLands.Count);
-            if (availableLands.Count == 0) return null;
-
-            Land landToPlace = availableLands[landId];
-            return landToPlace;
+            List<Land> neighbors = land.NeighborLands;
+            return SelectLandToPlaceCard(neighbors, land.Type);
         }
 
-        private Land SelectEmptyLand(List<Land> landList)
+        private void UpdateMana(int dtMana, bool isReduced)
+        {
+            enemy.CurrentMana += (isReduced ? -dtMana : dtMana);
+            manaUI.text = "Mana: " + enemy.CurrentMana;
+        }
+        
+        private Land SelectCellToPlaceLand(List<Land> landList)
         {
             List<Land> emptyLands = landList.FindAll((el) => el.Type == LandType.None);
             int landId = Random.Range(0, emptyLands.Count);
@@ -73,10 +65,10 @@ namespace Tenacity.Battle
             return landToPlace;
         }
 
-        public bool PlaceLandOnBoard(List<Land> availablePlaces, float time)
+        private bool PlaceLandOnBoard(List<Land> availablePlaces)
         {
             Land landToPlace = TakeLandFromDeck();
-            Land targetPlace = SelectEmptyLand(availablePlaces);
+            Land targetPlace = SelectCellToPlaceLand(availablePlaces);
             if (targetPlace == null || landToPlace == null) return false;
 
             enemyLandDeck.Remove(landToPlace);
@@ -86,33 +78,146 @@ namespace Tenacity.Battle
             return true;
         }
 
-        public bool PlaceCardIntoLand(List<Land> availablePlaces, float time)
+        private void TakeDamage(Card selectedCard, List<Card> playerCreatures)
         {
-            if (availablePlaces == null) return false;
-            
-            Card selectedCard = SelectCard();
-            if (selectedCard == null) return false;
+            Card cardToAttack = playerCreatures
+                        .OrderBy(el => el.Data.Power / el.Data.Life)
+                        .FirstOrDefault();
+            if (cardToAttack == null) return;
 
-            Land selectedLand = SelectAvailableLandByType(availablePlaces, selectedCard.Data.Land);
-            if (selectedLand == null)
+            int figthBack = cardToAttack.Data.Power;
+            cardToAttack.GetDamaged(selectedCard.Data.Power);
+            selectedCard.GetDamaged(figthBack);
+        }
+
+        private void TryMoveCard(Card selectedCard, List<Land> places)
+        {
+            if (selectedCard == null) return;
+
+            if (selectedCard.State == CardState.OnBoard)
             {
-                selectedLand = SelectAvailableLandByType(availablePlaces, LandType.Neutral);
-                if (selectedLand == null) return false;
+                Land parentLand = selectedCard.transform.parent?.GetComponent<Land>();
+                bool takeDamage = false;
+                List<Card> neighborCreatures = parentLand.NeighborLands
+                    .FindAll(el => el.GetComponentInChildren<Card>() != null && !_enemyCards.Contains(el.GetComponentInChildren<Card>())) 
+                    .Select(el => el.GetComponentInChildren<Card>())
+                    .ToList();
+                if (neighborCreatures.Count != 0) takeDamage = DecideToAttak();
 
-                selectedCard = SelectCardByLandType(selectedLand.Type);
-                if (selectedCard == null) return false;
+                if (takeDamage)
+                {
+                    TakeDamage(selectedCard, neighborCreatures);
+                }
+                else
+                {
+                    Land selectedLand = SelectNeighborLand(parentLand);
+                    if (selectedLand == null) return;
+                    DropCardIntoLand(selectedCard, selectedLand);
+                }
             }
+            else if (selectedCard.State == CardState.InCardDeck)
+            {
+                if (selectedCard.Data.CastingCost > enemy.CurrentMana) return;
 
-            _enemyCards.Remove(selectedCard);
+                Land selectedLand = SelectLandToPlaceCard(places, selectedCard.Data.Land);
+                if (selectedLand == null) return;
+
+                DropCardIntoLand(selectedCard, selectedLand);
+                Card creatureCard = CardController.CreateCardCreatureOnBoard(selectedCard);
+                _enemyCards.Remove(selectedCard);
+                _enemyCards.Add(creatureCard);
+                UpdateMana(selectedCard.Data.CastingCost, true);
+            }
+        }
+
+        private void DropCardIntoLand(Card selectedCard, Land selectedLand)
+        {
+            if (selectedCard.gameObject.transform.parent?.GetComponent<Land>() != null)
+                selectedCard.gameObject.transform.parent.GetComponent<Land>().IsAvailableForCards = true;
             selectedCard.gameObject.transform.SetParent(selectedLand.gameObject.transform);
             selectedCard.gameObject.transform.localPosition = new Vector3(0, yPos, 0);
             selectedLand.IsAvailableForCards = false;
+        }
 
-            BattleCardController.CreateCardCreatureOnBoard(selectedCard);
+        private Land SelectLandToPlaceCard(List<Land> landList, LandType cardLandType)
+        {
+            if (landList == null) return null;
+            List<Land> availableLands = new List<Land>();
+            availableLands = landList.FindAll((el) => el.IsAvailableForCards && el.Type.HasFlag(cardLandType));
+            if (availableLands.Count == 0) return null;
+
+            int landId = Random.Range(0, availableLands.Count);
+            Land landToPlace = availableLands[landId];
+            return landToPlace;
+        }
+
+        /*
+        private Card SelectCardByLandType(LandType type, CardState cardState)
+        {
+            if (_enemyCards.Count == 0) return null;
+            List<Card> availableCards = _enemyCards.FindAll( (el) => 
+                (el.Data.Land.HasFlag(type)) &&  (el.State == cardState));
+            if (availableCards.Count == 0) return null;
+            int cardId = Random.Range(0, availableCards.Count);
+            Card selectedCard = availableCards[cardId];
+            return selectedCard;
+        }
+        */
+        /*
+        private bool MoveDeckCard(List<Land> availablePlaces)
+        {
+            Card selectedCard = SelectCardByLandType(LandType.None, CardState.InCardDeck);
+            if (selectedCard == null) return false;
+            Land selectedLand = SelectAvailableLandByType(availablePlaces, selectedCard.Data.Land);
+            if (selectedLand == null) return false;
+            
+            DropCardIntoLand(selectedCard, selectedLand);
+            Card creatureCard = CardController.CreateCardCreatureOnBoard(selectedCard);
             _enemyCards.Remove(selectedCard);
+            _enemyCards.Add(creatureCard);
             return true;
         }
 
+        private bool MoveCardOnBoard(List<Land> availablePlaces) 
+        {
+            Card selectedCard = SelectCardByLandType(LandType.None, CardState.OnBoard);
+            if (selectedCard == null) return false;
+            Land selectedLand = SelectNeighborLand(selectedCard.transform.parent?.GetComponent<Land>());
+            if (selectedLand == null) return false;
+            DropCardIntoLand(selectedCard, selectedLand);
+
+            return true;
+        }
+        */
+        /*
+        public bool PlaceCardIntoLand(List<Land> availablePlaces)
+        {
+            if (availablePlaces == null) return false;
+
+            bool isCardMoved = MoveDeckCard(availablePlaces);
+            if (isCardMoved) return true;
+
+            isCardMoved = MoveCardOnBoard(availablePlaces);
+            
+            return isCardMoved;
+        }
+        */
+
+        public IEnumerator MakeMove(List<Land> places, float time)
+        {
+            UpdateMana(BattleRules.ROUND_MANA, false);
+            for (int i = 0; i < BattleRules.LandRules.NEUTRAL; i++)
+            {
+                PlaceLandOnBoard(places);
+            }
+            yield return new WaitForSeconds(time);
+            for (int i = 0; i < _enemyCards.Count; i++)
+            {
+                TryMoveCard(_enemyCards[i], places);
+                if (enemy.CurrentMana == 0) break;
+            }
+            yield return new WaitForSeconds(time);
+        }
         //tmp
         public bool IsGameOver()
         {

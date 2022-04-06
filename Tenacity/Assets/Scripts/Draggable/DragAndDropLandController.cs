@@ -5,7 +5,7 @@ namespace Tenacity.Draggable
 {
     public class DragAndDropLandController : DragAndDrop<Land>
     {
-        private Land SelectedLand => (SelectedGO != null) ? SelectedGO.GetComponent<Land>() : null;
+        private Land SelectedLand => SelectedGO?.GetComponent<Land>();
 
         protected override bool StartDraggingObject()
         {
@@ -37,6 +37,7 @@ namespace Tenacity.Draggable
             }
         }
 
+        //tmp
         protected override bool IsDraggable(GameObject gameObject)
         {
             return true;

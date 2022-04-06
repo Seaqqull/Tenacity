@@ -47,31 +47,19 @@ namespace Tenacity.Cards
             for (int i = 0; i < cardPositions.Length; i++)
             {
                 var cardData = copyPack[Random.Range(0, copyPack.Count)];
-                var createdCard = CreateCardOnDeck(cardData, i);
+                var createdCard = CreateCardInDeck(cardData, i);
                 copyPack.Remove(cardData);
                 _cardPack.Add(createdCard);
             }
         }
 
-        private Card CreateCardOnDeck(CardData cardData, int slotId)
+        private Card CreateCardInDeck(CardData cardData, int slotId)
         {
             Card card = Instantiate(cardPrefab, cardPositions[slotId]);
             card.transform.parent = cardPositions[slotId];
             card.Data = cardData;
             card.gameObject.SetActive(true);
             return card;
-        }
-
-        //tmp
-        public bool ReplaceCard(Card replaceableCard, Card card)
-        {
-            int id = _cardPack.FindIndex(el => el == replaceableCard);
-            if (id != -1)
-            {
-                _cardPack[id] = card;
-                return true;
-            }
-            return false;
         }
     }
 }

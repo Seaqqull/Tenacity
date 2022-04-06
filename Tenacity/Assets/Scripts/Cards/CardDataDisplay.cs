@@ -45,5 +45,12 @@ namespace Tenacity.Cards
                 cardSprite.sprite = Resources.Load<Sprite>($"Sprites/Cards/card_{value}");
             }
         }
+
+        public void UpdateLife()
+        {
+            if (card == null) TryGetComponent(out card);
+            cardComponents = transform.GetComponentsInChildren<Transform>().ToDictionary(item => item.name, item => item);
+            SetCardValue(cardComponents[nameof(Card.Data.Life)], card.CurrentLife.ToString());
+        }
     }
 }

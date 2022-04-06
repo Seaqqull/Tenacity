@@ -5,22 +5,23 @@ using UnityEngine;
 
 namespace Tenacity.Cards
 {
-    public class BattleCardController : MonoBehaviour
+    public class CardController : MonoBehaviour
     {
-        public static void CreateCardCreatureOnBoard(Card newCard)
+        public static Card CreateCardCreatureOnBoard(Card newCard)
         {
-            GameObject loadedGO = LoadFromDatabase(newCard);
-            if (loadedGO == null) return;
+            GameObject loadedCreatureObject = LoadFromDatabase(newCard);
+            if (loadedCreatureObject == null) return null;
 
-            var cardCreatureGO = Instantiate(loadedGO) as GameObject;
-            cardCreatureGO.transform.SetParent(newCard.transform.parent);
-            cardCreatureGO.transform.localPosition = newCard.transform.localPosition;
+            var creatureGO = Instantiate(loadedCreatureObject) as GameObject;
+            creatureGO.transform.SetParent(newCard.transform.parent);
+            creatureGO.transform.localPosition = newCard.transform.localPosition;
 
-            Card cardComponent = cardCreatureGO.GetComponent<Card>();
+            Card cardComponent = creatureGO.GetComponent<Card>();
             cardComponent.Data = newCard.Data;
             cardComponent.IsDraggable = newCard.IsDraggable;
             cardComponent.State = CardState.OnBoard;
             Destroy(newCard.gameObject);
+            return cardComponent;
         }
 
         private static GameObject LoadFromDatabase(Card newCard)

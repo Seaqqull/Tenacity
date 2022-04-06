@@ -9,7 +9,7 @@ namespace Tenacity.Battle
     public class BattlePlayerController : MonoBehaviour
     {
         [SerializeField] private CardDeckManager playerCardDeck;
-        [SerializeField] private DraggableBattleCardController playerDraggableCardsController;
+        [SerializeField] private DraggableCardController playerDraggableCardsController;
 
         private List<Card> _playerCards;
 

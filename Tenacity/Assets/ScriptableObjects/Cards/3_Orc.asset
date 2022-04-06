@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardId: 3
   cardName: Super orc
-  castingCost: 5
+  castingCost: 3
   life: 10
   power: 5
   type: 0

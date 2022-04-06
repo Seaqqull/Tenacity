@@ -11,7 +11,6 @@ namespace Tenacity.Cards
 
         public override void SetCardValue(Transform component, string value)
         {
-            //base.SetCardValue(component, value);
             if (component.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI textField))
             {
                 textField.text = value;
