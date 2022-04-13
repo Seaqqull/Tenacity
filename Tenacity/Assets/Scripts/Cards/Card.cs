@@ -1,4 +1,5 @@
 using Tenacity.Items;
+using Tenacity.Lands;
 using UnityEngine;
 
 namespace Tenacity.Cards
@@ -39,6 +40,10 @@ namespace Tenacity.Cards
             set => isDraggable = value;
         }
         public int CurrentLife => _currentLife;
+        public Land Place {
+            get => transform.parent?.GetComponent<Land>();
+            set => transform.SetParent(value.transform);
+        }
 
         private int _currentLife;
 
@@ -50,10 +55,13 @@ namespace Tenacity.Cards
 
         public void GetDamaged(int power)
         {
-            Debug.Log("Damage");
             _currentLife -= power;
             GetComponent<CardDataDisplay>()?.UpdateLife();
-            if (_currentLife <= 0) Destroy(gameObject, 1.0f);
+            if (_currentLife <= 0)
+            {
+                transform.parent.GetComponent<Land>().IsAvailableForCards = true;
+                Destroy(gameObject, 1.0f);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Tenacity.Cards;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,11 +10,11 @@ namespace Tenacity.Lands
     [Flags] public enum LandType
     {
         None = 0,
-        Ice = 1,
-        Water = 2,
-        Fire = 4,
-        Earth = 8,
-        Neutral = Ice | Water | Fire | Earth
+        Ice = 1 << 0,
+        Water = 1 << 1,
+        Fire = 1 << 2,
+        Earth = 1 << 3,
+        Neutral = ~0,
     }
 
     public class Land : MonoBehaviour
@@ -80,7 +81,7 @@ namespace Tenacity.Lands
             IsAvailableForCards = true;
          
             if (GetComponent<LandController>() != null) GetComponent<LandController>().enabled = true;
-            Destroy(newLandCard.gameObject);
+
             return true;
         }
 
@@ -88,6 +89,16 @@ namespace Tenacity.Lands
         {
             if (type == LandType.None) return;
             _meshRenderer.sharedMaterial = outlined ? outliner : _standardMaterial;
+        }
+
+        public bool IsNeighborListContains(Land land)
+        {
+            return NeighborLands.Contains(land);
+        }
+
+        public Card GetPlacedCreature()
+        {
+            return transform.GetComponentInChildren<Card>();
         }
     }
 }

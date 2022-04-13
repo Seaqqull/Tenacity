@@ -18,7 +18,7 @@ namespace Tenacity.Cards
 
             Card cardComponent = creatureGO.GetComponent<Card>();
             cardComponent.Data = newCard.Data;
-            cardComponent.IsDraggable = newCard.IsDraggable;
+            cardComponent.IsDraggable = false;
             cardComponent.State = CardState.OnBoard;
             Destroy(newCard.gameObject);
             return cardComponent;

@@ -10,81 +10,73 @@ using UnityEngine.UI;
 
 namespace Tenacity.Battle
 {
-    public enum BattleState
-    {
-        START,
-        WON,
-        LOST
-    }
-
     public class BattleController : MonoBehaviour
     {
-        [SerializeField] private Board board;
-        [SerializeField] private BattleEnemyAIController enemy;
-        [SerializeField] private BattlePlayerController player;
+        public enum BattleState
+        {
+            Start,
+            WaitingForEnemyTurn,
+            WaitingForPlayerTurn,
+            Won,
+            Lost
+        }
 
-        [SerializeField] private TextMeshProUGUI turnStateUI;
-        [SerializeField] private Button endTurnButton;
+        [SerializeField] private Board _board;
+        [SerializeField] private BattleEnemyController _enemy;
+        [SerializeField] private BattlePlayerController _player;
+        [SerializeField] private TextMeshProUGUI _turnStateUI;
+        [SerializeField] private Button _endTurnButton;
+        [SerializeField] private float _waitNextTurnTime = 0.5f;
 
-        [SerializeField] private float waitNextTurnTime = 0.5f;
+        public BattlePlayerController Player { get => _player; }
+        public BattleEnemyController Enemy { get => _enemy; }
+        public BattleState CurrentBattleState { get; private set; }
 
-        private string[] _turnStateText = { "You", "Enemy" };
-        private BattleState _battleState;
+        private readonly string[] _turnStateText = { "You", "Enemy" };
+
 
         private void Start()
         {
-            if (enemy == null || player == null) return;
+            if (_enemy == null || _player == null) return;
 
-            player.SelectCardMode(false);
-            endTurnButton.enabled = false;
-            StartCoroutine(StartBattle(waitNextTurnTime));
+            _endTurnButton.enabled = false;
+            StartCoroutine(StartBattle(_waitNextTurnTime));
         }
 
         private IEnumerator StartBattle(float waitTime)
         {
-            _battleState = BattleState.START;
-            yield return new WaitForSeconds(waitTime);
+            CurrentBattleState = BattleState.Start;
             if (IsPlayerGoesFirst()) PlayerTurn();
             else  StartCoroutine(EnemyTurn(waitTime));
-            
+            yield return new WaitForSeconds(waitTime);
+
         }
         
         private IEnumerator EnemyTurn(float waitTime)
         {
-            turnStateUI.text = _turnStateText[1];
+            _player.SelectCardMode(false);
+            CurrentBattleState = BattleState.WaitingForEnemyTurn;
+            _turnStateUI.text = _turnStateText[1];
+
             yield return new WaitForSeconds(1.0f);
-            yield return enemy.MakeMove(board.LandCells, waitTime);
+            yield return _enemy.MakeMove(_board.LandCells, waitTime);
             yield return new WaitForSeconds(waitTime);
 
-            if (enemy.IsGameOver())
-            {
-                _battleState = BattleState.WON;
-                EndGame();
-            }
-            else
-            {
-                PlayerTurn();
-            }
+            if(!IsGameover()) PlayerTurn();
         }
         
         private void PlayerTurn()
         {
-            if (player.IsGameOver())
-            {
-                _battleState = BattleState.LOST;
-                EndGame();
-                return;
-            }
-            turnStateUI.text = _turnStateText[0];
-            player.SelectCardMode(true);
-            endTurnButton.enabled = true;
+            _player.SelectCardMode(true);
+            CurrentBattleState = BattleState.WaitingForPlayerTurn;
+            _turnStateUI.text = _turnStateText[0];
+            if (!IsGameover()) _endTurnButton.enabled = true;
         }
 
         public void OnEndTurnButton()
         {
-            player.SelectCardMode(false);
-            endTurnButton.enabled = false;
-            StartCoroutine(EnemyTurn(waitNextTurnTime));
+            _endTurnButton.enabled = false;
+            StartCoroutine(EnemyTurn(_waitNextTurnTime));
         }
 
         private bool IsPlayerGoesFirst()
@@ -92,9 +84,26 @@ namespace Tenacity.Battle
             return (Random.value > 0.5f);
         }
 
+        private bool IsGameover()
+        {
+            if (_player.IsGameOver)
+            {
+                CurrentBattleState = BattleState.Lost;
+                EndGame();
+                StopAllCoroutines();
+                return true;
+            } else if (_enemy.IsGameOver)
+            {
+                CurrentBattleState = BattleState.Won;
+                EndGame();
+                StopAllCoroutines();
+                return true;
+            }
+            return false;
+        }
         private void EndGame()
         {
-            turnStateUI.text = "YOU " + _battleState;
+            _turnStateUI.text = "YOU " + CurrentBattleState;
         }
     }
 }

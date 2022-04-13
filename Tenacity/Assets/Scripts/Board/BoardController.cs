@@ -8,13 +8,13 @@ namespace Tenacity.Battle
 {
     public class BoardController : MonoBehaviour
     {
-        [SerializeField] private Board board;
-        [SerializeField] private Land emptyLandPrefab;
+        [SerializeField] private Board _board;
+        [SerializeField] private Land _emptyLandPrefab;
 
         private void Start()
         {
-            if (board == null) return;
-            if (emptyLandPrefab == null || !emptyLandPrefab.GetComponent<Land>()) return;
+            if (_board == null) return;
+            if (_emptyLandPrefab == null || !_emptyLandPrefab.GetComponent<Land>()) return;
             InitBoard();
         }
 
@@ -26,7 +26,7 @@ namespace Tenacity.Battle
 
         private void CreateCells()
         {
-            int size = board.MapRadius;
+            int size = _board.MapRadius;
             float colLimit = 2 * (size - 1);
             for (float row = -size + 1; row < size; row++)
             {
@@ -39,21 +39,21 @@ namespace Tenacity.Battle
 
         private void SetNeighbors()
         {
-            foreach (Land land in board.LandCells)
+            foreach (Land land in _board.LandCells)
             {
-                land.NeighborLands = board.GetCellNeighbors(land);
+                land.NeighborLands = _board.GetCellNeighbors(land);
             }
         }
 
         private void CreateLandCell(float y, float x)
         {
             var landGO = Instantiate(
-                emptyLandPrefab.gameObject,
+                _emptyLandPrefab.gameObject,
                 new Vector3(x, 0, y),
                 Quaternion.identity);
             landGO.transform.parent = transform;
             landGO.GetComponent<Land>().IsPlacedOnBoard = true;
-            board.AddCell(landGO.GetComponent<Land>(), x, y);
+            _board.AddCell(landGO.GetComponent<Land>(), x, y);
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1936838760802782034}
   - component: {fileID: 6859685746238643564}
   - component: {fileID: 2155633915747094612}
+  - component: {fileID: 6422701816651582553}
   m_Layer: 0
   m_Name: LandDeck
   m_TagString: Untagged
@@ -25,10 +26,10 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410098366207914565}
-  m_LocalRotation: {x: 0.46089688, y: -0, z: -0, w: 0.88745373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6695505405539469049}
   - {fileID: 6745879744504677467}
@@ -63,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -80,6 +81,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6422701816651582553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410098366207914565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03f1cd95c2aefe4cb382d8edf680add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1825950553628817921
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +105,7 @@ GameObject:
   - component: {fileID: 500800360519776607}
   - component: {fileID: 488467907712549095}
   - component: {fileID: 5611599842102934236}
+  - component: {fileID: 2889157288465884850}
   m_Layer: 13
   m_Name: land_card (1)
   m_TagString: Untagged
@@ -173,6 +187,20 @@ MonoBehaviour:
   isAvailableForCards: 0
   isPlacedOnBoard: 0
   outliner: {fileID: 0}
+--- !u!114 &2889157288465884850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825950553628817921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea1207822bbd214784827fde49fb28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  _rayPointerController: {fileID: 0}
 --- !u!1 &2204662793518079430
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +213,7 @@ GameObject:
   - component: {fileID: 5534514313275456323}
   - component: {fileID: 4666526164338589906}
   - component: {fileID: 4637117373790265797}
+  - component: {fileID: 2290708165899661373}
   m_Layer: 13
   m_Name: land_card (2)
   m_TagString: Untagged
@@ -266,6 +295,20 @@ MonoBehaviour:
   isAvailableForCards: 0
   isPlacedOnBoard: 0
   outliner: {fileID: 0}
+--- !u!114 &2290708165899661373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204662793518079430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea1207822bbd214784827fde49fb28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  _rayPointerController: {fileID: 0}
 --- !u!1 &5551646897602742089
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +321,7 @@ GameObject:
   - component: {fileID: 6787658868653438919}
   - component: {fileID: 3134957618998938561}
   - component: {fileID: 644099339105034809}
+  - component: {fileID: 499948999113287880}
   m_Layer: 13
   m_Name: land_card (3)
   m_TagString: Untagged
@@ -359,6 +403,20 @@ MonoBehaviour:
   isAvailableForCards: 0
   isPlacedOnBoard: 0
   outliner: {fileID: 0}
+--- !u!114 &499948999113287880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551646897602742089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea1207822bbd214784827fde49fb28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  _rayPointerController: {fileID: 0}
 --- !u!1 &8072657687192614612
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +429,7 @@ GameObject:
   - component: {fileID: 4326307369418945924}
   - component: {fileID: 8216003195426787159}
   - component: {fileID: 8072657687192614615}
+  - component: {fileID: 1033423264020815407}
   m_Layer: 13
   m_Name: land_card
   m_TagString: Untagged
@@ -452,3 +511,17 @@ MonoBehaviour:
   isAvailableForCards: 0
   isPlacedOnBoard: 0
   outliner: {fileID: 0}
+--- !u!114 &1033423264020815407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072657687192614612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea1207822bbd214784827fde49fb28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  _rayPointerController: {fileID: 0}

@@ -6,33 +6,32 @@ namespace Tenacity.Draggable
     public abstract class DragAndDrop<T> : MonoBehaviour
     {
         [SerializeField] private LayerMask draggableObjectLayer;
-        [SerializeField] private LayerMask targetLayer;
-        [SerializeField] private float droppedObjectYPos = 0.61f;
-        [SerializeField] private float selectedObjectRescaleDt = 1.1f;
-        [SerializeField] private float rayDetectionDistance = 1000.0f;
+        [SerializeField] private LayerMask _targetLayer;
+        [SerializeField] private float _droppedObjectYPos = 0.61f;
+        [SerializeField] private float _selectedObjectRescaleDt = 1.1f;
+        [SerializeField] private float _rayDetectionDistance = 1000.0f;
 
         private GameObject _selectedGO;
         private Vector3 _previousSelectedObjectPos;
 
         protected GameObject SelectedGO => _selectedGO;
-        protected float DroppedObjectYPos => droppedObjectYPos;
+        protected float DroppedObjectYPos => _droppedObjectYPos;
 
 
         private void Update()
         {
             if (EngineInput.GetMouseButtonDown(0)) StartDraggingObject();
             if (_selectedGO == null) return;
-            if (EngineInput.GetMouseButton(0)) DragSelectedObject(_selectedGO);
-            if (EngineInput.GetMouseButtonUp(0)) DropSelectedObject();
+            if (EngineInput.GetMouseButton(0)) MoveWithMouseCursor(_selectedGO);
+            if (EngineInput.GetMouseButtonUp(0)) OnEndDragging();
         }
 
         private void SelectObjectOnClick(GameObject clickedObject)
         {
-            if (clickedObject != null) clickedObject.transform.localScale *= selectedObjectRescaleDt;
-            if (_selectedGO != null) _selectedGO.transform.localScale /= selectedObjectRescaleDt;
+            if (clickedObject != null) clickedObject.transform.localScale *= _selectedObjectRescaleDt;
+            if (_selectedGO != null) _selectedGO.transform.localScale /= _selectedObjectRescaleDt;
             _selectedGO = clickedObject;
         }
-
         private RaycastHit GetHitWithRaycast(LayerMask layerMask, float distance)
         {
             Ray ray = Camera.main.ScreenPointToRay(EngineInput.mousePosition);
@@ -40,7 +39,6 @@ namespace Tenacity.Draggable
             Physics.Raycast(ray, out hit, distance, layerMask);
             return hit;
         }
-
         private GameObject DetectObjectHitWithRaycast(LayerMask layer, float distance)
         {
             RaycastHit hit = GetHitWithRaycast(layer, distance);
@@ -54,26 +52,16 @@ namespace Tenacity.Draggable
             _selectedGO.transform.position = _previousSelectedObjectPos;
             SelectObjectOnClick(null);
         }
-
         protected GameObject DetectObjectHitWithRaycast()
         {
-            return DetectObjectHitWithRaycast(draggableObjectLayer, rayDetectionDistance);
+            return DetectObjectHitWithRaycast(draggableObjectLayer, _rayDetectionDistance);
         }
-
-        protected void PlaceSelectedObject(GameObject target)
-        {
-            _selectedGO.transform.parent = target.transform;
-            _selectedGO.transform.localPosition = new Vector3(0, DroppedObjectYPos, 0);
-        }
-
 
         protected virtual bool StartDraggingObject()
         {
-            GameObject clickedObject = DetectObjectHitWithRaycast(draggableObjectLayer, rayDetectionDistance);
+            GameObject clickedObject = DetectObjectHitWithRaycast(draggableObjectLayer, _rayDetectionDistance);
 
-            if ((clickedObject != null)
-                && (_selectedGO != clickedObject) 
-                && IsDraggable(clickedObject))
+            if ((clickedObject != null) && (_selectedGO != clickedObject) && IsDraggable(clickedObject))
             {
                 OnStartDragging(clickedObject);
                 return true;
@@ -82,10 +70,27 @@ namespace Tenacity.Draggable
             if (_selectedGO != null) GetBackSelectedObject();
             return false;
         }
-
-        protected virtual void DropSelectedObject()
+        protected virtual void MoveWithMouseCursor(GameObject selectedGO)
         {
-            GameObject target = DetectObjectHitWithRaycast(targetLayer, rayDetectionDistance);
+            Vector3 pos = new Vector3(EngineInput.mousePosition.x, EngineInput.mousePosition.y, Camera.main.WorldToScreenPoint(selectedGO.transform.position).z);
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
+            selectedGO.transform.position = new Vector3(worldPos.x, _droppedObjectYPos, worldPos.z);
+        }
+        protected virtual void OnStartDragging(GameObject clickedObject)
+        {
+            SelectObjectOnClick(clickedObject);
+            _previousSelectedObjectPos = clickedObject.transform.position;
+        }
+
+
+        protected void PlaceSelectedObject(GameObject target)
+        {
+            _selectedGO.transform.parent = target.transform;
+            _selectedGO.transform.localPosition = new Vector3(0, DroppedObjectYPos, 0);
+        }
+        protected virtual void OnEndDragging()
+        {
+            GameObject target = DetectObjectHitWithRaycast(_targetLayer, _rayDetectionDistance);
             if (target == null) GetBackSelectedObject();
             else
             {
@@ -93,21 +98,9 @@ namespace Tenacity.Draggable
                 SelectObjectOnClick(null);
             }
         }
-
-        protected virtual void DragSelectedObject(GameObject selectedGO)
-        {
-            Vector3 pos = new Vector3(EngineInput.mousePosition.x, EngineInput.mousePosition.y, Camera.main.WorldToScreenPoint(selectedGO.transform.position).z);
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
-            selectedGO.transform.position = new Vector3(worldPos.x, droppedObjectYPos, worldPos.z);
-        }
-
-        protected virtual void OnStartDragging(GameObject clickedObject)
-        {
-            SelectObjectOnClick(clickedObject);
-            _previousSelectedObjectPos = clickedObject.transform.position;
-        }
-
         protected abstract bool DropSelectedObject(GameObject target);
+
         protected abstract bool IsDraggable(GameObject gameObject);
+    
     }
 }

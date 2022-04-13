@@ -7,11 +7,12 @@ using UnityEngine;
 
 namespace Tenacity.Battle
 {
-    public class Board : MonoBehaviour
+    [CreateAssetMenu(fileName = "Board Template", menuName = "Board")]
+    public class Board : ScriptableObject
     {
-        [SerializeField] private int mapRadius = 4;
+        [SerializeField] private int _mapRadius;
 
-        public int MapRadius => mapRadius;
+        public int MapRadius => _mapRadius;
         public List<Land> LandCells => _landsMap.Values.ToList();
 
         private List<Land> _landCells = new List<Land>();
