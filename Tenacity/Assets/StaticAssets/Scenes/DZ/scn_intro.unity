@@ -7350,7 +7350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _searchPeriod: 0.015
-  _range: 3
+  _range: 8
   _onTragetUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -13295,6 +13295,10 @@ PrefabInstance:
     - target: {fileID: 3670046224424598112, guid: 3455a79b332c943cfbbd6f5e8687689b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670046224424598113, guid: 3455a79b332c943cfbbd6f5e8687689b, type: 3}
+      propertyPath: _boundsScale
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3670046224424598143, guid: 3455a79b332c943cfbbd6f5e8687689b, type: 3}
       propertyPath: m_Name
