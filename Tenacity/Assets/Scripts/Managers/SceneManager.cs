@@ -33,6 +33,7 @@ namespace Tenacity.Managers
 
         private List<Dialog> _activeDialogs = new List<Dialog>();
         private Coroutine _hideDialogDelayCoroutine;
+        private Coroutine _hideMouseDelayCoroutine;
         private Coroutine _mouseHoverRoutine;
         private int _levelIndex = - 1;
         
@@ -89,6 +90,14 @@ namespace Tenacity.Managers
         {
             yield return new WaitForSeconds(HIDE_DIALOG_DELAY);
             _hideDialogDelayCoroutine = null;
+        }
+        
+        private IEnumerator UnblockMouseRoutine()
+        {
+            yield return new WaitForSeconds(HIDE_DIALOG_DELAY);
+            
+            _hideMouseDelayCoroutine = null;
+            MouseClickBlocked = false;
         }
 
         private IEnumerator MouseHoverCoroutine()
@@ -153,6 +162,11 @@ namespace Tenacity.Managers
         public void HideMouseClick()
         {
             _mouseClick.SetActive(false);
+        }
+
+        public void UnblockMouseWithDelay()
+        {
+            _hideMouseDelayCoroutine = StartCoroutine(UnblockMouseRoutine());
         }
 
         public void SetClickPosition(Vector3 position)

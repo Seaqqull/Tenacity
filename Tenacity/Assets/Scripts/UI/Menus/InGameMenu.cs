@@ -1,8 +1,7 @@
 using Tenacity.Managers;
+using UnityEngine;  
 #if UNITY_EDITOR
 using UnityEditor;
-#else
-using UnityEngine;   
 #endif
 
 
@@ -24,7 +23,12 @@ namespace Tenacity.UI.Menus
         {
             SettingsMenu.Show();
         }
-        
+
+        public void OnInventoryAction()
+        {
+            InventoryMenu.Show();
+        }
+
         public void OnMainMenuAction()
         {
             MenuManager.Instance.CloseMenu(this);
