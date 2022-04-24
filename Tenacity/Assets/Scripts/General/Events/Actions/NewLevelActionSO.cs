@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 namespace Tenacity.General.Events.Actions
 {
     [CreateAssetMenu(menuName = "Events/Actions/NewLevel", fileName = "NewLevel", order = 0)]

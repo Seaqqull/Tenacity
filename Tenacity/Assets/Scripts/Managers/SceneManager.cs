@@ -1,13 +1,13 @@
 using UnityScenes = UnityEngine.SceneManagement;
 using Tenacity.General.Interactions;
 using System.Collections.Generic;
+using Tenacity.General.Loading;
 using Tenacity.Utility.Data;
 using UnityEngine.Events;
 using System.Collections;
 using Tenacity.Dialogs;
 using UnityEngine;
 using System;
-using Tenacity.General.Loading;
 
 
 namespace Tenacity.Managers
@@ -144,9 +144,9 @@ namespace Tenacity.Managers
             _levelIndex = -1;
         }
 
-        public void LoadMainGame(int levelIndex = 1, string sceenName = "")
+        public void LoadMainGame(int levelIndex = 1, string screenName = "")
         {
-            StartCoroutine(LoadScene((_levelIndex == -1) ? 1 : _levelIndex, levelIndex, sceenName));
+            StartCoroutine(LoadScene((_levelIndex == -1) ? 1 : _levelIndex, levelIndex, screenName));
             _levelIndex = levelIndex;
         }
         
