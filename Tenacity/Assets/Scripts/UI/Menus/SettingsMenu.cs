@@ -11,6 +11,7 @@ namespace Tenacity.UI.Menus
     {
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private Slider _effectsSlider;
+        [SerializeField] private Slider _timeScaleSlider;
         [SerializeField] private TMP_Dropdown _languageSelect;
 
 
@@ -30,6 +31,14 @@ namespace Tenacity.UI.Menus
                 Utility.Constants.Audio.MAX_LOUDNESS,
                 _musicSlider.minValue,
                 _musicSlider.maxValue
+            );
+            
+            _timeScaleSlider.value = Utility.Methods.FloatHelper.Map(
+                StorageManager.Instance.TimeScale, 
+                Utility.Constants.Game.TIME_SCALE_MIN, 
+                Utility.Constants.Game.TIME_SCALE_MAX,
+                _timeScaleSlider.minValue,
+                _timeScaleSlider.maxValue
             );
             
             // Initialization of languages
@@ -60,7 +69,18 @@ namespace Tenacity.UI.Menus
                 Utility.Constants.Audio.MAX_LOUDNESS
             ));
         }
-
+        
+        public void SetTimeScale(float scale)
+        {
+            StorageManager.Instance.UpdateTimeScale(Utility.Methods.FloatHelper.Map(
+                scale, 
+                _timeScaleSlider.minValue,
+                _timeScaleSlider.maxValue,
+                Utility.Constants.Game.TIME_SCALE_MIN, 
+                Utility.Constants.Game.TIME_SCALE_MAX
+            ));
+        }
+        
         public void OnChangeLocale(int localeIndex)
         {
             LocalizationManager.Instance.SelectLocale(localeIndex);

@@ -47,8 +47,6 @@ namespace Tenacity.Managers
             _lightRotationStep = (_dayNightParameters.NightRotationStepAngle - _dayNightParameters.DayRotationAngle);
             _lightRotationAngle = _dayNightParameters.DayRotationAngle;
             _lightTransform = _light.transform;
-
-            SetTime(DateTime.Now);
         }
 
         private void Update()
