@@ -1,16 +1,21 @@
 using System.Collections.Generic;
 using Tenacity.Utility;
 using UnityEngine;
+using System;
 
 
 namespace Tenacity.UI
 {
     public class InteractionRadarUI : MonoBehaviour
     {
+        [Flags]
+        private enum Side { None, Left, Right, Top = 4, Bottom = 8 }
+
         [SerializeField] private GameObject _itemPrefab;
         [SerializeField] private RectTransform _bounds;
         [Space] 
-        [SerializeField] [Range(0.0f, 1.0f)]private float _boundsScale = 1.0f; 
+        [SerializeField] private Side _boundDirection;
+        [SerializeField] [Range(0.0f, 1.0f)]private float _boundsScale = 1.0f;
 
         private List<GameObject> _marks = new List<GameObject>();
         private Vector3 _boundsSize;
@@ -18,7 +23,17 @@ namespace Tenacity.UI
 
         private void Awake()
         {
-            _boundsSize = new Vector2(_bounds.rect.x * -_boundsScale, _bounds.rect.y * -_boundsScale);
+            var directions = GetDirectionValues(_boundDirection);
+            _boundsSize = new Vector2(_bounds.rect.x * _boundsScale * directions.horizontal, _bounds.rect.y * _boundsScale * directions.vertical);
+        }
+
+
+        private (float horizontal, float vertical) GetDirectionValues(Side side)
+        {
+            return (
+                side.HasFlag(Side.Left) ? -1.0f : side.HasFlag(Side.Right) ? 1.0f : 0.0f,
+                side.HasFlag(Side.Bottom) ? -1.0f : side.HasFlag(Side.Top) ? 1.0f : 0.0f
+            );
         }
 
 
