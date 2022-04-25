@@ -51,8 +51,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1047748957691904
-    m_Localized: "Menu g\u0142\xF3wne"
+    m_Localized: "G\u0142\xF3wne menu "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46005889126096896
+    m_Localized: Skala czasu
     m_Metadata:
       m_Items: []
   references:
-    version: 1
+    version: 2
+    RefIds: []

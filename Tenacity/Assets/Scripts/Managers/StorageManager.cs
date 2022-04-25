@@ -29,7 +29,7 @@ namespace Tenacity.Managers
             MainCamera = Camera.main;
             
             // Environment
-            if (EnvironmentManager.Instance)
+            if (EnvironmentManager.Instance != null)
             {
                 EnvironmentManager.Instance.GameTimeScale = TimeScale;
                 EnvironmentManager.Instance.SetTime(DateTime.Now);   
@@ -41,6 +41,9 @@ namespace Tenacity.Managers
         {
             PlayerPrefsManager.Instance.SetFloat(Utility.Constants.Game.TIME_SCALE, scale);
             TimeScale = scale;
+
+            if (EnvironmentManager.Instance != null)
+                EnvironmentManager.Instance.GameTimeScale = TimeScale;
         }
     }
 }

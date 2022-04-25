@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3592071072906698426}
   m_RootOrder: 0
@@ -104,6 +105,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2348755969865684511}
   m_RootOrder: 0
@@ -248,7 +250,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   references:
-    version: 1
+    version: 2
+    RefIds: []
 --- !u!1 &2309421193448449542
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +281,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4352751704511536148}
   m_RootOrder: 0
@@ -422,7 +426,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   references:
-    version: 1
+    version: 2
+    RefIds: []
 --- !u!1 &3146328345522747405
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +458,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2582069966614395624}
   m_Father: {fileID: 4551151314207950408}
@@ -602,6 +608,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4856471720631027631}
   m_Father: {fileID: 4551151314207950408}
@@ -751,6 +758,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7807946341699180594}
   m_Father: {fileID: 4551151314207950408}
@@ -844,12 +852,25 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8939480345808879828}
-        m_TargetAssemblyTypeName: Tenacity.UI.Menus.InGameMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Tenacity.UI.Menus.InGameMenu, Tenacity.UI
         m_MethodName: OnMainMenuAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 69362915783cf4392b4bf53d44ed2435, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.LoadLevelSO, Tenacity.General.Events
+        m_MethodName: Perform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 746f592804a354925b7b8a03a7f26246, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Tenacity.Properties.IntegerVariable,
+            Properties
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -899,6 +920,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8242732307246177483}
   m_RootOrder: 0
@@ -1043,7 +1065,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   references:
-    version: 1
+    version: 2
+    RefIds: []
 --- !u!1 &8640159933322038669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1094,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8242732307246177483}
   - {fileID: 4352751704511536148}
@@ -1137,6 +1161,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4420103470195340634}
   - {fileID: 4551151314207950408}
@@ -1215,6 +1240,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1341869659147826884}
   m_RootOrder: 0
@@ -1359,7 +1385,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   references:
-    version: 1
+    version: 2
+    RefIds: []
 --- !u!1001 &4245361922192491027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1473,27 +1500,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38a5bf1e0aefc4ee38c3c5db19a829e7, type: 3}
---- !u!114 &1341869659147826887 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2915457836314113236, guid: 38a5bf1e0aefc4ee38c3c5db19a829e7, type: 3}
-  m_PrefabInstance: {fileID: 4245361922192491027}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341869659147826885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!224 &1341869659147826884 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2915457836314113239, guid: 38a5bf1e0aefc4ee38c3c5db19a829e7, type: 3}
-  m_PrefabInstance: {fileID: 4245361922192491027}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1341869659147826885 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2915457836314113238, guid: 38a5bf1e0aefc4ee38c3c5db19a829e7, type: 3}
-  m_PrefabInstance: {fileID: 4245361922192491027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1341869657727786304 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2915457838023024467, guid: 38a5bf1e0aefc4ee38c3c5db19a829e7, type: 3}
@@ -1518,6 +1524,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyOnClose: 1
   _disableBelowMenus: 1
+--- !u!224 &1341869659147826884 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2915457836314113239, guid: 38a5bf1e0aefc4ee38c3c5db19a829e7, type: 3}
+  m_PrefabInstance: {fileID: 4245361922192491027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1341869659147826885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2915457836314113238, guid: 38a5bf1e0aefc4ee38c3c5db19a829e7, type: 3}
+  m_PrefabInstance: {fileID: 4245361922192491027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1365438104074630643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1574,3 +1590,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2bb340a03ff1545e4b2f15ba607c7cba, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.SwitchMouseClick,
+          Tenacity.General.Events
+        m_MethodName: BlockMouse
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1341869659147826887 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2915457836314113236, guid: 38a5bf1e0aefc4ee38c3c5db19a829e7, type: 3}
+  m_PrefabInstance: {fileID: 4245361922192491027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341869659147826885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
