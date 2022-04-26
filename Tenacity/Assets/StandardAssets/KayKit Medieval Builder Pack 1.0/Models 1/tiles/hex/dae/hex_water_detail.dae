@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.80.75 commit date:2019-07-29, commit time:14:47, hash:f6cb5f54494e</authoring_tool>
+    </contributor>
+    <created>2021-07-28T15:12:40</created>
+    <modified>2021-07-28T15:12:40</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="BrownDark-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.3269456 0.1015262 0.0592709 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Water-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.06462205 0.6740851 0.7510285 1</color>
+            </diffuse>
+            <transparent opaque="A_ONE">
+              <color sid="alpha">0 0 0 0.5636363</color>
+            </transparent>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="BrownDark-material" name="BrownDark">
+      <instance_effect url="#BrownDark-effect"/>
+    </material>
+    <material id="Water-material" name="Water">
+      <instance_effect url="#Water-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Cylinder_1285-mesh" name="Cylinder.1285">
+      <mesh>
+        <source id="Cylinder_1285-mesh-positions">
+          <float_array id="Cylinder_1285-mesh-positions-array" count="93">0 0 0.9 0 1.1547 0 1 0.57735 0 1 -0.5773501 0 0 -1.1547 0 -1 -0.5773499 0 -1 0.5773499 0 0 1.1547 0.458816 0 1.1547 0.541184 0 1.123598 0.5 1 0.57735 0.541184 1 0.57735 0.458816 0.9730645 0.5617988 0.5 1 -0.5773501 0.541184 1 -0.5773501 0.458816 0.9730644 -0.5617988 0.5 0 -1.1547 0.541184 0 -1.1547 0.458816 0 -1.123598 0.5 -1 -0.5773499 0.541184 -1 -0.5773499 0.458816 -0.9730645 -0.5617987 0.5 -1 0.5773499 0.541184 -1 0.5773499 0.458816 -0.9730645 0.5617987 0.5 1 0.57735 0.9 0 1.1547 0.9 1 -0.5773501 0.9 0 -1.1547 0.9 -1 -0.5773499 0.9 -1 0.5773499 0.9</float_array>
+          <technique_common>
+            <accessor source="#Cylinder_1285-mesh-positions-array" count="31" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder_1285-mesh-normals">
+          <float_array id="Cylinder_1285-mesh-normals-array" count="129">-0.4999998 0.8660256 0 1 0 0 0.4999998 -0.8660256 0 -0.5 -0.8660255 0 -1 0 0 -0.5 0.8660255 0 0.4999998 0.8660256 0 0 0 -1 -0.4999999 -0.8660255 0 0.4999998 -0.8660256 0 0.4184491 0.7247763 -0.547357 0.418449 0.7247762 0.5473573 0.8368993 0 -0.5473569 0.8368999 0 0.5473559 0.4184491 -0.7247764 -0.547357 0.4184496 -0.7247765 0.5473566 -0.4184491 -0.7247764 -0.547357 -0.418449 -0.7247762 0.5473574 -0.8369002 0 -0.5473555 -0.836899 0 0.5473573 -0.4184513 0.7247765 -0.5473551 -0.4184503 0.7247764 0.5473561 0.4999999 0.8660255 0 0 0 1 -0.5000001 0.8660255 0 1 0 0 0.4999998 -0.8660256 0 -0.5 -0.8660255 0 0.5 0.8660255 0 -0.5000001 -0.8660254 0 1 -1.4386e-7 0 0.4184517 0.7247774 -0.5473536 0.4184507 0.7247772 0.5473546 0.8368999 0 -0.5473562 0.8368992 0 0.547357 0.4184499 -0.7247768 -0.5473558 0.4184502 -0.7247764 0.547356 -0.4184513 -0.7247765 -0.5473551 -0.4184503 -0.7247763 0.5473561 -0.8368988 0 -0.5473578 -0.8368999 0 0.547356 -0.4184491 0.7247763 -0.547357 -0.4184489 0.7247762 0.5473573</float_array>
+          <technique_common>
+            <accessor source="#Cylinder_1285-mesh-normals-array" count="43" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder_1285-mesh-map-0">
+          <float_array id="Cylinder_1285-mesh-map-0-array" count="372">0.1666666 1 0 0.541184 0.1666666 0.541184 0.6666666 0.5 0.8333333 0.5 0.8333334 0.5 0.5 0.5 0.6666666 0.5 0.6666666 0.5 0.3333333 0.5 0.5 0.5 0.5 0.5 0.1666666 0.5 0.3333333 0.5 0.3333333 0.5 0 0.5 0.1666666 0.5 0.1666666 0.5 1 1 0.8333333 0.541184 1 0.541184 0.75 0.00999999 0.5421539 0.13 0.5421539 0.37 0.5 1 0.3333333 0.541184 0.5 0.541184 0.8333333 1 0.6666666 0.5411841 0.8333333 0.5411841 0.3333333 1 0.1666666 0.541184 0.3333333 0.541184 0.6666666 1 0.5 0.541184 0.6666666 0.541184 1 0.541184 0.8333333 0.5 1 0.5 0.8333333 0.5 1 0.5 1 0.5 0.8333333 0.5411841 0.6666666 0.5 0.8333333 0.5 0.6666666 0.5 0.8333334 0.5 0.8333333 0.5 0.6666666 0.541184 0.5 0.5 0.6666666 0.5 0.5 0.5 0.6666666 0.5 0.6666666 0.5 0.5 0.541184 0.3333333 0.5 0.5 0.5 0.3333333 0.5 0.5 0.5 0.5 0.5 0.1666666 0.541184 0.3333333 0.5 0.3333333 0.541184 0.1666666 0.5 0.3333333 0.5 0.3333333 0.5 0 0.541184 0.1666666 0.5 0.1666666 0.541184 0.1666666 0.5 0 0.5 0.1666666 0.5 0.8333333 0.5 1 0.5 1 0.5 0 0 0 0 0 0 0.7738221 1 0.8333333 1 1 1 0.6496726 1 0.6666666 1 0.8333333 1 0.5169939 1 0.5 1 0.6666666 1 0.3928445 1 0.3333333 1 0.5 1 0.377971 1 0.1666666 1 0.3333333 1 0.7886956 1 1 1 0.1666666 1 0.1666666 1 0 1 0 0.541184 0.6666666 0.5 0.6666666 0.5 0.8333333 0.5 0.5 0.5 0.5 0.5 0.6666666 0.5 0.3333333 0.5 0.3333333 0.5 0.5 0.5 0.1666666 0.5 0.1666666 0.5 0.3333333 0.5 0 0.5 0 0.5 0.1666666 0.5 1 1 0.8333333 1 0.8333333 0.541184 0.5421539 0.37 0.75 0.49 0.75 0.00999999 0.75 0.49 0.9578461 0.37 0.75 0.00999999 0.9578461 0.37 0.9578461 0.1299999 0.75 0.00999999 0.5 1 0.3333333 1 0.3333333 0.541184 0.8333333 1 0.6666666 1 0.6666666 0.5411841 0.3333333 1 0.1666666 1 0.1666666 0.541184 0.6666666 1 0.5 1 0.5 0.541184 1 0.541184 0.8333333 0.541184 0.8333333 0.5 0.8333333 0.5 0.8333333 0.5 1 0.5 0.8333333 0.5411841 0.6666666 0.5411841 0.6666666 0.5 0.6666666 0.5 0.6666666 0.5 0.8333334 0.5 0.6666666 0.541184 0.5 0.541184 0.5 0.5 0.5 0.5 0.5 0.5 0.6666666 0.5 0.5 0.541184 0.3333333 0.541184 0.3333333 0.5 0.3333333 0.5 0.3333333 0.5 0.5 0.5 0.1666666 0.541184 0.1666666 0.5 0.3333333 0.5 0.1666666 0.5 0.1666666 0.5 0.3333333 0.5 0 0.541184 0 0.5 0.1666666 0.5 0.1666666 0.5 0 0.5 0 0.5 0.8333333 0.5 0.8333333 0.5 1 0.5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</float_array>
+          <technique_common>
+            <accessor source="#Cylinder_1285-mesh-map-0-array" count="186" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cylinder_1285-mesh-vertices">
+          <input semantic="POSITION" source="#Cylinder_1285-mesh-positions"/>
+        </vertices>
+        <triangles material="BrownDark-material" count="32">
+          <input semantic="VERTEX" source="#Cylinder_1285-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cylinder_1285-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cylinder_1285-mesh-map-0" offset="2" set="0"/>
+          <p>14 1 3 2 1 4 11 1 5 17 2 6 3 2 7 14 2 8 20 3 9 4 3 10 17 3 11 23 4 12 5 4 13 20 4 14 7 5 15 6 5 16 23 5 17 4 7 21 5 7 22 6 7 23 12 11 39 7 11 40 9 11 41 15 13 45 11 13 46 12 13 47 18 15 51 14 15 52 15 15 53 21 17 57 17 17 58 18 17 59 24 19 63 20 19 64 21 19 65 24 21 69 7 21 70 23 21 71 11 22 72 1 22 73 7 22 74 24 23 75 21 23 76 18 23 77 14 25 99 3 25 100 2 25 101 17 26 102 4 26 103 3 26 104 20 27 105 5 27 106 4 27 107 23 4 108 6 4 109 5 4 110 7 5 111 1 5 112 6 5 113 6 7 117 1 7 118 4 7 119 1 7 120 2 7 121 4 7 122 2 7 123 3 7 124 4 7 125 12 32 141 11 32 142 7 32 143 15 34 147 14 34 148 11 34 149 18 36 153 17 36 154 14 36 155 21 38 159 20 38 160 17 38 161 24 40 165 23 40 166 20 40 167 24 42 171 9 42 172 7 42 173 11 22 174 2 22 175 1 22 176 18 23 177 15 23 178 12 23 179 12 23 180 9 23 181 18 23 182 9 23 183 24 23 184 18 23 185</p>
+        </triangles>
+        <triangles material="Water-material" count="30">
+          <input semantic="VERTEX" source="#Cylinder_1285-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cylinder_1285-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cylinder_1285-mesh-map-0" offset="2" set="0"/>
+          <p>30 0 0 8 0 1 22 0 2 26 6 18 10 6 19 8 6 20 28 8 24 19 8 25 16 8 26 25 1 27 13 1 28 10 1 29 29 4 30 22 4 31 19 4 32 27 9 33 16 9 34 13 9 35 8 10 36 12 10 37 9 10 38 10 12 42 15 12 43 12 12 44 13 14 48 18 14 49 15 14 50 16 16 54 21 16 55 18 16 56 22 18 60 21 18 61 19 18 62 8 20 66 24 20 67 22 20 68 0 23 78 25 23 79 26 23 80 0 23 81 27 23 82 25 23 83 0 23 84 28 23 85 27 23 86 0 23 87 29 23 88 28 23 89 0 23 90 30 23 91 29 23 92 0 23 93 26 23 94 30 23 95 30 24 96 26 24 97 8 24 98 26 28 114 25 28 115 10 28 116 28 29 126 29 29 127 19 29 128 25 30 129 27 30 130 13 30 131 29 4 132 30 4 133 22 4 134 27 9 135 28 9 136 16 9 137 8 31 138 10 31 139 12 31 140 10 33 144 13 33 145 15 33 146 13 35 150 16 35 151 18 35 152 16 37 156 19 37 157 21 37 158 22 39 162 24 39 163 21 39 164 8 41 168 9 41 169 24 41 170</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="hex_water_detail" name="hex_water_detail" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Cylinder_1285-mesh" name="hex_water_detail">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="BrownDark-material" target="#BrownDark-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="Water-material" target="#Water-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

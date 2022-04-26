@@ -17,7 +17,6 @@ namespace Tenacity.Cards
         [SerializeField] private CardData data;
         [SerializeField] private bool isAvailable;
         [SerializeField] private CardState state;
-        [SerializeField] private bool isDraggable;
 
         public CardData Data
         {
@@ -33,11 +32,6 @@ namespace Tenacity.Cards
         {
             get => isAvailable;
             set => isAvailable = value;
-        }
-        public bool IsDraggable
-        {
-            get => isDraggable;
-            set => isDraggable = value;
         }
         public int CurrentLife => _currentLife;
         public Land Place {
@@ -56,12 +50,12 @@ namespace Tenacity.Cards
         public void GetDamaged(int power)
         {
             _currentLife -= power;
-            GetComponent<CardDataDisplay>()?.UpdateLife();
             if (_currentLife <= 0)
             {
-                transform.parent.GetComponent<Land>().IsAvailableForCards = true;
+                _currentLife = 0;
                 Destroy(gameObject, 1.0f);
             }
+            GetComponent<CardDataDisplay>()?.UpdateLife();
         }
     }
 }

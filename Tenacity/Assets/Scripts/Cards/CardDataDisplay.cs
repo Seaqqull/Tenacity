@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Tenacity.Cards
 {
@@ -43,6 +44,14 @@ namespace Tenacity.Cards
             else if (component.TryGetComponent(out SpriteRenderer cardSprite))
             {
                 cardSprite.sprite = Resources.Load<Sprite>($"Sprites/Cards/card_{value}");
+            }
+            else if (component.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI textField))
+            {
+                textField.text = value;
+            }
+            else if (component.TryGetComponent<Image>(out Image image))
+            {
+                image.sprite = Resources.Load<Sprite>($"Sprites/Cards/card_{value}");
             }
         }
 

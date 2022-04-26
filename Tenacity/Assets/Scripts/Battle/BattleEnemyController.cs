@@ -17,21 +17,21 @@ namespace Tenacity.Battle
         [SerializeField] private TextMeshProUGUI _manaUI;
         [SerializeField] private float _yPos = 0.61f;
         [SerializeField] private float _skipPobability;
+        [SerializeField] private Material _enemyMaterial;
 
         private List<Card> _enemyCards;
 
-        public bool IsGameOver => _enemyCards.Count == 0;
+        public bool IsGameOver => _enemyCards?.Count == 0;
 
 
         private void Start()
         {
-            if (_enemyCardDeck == null || _enemyCardDeck.CardPack.Count == 0) return;
             _enemyCards = _enemyCardDeck.CardPack;
         }
 
         private bool DecideToAttak()
         {
-            return Random.value > _skipPobability;
+            return Random.value > _skipPobability; //change alg.
         }
         private bool DecideToMove()
         {
@@ -71,7 +71,7 @@ namespace Tenacity.Battle
             Land targetPlace = SelectCellToPlaceLand(availablePlaces);
             if (targetPlace == null || landToPlace == null) return false;
 
-            targetPlace.ReplaceEmptyLand(landToPlace);
+            targetPlace.ReplaceLand(landToPlace);
             return true;
         }
 
@@ -87,14 +87,14 @@ namespace Tenacity.Battle
             int figthBack = cardToAttack.Data.Power;
             cardToAttack.GetDamaged(selectedCard.Data.Power);
             selectedCard.GetDamaged(figthBack);
-            selectedCard.IsDraggable = false;
             return true;
         }
+
         private List<Card> GetCreaturesToAttack(Card selectedCard)
         {
             if (selectedCard == null) return null;
-            Land parentLand = selectedCard.transform.parent?.GetComponent<Land>();
-            return parentLand.NeighborLands
+            Land land = selectedCard.transform.parent?.GetComponent<Land>();
+            return land.NeighborLands?
                     .FindAll(el => el.GetComponentInChildren<Card>() != null && !_enemyCards.Contains(el.GetComponentInChildren<Card>()))
                     .Select(el => el.GetComponentInChildren<Card>())
                     .ToList();
@@ -107,6 +107,7 @@ namespace Tenacity.Battle
             if (selectedLand == null) return;
             DropCardIntoLand(selectedCard, selectedLand);
         }
+
         private Land SelectNeighborLand(Land land)
         {
             return SelectLandToPlaceCard(land.NeighborLands, land.Type);
@@ -121,26 +122,25 @@ namespace Tenacity.Battle
             Land selectedLand = SelectLandToPlaceCard(places, selectedCard.Data.Land);
             if (selectedLand == null) return;
 
-            DropCardIntoLand(selectedCard, selectedLand);
-            Card creatureCard = CardController.CreateCardCreatureOnBoard(selectedCard);
+            Card creatureCard = CardManager.CreateCardCreatureOnBoard(selectedCard, selectedLand);
+            creatureCard.GetComponent<MeshRenderer>().materials = new Material[] { _enemyMaterial };
+
             _enemyCards.Remove(selectedCard);
             _enemyCards.Add(creatureCard);
             UpdateMana(selectedCard.Data.CastingCost, true);
         }
+
         private void DropCardIntoLand(Card selectedCard, Land selectedLand)
         {
             if (selectedCard.gameObject.transform.parent?.GetComponent<Land>() != null)
-                selectedCard.gameObject.transform.parent.GetComponent<Land>().IsAvailableForCards = true;
             selectedCard.gameObject.transform.SetParent(selectedLand.gameObject.transform);
             selectedCard.gameObject.transform.localPosition = new Vector3(0, _yPos, 0);
-            selectedLand.IsAvailableForCards = false;
-            selectedCard.IsDraggable = false;
         }
+
         private Land SelectLandToPlaceCard(List<Land> landList, LandType cardLandType)
         {
             if (landList == null) return null;
-            List<Land> availableLands = new List<Land>();
-            availableLands = landList.FindAll((el) => el.IsAvailableForCards && el.Type.HasFlag(cardLandType));
+            List<Land> availableLands = landList.FindAll((el) => el.IsAvailableForCards && el.Type.HasFlag(cardLandType));
             if (availableLands.Count == 0) return null;
 
             Land selectedLand = availableLands.FindAll(cell => cell.NeighborLands.Any(el => !availableLands.Contains(el))).FirstOrDefault();
@@ -159,9 +159,11 @@ namespace Tenacity.Battle
 
             if (selectedCard.State == CardState.OnBoard)
             {
-                bool isTakeDamage = false;
-                if (DecideToAttak()) isTakeDamage = Attack(selectedCard);
-                if (!isTakeDamage) MoveCard(selectedCard);
+                bool isDamaged = false;
+                if (DecideToAttak()) 
+                    isDamaged = Attack(selectedCard);
+                if (!isDamaged) 
+                    MoveCard(selectedCard);
             }
             else if (selectedCard.State == CardState.InCardDeck)
             {
@@ -169,22 +171,39 @@ namespace Tenacity.Battle
             }
         }
 
-
-        public IEnumerator MakeMove(List<Land> places, float time)
+        private void OnStartTurn()
         {
-            UpdateMana(BattleRules.ROUND_MANA, false);
+            _enemyCards = _enemyCards.Where(item => item != null).ToList();
+            _enemyCards.ForEach(card => card.IsAvailable = true);
+            UpdateMana(BattleConstants.ROUND_MANA, false);
+        }
+
+        private void PlaceLands(List<Land> places)
+        {
             Land selectedLand = SelectLandFromDeck();
-            for (int i = 0; i < BattleRules.LandRules.GetLandCellsCount(selectedLand.Type); i++)
+            for (int i = 0; i < BattleConstants.LandConstants.GetLandCellsCount(selectedLand.Type); i++)
             {
                 PlaceLandOnBoard(places);
             }
-            yield return new WaitForSeconds(time);
+        }
+
+        private void ManageCards(List<Land> places)
+        {
             for (int i = 0; i < _enemyCards.Count; i++)
             {
                 TryMakeMove(_enemyCards[i], places);
                 if (_enemy.CurrentMana == 0) break;
-                yield return new WaitForSeconds(time);
             }
+        }
+
+        public IEnumerator MakeMove(List<Land> places, float time)
+        {
+            OnStartTurn();
+
+            PlaceLands(places);
+            yield return new WaitForSeconds(time);
+            
+            ManageCards(places);
             yield return new WaitForSeconds(time);
         }
     }

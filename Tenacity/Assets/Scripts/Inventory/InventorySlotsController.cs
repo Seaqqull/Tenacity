@@ -30,7 +30,7 @@ namespace Tenacity.PlayerInventory
                 if (go.GetComponent<Card>())
                 {
                     _item.GetComponent<Card>().Data = go.GetComponent<Card>().Data;
-                    _item.GetComponent<CardDataDisplayUI>().DisplayCardValues();
+                    _item.GetComponent<CardDataDisplay>().DisplayCardValues();
                     _item.gameObject.SetActive(true);
                 }
                 //... for different items

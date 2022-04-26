@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Tenacity.Lands;
 using TMPro;
 using UnityEngine;
 
-namespace Tenacity.Battle
+namespace Tenacity.Boards
 {
     [CreateAssetMenu(fileName = "Board Template", menuName = "Board")]
     public class Board : ScriptableObject

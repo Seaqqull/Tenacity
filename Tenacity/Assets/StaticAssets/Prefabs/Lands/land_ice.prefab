@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6244353112499013735, guid: 6e809eb394fa7f94fad5001e173d3aba, type: 3}
+      propertyPath: _type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2439298663242162964, guid: 6e809eb394fa7f94fad5001e173d3aba, type: 3}
       propertyPath: m_Name
       value: land_ice

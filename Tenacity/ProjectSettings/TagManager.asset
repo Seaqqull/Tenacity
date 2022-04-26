@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Card
   - CardSlot
+  - Land
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - 
   - 
   - 
-  - Land
-  - Card
+  - 
+  - 
   - 
   - 
   - 
