@@ -8,24 +8,49 @@ namespace Tenacity.Cards
 {
     public class CardDeckManager : MonoBehaviour
     {
-        [SerializeField] private Card cardPrefab;
-        [SerializeField] private Transform[] cardPositions;
-        [SerializeField] private InventoryData inventoryCards;
-        [SerializeField] private List<CardData> cardsDataPack = new List<CardData>();
+        [SerializeField] private Card _cardPrefab;
+        [SerializeField] private Transform[] _cardPositions;
+        [SerializeField] private InventoryData _inventoryCards;
+        [SerializeField] private List<CardData> _cardsDataPack = new List<CardData>();
+
 
         private List<Card> _cardPack = new List<Card>();
+
 
         public List<Card> CardPack => _cardPack;
 
         private void Awake()
         {
-            if (inventoryCards == null || cardPositions == null) return;
+            if (_inventoryCards == null || _cardPositions == null) return;
 
-            cardsDataPack = GetRandomCardsFromList(inventoryCards.Cards, cardPositions.Length);
-            DrawCardPack(cardsDataPack);
+            _cardsDataPack = GetRandomCardsFromLInventory(_inventoryCards.Cards, _cardPositions.Length);
+            InitCardDeck(_cardsDataPack);
         }
 
-        private List<CardData> GetRandomCardsFromList(List<CardData> list, int number)
+        private void InitCardDeck(List<CardData> cardDataPack)
+        {
+            if (cardDataPack.Count <= 0) return;
+
+            List<CardData> copyPack = new List<CardData>(cardDataPack);
+            for (int i = 0; i < _cardPositions.Length; i++)
+            {
+                var cardData = copyPack[Random.Range(0, copyPack.Count)];
+                var createdCard = AddCardToDeck(cardData, i);
+                copyPack.Remove(cardData);
+                _cardPack.Add(createdCard);
+            }
+        }
+
+        private Card AddCardToDeck(CardData cardData, int slotId)
+        {
+            Card card = Instantiate(_cardPrefab, _cardPositions[slotId]);
+            card.GetComponent<RectTransform>().SetParent(_cardPositions[slotId]);
+            card.Data = cardData;
+            card.gameObject.SetActive(true);
+            return card;
+        }
+
+        private List<CardData> GetRandomCardsFromLInventory(List<CardData> list, int number)
         {
             List<CardData> tmpList = new List<CardData>(list);
             List<CardData> newList = new List<CardData>();
@@ -39,27 +64,5 @@ namespace Tenacity.Cards
             return newList;
         }
 
-        private void DrawCardPack(List<CardData> pack)
-        {
-            if (pack.Count <= 0) return;
-
-            List<CardData> copyPack = new List<CardData>(pack);
-            for (int i = 0; i < cardPositions.Length; i++)
-            {
-                var cardData = copyPack[Random.Range(0, copyPack.Count)];
-                var createdCard = CreateCardInDeck(cardData, i);
-                copyPack.Remove(cardData);
-                _cardPack.Add(createdCard);
-            }
-        }
-
-        private Card CreateCardInDeck(CardData cardData, int slotId)
-        {
-            Card card = Instantiate(cardPrefab, cardPositions[slotId]);
-            card.transform.parent = cardPositions[slotId];
-            card.Data = cardData;
-            card.gameObject.SetActive(true);
-            return card;
-        }
     }
 }

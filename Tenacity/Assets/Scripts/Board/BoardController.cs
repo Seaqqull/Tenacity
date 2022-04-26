@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Tenacity.Lands;
 using UnityEngine;
-using EngineInput = UnityEngine.Input;
 
-namespace Tenacity.Battle
+namespace Tenacity.Boards
 {
     public class BoardController : MonoBehaviour
     {

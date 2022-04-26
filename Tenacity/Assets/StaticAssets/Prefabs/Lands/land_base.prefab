@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8172319697550827261}
   m_Layer: 12
   m_Name: land_base
-  m_TagString: Untagged
+  m_TagString: Land
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,13 +58,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2439298663242162964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8f47206089f9c42a895ca038728703, type: 3}
+  m_Script: {fileID: 11500000, guid: e518bf19de4264e4ebf8f167dec6615b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  isAvailableForCards: 0
-  isPlacedOnBoard: 0
+  _type: 0
+  _isAvailableForCards: 0
+  _isPlacedOnBoard: 0
   outliner: {fileID: 2100000, guid: 187e51dd11615fc449d303413e431e12, type: 2}
+  _topPoint: 0.65
 --- !u!114 &-8172319697550827261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2439298663242162964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8603e565710f31c4ba3f28a283415bd0, type: 3}
+  m_Script: {fileID: 11500000, guid: d654f29f703bac7499539bc848e17f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6654045177600089037

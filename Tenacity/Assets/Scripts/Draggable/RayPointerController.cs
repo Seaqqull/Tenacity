@@ -7,44 +7,56 @@ namespace Tenacity.Draggable
 {
     public class RayPointerController : MonoBehaviour
     {
-        [SerializeField] private BattleController _battle;
+        [Header("Main")]
+        [SerializeField] private BattleManager _battle;
+
+        [Header("Offset Vector values")]
+        [SerializeField] private float _offsetX = 0f;
+        [SerializeField] private float _offsetY = 7.1f;
+        [SerializeField] private float _offsetZ = -5f;
+
+        [Header("Ray Line characteristics")]
         [SerializeField] private float _lineWidth = 0.1f;
-        [SerializeField] private LayerMask _landLayer; //tmp
-        [SerializeField] private float _distance; //tmp
+        [SerializeField] private float _distance = 1000f;
 
-        public Vector3 StartPosition { get; set; }
-
+        private Vector3 _offset;
         private Vector3 _targetPos;
         private LineRenderer _lineRenderer;
+        private BattlePlayerController _player;
+
+        public Vector3 StartPosition { get; set; }
 
 
         private void Awake()
         {
+            _player = _battle.Player;
+
             _lineRenderer = gameObject.AddComponent<LineRenderer>();
             _lineRenderer.startWidth = _lineWidth;
             _lineRenderer.endWidth = _lineWidth;
             _lineRenderer.enabled = false;
+
+            _offset = new Vector3(_offsetX, _offsetY, _offsetZ);
         }
 
         private void Update()
         {
-            if (_battle.CurrentBattleState != BattleController.BattleState.WaitingForPlayerTurn) return;
+            if (_battle.CurrentBattleState != BattleManager.BattleState.WaitingForPlayerTurn) return;
+            if (_player.CurrentPlayerMode == BattlePlayerController.PlayerActionMode.MovingCreature) return;
 
-            if (_battle.Player.CurrentPlayerMode != BattlePlayerController.PlayerActionMode.None)
-            {
-                DrawPointerLine();  
-            } 
-            else if (_lineRenderer.enabled)
-            {
+            if (_player.CurrentPlayerMode != BattlePlayerController.PlayerActionMode.None)
+                DrawPointerLine();
+            else if (_lineRenderer.enabled) 
                 _lineRenderer.enabled = false;
-            }
         }
+
 
         private void DrawPointerLine()
         {
             if (!_lineRenderer.enabled)
             {
-                _lineRenderer.SetPosition(0, StartPosition);
+                Vector3 screenPointPos = StartPosition + _offset;
+                _lineRenderer.SetPosition(0, screenPointPos);
                 _lineRenderer.positionCount = 1;
                 _lineRenderer.enabled = true;
             }
@@ -53,29 +65,31 @@ namespace Tenacity.Draggable
                 _targetPos = GetMousePosition().GetValueOrDefault();
                 _lineRenderer.positionCount = 2;
                 _lineRenderer.SetPosition(1, _targetPos);
-                if ((EngineInput.GetMouseButtonDown(0)) && (!IsHitWithObject(_landLayer, _distance)))
+                if ((EngineInput.GetMouseButtonDown(0) && !IsHitWithObject(_distance)) || (EngineInput.GetMouseButtonDown(1)))
                 {
+                    _battle.Player.CurrentPlayerMode = BattlePlayerController.PlayerActionMode.None;
                     _lineRenderer.enabled = false;
-                    _battle.Player.OnClickDisable();
                 }
             }
         }
 
         private Vector3? GetMousePosition()
         {
-            Ray ray = Camera.main.ScreenPointToRay(EngineInput.mousePosition);
-            var plane = new Plane(_battle.gameObject.transform.position, Vector3.up);
-            float rayDist;
-            if (plane.Raycast(ray, out rayDist)) return ray.GetPoint(rayDist);
-            return null;
+            Vector3 mousePos = EngineInput.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            RaycastHit hitData;
+
+            if (Physics.Raycast(ray, out hitData, _distance)) 
+                return hitData.point;
+            return Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10.0f));
         }
 
-        private bool IsHitWithObject(LayerMask layerMask, float distance)
+        private bool IsHitWithObject(float distance)
         {
             Ray ray = Camera.main.ScreenPointToRay(EngineInput.mousePosition);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit, distance, layerMask);
-            return hit.collider != null;
+            if (Physics.Raycast(ray, out RaycastHit hit, distance)) 
+                return true;
+            return false;
         }
     }
 }
