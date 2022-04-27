@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Card
-  - CardSlot
-  - Land
+  - UICamera
   layers:
   - Default
   - TransparentFX
@@ -14,13 +12,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Character
+  - Enemy
+  - Obstacle
+  - Interaction
+  - InteractionAction
+  - Avatar
   - 
   - 
   - 

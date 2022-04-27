@@ -1,5 +1,9 @@
 using Tenacity.Managers;
+#if UNITY_EDITOR
 using UnityEditor;
+#else
+using UnityEngine;   
+#endif
 
 
 namespace Tenacity.UI.Menus
@@ -15,7 +19,7 @@ namespace Tenacity.UI.Menus
         public void OnStartAction()
         {
             MenuManager.Instance.CloseMenu(this);
-            SceneManager.Instance.LoadMainGame();
+            SceneManager.Instance.LoadMainGame(2, "Intro");
         }
 
         public void OnSettingsAction()

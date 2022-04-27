@@ -1,4 +1,4 @@
-using Tenacity.Utility.Base;
+using Tenacity.Base;
 using UnityEngine;
 
 

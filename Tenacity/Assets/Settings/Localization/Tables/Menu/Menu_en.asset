@@ -54,5 +54,10 @@ MonoBehaviour:
     m_Localized: Main menu
     m_Metadata:
       m_Items: []
+  - m_Id: 46005889126096896
+    m_Localized: Time scale
+    m_Metadata:
+      m_Items: []
   references:
-    version: 1
+    version: 2
+    RefIds: []

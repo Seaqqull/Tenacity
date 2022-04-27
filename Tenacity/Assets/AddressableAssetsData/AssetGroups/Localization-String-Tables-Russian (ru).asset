@@ -23,6 +23,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ru
     - Preload
+  - m_GUID: e884af4b4cd744e519d84b1a29ea4042
+    m_Address: Dialogs_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
+  - m_GUID: cfa61a13a1833425aa04167ba393c372
+    m_Address: DialogAnswers_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2970c31b266764f369fc31d6c85143a3, type: 2}
   m_SchemaSet:

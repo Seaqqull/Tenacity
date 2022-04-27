@@ -1,0 +1,22 @@
+{
+    "name": "Tenacity.General.Events",
+    "rootNamespace": "Tenacity.General.Events",
+    "references": [
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618",
+        "GUID:af8157267ee6c4108bc3bacbe8366672",
+        "GUID:a8d94637c5da1491aa673f9679e5841b",
+        "GUID:ea745a1ee9305475c842fef8e5a0783d",
+        "GUID:d313dee798d614ecda05fb5df95042a9",
+        "GUID:42fc222381b7d45f58ef51c0c53f0a54",
+        "GUID:13ea7ebe5cb9543c9a40a6fb7ad52824"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

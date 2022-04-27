@@ -1,4 +1,4 @@
-using Tenacity.Utility.Base;
+using Tenacity.Base;
 
 
 namespace Tenacity.Managers
@@ -19,10 +19,10 @@ namespace Tenacity.Managers
             if (!flag)
                 return;
             
-            if (!_inGameMenuActive)
-                UI.Menus.InGameMenu.Show();
-            else
-                UI.Menus.InGameMenu.Hide();
+            // if (!_inGameMenuActive)
+            //     UI.Menus.InGameMenu.Show();
+            // else
+            //     UI.Menus.InGameMenu.Hide();
             _inGameMenuActive = !_inGameMenuActive;
         }
 

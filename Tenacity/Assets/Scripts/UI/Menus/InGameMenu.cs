@@ -1,5 +1,8 @@
 using Tenacity.Managers;
+using UnityEngine;  
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 
 namespace Tenacity.UI.Menus
@@ -20,14 +23,12 @@ namespace Tenacity.UI.Menus
         {
             SettingsMenu.Show();
         }
-        
+
         public void OnMainMenuAction()
         {
             MenuManager.Instance.CloseMenu(this);
-            SceneManager.Instance.LoadMainMenu();
         }
         
-
         public override void OnBackAction()
         {
             MenuManager.Instance.CloseMenu(this);
