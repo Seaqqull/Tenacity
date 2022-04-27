@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2245706819569632887}
   - component: {fileID: 1969385762443625078}
   - component: {fileID: -6332322120292000455}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: land_card
   m_TagString: Untagged
   m_Icon: {fileID: 0}

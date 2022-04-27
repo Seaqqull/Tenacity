@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7273061462559453034}
   - component: {fileID: 2892634217904143631}
   - component: {fileID: 4935915840895180002}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CardText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
+  m_fontSize: 11
   m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 2577765462844359352}
   - component: {fileID: 5230318465657413226}
   - component: {fileID: 5603339935692685324}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: LandCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 352826112599955486}
   - component: {fileID: 902125244267452119}
   - component: {fileID: 1843149470233837862}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: LandCostField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 8733012153924979753}
   - component: {fileID: 2909792505775595504}
   - component: {fileID: 247834067144524809}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: RaritySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 6958628841166103106}
   - component: {fileID: 6958628841166103104}
   - component: {fileID: 6958628841166103107}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CardTextField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 6958628841725226205}
   - component: {fileID: 6958628841725226195}
   - component: {fileID: 5723668899349721108}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Life
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 6958628841784780781}
   - component: {fileID: 6958628841784780771}
   - component: {fileID: 6958628841784780770}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CardLandSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 6958628841897237824}
   - component: {fileID: 6958628841897237830}
   - component: {fileID: 6958628841897237825}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: NameField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 6958628842247047022}
   - component: {fileID: 6958628842247047020}
   - component: {fileID: 6958628842247047023}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: PowerField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 6958628842252102885}
   - component: {fileID: 6958628842252102907}
   - component: {fileID: 6958628842252102906}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CastingCostField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 6958628842288864462}
   - component: {fileID: 6958628842288864460}
   - component: {fileID: 6958628842288864463}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: LifeField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 6958628842293961650}
   - component: {fileID: 6958628842293961648}
   - component: {fileID: 2735223222723753605}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CastingCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 6958628842374821845}
   - component: {fileID: 6958628842374821867}
   - component: {fileID: 6958628842374821866}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CardSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 6958628842476198057}
   - component: {fileID: 6958628842476198063}
   - component: {fileID: 6162196635140029388}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 1276093191693237596}
   - component: {fileID: -4590227890354048988}
   - component: {fileID: 8320495693653096487}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CardUI 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1429,7 +1429,6 @@ MonoBehaviour:
   data: {fileID: 0}
   isAvailable: 0
   state: 0
-  isDraggable: 0
 --- !u!114 &-4590227890354048988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,7 +1464,7 @@ GameObject:
   - component: {fileID: 6958628842832994933}
   - component: {fileID: 6958628842832994699}
   - component: {fileID: 8537455940671521380}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1600,7 +1599,7 @@ GameObject:
   - component: {fileID: 6958628842865133492}
   - component: {fileID: 6958628842865133514}
   - component: {fileID: 6958628842865133493}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CardTypeField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1677,7 +1676,7 @@ GameObject:
   - component: {fileID: 6958628842972751590}
   - component: {fileID: 6958628842972751588}
   - component: {fileID: 1239358233276441435}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Power
   m_TagString: Untagged
   m_Icon: {fileID: 0}
