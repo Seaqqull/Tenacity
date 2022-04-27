@@ -24,7 +24,7 @@ namespace Tenacity.Lands
             _land.OutlineLand(highlighted);
             foreach (Land neighbor in _land.NeighborLands)
             {
-                if (neighbor.Type.HasFlag(selectedType))
+                if (neighbor.Type.HasFlag(selectedType) && neighbor.IsAvailableForCards)
                 {
                     neighbor.OutlineLand(highlighted);
                 }

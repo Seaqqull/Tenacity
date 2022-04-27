@@ -21,7 +21,7 @@ namespace Tenacity.Battle
 
         private List<Card> _enemyCards;
 
-        public bool IsGameOver => _enemyCards?.Count == 0;
+        public bool IsGameOver => _enemyCards.Where(item => item != null).Count() == 0;
 
 
         private void Start()
@@ -31,11 +31,11 @@ namespace Tenacity.Battle
 
         private bool DecideToAttak()
         {
-            return Random.value > _skipPobability; //change alg.
+            return Random.value > _skipPobability; // alg.
         }
         private bool DecideToMove()
         {
-            return Random.value > _skipPobability;
+            return Random.value > _skipPobability; // alg.
         }
 
         //common
@@ -52,6 +52,7 @@ namespace Tenacity.Battle
             if (_enemyLandDeck.Count == 0) return null;
             List<LandType> availableCardTypes = _enemyCards.GroupBy(card => card.Data.Land).Select(o => o.FirstOrDefault().Data.Land).ToList();
             List<Land> filteredLands = _enemyLandDeck.FindAll(land => availableCardTypes.Contains(land.Type));
+            if (filteredLands.Count == 0) return null;
             var randomNum = Random.Range(0, filteredLands.Count);
             Land land = filteredLands[randomNum];
             return land;
@@ -124,6 +125,7 @@ namespace Tenacity.Battle
 
             Card creatureCard = CardManager.CreateCardCreatureOnBoard(selectedCard, selectedLand);
             creatureCard.GetComponent<MeshRenderer>().materials = new Material[] { _enemyMaterial };
+            creatureCard.IsAvailable = false;
 
             _enemyCards.Remove(selectedCard);
             _enemyCards.Add(creatureCard);
@@ -155,7 +157,7 @@ namespace Tenacity.Battle
 
         private void TryMakeMove(Card selectedCard, List<Land> places)
         {
-            if (selectedCard == null) return;
+            if (selectedCard == null || !selectedCard.IsAvailable) return;
 
             if (selectedCard.State == CardState.OnBoard)
             {
@@ -198,8 +200,9 @@ namespace Tenacity.Battle
 
         public IEnumerator MakeMove(List<Land> places, float time)
         {
-            OnStartTurn();
+            if (IsGameOver) yield return null;
 
+            OnStartTurn();
             PlaceLands(places);
             yield return new WaitForSeconds(time);
             
