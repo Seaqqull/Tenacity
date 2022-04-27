@@ -10,16 +10,14 @@ namespace Tenacity.Draggable
         [Header("Main")]
         [SerializeField] private BattleManager _battle;
 
-        [Header("Offset Vector values")]
-        [SerializeField] private float _offsetX = 0f;
-        [SerializeField] private float _offsetY = 7.1f;
-        [SerializeField] private float _offsetZ = -5f;
 
         [Header("Ray Line characteristics")]
+        [SerializeField] private Material _material;
         [SerializeField] private float _lineWidth = 0.1f;
-        [SerializeField] private float _distance = 1000f;
+        [SerializeField] private float _distance = 1000f;        
+        [SerializeField] private Vector3 _offset;
 
-        private Vector3 _offset;
+
         private Vector3 _targetPos;
         private LineRenderer _lineRenderer;
         private BattlePlayerController _player;
@@ -32,11 +30,11 @@ namespace Tenacity.Draggable
             _player = _battle.Player;
 
             _lineRenderer = gameObject.AddComponent<LineRenderer>();
+            _lineRenderer.material = _material;
             _lineRenderer.startWidth = _lineWidth;
             _lineRenderer.endWidth = _lineWidth;
             _lineRenderer.enabled = false;
 
-            _offset = new Vector3(_offsetX, _offsetY, _offsetZ);
         }
 
         private void Update()

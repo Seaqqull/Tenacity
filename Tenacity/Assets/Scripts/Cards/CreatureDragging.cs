@@ -63,7 +63,7 @@ namespace Tenacity.Cards
                 GetBackSelectedCreature();
                 return;
             }
-            if (detectedLand.IsAvailableForCards)
+            if (detectedLand.IsAvailableForCards && detectedLand.Type.HasFlag(_selectedCreature.Data.Land))
             {
                 PlaceCreature(detectedLand);
                 return;

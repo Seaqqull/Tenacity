@@ -49,9 +49,15 @@ namespace Tenacity.Battle
             StartCoroutine(StartBattle(_waitNextTurnTime));
         }
 
+        private void Update()
+        {
+            ManageGameState();
+        }
+
         private IEnumerator StartBattle(float waitTime)
         {
             CurrentBattleState = BattleState.Start;
+
             if (IsPlayerGoesFirst()) PlayerTurn();
             else  StartCoroutine(EnemyTurn(waitTime));
             yield return new WaitForSeconds(waitTime);
@@ -93,24 +99,19 @@ namespace Tenacity.Battle
             return (Random.value > 0.5f);
         }
 
-        private IEnumerator ManageGameState()
+        private void ManageGameState()
         {
-            while (true)
+            if (_player.IsGameOver)
             {
-                if (_player.IsGameOver)
-                {
-                    CurrentBattleState = BattleState.Lost;
-                    EndGame();
-                    StopAllCoroutines();
-                    yield return null;
-                }
-                else if (_enemy.IsGameOver)
-                {
-                    CurrentBattleState = BattleState.Won;
-                    EndGame();
-                    StopAllCoroutines();
-                    yield return null;
-                }
+                CurrentBattleState = BattleState.Lost;
+                EndGame();
+                StopAllCoroutines();
+            }
+            else if (_enemy.IsGameOver)
+            {
+                CurrentBattleState = BattleState.Won;
+                EndGame();
+                StopAllCoroutines();
             }
         }
 
