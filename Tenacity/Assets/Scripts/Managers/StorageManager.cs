@@ -25,7 +25,7 @@ namespace Tenacity.Managers
         public void UpdateGameObjects()
         {
             // Cameras
-            UICamera = GameObject.FindGameObjectWithTag(CAMERA_UI).GetComponent<Camera>();
+            UICamera = GameObject.FindGameObjectWithTag(CAMERA_UI)?.GetComponent<Camera>();
             MainCamera = Camera.main;
             
             // Environment
