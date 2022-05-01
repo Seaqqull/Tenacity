@@ -71,8 +71,11 @@ namespace Tenacity.Battles.Draggable
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
             RaycastHit hitData;
 
-            if (Physics.Raycast(ray, out hitData, _distance)) 
+            if (Physics.Raycast(ray, out hitData, _distance))
+            {
+                Debug.Log(hitData.collider.gameObject);
                 return hitData.point;
+            }
             return Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10.0f));
         }
 
