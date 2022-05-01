@@ -66,6 +66,22 @@ MonoBehaviour:
     LoadingType: 0
     FakeLoadingTime: 2
     Backgrounds: []
+  - SceneName: scn_loader
+    SceneAsset: {fileID: 102900000, guid: b51be2b4cd7da4815a90979447dedf01, type: 3}
+    DisplayName: scn_loader
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
+  - SceneName: Battle 1
+    SceneAsset: {fileID: 102900000, guid: 8646e36070e279d4fa7c8de20a71080a, type: 3}
+    DisplayName: Battle 1
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
   tipsList:
   - Create beautiful loading screens for improved your game
   - Easy to use and implement

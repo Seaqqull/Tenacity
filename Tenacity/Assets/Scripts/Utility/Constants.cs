@@ -24,6 +24,14 @@ namespace Tenacity.Utility.Constants
         public static readonly int ON = Animator.StringToHash("On");
     }
 
+    public static class Game
+    {
+        public const string TIME_SCALE = "TimeScale";
+        
+        public const float TIME_SCALE_MIN = 1.0f;
+        public const float TIME_SCALE_MAX = 100;
+    }
+
     public static class Audio
     {
         public const string EFFECTS_COLUME = "EffectsVolume";

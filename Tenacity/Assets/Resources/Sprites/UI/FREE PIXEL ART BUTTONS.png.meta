@@ -1,0 +1,397 @@
+fileFormatVersion: 2
+guid: 1083840cd050e0943be3daab4167a112
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6793383426514680930
+    second: FREE PIXEL ART BUTTONS_0
+  - first:
+      213: 6667928131151135345
+    second: FREE PIXEL ART BUTTONS_1
+  - first:
+      213: 1460023092192308705
+    second: FREE PIXEL ART BUTTONS_2
+  - first:
+      213: 6923385208687083755
+    second: FREE PIXEL ART BUTTONS_3
+  - first:
+      213: -45530721062552620
+    second: FREE PIXEL ART BUTTONS_4
+  - first:
+      213: 3152187639724184555
+    second: FREE PIXEL ART BUTTONS_5
+  - first:
+      213: 7624146326954390036
+    second: FREE PIXEL ART BUTTONS_6
+  - first:
+      213: 1954306339983728480
+    second: FREE PIXEL ART BUTTONS_7
+  - first:
+      213: 1332073708585426181
+    second: FREE PIXEL ART BUTTONS_8
+  - first:
+      213: 6455777940496148891
+    second: FREE PIXEL ART BUTTONS_9
+  - first:
+      213: -378318516567255381
+    second: FREE PIXEL ART BUTTONS_10
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 75
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 276
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93019734cd09b1a0800000000000000
+      internalID: -6793383426514680930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_1
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 270
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 172091d9e4d398c50800000000000000
+      internalID: 6667928131151135345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 248
+        width: 72
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed6dfd444b034410800000000000000
+      internalID: 1460023092192308705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_3
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 237
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be0ccf66a2ec41060800000000000000
+      internalID: 6923385208687083755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_4
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 213
+        width: 38
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dbf2b8ec0e3e5ff0800000000000000
+      internalID: -45530721062552620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 213
+        width: 38
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be3132315f1debb20800000000000000
+      internalID: 3152187639724184555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_6
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 203
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41237bd90b86ec960800000000000000
+      internalID: 7624146326954390036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_7
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 171
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f160903471f1b10800000000000000
+      internalID: 1954306339983728480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_8
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 171
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50d1fd6faf97c7210800000000000000
+      internalID: 1332073708585426181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 136
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b99631c25d7879950800000000000000
+      internalID: 6455777940496148891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FREE PIXEL ART BUTTONS_10
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 15
+        width: 142
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba65e084051ffbaf0800000000000000
+      internalID: -378318516567255381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FREE PIXEL ART BUTTONS_1: 6667928131151135345
+      FREE PIXEL ART BUTTONS_4: -45530721062552620
+      FREE PIXEL ART BUTTONS_2: 1460023092192308705
+      FREE PIXEL ART BUTTONS_9: 6455777940496148891
+      FREE PIXEL ART BUTTONS_3: 6923385208687083755
+      FREE PIXEL ART BUTTONS_7: 1954306339983728480
+      FREE PIXEL ART BUTTONS_0: -6793383426514680930
+      FREE PIXEL ART BUTTONS_5: 3152187639724184555
+      FREE PIXEL ART BUTTONS_6: 7624146326954390036
+      FREE PIXEL ART BUTTONS_8: 1332073708585426181
+      FREE PIXEL ART BUTTONS_10: -378318516567255381
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,6 +23,7 @@ namespace Tenacity.Managers
         [SerializeField] private Light _light;
         [SerializeField] private DayNightCycleSO _dayNightParameters;
         
+        private float _actualGameTimeScale;
         private Transform _lightTransform;
         private float _lightRotationAngle;
         private float _lightRotationStep;
@@ -47,8 +48,6 @@ namespace Tenacity.Managers
             _lightRotationStep = (_dayNightParameters.NightRotationStepAngle - _dayNightParameters.DayRotationAngle);
             _lightRotationAngle = _dayNightParameters.DayRotationAngle;
             _lightTransform = _light.transform;
-
-            SetTime(DateTime.Now);
         }
 
         private void Update()
@@ -82,11 +81,28 @@ namespace Tenacity.Managers
             _light.color = _dayNightParameters.DayNightColor.Evaluate(transitionProgress);
         }
 
+        private void OnDestroy()
+        {
+            StorageManager.Instance.Time = _gameTime;
+        }
 
-        public void SetTime(DateTime time)
+
+        public void PauseGameTime()
+        {
+            _actualGameTimeScale = GameTimeScale;
+            GameTimeScale = 0.0f;
+        }
+
+        public void ResumeGameTime()
+        {
+            GameTimeScale = _actualGameTimeScale;
+        }
+
+
+        public static float TimeFromDate(DateTime time)
         {
             var timeShift = time.TimeOfDay.Subtract(TimeSpan.FromSeconds(HALF_SECONDS_IN_DAY));
-            GameTime = (float)timeShift.TotalSeconds;
+            return (float)timeShift.TotalSeconds;
         }
     }
 }
