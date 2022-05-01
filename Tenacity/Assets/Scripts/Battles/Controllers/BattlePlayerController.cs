@@ -1,13 +1,14 @@
 using System.Collections.Generic;
-using Tenacity.Battles.Data;
+using Tenacity.Cards.Managers;
 using Tenacity.Battles.Lands;
+using Tenacity.Battles.Data;
 using Tenacity.Cards.Data;
 using Tenacity.Cards;
 using UnityEngine;
 using TMPro;
 
 
-namespace Tenacity.Battles
+namespace Tenacity.Battles.Controllers
 {
     public class BattlePlayerController : MonoBehaviour
     {

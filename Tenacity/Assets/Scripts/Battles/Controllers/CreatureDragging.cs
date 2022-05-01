@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using Tenacity.Battles.Lands;
 using Tenacity.Battles.Data;
-using Tenacity.Battles;
+using Tenacity.Cards;
 using UnityEngine;
 using System.Linq;
 
 
-namespace Tenacity.Cards
+namespace Tenacity.Battles.Controllers
 {
     public class CreatureDragging : MonoBehaviour
     {

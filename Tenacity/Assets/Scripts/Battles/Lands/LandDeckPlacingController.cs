@@ -1,4 +1,4 @@
-﻿using static Tenacity.Battles.BattlePlayerController;
+﻿using Tenacity.Battles.Controllers;
 using Tenacity.Battles.Draggable;
 using Tenacity.Battles.Data;
 using UnityEngine.UI;

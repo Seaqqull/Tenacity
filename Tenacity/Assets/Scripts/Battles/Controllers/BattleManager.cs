@@ -7,7 +7,7 @@ using UnityEngine;
 using TMPro;
 
 
-namespace Tenacity.Battles
+namespace Tenacity.Battles.Controllers
 {
     public class BattleManager : MonoBehaviour
     {

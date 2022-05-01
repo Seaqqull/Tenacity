@@ -1,8 +1,9 @@
 ﻿using UnityEngine.EventSystems;
+using Tenacity.Cards;
 using UnityEngine;
 
 
-namespace Tenacity.Cards
+namespace Tenacity.Battles.Controllers
 {
     public class CardDeckItemController : MonoBehaviour, IPointerDownHandler
     {

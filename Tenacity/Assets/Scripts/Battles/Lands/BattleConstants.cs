@@ -1,7 +1,7 @@
 ﻿using Tenacity.Battles.Lands.Data;
 
 
-namespace Tenacity.Battles
+namespace Tenacity.Battles.Lands
 {
     public static class BattleConstants
     {

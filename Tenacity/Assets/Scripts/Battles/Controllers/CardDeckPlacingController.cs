@@ -1,10 +1,10 @@
 ﻿using Tenacity.Battles.Draggable;
 using Tenacity.Battles.Data;
-using Tenacity.Battles;
+using Tenacity.Cards;
 using UnityEngine;
 
 
-namespace Tenacity.Cards
+namespace Tenacity.Battles.Controllers
 {
     public class CardDeckPlacingController : MonoBehaviour
     {

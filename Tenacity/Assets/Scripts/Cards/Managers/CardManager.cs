@@ -1,8 +1,9 @@
+using Tenacity.Battles.Lands;
 using Tenacity.Cards.Data;
 using UnityEngine;
-using Tenacity.Battles.Lands;
 
-namespace Tenacity.Cards
+
+namespace Tenacity.Cards.Managers
 {
     public class CardManager : MonoBehaviour
     {

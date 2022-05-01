@@ -1,5 +1,6 @@
 using Tenacity.Battles.Lands.Data;
 using System.Collections.Generic;
+using Tenacity.Cards.Managers;
 using Tenacity.Battles.Lands;
 using Tenacity.Cards.Data;
 using System.Collections;
@@ -9,13 +10,13 @@ using UnityEngine;
 using TMPro;
 
 
-namespace Tenacity.Battles
+namespace Tenacity.Battles.Controllers
 {
     public class BattleEnemyController : MonoBehaviour
     {
         [SerializeField] private BattleEnemy _enemy;
         [SerializeField] private CardDeckManager _enemyCardDeck;
-        [SerializeField] private List<Land> _enemyLandDeck = new List<Land>();
+        [SerializeField] private List<Land> _enemyLandDeck;
         [SerializeField] private TextMeshProUGUI _manaUI;
         [SerializeField] private float _yPos = 0.61f;
         [SerializeField] private float _skipPobability;
