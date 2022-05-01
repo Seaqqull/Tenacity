@@ -12265,6 +12265,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.000091552734
       objectReference: {fileID: 0}
+    - target: {fileID: 3004824136375545910, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004824136375545910, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004824136375545910, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d00faeb5541347c3abcd900d8e2f597, type: 2}
+    - target: {fileID: 3004824136375545910, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004824136375545910, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SwitchGameTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004824136375545910, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Tenacity.General.Events.Actions.SwitchGameTimeActionSO, Tenacity.General.Events
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004824136375545910, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004824136375545910, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3004824136976508098, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
       propertyPath: m_Name
       value: --- MainUI
@@ -12357,6 +12389,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9203602289638493432, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203602289638493432, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203602289638493432, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d00faeb5541347c3abcd900d8e2f597, type: 2}
+    - target: {fileID: 9203602289638493432, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203602289638493432, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SwitchGameTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203602289638493432, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Tenacity.General.Events.Actions.SwitchGameTimeActionSO, Tenacity.General.Events
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203602289638493432, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203602289638493432, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3756855b0f5704f33be44bef00bc9b92, type: 3}
 --- !u!1001 &3193899641282560689
@@ -12429,7 +12493,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7585724590200023911, guid: b873f9ee7295e48538ea32f0b12e2189, type: 3}
       propertyPath: m_Name
-      value: Main Camera
+      value: --- Cameras
       objectReference: {fileID: 0}
     - target: {fileID: 7585724590200023928, guid: b873f9ee7295e48538ea32f0b12e2189, type: 3}
       propertyPath: m_RootOrder

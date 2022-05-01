@@ -14,13 +14,16 @@ namespace Tenacity.Managers
         public Camera MainCamera { get; private set; }
         public Camera UICamera { get; private set; }
         public float TimeScale { get; private set; }
+        public float Time { get; set; }
 
-        
+
         private void Start()
         {
+            Time = EnvironmentManager.TimeFromDate(DateTime.Now);
             TimeScale = PlayerPrefsManager.Instance.GetFloat(Utility.Constants.Game.TIME_SCALE,
                 Utility.Constants.Game.TIME_SCALE_MIN);
         }
+        
 
         public void UpdateGameObjects()
         {
@@ -32,7 +35,7 @@ namespace Tenacity.Managers
             if (EnvironmentManager.Instance != null)
             {
                 EnvironmentManager.Instance.GameTimeScale = TimeScale;
-                EnvironmentManager.Instance.SetTime(DateTime.Now);   
+                EnvironmentManager.Instance.GameTime = Time;   
             }
         }
 

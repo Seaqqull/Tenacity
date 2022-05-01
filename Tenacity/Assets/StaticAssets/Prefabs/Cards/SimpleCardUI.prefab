@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 839809746951325858}
   - component: {fileID: 7725084789639418536}
   - component: {fileID: 5362654806294028848}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: SimpleCardUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 1878722601699331457}
   - component: {fileID: 1878722601699331711}
   - component: {fileID: 935542150758018448}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 1878722601733580864}
   - component: {fileID: 1878722601733580862}
   - component: {fileID: 1878722601733580865}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: LandTypeField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 1878722601845831517}
   - component: {fileID: 1878722601845831515}
   - component: {fileID: 3387851924051104824}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 1878722601880754209}
   - component: {fileID: 1878722601880754207}
   - component: {fileID: 1878722601880754206}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: CardSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 1878722602231018298}
   - component: {fileID: 1878722602231018296}
   - component: {fileID: 1878722602231018299}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: StackField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 1878722602340643508}
   - component: {fileID: 1878722602340643506}
   - component: {fileID: 1878722602340643509}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: NameField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 1878722602873226025}
   - component: {fileID: 1878722602873226023}
   - component: {fileID: 3886073048056504288}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 266117101923492829}
   - component: {fileID: 5972121165509521412}
   - component: {fileID: 8786786299088710653}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: RaritySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
