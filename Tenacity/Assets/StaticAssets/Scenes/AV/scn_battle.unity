@@ -3584,6 +3584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _battle: {fileID: 695182400}
+  _linePrefab: {fileID: -9204921101941639112, guid: f350df59c33ee481abe149f894be3142, type: 3}
   _material: {fileID: 2100000, guid: a4e4206b03393b64b97832f155352a9d, type: 2}
   _lineWidth: 0.05
   _distance: 1000

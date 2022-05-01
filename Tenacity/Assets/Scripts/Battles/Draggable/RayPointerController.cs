@@ -10,9 +10,9 @@ namespace Tenacity.Battles.Draggable
     {
         [Header("Main")]
         [SerializeField] private BattleManager _battle;
-        [Header("Ray Line characteristics")]
-        [SerializeField] private Material _material;
-        [SerializeField] private float _lineWidth = 0.1f;
+
+        [Header("Ray Line characteristics")] 
+        [SerializeField] private LineRenderer _linePrefab;
         [SerializeField] private float _distance = 1000f;        
         [SerializeField] private Vector3 _offset;
 
@@ -27,12 +27,8 @@ namespace Tenacity.Battles.Draggable
         {
             _player = _battle.Player;
 
-            _lineRenderer = gameObject.AddComponent<LineRenderer>();
-            _lineRenderer.material = _material;
-            _lineRenderer.startWidth = _lineWidth;
-            _lineRenderer.endWidth = _lineWidth;
+            _lineRenderer = Instantiate(_linePrefab, transform);
             _lineRenderer.enabled = false;
-
         }
 
         private void Update()
