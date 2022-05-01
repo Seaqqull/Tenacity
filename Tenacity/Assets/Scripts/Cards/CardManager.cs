@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Tenacity.Cards.Data;
 using Tenacity.Lands;
-using UnityEditor;
 using UnityEngine;
+
 
 namespace Tenacity.Cards
 {
@@ -16,18 +15,17 @@ namespace Tenacity.Cards
             var creatureGO = Instantiate(loadedCreatureObject, landToPlace.transform);
             creatureGO.transform.localPosition = new Vector3(0, landToPlace.TopPoint, 0);
 
-            Card cardComponent = creatureGO.GetComponent<Card>();
-            cardComponent.Data = newCard.Data;
+            var cardComponent = creatureGO.GetComponent<Card>();
             cardComponent.State = CardState.OnBoard;
+            cardComponent.Data = newCard.Data;
+            
             Destroy(newCard.gameObject);
             return cardComponent;
         }
 
         private static GameObject LoadFromDatabase(Card newCard)
         {
-            return AssetDatabase.LoadAssetAtPath(
-                $"Assets/StaticAssets/Prefabs/Creatures/{newCard.Data.Type}_{newCard.Data.CardId}.prefab", typeof(GameObject)
-                ) as GameObject;
+            return Resources.Load<GameObject>($"Creatures/{newCard.Data.Type}_{newCard.Data.CardId}");
         }
     }
 }

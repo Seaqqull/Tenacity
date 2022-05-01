@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Tenacity.Cards;
-using Tenacity.Items;
-using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine;
 
-namespace Tenacity.PlayerInventory
+
+namespace Tenacity.Cards.Inventory
 {
     public class InventorySlotsController : MonoBehaviour, IPointerDownHandler
     {
@@ -13,6 +10,7 @@ namespace Tenacity.PlayerInventory
 
         private Card _item;
 
+        
         private void Start()
         {
             if (detailsViewScreen == null)
@@ -21,9 +19,10 @@ namespace Tenacity.PlayerInventory
             _item.gameObject.SetActive(false);
         }
 
+        
         public void OnPointerDown(PointerEventData eventData)
         {
-            GameObject go = eventData.pointerCurrentRaycast.module.gameObject;
+            var go = eventData.pointerCurrentRaycast.module.gameObject;
 
             if (go != null)
             {

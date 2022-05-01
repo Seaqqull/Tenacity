@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Tenacity.Items { 
 
+
+namespace Tenacity.Cards.Inventory
+{
     public enum ItemType
     {
         Card,

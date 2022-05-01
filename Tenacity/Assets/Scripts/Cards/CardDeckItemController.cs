@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using Tenacity.Battle;
-using Tenacity.Draggable;
+﻿using UnityEngine.EventSystems;
 using UnityEngine;
-using UnityEngine.EventSystems;
+
 
 namespace Tenacity.Cards
 {
@@ -13,18 +11,14 @@ namespace Tenacity.Cards
 
         private void Awake()
         {
-            if (GetComponentInParent<CardDeckPlacingController>())
-            {
+            if (GetComponentInParent<CardDeckPlacingController>() != null)
                 _cardDeck = transform.root.GetComponentInChildren<CardDeckPlacingController>();
-            }
         }
 
 
         public void OnPointerDown(PointerEventData pointerEventData)
         {
-            if (_cardDeck == null) return;
-            if (!_cardDeck.enabled) return;
-            if (_cardDeck.IsCurrentlyPlacingCard) return;
+            if ((_cardDeck == null) || (!_cardDeck.enabled) || (_cardDeck.IsCurrentlyPlacingCard)) return;
 
             _cardDeck.SelectCard(gameObject.GetComponent<Card>());
         }

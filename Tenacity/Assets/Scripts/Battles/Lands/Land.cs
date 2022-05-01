@@ -64,9 +64,7 @@ namespace Tenacity.Lands
 
         private GameObject LoadFromDatabase(Land newLandCard)
         {
-            return AssetDatabase.LoadAssetAtPath(
-                $"Assets/StaticAssets/Prefabs/Lands/land_{newLandCard.Type}.prefab", typeof(GameObject)
-                ) as GameObject;
+            return Resources.Load<GameObject>($"Lands/land_{newLandCard.Type}");
         }
 
 

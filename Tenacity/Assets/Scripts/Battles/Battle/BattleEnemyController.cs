@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Tenacity.Cards;
+using Tenacity.Cards.Data;
 using Tenacity.Lands;
 using TMPro;
 using UnityEngine;

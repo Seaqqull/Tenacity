@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using Tenacity.Battle;
+﻿using static Tenacity.Battle.BattlePlayerController;
 using Tenacity.Draggable;
+using Tenacity.Battle;
 using UnityEngine;
-using static Tenacity.Battle.BattlePlayerController;
+
 
 namespace Tenacity.Cards
 {
@@ -10,12 +10,11 @@ namespace Tenacity.Cards
     {
         [SerializeField] private BattleManager _battle;
         [SerializeField] private RayPointerController _rayPointerController;
-
         
-        private Card _currentlySelectedCard;
         private BattlePlayerController _player;
-
-
+        private Card _currentlySelectedCard;
+        
+        public bool IsCurrentlyPlacingCard => _player.CurrentPlayerMode == PlayerActionMode.PlacingCard;
         public Card CurrentlySelectedCard
         {
             get => _currentlySelectedCard;
@@ -25,7 +24,6 @@ namespace Tenacity.Cards
                 _player.CurrentPlayerMode = (value != null) ? PlayerActionMode.PlacingCard : PlayerActionMode.None;
             }
         }
-        public bool IsCurrentlyPlacingCard => _player.CurrentPlayerMode == PlayerActionMode.PlacingCard;
 
 
         private void Awake()
@@ -35,17 +33,19 @@ namespace Tenacity.Cards
 
         private void Update()
         {
-            if (CurrentlySelectedCard != null
-                && _player.CurrentPlayerMode == PlayerActionMode.None)
+            if ((CurrentlySelectedCard != null) && 
+                (_player.CurrentPlayerMode == PlayerActionMode.None))
             {
                 CurrentlySelectedCard = null;
             }
         }
 
+        
         public void SelectCard(Card card)
         {
             CurrentlySelectedCard = card;
-            RectTransform cardRectTransform = card.GetComponent<RectTransform>();
+            var cardRectTransform = card.GetComponent<RectTransform>();
+            
             _rayPointerController.StartPosition = (cardRectTransform.TransformPoint(cardRectTransform.rect.center));
         }
     }

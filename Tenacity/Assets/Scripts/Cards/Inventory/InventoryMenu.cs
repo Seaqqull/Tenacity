@@ -1,12 +1,10 @@
 using System.Collections.Generic;
-using Tenacity.PlayerInventory;
 using UnityEngine.UI;
-using Tenacity.Cards;
 using UnityEngine;
 using TMPro;
 
 
-namespace Tenacity.UI.Menus
+namespace Tenacity.Cards.Inventory
 {
     public class InventoryMenu : MonoBehaviour // Make as SingleMenu
     {
@@ -18,7 +16,7 @@ namespace Tenacity.UI.Menus
         [SerializeField] private GameObject pageButtonsField;
         [SerializeField] private TextMeshProUGUI currentPageText;
 
-        private List<CardData> _cards = new List<CardData>();
+        private List<CardDataSO> _cards = new List<CardDataSO>();
         private int _currentPage;
         private int _pageCount;
 
@@ -71,7 +69,7 @@ namespace Tenacity.UI.Menus
         
         public void DisplayItemsOnPage(int pageNum)
         {
-            if (_cards == null || _cards.Count == 0) return;
+            if ((_cards == null) || (_cards.Count == 0)) return;
             
             
             currentPageText.text = $"{pageNum + 1}/{_pageCount}";
@@ -87,6 +85,5 @@ namespace Tenacity.UI.Menus
                     CreateCard(i);
             }
         }
-        
     }
 }

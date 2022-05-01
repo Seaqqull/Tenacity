@@ -1,53 +1,49 @@
-using Tenacity.Items;
+using Tenacity.Base;
+using Tenacity.Cards.Data;
 using Tenacity.Lands;
 using UnityEngine;
 
+
 namespace Tenacity.Cards
 {
-    public enum CardState
+    public class Card : BaseMono
     {
-        InCardDeck,
-        OnBoard,
-        InHub,
-        InInventory
-    }
-
-    public class Card : MonoBehaviour
-    {
-        [SerializeField] private CardData data;
+        [SerializeField] private CardDataSO data;
         [SerializeField] private bool isAvailable;
         [SerializeField] private CardState state;
 
-        public CardData Data
+        private int _currentLife;
+        
+        public int CurrentLife => _currentLife;
+        public bool IsAvailable
         {
-            get => data;
-            set => data = value;
+            get => isAvailable;
+            set => isAvailable = value;
         }
         public CardState State
         {
             get => state;
             set => state = value;
         }
-        public bool IsAvailable
+        public CardDataSO Data
         {
-            get => isAvailable;
-            set => isAvailable = value;
+            get => data;
+            set => data = value;
         }
-        public int CurrentLife => _currentLife;
-        public Land Place {
-            get => transform.parent?.GetComponent<Land>();
+        public Land Place 
+        {
+            get => (transform.parent == null) ? null : transform.parent.GetComponent<Land>();
             set => transform.SetParent(value.transform);
         }
 
-        private int _currentLife;
-
-
+        
         private void Start()
         {
             if (Data != null)
                 _currentLife = Data.Life;
         }
 
+        
         public void GetDamaged(int power)
         {
             _currentLife -= power;
@@ -56,7 +52,8 @@ namespace Tenacity.Cards
                 _currentLife = 0;
                 Destroy(gameObject, 1.0f);
             }
-            GetComponent<CardDataDisplay>()?.UpdateLife();
+            if (TryGetComponent<CardDataDisplay>(out var cardDisplay)) 
+                cardDisplay.UpdateLife();
         }
     }
 }
