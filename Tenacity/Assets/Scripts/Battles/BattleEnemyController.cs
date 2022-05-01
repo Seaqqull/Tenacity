@@ -1,14 +1,15 @@
-using System.Collections;
+using Tenacity.Battles.Lands.Data;
 using System.Collections.Generic;
-using System.Linq;
-using Tenacity.Cards;
+using Tenacity.Battles.Lands;
 using Tenacity.Cards.Data;
-using Tenacity.Lands;
-using TMPro;
+using System.Collections;
+using Tenacity.Cards;
+using System.Linq;
 using UnityEngine;
+using TMPro;
 
 
-namespace Tenacity.Battle
+namespace Tenacity.Battles
 {
     public class BattleEnemyController : MonoBehaviour
     {
@@ -20,8 +21,8 @@ namespace Tenacity.Battle
         [SerializeField] private float _skipPobability;
         [SerializeField] private Material _enemyMaterial;
 
+        private List<Card> _enemyCards = new List<Card>();
         private int _currentMana;
-        private List<Card> _enemyCards;
 
         public bool IsGameOver => _enemyCards.Where(item => item != null).Count() == 0;
 
@@ -31,15 +32,17 @@ namespace Tenacity.Battle
             _enemyCards = _enemyCardDeck.CardPack;
         }
 
-        private bool DecideToAttak()
-        {
-            return Random.value > _skipPobability; // alg.
-        }
+        
         private bool DecideToMove()
         {
             return Random.value > _skipPobability; // alg.
         }
 
+        private bool DecideToAttack()
+        {
+            return Random.value > _skipPobability; // alg.
+        }
+        
         //common
         private void UpdateMana(int dtMana, bool isReduced)
         {
@@ -47,18 +50,21 @@ namespace Tenacity.Battle
             _manaUI.text = "Mana: " + _currentMana;
         }
 
-
         //place a land
         private Land SelectLandFromDeck()
         {
             if (_enemyLandDeck.Count == 0) return null;
+            
             List<LandType> availableCardTypes = _enemyCards.GroupBy(card => card.Data.Land).Select(o => o.FirstOrDefault().Data.Land).ToList();
             List<Land> filteredLands = _enemyLandDeck.FindAll(land => availableCardTypes.Contains(land.Type));
+            
             if (filteredLands.Count == 0) return null;
             var randomNum = Random.Range(0, filteredLands.Count);
             Land land = filteredLands[randomNum];
+            
             return land;
         }
+        
         private Land SelectCellToPlaceLand(List<Land> landList)
         {
             List<Land> emptyLands = landList.FindAll((el) => el.Type == LandType.None);
@@ -66,8 +72,10 @@ namespace Tenacity.Battle
 
             int landId = Random.Range(0, emptyLands.Count);
             Land landToPlace = emptyLands[landId];
+            
             return landToPlace;
         }
+        
         private bool PlaceLandOnBoard(List<Land> availablePlaces)
         {
             Land landToPlace = SelectLandFromDeck();
@@ -108,6 +116,7 @@ namespace Tenacity.Battle
         {
             Land selectedLand = SelectNeighborLand(selectedCard.transform.parent?.GetComponent<Land>());
             if (selectedLand == null) return;
+            
             DropCardIntoLand(selectedCard, selectedLand);
         }
 
@@ -136,9 +145,9 @@ namespace Tenacity.Battle
 
         private void DropCardIntoLand(Card selectedCard, Land selectedLand)
         {
-            if (selectedCard.gameObject.transform.parent?.GetComponent<Land>() != null)
-            selectedCard.gameObject.transform.SetParent(selectedLand.gameObject.transform);
-            selectedCard.gameObject.transform.localPosition = new Vector3(0, _yPos, 0);
+            if ((selectedCard.Transform.parent != null ? selectedCard.Transform.parent.GetComponent<Land>() : null) != null)
+                selectedCard.Transform.SetParent(selectedLand.gameObject.transform);
+            selectedCard.Transform.localPosition = new Vector3(0, _yPos, 0);
         }
 
         private Land SelectLandToPlaceCard(List<Land> landList, LandType cardLandType)
@@ -159,12 +168,12 @@ namespace Tenacity.Battle
 
         private void TryMakeMove(Card selectedCard, List<Land> places)
         {
-            if (selectedCard == null || !selectedCard.IsAvailable) return;
+            if ((selectedCard == null) || !selectedCard.IsAvailable) return;
 
             if (selectedCard.State == CardState.OnBoard)
             {
                 bool isDamaged = false;
-                if (DecideToAttak()) 
+                if (DecideToAttack()) 
                     isDamaged = Attack(selectedCard);
                 if (!isDamaged) 
                     MoveCard(selectedCard);
@@ -179,6 +188,7 @@ namespace Tenacity.Battle
         {
             _enemyCards = _enemyCards.Where(item => item != null).ToList();
             _enemyCards.ForEach(card => card.IsAvailable = true);
+            
             UpdateMana(BattleConstants.ROUND_MANA, false);
         }
 
@@ -186,9 +196,7 @@ namespace Tenacity.Battle
         {
             Land selectedLand = SelectLandFromDeck();
             for (int i = 0; i < BattleConstants.LandConstants.GetLandCellsCount(selectedLand.Type); i++)
-            {
                 PlaceLandOnBoard(places);
-            }
         }
 
         private void ManageCards(List<Land> places)

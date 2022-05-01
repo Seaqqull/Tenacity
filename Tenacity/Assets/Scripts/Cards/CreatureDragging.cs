@@ -1,7 +1,8 @@
 ﻿using EngineInput = UnityEngine.Input;
 using System.Collections.Generic;
-using Tenacity.Battle;
-using Tenacity.Lands;
+using Tenacity.Battles.Lands;
+using Tenacity.Battles.Data;
+using Tenacity.Battles;
 using UnityEngine;
 using System.Linq;
 
@@ -19,8 +20,8 @@ namespace Tenacity.Cards
         private Card _selectedCreature;
 
         public bool IsCurrentlyMovingCreature =>
-            _player.CurrentPlayerMode == BattlePlayerController.PlayerActionMode.MovingCreature;
-        public bool IsPlayerTurn => _battle.CurrentBattleState == BattleManager.BattleState.WaitingForPlayerTurn;
+            _player.CurrentPlayerMode == PlayerActionMode.MovingCreature;
+        public bool IsPlayerTurn => _battle.CurrentBattleState == BattleState.WaitingForPlayerTurn;
 
 
         private void Awake()
@@ -30,8 +31,8 @@ namespace Tenacity.Cards
 
         private void Update()
         {
-            if ((_battle.CurrentBattleState != BattleManager.BattleState.WaitingForPlayerTurn) || 
-                (_player.CurrentPlayerMode != BattlePlayerController.PlayerActionMode.MovingCreature) || 
+            if ((_battle.CurrentBattleState != BattleState.WaitingForPlayerTurn) || 
+                (_player.CurrentPlayerMode != PlayerActionMode.MovingCreature) || 
                 (_selectedCreature == null)) return;
             
             if (EngineInput.GetMouseButton(0)) MoveCreature();
@@ -80,7 +81,7 @@ namespace Tenacity.Cards
         private void DeselectCreature()
         {
             _selectedCreature = null;
-            _player.CurrentPlayerMode = BattlePlayerController.PlayerActionMode.None;
+            _player.CurrentPlayerMode = PlayerActionMode.None;
         }
         
         private void PlaceCreature(Land land)
@@ -120,7 +121,7 @@ namespace Tenacity.Cards
 
             _selectedCreature = card;
             _selectedCreaturePosition = card.Transform.position;
-            _player.CurrentPlayerMode = BattlePlayerController.PlayerActionMode.MovingCreature;
+            _player.CurrentPlayerMode = PlayerActionMode.MovingCreature;
         }
     }
 }

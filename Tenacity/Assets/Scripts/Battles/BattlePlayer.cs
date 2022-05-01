@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Tenacity.Battle
+
+namespace Tenacity.Battles
 {
     [CreateAssetMenu(fileName = "Battle Player Template", menuName = "Battle/BattlePlayer")]
     public class BattlePlayer : ScriptableObject
@@ -9,9 +9,8 @@ namespace Tenacity.Battle
 
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private int _health;
-
-
-        public int Health => _health;
+        
         public GameObject PlayerPrefab => _playerPrefab;
+        public int Health => _health;
     }
 }

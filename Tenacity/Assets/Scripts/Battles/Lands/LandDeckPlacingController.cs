@@ -1,25 +1,24 @@
-﻿using System.Collections;
-using Tenacity.Battle;
-using Tenacity.Draggable;
-using UnityEngine;
+﻿using static Tenacity.Battles.BattlePlayerController;
+using Tenacity.Battles.Draggable;
+using Tenacity.Battles.Data;
 using UnityEngine.UI;
-using static Tenacity.Battle.BattlePlayerController;
+using UnityEngine;
 
-namespace Tenacity.Lands
+
+namespace Tenacity.Battles.Lands
 {
     public class LandDeckPlacingController : MonoBehaviour
     {
-
         [SerializeField] private BattleManager _battle;
         [SerializeField] private RayPointerController _rayPointerController;
 
-
-        private Land _currentlySelectedLand;
-        private int _availableLansCardsCount;
         private BattlePlayerController _player;
-        private bool IsRechangable => (_currentlySelectedLand != null && _availableLansCardsCount == BattleConstants.LandConstants.GetLandCellsCount(_currentlySelectedLand.Type));
+        private int _availableLansCardsCount;
+        private Land _currentlySelectedLand;
 
-
+        private bool IsRechangable => 
+            (_currentlySelectedLand != null && _availableLansCardsCount == BattleConstants.LandConstants.GetLandCellsCount(_currentlySelectedLand.Type));
+        public bool IsCurrentlyPlacingLand => _player.CurrentPlayerMode == PlayerActionMode.PlacingLand;
         public Land CurrentlySelectedLand
         {
             get => _currentlySelectedLand;
@@ -40,9 +39,7 @@ namespace Tenacity.Lands
             }
         }
 
-        public bool IsCurrentlyPlacingLand => _player.CurrentPlayerMode == PlayerActionMode.PlacingLand;
         
-
         private void Awake()
         {
             _player = _battle.Player;
@@ -51,24 +48,26 @@ namespace Tenacity.Lands
         private void Update()
         {
             if (CurrentlySelectedLand == null) return;
-            if (CurrentlySelectedLand != null && !IsRechangable) _player.CurrentPlayerMode = PlayerActionMode.PlacingLand;
+            if ((CurrentlySelectedLand != null) && !IsRechangable) _player.CurrentPlayerMode = PlayerActionMode.PlacingLand;
             else if (_player.CurrentPlayerMode == PlayerActionMode.None) CurrentlySelectedLand = null;
         }
 
+        
         public void SelectLand(Land land)
         {
-            if (_battle.CurrentBattleState != BattleManager.BattleState.WaitingForPlayerTurn) return;
+            if (_battle.CurrentBattleState != BattleState.WaitingForPlayerTurn) return;
             
             CurrentlySelectedLand = land;
             _player.CurrentPlayerMode = PlayerActionMode.PlacingLand;
 
-            RectTransform landRectTransform = land.GetComponent<RectTransform>();
+            var landRectTransform = land.GetComponent<RectTransform>();
             _rayPointerController.StartPosition = (landRectTransform.TransformPoint(landRectTransform.rect.center));
         }
 
         public void DecreaseAvailableLandCardsCount()
         {
             _availableLansCardsCount--;
+            
             if (_availableLansCardsCount <= 0)
             {
                 CurrentlySelectedLand = null;

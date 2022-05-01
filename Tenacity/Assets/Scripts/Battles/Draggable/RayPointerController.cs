@@ -1,26 +1,23 @@
-﻿using System.Collections;
-using Tenacity.Battle;
+﻿using EngineInput = UnityEngine.Input;
+using Tenacity.Battles.Data;
 using UnityEngine;
-using EngineInput = UnityEngine.Input;
 
-namespace Tenacity.Draggable
+
+namespace Tenacity.Battles.Draggable
 {
     public class RayPointerController : MonoBehaviour
     {
         [Header("Main")]
         [SerializeField] private BattleManager _battle;
-
-
         [Header("Ray Line characteristics")]
         [SerializeField] private Material _material;
         [SerializeField] private float _lineWidth = 0.1f;
         [SerializeField] private float _distance = 1000f;        
         [SerializeField] private Vector3 _offset;
 
-
-        private Vector3 _targetPos;
-        private LineRenderer _lineRenderer;
         private BattlePlayerController _player;
+        private LineRenderer _lineRenderer;
+        private Vector3 _targetPos;
 
         public Vector3 StartPosition { get; set; }
 
@@ -39,10 +36,10 @@ namespace Tenacity.Draggable
 
         private void Update()
         {
-            if (_battle.CurrentBattleState != BattleManager.BattleState.WaitingForPlayerTurn) return;
-            if (_player.CurrentPlayerMode == BattlePlayerController.PlayerActionMode.MovingCreature) return;
+            if ((_battle.CurrentBattleState != BattleState.WaitingForPlayerTurn) || 
+                (_player.CurrentPlayerMode == PlayerActionMode.MovingCreature)) return;
 
-            if (_player.CurrentPlayerMode != BattlePlayerController.PlayerActionMode.None)
+            if (_player.CurrentPlayerMode != PlayerActionMode.None)
                 DrawPointerLine();
             else if (_lineRenderer.enabled) 
                 _lineRenderer.enabled = false;
@@ -65,7 +62,7 @@ namespace Tenacity.Draggable
                 _lineRenderer.SetPosition(1, _targetPos);
                 if ((EngineInput.GetMouseButtonDown(0) && !IsHitWithObject(_distance)) || (EngineInput.GetMouseButtonDown(1)))
                 {
-                    _battle.Player.CurrentPlayerMode = BattlePlayerController.PlayerActionMode.None;
+                    _battle.Player.CurrentPlayerMode = PlayerActionMode.None;
                     _lineRenderer.enabled = false;
                 }
             }

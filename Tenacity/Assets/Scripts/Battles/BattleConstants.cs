@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using Tenacity.Lands;
-using UnityEngine;
+﻿using Tenacity.Battles.Lands.Data;
 
-namespace Tenacity.Battle
+
+namespace Tenacity.Battles
 {
     public static class BattleConstants
     {

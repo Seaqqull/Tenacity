@@ -1,7 +1,6 @@
 using Tenacity.Cards.Data;
-using Tenacity.Lands;
 using UnityEngine;
-
+using Tenacity.Battles.Lands;
 
 namespace Tenacity.Cards
 {

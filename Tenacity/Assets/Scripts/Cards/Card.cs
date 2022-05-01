@@ -1,6 +1,6 @@
-using Tenacity.Base;
 using Tenacity.Cards.Data;
-using Tenacity.Lands;
+using Tenacity.Battles.Lands;
+using Tenacity.Base;
 using UnityEngine;
 
 
@@ -32,8 +32,8 @@ namespace Tenacity.Cards
         }
         public Land Place 
         {
-            get => (transform.parent == null) ? null : transform.parent.GetComponent<Land>();
-            set => transform.SetParent(value.transform);
+            get => (Transform.parent == null) ? null : Transform.parent.GetComponent<Land>();
+            set => Transform.SetParent(value.transform);
         }
 
         

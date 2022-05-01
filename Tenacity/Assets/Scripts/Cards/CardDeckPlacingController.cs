@@ -1,6 +1,6 @@
-﻿using static Tenacity.Battle.BattlePlayerController;
-using Tenacity.Draggable;
-using Tenacity.Battle;
+﻿using Tenacity.Battles.Draggable;
+using Tenacity.Battles.Data;
+using Tenacity.Battles;
 using UnityEngine;
 
 

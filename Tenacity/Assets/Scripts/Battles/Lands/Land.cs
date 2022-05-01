@@ -1,22 +1,11 @@
-using System;
+using Tenacity.Battles.Lands.Data;
 using System.Collections.Generic;
 using Tenacity.Cards;
-using UnityEditor;
 using UnityEngine;
 
-namespace Tenacity.Lands
-{
-   
-    [Flags] public enum LandType
-    {
-        None = 0,
-        Ice = 1 << 0,
-        Water = 1 << 1,
-        Fire = 1 << 2,
-        Earth = 1 << 3,
-        Neutral = ~0,
-    }
 
+namespace Tenacity.Battles.Lands
+{
     public class Land : MonoBehaviour
     {
         [SerializeField] private LandType _type;
@@ -25,36 +14,32 @@ namespace Tenacity.Lands
         [SerializeField] private Material outliner;
         [SerializeField] private float _topPoint = 0.61f;
 
-        private int _cellId;
-        private List<Land> _neigborLands;
         private MeshRenderer _meshRenderer;
         private Material _standardMaterial;
+        private List<Land> _neigborLands;
+        private int _cellId;
 
+        public float TopPoint => _topPoint;
         public List<Land> NeighborLands
         {
             get => _neigborLands;
             set => _neigborLands = value;
         }
-
-
-        public LandType Type => _type;
-        public float TopPoint => _topPoint;
-
-        public int CellId
+        public bool IsAvailableForCards
         {
-            get => _cellId;
-            set => _cellId = value;
+            get => (_type != LandType.None && GetComponentInChildren<Card>() == null);
         }
+        public LandType Type => _type;
         public bool IsPlacedOnBoard
         {
             get => _isPlacedOnBoard;
             set => _isPlacedOnBoard = value;
         }
-        public bool IsAvailableForCards
+        public int CellId
         {
-            get => (_type != LandType.None && GetComponentInChildren<Card>() == null);
+            get => _cellId;
+            set => _cellId = value;
         }
-
 
 
         private void Awake()
@@ -62,6 +47,7 @@ namespace Tenacity.Lands
             _meshRenderer = GetComponentInChildren<MeshRenderer>();
         }
 
+        
         private GameObject LoadFromDatabase(Land newLandCard)
         {
             return Resources.Load<GameObject>($"Lands/land_{newLandCard.Type}");
@@ -81,7 +67,7 @@ namespace Tenacity.Lands
         
         public bool ReplaceLand(Land newLandCard)
         {
-            if (newLandCard == null || newLandCard._isAvailableForCards) return false;
+            if ((newLandCard == null) || (newLandCard._isAvailableForCards)) return false;
             GameObject landGameObject = LoadFromDatabase(newLandCard);
             if (landGameObject == null) return false;
 
@@ -93,8 +79,8 @@ namespace Tenacity.Lands
             _type = landGameObject.GetComponent<Land>().Type;
             _isPlacedOnBoard = true;
 
-            if (GetComponent<LandCellController>() != null) GetComponent<LandCellController>().enabled = true;
-
+            if (TryGetComponent<LandCellController>(out var landController)) 
+                landController.enabled = true;
             return true;
         }
 
@@ -102,6 +88,5 @@ namespace Tenacity.Lands
         {
             return NeighborLands.Contains(land);
         }
-
     }
 }
