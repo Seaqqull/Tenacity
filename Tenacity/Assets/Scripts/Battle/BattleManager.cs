@@ -1,5 +1,6 @@
 using System.Collections;
 using Tenacity.Boards;
+using Tenacity.Lands;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -54,9 +55,19 @@ namespace Tenacity.Battle
             ManageGameState();
         }
 
+
+        private void InitGame()
+        {
+            Land playerLand = _board.StartPositions[0];
+            _player.Init(playerLand);
+        }
+
+
         private IEnumerator StartBattle(float waitTime)
         {
+            yield return new WaitForSeconds(waitTime);
             CurrentBattleState = BattleState.Start;
+            InitGame();
 
             if (IsPlayerGoesFirst()) PlayerTurn();
             else  StartCoroutine(EnemyTurn(waitTime));
@@ -80,10 +91,9 @@ namespace Tenacity.Battle
         private void PlayerTurn()
         {
             _player.SetActiveMode(true);
-            CurrentBattleState = BattleState.WaitingForPlayerTurn;
-            _turnStateTextField.text = _turnStateText[0];
-
             _endTurnButton.enabled = true;
+            _turnStateTextField.text = _turnStateText[0];
+            CurrentBattleState = BattleState.WaitingForPlayerTurn;
         }
 
         public void OnEndTurnButton()

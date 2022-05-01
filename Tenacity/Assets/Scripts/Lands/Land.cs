@@ -25,10 +25,22 @@ namespace Tenacity.Lands
         [SerializeField] private Material outliner;
         [SerializeField] private float _topPoint = 0.61f;
 
+        private int _cellId;
+        private List<Land> _neigborLands;
+        private MeshRenderer _meshRenderer;
+        private Material _standardMaterial;
+
+        public List<Land> NeighborLands
+        {
+            get => _neigborLands;
+            set => _neigborLands = value;
+        }
+
+
         public LandType Type => _type;
         public float TopPoint => _topPoint;
 
-        public (float, float) CellId
+        public int CellId
         {
             get => _cellId;
             set => _cellId = value;
@@ -44,17 +56,6 @@ namespace Tenacity.Lands
         }
 
 
-        private (float, float) _cellId;
-        private List<Land> _neigborLands;
-        private MeshRenderer _meshRenderer;
-        private Material _standardMaterial;
-
-
-        public List<Land> NeighborLands
-        {
-            get => _neigborLands;
-            set => _neigborLands = value;
-        }
 
         private void Awake()
         {

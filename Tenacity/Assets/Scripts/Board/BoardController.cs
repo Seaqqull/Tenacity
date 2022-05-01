@@ -1,12 +1,23 @@
 using Tenacity.Lands;
+using TMPro;
 using UnityEngine;
 
 namespace Tenacity.Boards
 {
     public class BoardController : MonoBehaviour
     {
-        [SerializeField] private Board _board;
+
         [SerializeField] private Land _emptyLandPrefab;
+        [SerializeField] private TextMeshPro _textField;
+
+        private Board _board;
+        private int id;
+
+
+        private void Awake()
+        {
+            _board = GetComponent<Board>();
+        }
 
         private void Start()
         {
@@ -29,7 +40,10 @@ namespace Tenacity.Boards
             {
                 for (float col = -(colLimit - Mathf.Abs(row)) / 2; col <= (colLimit - Mathf.Abs(row)) / 2; col++)
                 {
-                    CreateLandCell(row, col);
+                    bool isAvailable = true;
+                    if (row == -size + 1 && col == -(colLimit - Mathf.Abs(row)) / 2) isAvailable = false;
+                    if (row == size - 1 && col == (colLimit - Mathf.Abs(row)) / 2) isAvailable = false;
+                    CreateLandCell(row, col, isAvailable);
                 }
             }
         }
@@ -42,15 +56,30 @@ namespace Tenacity.Boards
             }
         }
 
-        private void CreateLandCell(float y, float x)
+        private void CreateLandCell(float y, float x, bool isAvailable)
         {
-            var landGO = Instantiate(
-                _emptyLandPrefab.gameObject,
-                new Vector3(x, 0, y),
-                Quaternion.identity);
+            var landGO = Instantiate(_emptyLandPrefab.gameObject, new Vector3(x, 0, y), Quaternion.identity);
             landGO.transform.parent = transform;
-            landGO.GetComponent<Land>().IsPlacedOnBoard = true;
-            _board.AddCell(landGO.GetComponent<Land>(), x, y);
+
+            Land land = landGO.GetComponent<Land>();
+
+            if (isAvailable) _board.AddCell(land, x, y);
+            else
+            {
+                land.GetComponent<LandCellController>().enabled = false;
+                _board.AddStartPosition(land);
+            } 
+
+            tmpCellCounter(landGO);    
+        }
+
+        private void tmpCellCounter(GameObject landGO)
+        {
+            var textObj = Instantiate(_textField);
+            var text = textObj.GetComponent<TextMeshPro>();
+            textObj.transform.SetParent(landGO.transform);
+            textObj.transform.localPosition = new Vector3(0, 0.4f, 0);
+            text.text = (id++).ToString();
         }
     }
 }

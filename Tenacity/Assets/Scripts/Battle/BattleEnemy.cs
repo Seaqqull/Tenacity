@@ -2,16 +2,10 @@
 
 namespace Tenacity.Battle
 {
-    public class BattleEnemy : MonoBehaviour
+    [CreateAssetMenu(fileName = "Battle Enemy Template", menuName = "Battle/BattleEnemy")]
+    public class BattleEnemy : ScriptableObject
     {
-        [SerializeField] private int health;
-
-        public int CurrentMana
-        {
-            get => _currentMana;
-            set => _currentMana = value;
-        }
-
-        private int _currentMana;
+        [SerializeField] private GameObject _enemyPrefab;
+        [SerializeField] private int _health;
     }
 }

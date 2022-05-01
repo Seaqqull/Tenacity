@@ -22,6 +22,7 @@ namespace Tenacity.Cards
 
         public void OnPointerDown(PointerEventData pointerEventData)
         {
+            if (_cardDeck == null) return;
             if (!_cardDeck.enabled) return;
             if (_cardDeck.IsCurrentlyPlacingCard) return;
 
