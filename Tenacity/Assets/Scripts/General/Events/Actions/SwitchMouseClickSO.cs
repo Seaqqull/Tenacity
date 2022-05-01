@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Tenacity.General.Events.Actions
 {
     [CreateAssetMenu(menuName = "Events/Actions/SwitchMouseClick", fileName = "SwitchMouseClick", order = 0)]
-    public class SwitchMouseClick : ActionSO<bool>
+    public class SwitchMouseClickSO : ActionSO<bool>
     {
         protected override bool PerformAction()
         {
