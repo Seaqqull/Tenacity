@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68601af91525b78409d74317075d9ab6, type: 3}
+  m_Name: Battle Enemy
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 2644899836247186431, guid: f297edcf53f6fdd4489656b180bb9034, type: 3}
+  _health: 15

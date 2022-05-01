@@ -44,8 +44,7 @@ namespace Tenacity.Cards
 
         private void Start()
         {
-            if (Data != null)
-                _currentLife = Data.Life;
+            _currentLife = Data.Life;
         }
 
         public void GetDamaged(int power)

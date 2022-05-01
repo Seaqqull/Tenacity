@@ -18,6 +18,9 @@ namespace Tenacity.Battle
             MovingCreature
         }
 
+        [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private Vector3 _playerPos;
+
         [Header("Cards")]
         [SerializeField] private CardDeckManager _playerCardDeck;
         [SerializeField] private CardDeckPlacingController _cardDeckInputController;
@@ -26,17 +29,15 @@ namespace Tenacity.Battle
         [Header("Lands")]
         [SerializeField] private LandDeckPlacingController _landDeckInputController;
 
-
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI _manaUI;
-
-
-        public List<Card> PlayerCards => _playerCardDeck?.CardPack;
 
 
         public int CurrentMana { get; private set; }
         public PlayerActionMode CurrentPlayerMode { get; set; }
         public bool IsGameOver => PlayerCards?.Count == 0;
+
+        public List<Card> PlayerCards => _playerCardDeck?.CardPack;
         public LandDeckPlacingController LandDeckInputController { get => _landDeckInputController; }
         public CardDeckPlacingController CardDeckInputController { get => _cardDeckInputController; }
 
@@ -47,13 +48,18 @@ namespace Tenacity.Battle
             _creatureDraggingController.enabled = mode;
             _cardDeckInputController.enabled = mode;
         }
-
         private void UpdateMana(int dtMana, bool isReduced)
         {
             CurrentMana += (isReduced ? -dtMana : dtMana);
             _manaUI.text = "Mana: " + CurrentMana;
         }
 
+
+        public void Init(Land startLand)
+        {
+            var player = Instantiate(_playerPrefab, startLand.transform);
+            player.transform.localPosition = _playerPos;
+        }
 
         public bool PlaceDeckCardOnLand(Land land)
         {

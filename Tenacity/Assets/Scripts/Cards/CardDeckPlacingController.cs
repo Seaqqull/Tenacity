@@ -2,7 +2,6 @@
 using Tenacity.Battle;
 using Tenacity.Draggable;
 using UnityEngine;
-using UnityEngine.UI;
 using static Tenacity.Battle.BattlePlayerController;
 
 namespace Tenacity.Cards
@@ -26,7 +25,6 @@ namespace Tenacity.Cards
                 _player.CurrentPlayerMode = (value != null) ? PlayerActionMode.PlacingCard : PlayerActionMode.None;
             }
         }
-
         public bool IsCurrentlyPlacingCard => _player.CurrentPlayerMode == PlayerActionMode.PlacingCard;
 
 
@@ -38,7 +36,7 @@ namespace Tenacity.Cards
         private void Update()
         {
             if (CurrentlySelectedCard != null
-                && _player.CurrentPlayerMode == BattlePlayerController.PlayerActionMode.None)
+                && _player.CurrentPlayerMode == PlayerActionMode.None)
             {
                 CurrentlySelectedCard = null;
             }

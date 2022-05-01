@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6476134295628688842}
   - component: {fileID: 7511289226046749662}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PowerField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 40638956558966893}
   - component: {fileID: 4615736126520791072}
   - component: {fileID: 5915420482886465028}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Creature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 2218310020211257337}
   - component: {fileID: 722257125212883101}
   - component: {fileID: 1042950674498598477}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Power
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 3026180400553106937}
   - component: {fileID: 1840808577738588935}
   - component: {fileID: 3390766906902574276}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Life
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1635062467360630883}
   - component: {fileID: 8326218707175174011}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LifeField
   m_TagString: Untagged
   m_Icon: {fileID: 0}

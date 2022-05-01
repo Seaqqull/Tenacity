@@ -19,6 +19,7 @@ namespace Tenacity.Battle
         [SerializeField] private float _skipPobability;
         [SerializeField] private Material _enemyMaterial;
 
+        private int _currentMana;
         private List<Card> _enemyCards;
 
         public bool IsGameOver => _enemyCards.Where(item => item != null).Count() == 0;
@@ -41,8 +42,8 @@ namespace Tenacity.Battle
         //common
         private void UpdateMana(int dtMana, bool isReduced)
         {
-            _enemy.CurrentMana += (isReduced ? -dtMana : dtMana);
-            _manaUI.text = "Mana: " + _enemy.CurrentMana;
+            _currentMana += (isReduced ? -dtMana : dtMana);
+            _manaUI.text = "Mana: " + _currentMana;
         }
 
 
@@ -118,7 +119,7 @@ namespace Tenacity.Battle
         //place a card (replace)
         private void PlaceCard(Card selectedCard, List<Land> places)
         {
-            if (selectedCard.Data.CastingCost > _enemy.CurrentMana) return;
+            if (selectedCard.Data.CastingCost > _currentMana) return;
 
             Land selectedLand = SelectLandToPlaceCard(places, selectedCard.Data.Land);
             if (selectedLand == null) return;
@@ -194,7 +195,7 @@ namespace Tenacity.Battle
             for (int i = 0; i < _enemyCards.Count; i++)
             {
                 TryMakeMove(_enemyCards[i], places);
-                if (_enemy.CurrentMana == 0) break;
+                if (_currentMana == 0) break;
             }
         }
 

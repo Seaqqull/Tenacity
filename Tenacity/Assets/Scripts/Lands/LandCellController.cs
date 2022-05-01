@@ -34,32 +34,32 @@ namespace Tenacity.Lands
 
         public void OnMouseDown()
         {
-            if (_battle.CurrentBattleState == BattleManager.BattleState.WaitingForPlayerTurn)
+            if (!enabled) return;
+            if (_battle.CurrentBattleState != BattleManager.BattleState.WaitingForPlayerTurn) return;
+            
+            BattlePlayerController player = _battle.Player;
+            switch (player.CurrentPlayerMode)
             {
-                BattlePlayerController player = _battle.Player;
 
-                switch (player.CurrentPlayerMode){
+                case BattlePlayerController.PlayerActionMode.None | BattlePlayerController.PlayerActionMode.MovingCreature:
+                    return;
 
-                    case BattlePlayerController.PlayerActionMode.None | BattlePlayerController.PlayerActionMode.MovingCreature:
-                        return;
+                case BattlePlayerController.PlayerActionMode.PlacingLand:
 
-                    case BattlePlayerController.PlayerActionMode.PlacingLand:
+                    if (_land.Type != LandType.None) return;
 
-                        if (_land.Type != LandType.None) return;
+                    bool isPlaced = _land.ReplaceLand(player.LandDeckInputController.CurrentlySelectedLand);
+                    if (isPlaced) player.LandDeckInputController.DecreaseAvailableLandCardsCount();
 
-                        bool isPlaced = _land.ReplaceLand(player.LandDeckInputController.CurrentlySelectedLand);
-                        if (isPlaced) player.LandDeckInputController.DecreaseAvailableLandCardsCount();
+                    return;
 
-                        return;
+                case BattlePlayerController.PlayerActionMode.PlacingCard:
+                    if (_land.Type == LandType.None) return;
 
-                    case BattlePlayerController.PlayerActionMode.PlacingCard:
-                        if (_land.Type == LandType.None) return;
+                    bool isCardPlaced = player.PlaceDeckCardOnLand(_land);
+                    if (isCardPlaced) player.CurrentPlayerMode = BattlePlayerController.PlayerActionMode.None;
 
-                        bool isCardPlaced = player.PlaceDeckCardOnLand(_land);
-                        if (isCardPlaced) player.CurrentPlayerMode = BattlePlayerController.PlayerActionMode.None;
-
-                        return;
-                }
+                    return;
             }
         }
     }

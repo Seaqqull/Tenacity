@@ -2005,7 +2005,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624343770}
-  - component: {fileID: 624343772}
   - component: {fileID: 624343771}
   m_Layer: 0
   m_Name: -- Enemy
@@ -2041,7 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0508b8164a099f74fa645c7f51d842e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 624343772}
+  _enemy: {fileID: 0}
   _enemyCardDeck: {fileID: 1658569805}
   _enemyLandDeck:
   - {fileID: 5627179963964878470, guid: e92c805c48f72eb4cb5f207a2c4804a9, type: 3}
@@ -2053,19 +2052,6 @@ MonoBehaviour:
   _yPos: 0.61
   _skipPobability: 0
   _enemyMaterial: {fileID: 2100000, guid: bf8412d6713cb7e43a3fd0e00753e3ca, type: 2}
---- !u!114 &624343772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624343769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68601af91525b78409d74317075d9ab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
 --- !u!1 &640849145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbb952a462dd9e4caf575d220785f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _board: {fileID: 11400000, guid: 700bd165ef50ee14dbc39e8db32a21e6, type: 2}
+  _board: {fileID: 1339960429}
   _enemy: {fileID: 624343771}
   _player: {fileID: 1687361558}
   _turnStateTextField: {fileID: 341974909}
@@ -3640,7 +3626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 908.2, y: 489.8}
+  m_AnchoredPosition: {x: 908.2001, y: 489.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1028072074
@@ -4583,6 +4569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1339960426}
+  - component: {fileID: 1339960429}
   - component: {fileID: 1339960428}
   m_Layer: 0
   m_Name: --Board
@@ -4618,8 +4605,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b595861e73028e49b1df85fe786b2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _board: {fileID: 11400000, guid: 700bd165ef50ee14dbc39e8db32a21e6, type: 2}
   _emptyLandPrefab: {fileID: 5176409608187532844, guid: 120a4353f890cb741b72ba4aae584892, type: 3}
+  _textField: {fileID: 3229172390726915188, guid: 298339e4017d4c742a4c7cfd50093ba7, type: 3}
+--- !u!114 &1339960429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339960425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189a13bbc05a1f1409a7d6c5a88acc53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapRadius: 4
 --- !u!1 &1356959118
 GameObject:
   m_ObjectHideFlags: 0
@@ -5200,6 +5200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8094756fdfd43c2458d78bd11899cf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 1253020148265890633, guid: dfb24eec355abc443944ae6cf45fea25, type: 3}
+  _playerPos: {x: 0, y: 0.4, z: 0}
   _playerCardDeck: {fileID: 145637603}
   _cardDeckInputController: {fileID: 145637602}
   _creatureDraggingController: {fileID: 695182399}
@@ -5609,7 +5611,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4087
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5628,14 +5630,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767972156}
-  m_LocalRotation: {x: 0.35714552, y: 0, z: 0, w: 0.9340488}
-  m_LocalPosition: {x: 0, y: 10.9, z: -11.6}
+  m_LocalRotation: {x: 0.28932908, y: -0.38934356, z: 0.13027254, w: 0.86471343}
+  m_LocalPosition: {x: 12, y: 13.2, z: -10.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 41.85, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 37, y: -48.48, z: 0}
 --- !u!114 &1767972160
 MonoBehaviour:
   m_ObjectHideFlags: 0
