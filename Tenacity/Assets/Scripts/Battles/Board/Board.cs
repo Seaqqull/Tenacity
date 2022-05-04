@@ -23,14 +23,8 @@ namespace Tenacity.Battles.Boards
         private List<Land> _startPositions = new List<Land>();
         
         public List<Land> LandCells => _landsMap.Values.ToList();
-        public List<Land> StartPositions => _startPositions;   //tmp
         public int MapRadius => _mapRadius;
-        
 
-        public void AddStartPosition(Land land)
-        {
-            _startPositions.Add(land);
-        }
         
         public List<Land> GetCellNeighbors(Land cell)
         {

@@ -21,10 +21,12 @@ namespace Tenacity.Battles.Controllers
         [Header("The floats")]
         [SerializeField] private float _waitNextTurnTime = 0.5f;
 
+
         private readonly string[] _turnStateText = { "You", "Enemy" };
         public BattleState CurrentBattleState { get; private set; }
         public BattlePlayerController Player { get => _player; }
         public BattleEnemyController Enemy { get => _enemy; }
+
         
 
         private void Start()
@@ -37,6 +39,7 @@ namespace Tenacity.Battles.Controllers
 
         private void Update()
         {
+            if (CurrentBattleState == BattleState.Start) return;
             ManageGameState();
         }
 
@@ -48,8 +51,9 @@ namespace Tenacity.Battles.Controllers
         
         private void InitGame()
         {
-            Land playerLand = _board.StartPositions[0];
-            _player.Init(playerLand);
+            _player.Init(_board.LandCells[0]);
+            _enemy.Init(_board.LandCells[^1]);
+
         }
 
         private void PlayerTurn()
@@ -89,7 +93,7 @@ namespace Tenacity.Battles.Controllers
             _turnStateTextField.text = _turnStateText[1];
 
             yield return new WaitForSeconds(waitTime);
-            yield return _enemy.MakeMove(_board.LandCells, waitTime);
+            yield return _enemy.MakeMove(waitTime);
             yield return new WaitForSeconds(waitTime);
 
             PlayerTurn();

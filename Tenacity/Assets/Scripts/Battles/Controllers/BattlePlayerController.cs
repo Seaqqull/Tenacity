@@ -6,13 +6,15 @@ using Tenacity.Cards.Data;
 using Tenacity.Cards;
 using UnityEngine;
 using TMPro;
-
+using Tenacity.Battles.Lands.Data;
+using System;
+using System.Linq;
 
 namespace Tenacity.Battles.Controllers
 {
     public class BattlePlayerController : MonoBehaviour
     {
-        [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private BattleCharacterSO _player;
         [SerializeField] private Vector3 _playerPos;
         [Header("Cards")]
         [SerializeField] private CardDeckManager _playerCardDeck;
@@ -22,14 +24,26 @@ namespace Tenacity.Battles.Controllers
         [SerializeField] private LandDeckPlacingController _landDeckInputController;
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI _manaUI;
-        
-        public LandDeckPlacingController LandDeckInputController { get => _landDeckInputController; }
-        public CardDeckPlacingController CardDeckInputController { get => _cardDeckInputController; }
-        public List<Card> PlayerCards => _playerCardDeck?.CardPack;
+
+
+        private PlayerLandCellsController _availableLandCellsController = new();
+        private Dictionary<LandType, int> _landCounts;
+
+        public PlayerLandCellsController AvailableLandCellsController => _availableLandCellsController;
+        public List<Card> PlayerCards => _playerCardDeck != null ? _playerCardDeck.CardPack : null;
+        public LandDeckPlacingController LandDeckInputController => _landDeckInputController;
+        public CardDeckPlacingController CardDeckInputController => _cardDeckInputController;
+        public Dictionary<LandType, int> LandCounts => _landCounts;
         public PlayerActionMode CurrentPlayerMode { get; set; }
-        public bool IsGameOver => PlayerCards?.Count == 0;
+        public bool IsGameOver => Player.CurrentLife <= 0;
         public int CurrentMana { get; private set; }
-        
+        public Card Player { get; private set; }
+
+
+        private void Awake()
+        {
+            _landCounts = Enum.GetValues(typeof(LandType)).Cast<LandType>().ToList().GroupBy(x => x).ToDictionary(x => x.Key, x => 0);
+        }
 
         private void Activate(bool mode)
         {
@@ -47,8 +61,13 @@ namespace Tenacity.Battles.Controllers
 
         public void Init(Land startLand)
         {
-            var player = Instantiate(_playerPrefab, startLand.transform);
+            var player = Instantiate(_player.CharacterPrefab, startLand.transform);
+            Player = player.GetComponent<Card>();
+            Player.Data = _player;
+            Player.CurrentLife = _player.Life;
             player.transform.localPosition = _playerPos;
+            _availableLandCellsController.AddAvailableLand(startLand);
+            
         }
 
         public bool PlaceDeckCardOnLand(Land land)
@@ -57,6 +76,7 @@ namespace Tenacity.Battles.Controllers
 
             if (selectedCard.Data.CastingCost > CurrentMana) return false;
             if (!(land.IsAvailableForCards && land.Type.HasFlag(selectedCard.Data.Land)) ) return false;
+            if (!_availableLandCellsController.IsLandAvailable(land)) return false;
 
             PlayerCards.Remove(selectedCard);
             Card creature = CardManager.CreateCardCreatureOnBoard(selectedCard, land);
@@ -77,5 +97,9 @@ namespace Tenacity.Battles.Controllers
             Activate(isEnable);
         }
 
+        public void AddLandCount(LandType landType)
+        {
+            _landCounts[landType]++;
+        }
     }
 }

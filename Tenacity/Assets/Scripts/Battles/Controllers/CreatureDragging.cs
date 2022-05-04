@@ -101,7 +101,7 @@ namespace Tenacity.Battles.Controllers
         private void DropCreatureOnEnemy(Card enemyCard)
         {
             var targetCreature = enemyCard.gameObject.GetComponentInChildren<Card>();
-            if (!_player.PlayerCards.Contains(targetCreature))
+            if (!_player.PlayerCards.Contains(targetCreature) && _player.Player != enemyCard)
                  _selectedCreature.gameObject.GetComponent<CreatureController>()?.Attack(targetCreature);
         }
         

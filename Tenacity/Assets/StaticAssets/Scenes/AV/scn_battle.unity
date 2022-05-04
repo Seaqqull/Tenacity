@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ee628ffd7cf22b42ac8781098829c91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d77cedb26793ab4296a6889f927d0ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2040,7 +2040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0508b8164a099f74fa645c7f51d842e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
+  _enemy: {fileID: 11400000, guid: 7c7e3543623b98c40a3653513ca32bfe, type: 2}
+  _enemyPos: {x: 0, y: 0.4, z: 0}
   _enemyCardDeck: {fileID: 1658569805}
   _enemyLandDeck:
   - {fileID: 5627179963964878470, guid: e92c805c48f72eb4cb5f207a2c4804a9, type: 3}
@@ -3564,7 +3565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940446839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9, z: -6.6}
+  m_LocalPosition: {x: 0, y: 9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3585,10 +3586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _battle: {fileID: 695182400}
   _linePrefab: {fileID: -9204921101941639112, guid: f350df59c33ee481abe149f894be3142, type: 3}
-  _material: {fileID: 2100000, guid: a4e4206b03393b64b97832f155352a9d, type: 2}
-  _lineWidth: 0.05
   _distance: 1000
-  _offset: {x: 0, y: 6.3, z: -7}
+  _offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1019150671
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,7 +4554,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6422701816651582553, guid: c832b0411d5f4ae4989c1ad8ac05021c, type: 3}
   m_PrefabInstance: {fileID: 1178685684}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2024585833}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3ce6104fffec1418b9641ed212d759, type: 3}
@@ -5201,7 +5200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8094756fdfd43c2458d78bd11899cf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 1253020148265890633, guid: dfb24eec355abc443944ae6cf45fea25, type: 3}
+  _player: {fileID: 11400000, guid: e6fbe3e206fb5ab48965591503928df6, type: 2}
   _playerPos: {x: 0, y: 0.4, z: 0}
   _playerCardDeck: {fileID: 145637603}
   _cardDeckInputController: {fileID: 145637602}
@@ -5905,7 +5904,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1796529164
 Canvas:
   m_ObjectHideFlags: 0
@@ -5915,7 +5914,7 @@ Canvas:
   m_GameObject: {fileID: 1796529161}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 1767972158}
   m_PlaneDistance: 10
   m_PixelPerfect: 1
@@ -5934,9 +5933,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796529161}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.28932908, y: -0.38934356, z: 0.13027254, w: 0.86471343}
+  m_LocalPosition: {x: 0, y: 0, z: -5.5259943}
+  m_LocalScale: {x: 0.0074074073, y: 0.0074074073, z: 0.0074074073}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1178685685}
@@ -5947,9 +5946,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 6.02042, y: 7.1818495}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1803867216
 GameObject:
   m_ObjectHideFlags: 0
@@ -6613,6 +6612,26 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &2024585833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1410098366207914565, guid: c832b0411d5f4ae4989c1ad8ac05021c, type: 3}
+  m_PrefabInstance: {fileID: 1178685684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2024585836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024585833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2051186169
 GameObject:
   m_ObjectHideFlags: 0
