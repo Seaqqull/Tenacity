@@ -47,6 +47,7 @@ namespace Tenacity.Managers
             add { _onMouseMove.AddListener(value); }
             remove { _onMouseMove.RemoveListener(value); }
         }
+        public bool MouseHoverVisible { get; set; } = true;
         public bool MouseClickBlocked { get; set; }
         public bool MouseActionAllowed
         {
@@ -108,7 +109,9 @@ namespace Tenacity.Managers
             {
                 var mouseHitInfo = RaycastManager.Instance.GetMovementPoint();
                 
-                if (mouseHitInfo.HitSomePosition != _mouseHover.activeSelf)
+                if (!MouseHoverVisible && _mouseHover.activeSelf)
+                    _mouseHover.SetActive(false);
+                else if (MouseHoverVisible && (mouseHitInfo.HitSomePosition != _mouseHover.activeSelf))
                     _mouseHover.SetActive(mouseHitInfo.HitSomePosition);
                 if (mouseHitInfo.HitSomePosition)
                 {
@@ -158,7 +161,7 @@ namespace Tenacity.Managers
             StartCoroutine(LoadScene((_levelIndex == -1) ? 1 : _levelIndex, levelIndex, screenName));
             _levelIndex = levelIndex;
         }
-        
+
         public void HideMouseClick()
         {
             _mouseClick.SetActive(false);
@@ -176,8 +179,8 @@ namespace Tenacity.Managers
             _mouseClick.transform.rotation = Quaternion.FromToRotation(Vector3.up, mouseHitInfo.HitData.Normal);
             _mouseClick.transform.position = mouseHitInfo.HitData.Position + (mouseHitInfo.HitData.Normal * _mouseUpShiftPositioning);
         }
-        
 
+        
         public void AttachDialog(Dialog dialog)
         {
             if(!IsDialogAttached(dialog))
