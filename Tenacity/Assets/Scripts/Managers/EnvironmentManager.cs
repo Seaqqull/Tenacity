@@ -17,6 +17,8 @@ namespace Tenacity.Managers
         
         [SerializeField] [Range(0.0f, SECONDS_IN_DAY)] private float _gameTime;
         [SerializeField] private TMP_Text _timeText;
+        [field: Space] 
+        [field: SerializeField] public bool GameTimePaused { get; set; }
         [field: SerializeField] [field: Range(0.0f, 10000)] public float GameTimeScale { get; set; } = 1.0f;
         [Header("Lighting")]
         [SerializeField] private PolyverseSkies _sky;
@@ -52,7 +54,7 @@ namespace Tenacity.Managers
 
         private void Update()
         {
-            var timeChangeStep = (Time.deltaTime * GameTimeScale);
+            var timeChangeStep = (Time.deltaTime * (GameTimePaused? 0.0f : GameTimeScale));
             GameTime += timeChangeStep; 
 
             // Update light parameters
@@ -85,19 +87,7 @@ namespace Tenacity.Managers
         {
             StorageManager.Instance.Time = _gameTime;
         }
-
-
-        public void PauseGameTime()
-        {
-            _actualGameTimeScale = GameTimeScale;
-            GameTimeScale = 0.0f;
-        }
-
-        public void ResumeGameTime()
-        {
-            GameTimeScale = _actualGameTimeScale;
-        }
-
+        
 
         public static float TimeFromDate(DateTime time)
         {
