@@ -38,7 +38,7 @@ namespace Tenacity.Managers
                 _gameTime = value;
                 _gameTime %= SECONDS_IN_DAY;
                 if (_gameTime < 0.0f)
-                    _gameTime = SECONDS_IN_DAY - _gameTime;
+                    _gameTime = SECONDS_IN_DAY + _gameTime;
             }
         }
 
