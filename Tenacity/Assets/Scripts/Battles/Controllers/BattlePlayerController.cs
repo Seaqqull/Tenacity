@@ -35,7 +35,7 @@ namespace Tenacity.Battles.Controllers
         public CardDeckPlacingController CardDeckInputController => _cardDeckInputController;
         public Dictionary<LandType, int> LandCounts => _landCounts;
         public PlayerActionMode CurrentPlayerMode { get; set; }
-        public bool IsGameOver => Player.CurrentLife <= 0;
+        public bool IsGameOver => (Player.CurrentLife <= 0 ||  PlayerCards.Count <= 0);
         public int CurrentMana { get; private set; }
         public Card Player { get; private set; }
 
