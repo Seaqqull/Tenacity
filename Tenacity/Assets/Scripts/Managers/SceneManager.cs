@@ -35,7 +35,7 @@ namespace Tenacity.Managers
         private Coroutine _hideDialogDelayCoroutine;
         private Coroutine _hideMouseDelayCoroutine;
         private Coroutine _mouseHoverRoutine;
-        private int _levelIndex = - 1;
+        //private int LevelIndex = - 1;
         
         public event UnityAction<MouseHitInfo> MouseClick
         {
@@ -53,6 +53,9 @@ namespace Tenacity.Managers
         {
             get => (_activeDialogs.Count == 0) && (_hideDialogDelayCoroutine == null) && !MouseClickBlocked;
         }
+
+        public string LevelName { get; private set; }
+        public int LevelIndex { get; private set; } = -1;
 
 
         private void Start()
@@ -148,18 +151,14 @@ namespace Tenacity.Managers
             
             loader.Load(sceneToLoad);
         }
-
-
-        public void LoadMainMenu()
-        {
-            StartCoroutine(LoadScene(_levelIndex, 0));
-            _levelIndex = -1;
-        }
+        
 
         public void LoadMainGame(int levelIndex = 1, string screenName = "")
         {
-            StartCoroutine(LoadScene((_levelIndex == -1) ? 1 : _levelIndex, levelIndex, screenName));
-            _levelIndex = levelIndex;
+            StartCoroutine(LoadScene((LevelIndex == -1) ? 1 : LevelIndex, levelIndex, screenName));
+
+            LevelIndex = levelIndex;
+            LevelName = screenName;
         }
 
         public void HideMouseClick()

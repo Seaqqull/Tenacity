@@ -1,8 +1,8 @@
 using Tenacity.General.Weather;
+using Tenacity.UI.Additional;
 using Tenacity.Base;
 using UnityEngine;
 using System;
-using TMPro;
 
 
 namespace Tenacity.Managers
@@ -16,7 +16,7 @@ namespace Tenacity.Managers
         #endregion
         
         [SerializeField] [Range(0.0f, SECONDS_IN_DAY)] private float _gameTime;
-        [SerializeField] private TMP_Text _timeText;
+        [SerializeField] private DoubleText _timeText;
         [field: Space] 
         [field: SerializeField] public bool GameTimePaused { get; set; }
         [field: SerializeField] [field: Range(0.0f, 10000)] public float GameTimeScale { get; set; } = 1.0f;
@@ -71,7 +71,7 @@ namespace Tenacity.Managers
                 timeOfDay.Hours, 
                 timeOfDay.Minutes, 
                 timeOfDay.Seconds);
-            _timeText.text = timeOfDayFormated;
+            _timeText.Text = timeOfDayFormated;
             
             _sky.timeOfDay = scaledDirectionalTimeProgress;
 

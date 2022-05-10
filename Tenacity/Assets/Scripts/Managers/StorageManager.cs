@@ -10,7 +10,9 @@ namespace Tenacity.Managers
         private const string CAMERA_UI = "UICamera";
         #endregion
 
-        public EnvironmentManager Environment { get; private set; }
+        private Vector3 _defaultPlayerPosition;
+        private bool _updatePlayerData;
+        
         public Camera MainCamera { get; private set; }
         public Camera UICamera { get; private set; }
         public float TimeScale { get; private set; }
@@ -37,8 +39,21 @@ namespace Tenacity.Managers
                 EnvironmentManager.Instance.GameTimeScale = TimeScale;
                 EnvironmentManager.Instance.GameTime = Time;   
             }
+            
+            // Player
+            if (_updatePlayerData && (PlayerManager.Instance != null))
+            {
+                _updatePlayerData = false;
+                PlayerManager.Instance.transform.position = _defaultPlayerPosition;
+            }
         }
 
+
+        public void UpdatePlayerPosition(Vector3 newPosition)
+        {
+            _updatePlayerData = true;
+            _defaultPlayerPosition = newPosition;
+        }
 
         public void UpdateTimeScale(float scale)
         {

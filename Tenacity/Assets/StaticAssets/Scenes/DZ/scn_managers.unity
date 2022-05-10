@@ -1133,6 +1133,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 788686653}
+        m_TargetAssemblyTypeName: Tenacity.Managers.SceneManager, Tenacity.Managers
+        m_MethodName: set_MouseHoverVisible
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _onMouseMove:
     m_PersistentCalls:
       m_Calls: []
@@ -1202,6 +1214,7 @@ MonoBehaviour:
   - {fileID: 5858328834560556740, guid: 9756281e96e144ee9a127b7c31737761, type: 3}
   - {fileID: 8939480345808879828, guid: 0fca13e1e267445cb93b07a4d319aa02, type: 3}
   - {fileID: 4436136292395347322, guid: 225814853a55e4df9aaed2cffaa8755e, type: 3}
+  - {fileID: 700055194410323407, guid: 2a9b0d6506dc64fbfb7aa22ea8be31aa, type: 3}
 --- !u!4 &788686658
 Transform:
   m_ObjectHideFlags: 0
@@ -1217,6 +1230,7 @@ Transform:
   - {fileID: 1115008416}
   - {fileID: 1393587694}
   - {fileID: 1304408496}
+  - {fileID: 1412172636}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1513,6 +1527,68 @@ Transform:
   m_Father: {fileID: 788686658}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1412172635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1412172636}
+  - component: {fileID: 1412172638}
+  - component: {fileID: 1412172637}
+  m_Layer: 0
+  m_Name: Saves
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1412172636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412172635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 788686658}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1412172637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412172635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758d8e9a743a42359bbd4194f990474b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewritable: 0
+  _dontDestroyOnLoad: 0
+--- !u!114 &1412172638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412172635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbc6865c7b14ed1a97eacc69e686101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewritable: 0
+  _dontDestroyOnLoad: 0
+  _databasePath: SaveDatabase.data
 --- !u!1 &1758224290 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 575561249003568636, guid: 7fe63c77f61454433a852f085c7c3d23, type: 3}
