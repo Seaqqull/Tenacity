@@ -23,6 +23,7 @@ namespace Tenacity.General.Events.Actions
                 SceneManager.Instance.MouseClickBlocked = true;
             else
                 SceneManager.Instance.UnblockMouseWithDelay();
+            SceneManager.Instance.MouseHoverVisible = !mouseBlocked;
         }
     }
 }

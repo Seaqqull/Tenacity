@@ -1,30 +1,39 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
+using Tenacity.Base;
+using System.Linq;
+using UnityEngine;
+using TMPro;
+
 
 namespace Tenacity.Cards
 {
-    public class CardDataDisplay : MonoBehaviour
+    public class CardDataDisplay : BaseMono
     {
-        private Card card;
         private Dictionary<string, Transform> cardComponents;
+        private Card card;
 
+        
         private void Start()
         {
             if (TryGetComponent(out card))
-            {
                 DisplayCardValues();
-            }
+        }
+
+        
+        public void UpdateLife()
+        {
+            if (card == null) TryGetComponent(out card);
+            
+            cardComponents = Transform.GetComponentsInChildren<Transform>().ToDictionary(item => item.name, item => item);
+            SetCardValue(cardComponents[nameof(Card.Data.Life)], card.CurrentLife.ToString());
         }
 
         public void DisplayCardValues()
         {
             if (card == null ||  card.Data == null) return;
 
-            cardComponents = transform.GetComponentsInChildren<Transform>().ToDictionary(item => item.name, item => item);
+            cardComponents = Transform.GetComponentsInChildren<Transform>().ToDictionary(item => item.name, item => item);
             foreach (var prop in card.Data.CardProperties)
             {
                 if (!cardComponents.ContainsKey(prop.Name)) continue;
@@ -53,13 +62,6 @@ namespace Tenacity.Cards
             {
                 image.sprite = Resources.Load<Sprite>($"Sprites/Cards/card_{value}");
             }
-        }
-
-        public void UpdateLife()
-        {
-            if (card == null) TryGetComponent(out card);
-            cardComponents = transform.GetComponentsInChildren<Transform>().ToDictionary(item => item.name, item => item);
-            SetCardValue(cardComponents[nameof(Card.Data.Life)], card.CurrentLife.ToString());
         }
     }
 }

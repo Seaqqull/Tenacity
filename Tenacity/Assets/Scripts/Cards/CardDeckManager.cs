@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Tenacity.PlayerInventory;
+using Tenacity.Cards.Inventory;
 using UnityEngine;
+
 
 namespace Tenacity.Cards
 {
@@ -11,49 +10,49 @@ namespace Tenacity.Cards
         [SerializeField] private Card _cardPrefab;
         [SerializeField] private Transform[] _cardPositions;
         [SerializeField] private InventoryData _inventoryCards;
-        [SerializeField] private List<CardData> _cardsDataPack = new List<CardData>();
+        [SerializeField] private List<CardDataSO> _cardsDataPack = new List<CardDataSO>();
+        
+        public List<Card> CardPack { get; private set; } = new List<Card>();
 
-
-        private List<Card> _cardPack = new List<Card>();
-
-
-        public List<Card> CardPack => _cardPack;
 
         private void Awake()
         {
-            if (_inventoryCards == null || _cardPositions == null) return;
+            if ((_inventoryCards == null) || (_cardPositions == null)) return;
 
             _cardsDataPack = GetRandomCardsFromLInventory(_inventoryCards.Cards, _cardPositions.Length);
             InitCardDeck(_cardsDataPack);
         }
 
-        private void InitCardDeck(List<CardData> cardDataPack)
+        
+        private void InitCardDeck(List<CardDataSO> cardDataPack)
         {
             if (cardDataPack.Count <= 0) return;
 
-            List<CardData> copyPack = new List<CardData>(cardDataPack);
+            var copyPack = new List<CardDataSO>(cardDataPack);
             for (int i = 0; i < _cardPositions.Length; i++)
             {
                 var cardData = copyPack[Random.Range(0, copyPack.Count)];
                 var createdCard = AddCardToDeck(cardData, i);
+                
                 copyPack.Remove(cardData);
-                _cardPack.Add(createdCard);
+                CardPack.Add(createdCard);
             }
         }
 
-        private Card AddCardToDeck(CardData cardData, int slotId)
+        private Card AddCardToDeck(CardDataSO cardData, int slotId)
         {
             Card card = Instantiate(_cardPrefab, _cardPositions[slotId]);
             card.GetComponent<RectTransform>().SetParent(_cardPositions[slotId]);
-            card.Data = cardData;
             card.gameObject.SetActive(true);
+            card.Data = cardData;
+            
             return card;
         }
 
-        private List<CardData> GetRandomCardsFromLInventory(List<CardData> list, int number)
+        private List<CardDataSO> GetRandomCardsFromLInventory(List<CardDataSO> list, int number)
         {
-            List<CardData> tmpList = new List<CardData>(list);
-            List<CardData> newList = new List<CardData>();
+            var tmpList = new List<CardDataSO>(list);
+            var newList = new List<CardDataSO>();
 
             while (newList.Count < number && tmpList.Count > 0)
             {
