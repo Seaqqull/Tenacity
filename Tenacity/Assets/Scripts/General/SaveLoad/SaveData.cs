@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -61,5 +62,36 @@ namespace Tenacity.General.SaveLoad.Data
     {
         public string Title;
         public HashSet<SaveSnap> Data = new();
+    }
+    
+    [System.Serializable]
+    public class SnapshotDatabase : ISerializable
+    {
+        public List<SaveSnapshot> Snapshots { get; set; } = new ();
+
+        
+        public SnapshotDatabase()
+        {
+            Snapshots = new List<SaveSnapshot>();
+        }
+        
+        public SnapshotDatabase(IEnumerable<SaveSnapshot> snapshots)
+        {
+            Snapshots = new List<SaveSnapshot>(snapshots);
+        }
+        
+        public SnapshotDatabase(SnapshotDatabase database) : this(database.Snapshots) { }
+
+        
+        public SnapshotDatabase(SerializationInfo info, StreamingContext context)
+        {
+            Snapshots = (List<SaveSnapshot>) info.GetValue(nameof(Snapshots), typeof(List<SaveSnapshot>));
+        }
+        
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue(nameof(Snapshots), Snapshots, typeof(List<SaveSnapshot>));
+        }
     }
 }

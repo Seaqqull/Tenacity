@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189a13bbc05a1f1409a7d6c5a88acc53, type: 3}
-  m_Name: Board(r4)
+  m_Script: {fileID: 11500000, guid: 684587d257f54c028f5cd14e9f5a780b, type: 3}
+  m_Name: BlockMouseClickForPeriod
   m_EditorClassIdentifier: 
-  _mapRadius: 4

@@ -123,7 +123,7 @@ namespace Tenacity.Managers
             if (savedData == null)
                 return;
 
-            StorageManager.Instance.Time = savedData.GameTime;
+            StorageManager.Instance.UpdateTime(savedData.GameTime);
             StorageManager.Instance.UpdateTimeScale(savedData.GameTimeScale);
             StorageManager.Instance.UpdatePlayerPosition(savedData.PlayerPosition);
             

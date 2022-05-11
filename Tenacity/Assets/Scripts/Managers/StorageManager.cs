@@ -16,7 +16,7 @@ namespace Tenacity.Managers
         public Camera MainCamera { get; private set; }
         public Camera UICamera { get; private set; }
         public float TimeScale { get; private set; }
-        public float Time { get; set; }
+        public float Time { get; private set; }
 
 
         private void Start()
@@ -55,6 +55,13 @@ namespace Tenacity.Managers
             _defaultPlayerPosition = newPosition;
         }
 
+        public void UpdateTime(float time)
+        {
+            Time = time;
+            if (EnvironmentManager.Instance != null)
+                EnvironmentManager.Instance.GameTime = Time;
+        }
+        
         public void UpdateTimeScale(float scale)
         {
             PlayerPrefsManager.Instance.SetFloat(Utility.Constants.Game.TIME_SCALE, scale);

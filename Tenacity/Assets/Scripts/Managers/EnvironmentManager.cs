@@ -58,14 +58,14 @@ namespace Tenacity.Managers
             GameTime += timeChangeStep; 
 
             // Update light parameters
-            bool lessThanHalfLimit = (_gameTime <= HALF_SECONDS_IN_DAY);
-            float scaledTimeProgress = (lessThanHalfLimit) ? (_gameTime / HALF_SECONDS_IN_DAY) :
-                (((_gameTime - HALF_SECONDS_IN_DAY)) / HALF_SECONDS_IN_DAY);
+            bool lessThanHalfLimit = (GameTime <= HALF_SECONDS_IN_DAY);
+            float scaledTimeProgress = (lessThanHalfLimit) ? (GameTime / HALF_SECONDS_IN_DAY) :
+                (((GameTime - HALF_SECONDS_IN_DAY)) / HALF_SECONDS_IN_DAY);
             float scaledDirectionalTimeProgress = (lessThanHalfLimit) ? scaledTimeProgress : (1.0f - scaledTimeProgress);
             float transitionProgress = (lessThanHalfLimit)
                 ? _dayNightParameters.DayToNightTransition.Evaluate(scaledTimeProgress)
                 : _dayNightParameters.NightToDayTransition.Evaluate(scaledTimeProgress);
-            TimeSpan timeOfDay = TimeSpan.FromSeconds(Mathf.Abs(HALF_SECONDS_IN_DAY + _gameTime));
+            TimeSpan timeOfDay = TimeSpan.FromSeconds(Mathf.Abs(HALF_SECONDS_IN_DAY + GameTime));
             
             string timeOfDayFormated = string.Format(TIME_FORMAT, 
                 timeOfDay.Hours, 
@@ -85,7 +85,7 @@ namespace Tenacity.Managers
 
         private void OnDestroy()
         {
-            StorageManager.Instance.Time = _gameTime;
+            StorageManager.Instance.UpdateTime(GameTime);
         }
         
 

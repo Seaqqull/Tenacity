@@ -31,11 +31,11 @@ namespace Tenacity.Managers
         [SerializeField] private VectorEvent _onMouseMove;
         [SerializeField] private VectorEvent _onMouseClick;
 
-        private List<Dialog> _activeDialogs = new List<Dialog>();
+        private List<Dialog> _activeDialogs = new ();
         private Coroutine _hideDialogDelayCoroutine;
+        private Coroutine _blockMouseClickCoroutine;
         private Coroutine _hideMouseDelayCoroutine;
         private Coroutine _mouseHoverRoutine;
-        //private int LevelIndex = - 1;
         
         public event UnityAction<MouseHitInfo> MouseClick
         {
@@ -47,16 +47,15 @@ namespace Tenacity.Managers
             add { _onMouseMove.AddListener(value); }
             remove { _onMouseMove.RemoveListener(value); }
         }
+        public int LevelIndex { get; private set; } = -1;
+        public string LevelName { get; private set; }
         public bool MouseHoverVisible { get; set; } = true;
         public bool MouseClickBlocked { get; set; }
         public bool MouseActionAllowed
         {
             get => (_activeDialogs.Count == 0) && (_hideDialogDelayCoroutine == null) && !MouseClickBlocked;
         }
-
-        public string LevelName { get; private set; }
-        public int LevelIndex { get; private set; } = -1;
-
+        
 
         private void Start()
         {
@@ -96,9 +95,12 @@ namespace Tenacity.Managers
             _hideDialogDelayCoroutine = null;
         }
         
-        private IEnumerator UnblockMouseRoutine()
+        private IEnumerator UnblockMouseRoutine(float period = -1.0f, bool blockMouse = false)
         {
-            yield return new WaitForSeconds(HIDE_DIALOG_DELAY);
+            if (blockMouse)
+                MouseClickBlocked = true;
+            
+            yield return new WaitForSeconds((period <= 0.0f) ? HIDE_DIALOG_DELAY : period);
             
             _hideMouseDelayCoroutine = null;
             MouseClickBlocked = false;
@@ -166,9 +168,9 @@ namespace Tenacity.Managers
             _mouseClick.SetActive(false);
         }
 
-        public void UnblockMouseWithDelay()
+        public void UnblockMouseWithDelay(float period = -1.0f, bool blockMouse = false)
         {
-            _hideMouseDelayCoroutine = StartCoroutine(UnblockMouseRoutine());
+            _hideMouseDelayCoroutine = StartCoroutine(UnblockMouseRoutine(period, blockMouse));
         }
 
         public void SetClickPosition(Vector3 position)

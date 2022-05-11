@@ -73,7 +73,7 @@ namespace Tenacity.UI
                     return;
                 _selectedSnapshot = interactedSnapshot;
             }
-            else if (interactedSnapshot.Selected) // Deselect current / Select new
+            else if ((interactedSnapshot != null) && interactedSnapshot.Selected) // Deselect current / Select new
             {
                 var temporarySnapshot = _selectedSnapshot;
                 _selectedSnapshot = null;
@@ -118,8 +118,10 @@ namespace Tenacity.UI
 
         public void LoadData()
         {
-            MenuManager.Instance.CloseAllMenus();
+            if (_selectedSnapshot == null)
+                return;
             
+            MenuManager.Instance.CloseAllMenus();
             SaveLoadManager.Instance.Load(_snapshots.IndexOf(_selectedSnapshot));
         }
 
@@ -133,7 +135,13 @@ namespace Tenacity.UI
 
             _snapshots.RemoveAt(indexToRemove);
             Destroy(_selectedSnapshot.gameObject);
-            _selectedSnapshot = null;
+            
+            
+            OnSnapshotSelection(null);
+            
+            var snapshotCounter = 1;
+            foreach (var snapshot in _snapshots)
+                snapshot.ScreenText = (snapshotCounter++).ToString();
         }
 
         public void SetMenuState(MenuState state)
