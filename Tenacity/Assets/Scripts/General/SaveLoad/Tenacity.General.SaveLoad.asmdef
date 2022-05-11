@@ -1,0 +1,16 @@
+{
+    "name": "Tenacity.General.SaveLoad",
+    "rootNamespace": "Tenacity.General.SaveLoad",
+    "references": [
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

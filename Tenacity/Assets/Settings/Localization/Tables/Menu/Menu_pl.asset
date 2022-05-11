@@ -58,6 +58,22 @@ MonoBehaviour:
     m_Localized: Skala czasu
     m_Metadata:
       m_Items: []
+  - m_Id: 48291623321198592
+    m_Localized: "Zapisz/Za\u0142aduj"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48293813272174592
+    m_Localized: Zapisz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48293813276368896
+    m_Localized: "Za\u0142aduj"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48293813276368897
+    m_Localized: "Usun\u0105\u0107"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

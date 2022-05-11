@@ -130,6 +130,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 451653638}
     m_Modifications:
+    - target: {fileID: 4498094376054410222, guid: a14de68ff6bb043d896f7e4a542a7182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498094376054410222, guid: a14de68ff6bb043d896f7e4a542a7182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498094376054410222, guid: a14de68ff6bb043d896f7e4a542a7182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: dc3e39c80d3f144f0a2c978ba6af9ca2, type: 2}
+    - target: {fileID: 4498094376054410222, guid: a14de68ff6bb043d896f7e4a542a7182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498094376054410222, guid: a14de68ff6bb043d896f7e4a542a7182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: BlockMouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498094376054410222, guid: a14de68ff6bb043d896f7e4a542a7182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Tenacity.General.Events.Actions.BlockMouseClickForPeriodSO, Tenacity.General.Events
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498094376054410222, guid: a14de68ff6bb043d896f7e4a542a7182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8700920060424108815, guid: a14de68ff6bb043d896f7e4a542a7182, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
