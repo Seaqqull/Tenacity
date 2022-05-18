@@ -17,9 +17,12 @@ MonoBehaviour:
   castingCost: 0
   life: 10
   power: 0
-  type: 0
+  type: 4
   rarity: 0
   cardText: Player character
   landType: -1
   landCost: 0
+  range: 0
+  movement: 0
+  evaluation: 0
   _characterPrefab: {fileID: 1751676914615565923, guid: 6816f0b44a7839f4b9b512194f475e52, type: 3}

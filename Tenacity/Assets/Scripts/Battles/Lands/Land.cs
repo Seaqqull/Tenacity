@@ -44,6 +44,10 @@ namespace Tenacity.Battles.Lands
             get => _cellId;
             set => _cellId = value;
         }
+        public Vector2 CellPosition
+        {
+            get; set;
+        }
 
 
         private void Awake()

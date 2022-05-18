@@ -46,6 +46,8 @@ namespace Tenacity.Cards
         
         public void GetDamaged(int power)
         {
+            if (power == 0) return;
+
             _currentLife -= power;
             if (_currentLife <= 0)
             {

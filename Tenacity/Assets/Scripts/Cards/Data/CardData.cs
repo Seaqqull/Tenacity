@@ -22,5 +22,6 @@ namespace Tenacity.Cards.Data
         Creature = 0,
         Structure = 1,
         Event = 2,
+        Hero = 4
     }
 }

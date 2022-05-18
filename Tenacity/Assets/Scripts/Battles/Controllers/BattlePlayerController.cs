@@ -17,7 +17,7 @@ namespace Tenacity.Battles.Controllers
         [SerializeField] private BattleCharacterSO _player;
         [SerializeField] private Vector3 _playerPos;
         [Header("Cards")]
-        [SerializeField] private CardDeckManager _playerCardDeck;
+        [SerializeField] private BattleCardDeckManager _playerCardDeck;
         [SerializeField] private CardDeckPlacingController _cardDeckInputController;
         [SerializeField] private CreatureDragging _creatureDraggingController;
         [Header("Lands")]
@@ -26,10 +26,10 @@ namespace Tenacity.Battles.Controllers
         [SerializeField] private TextMeshProUGUI _manaUI;
 
 
-        private PlayerLandCellsController _availableLandCellsController = new();
+        private HeroLandCellsController _availableLandCellsController = new();
         private Dictionary<LandType, int> _landCounts;
 
-        public PlayerLandCellsController AvailableLandCellsController => _availableLandCellsController;
+        public HeroLandCellsController AvailableLandCellsController => _availableLandCellsController;
         public List<Card> PlayerCards => _playerCardDeck != null ? _playerCardDeck.CardPack : null;
         public LandDeckPlacingController LandDeckInputController => _landDeckInputController;
         public CardDeckPlacingController CardDeckInputController => _cardDeckInputController;

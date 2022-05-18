@@ -16,10 +16,13 @@ MonoBehaviour:
   cardName: Boss
   castingCost: 0
   life: 15
-  power: 1
-  type: 0
+  power: 0
+  type: 4
   rarity: 0
   cardText: Boss
   landType: -1
-  landCost: 2
+  landCost: 0
+  range: 0
+  movement: 0
+  evaluation: 0
   _characterPrefab: {fileID: 1751676914615565923, guid: 4bbb9195fec38bd448ef0c0e754ba2ef, type: 3}

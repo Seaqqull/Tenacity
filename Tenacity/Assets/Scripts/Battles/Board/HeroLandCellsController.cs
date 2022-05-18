@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Tenacity.Battles.Lands;
+using Tenacity.Cards;
 using UnityEngine;
 
 namespace Tenacity.Battles.Controllers
 {
-    public class PlayerLandCellsController
+    public class HeroLandCellsController
     {
         private HashSet<Land> _availableLands = new HashSet<Land>();
 
-        public HashSet<Land> AvailableLands => _availableLands;
-
+        public List<Land> AvailableLands => _availableLands.ToList();
+        public List<Land> FreeAvailableLands => AvailableLands.FindAll(land => !land.GetComponentInChildren<Card>()).ToList();
+            
         public void AddAvailableLand(Land land)
         {
             if (land == null) return;

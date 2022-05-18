@@ -22,6 +22,7 @@ namespace Tenacity.Cards.Inventory
         public bool AddItem(Card item)
         {
             if (_cards.Count == _maxSize) return false;
+            if (_cards.Contains(item.Data)) return false;
 
             _cards.Add(item.Data);
             return true;

@@ -76,7 +76,7 @@ namespace Tenacity.Battles.Boards
 
             _board.AddCell(land, x, y);
 
-            tmpCellCounter(landGO);    
+            //tmpCellCounter(landGO);    
         }
         
     }
