@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -347,6 +347,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4950459357709837307, guid: cb1bfddfd4fab864c978cbb155192fae, type: 3}
   m_PrefabInstance: {fileID: 4950459358940043975}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1362205199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3559957878303569529, guid: cb1bfddfd4fab864c978cbb155192fae, type: 3}
+  m_PrefabInstance: {fileID: 4950459358940043975}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a668ce8df9554884cb7ff5d1f6efcad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1429062028
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +753,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551771362967756290, guid: cb1bfddfd4fab864c978cbb155192fae, type: 3}
+      propertyPath: _cardDeck
+      value: 
+      objectReference: {fileID: 1362205199}
     - target: {fileID: 2551771363038572358, guid: cb1bfddfd4fab864c978cbb155192fae, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -866,6 +881,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3559957878303569529, guid: cb1bfddfd4fab864c978cbb155192fae, type: 3}
+      propertyPath: _cardDeckButton
+      value: 
+      objectReference: {fileID: 7127692843589154267, guid: f21c8090847dc3a4c85ac7879ea7beed, type: 3}
     - target: {fileID: 4950459357341352689, guid: cb1bfddfd4fab864c978cbb155192fae, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1078,5 +1097,6 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.43529415
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4950459358812695000, guid: cb1bfddfd4fab864c978cbb155192fae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cb1bfddfd4fab864c978cbb155192fae, type: 3}

@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using Tenacity.UI.Cards;
+using UnityEngine;
+
 
 namespace Tenacity.Cards.Inventory
 {
@@ -14,97 +13,49 @@ namespace Tenacity.Cards.Inventory
         [SerializeField] private RectTransform _cardDeckButtonsArea;
         [Space]
         [SerializeField] private GameObject _cardDeckLine;
-        [SerializeField] private GameObject _cardDeckButton;
+        [SerializeField] private DeckSwitcher _cardDeckButton;
 
-        private CardDataSO _selectedCard;
         private List<Card> _cardDeckLines = new();
-        private CardDeck _cardDeck => _cardDecks.CurrentlySelectedCardDeck;
+        private DeckSwitcher _selectedSwitcher;
+        private DeckSwitcher[] _switchers;
+        private CardDataSO _selectedCard;
+        
+        private CardDeck CardDeck => _cardDecks.CurrentlySelectedCardDeck;
 
 
         private void Awake()
         {
-            if (_cardDeck == null) return;
+            if (CardDeck == null) return;
 
             InitDeckButtons();
             CreateCardObjectsInCardDeck();
-
+            _selectedSwitcher = _switchers[_cardDecks.CurrentlySelectedCardDeckId];
+            _selectedSwitcher.Switch();
         }
 
+        
         private void InitDeckButtons()
         {
+            _switchers = new DeckSwitcher[_cardDecks.MaxCardDeckQuantity];
             for (int i = 0; i < _cardDecks.MaxCardDeckQuantity; i++)
             {
                 if (i >= _cardDecks.CurrentQuantity) _cardDecks.AddCardDeck(new CardDeck());
                 var deckButton = Instantiate(_cardDeckButton, _cardDeckButtonsArea);
 
-                deckButton.GetComponentInChildren<TextMeshProUGUI>().text = i.ToString();
-                int id = i;
-                deckButton.GetComponent<Button>().onClick.AddListener(delegate {
+                deckButton.Text = (i + 1).ToString();
+                var id = i;
+                deckButton.OnClickAction += (switcher) => {
                     var isSelected = _cardDecks.SelectCardDeck(id);
                     if (!isSelected) return;
+                    
                     CreateCardObjectsInCardDeck();
-                });
+                    _selectedSwitcher.Switch();
+                    _selectedSwitcher = switcher;
+                };
+                _switchers[i] = deckButton;
             }
         }
-
-        private void CreateCardObjectsInCardDeck()
-        {
-            ClearCardDeckArea();
-            for (int i = 0; i < _cardDeck.Capacity; i++)
-            {
-                var cardDeckLine = CreateCardDeckLine();
-
-                Card lineCardObject = cardDeckLine.GetComponent<Card>();
-                if (i < _cardDeck.Cards.Count)
-                {
-                    lineCardObject.Data = _cardDeck.Cards[i];
-                    cardDeckLine.GetComponent<CardDataDisplay>().DisplayCardValues();
-                }
-                else
-                {
-                    cardDeckLine.SetActive(false);
-                }
-                _cardDeckLines.Add(lineCardObject);
-            }
-        }
-
-        private GameObject CreateCardDeckLine()
-        {
-            var cardDeckLine = Instantiate(_cardDeckLine, _content.transform);
-
-            EventTrigger trigger = cardDeckLine.GetComponent<EventTrigger>();
-            EventTrigger.Entry entry = new()
-            {
-                eventID = EventTriggerType.PointerClick
-            };
-            entry.callback.AddListener((data) => { RemoveCardFromCardDeck(cardDeckLine.GetComponent<Card>()); });
-            trigger.triggers.Add(entry);
-
-            return cardDeckLine;
-        }
-
-        /*
-        private void DrawCardDeck()
-        {
-            ClearCardDeckArea();
-            for (int i = 0; i < _cardDeck.Capacity; i++)
-            {
-                if (_content.childCount < i) CreateCardDeckLine();
-
-                Card lineCardObject = cardDeckLine.GetComponent<Card>();
-                if (i < _cardDeck.Cards.Count)
-                {
-                    lineCardObject.Data = _cardDeck.Cards[i];
-                    cardDeckLine.GetComponent<CardDataDisplay>().DisplayCardValues();
-                }
-                else
-                {
-                    cardDeckLine.SetActive(false);
-                }
-            }
-        }
-        */
-
+        
         private void ClearCardDeckArea()
         {
             if (_content.GetComponentsInChildren<Card>().Length == 0) return;
@@ -114,31 +65,49 @@ namespace Tenacity.Cards.Inventory
             }
             _cardDeckLines.Clear();
         }
-
-        public void AddCardIntoCardDeck(CardDataSO cardData)
+        
+        private GameObject CreateCardDeckLine()
         {
-            if (cardData == null || _cardDecks.CurrentlySelectedCardDeck == null) return;
-            if (_selectedCard == null || _selectedCard != cardData)
-            {
-                _selectedCard = cardData;
-                return;
-            }
-            _selectedCard = null;
+            var cardDeckLine = Instantiate(_cardDeckLine, _content.transform);
+            var trigger = cardDeckLine.GetComponent<EventTrigger>();
+            
+            EventTrigger.Entry entry = new() {
+                eventID = EventTriggerType.PointerClick
+            };
+            entry.callback.AddListener((data) => {
+                RemoveCardFromCardDeck(cardDeckLine.GetComponent<Card>());
+            });
+            trigger.triggers.Add(entry);
 
-            var index = _cardDecks.CurrentlySelectedCardDeck.AddCardData(cardData);
-            if (index < 0) return;
-
-            var line = _cardDeckLines[index];
-            line.Data = cardData;
-            line.GetComponent<CardDataDisplay>().DisplayCardValues();
-            line.gameObject.SetActive(true);
-
+            return cardDeckLine;
         }
-
+        
+        private void CreateCardObjectsInCardDeck()
+        {
+            ClearCardDeckArea();
+            
+            for (int i = 0; i < CardDeck.Capacity; i++)
+            {
+                var cardDeckLine = CreateCardDeckLine();
+                var lineCardObject = cardDeckLine.GetComponent<Card>();
+                
+                if (i < CardDeck.Cards.Count)
+                {
+                    lineCardObject.Data = CardDeck.Cards[i];
+                    cardDeckLine.GetComponent<CardDataDisplay>().DisplayCardValues();
+                }
+                else
+                {
+                    cardDeckLine.SetActive(false);
+                }
+                _cardDeckLines.Add(lineCardObject);
+            }
+        }
+        
         private void RemoveCardFromCardDeck(Card card)
         {
             if (!_cardDeckLines.Contains(card)) return;
-            if (_selectedCard == null || _selectedCard != card.Data)
+            if ((_selectedCard == null) || (_selectedCard != card.Data))
             {
                 _selectedCard = card.Data;
                 return;
@@ -150,6 +119,23 @@ namespace Tenacity.Cards.Inventory
             line.Data = null;
             line.gameObject.SetActive(false);
             line.transform.SetAsLastSibling();
+        }
+        
+        
+        public void AddCardIntoCardDeck(CardDataSO cardData)
+        {
+            if ((cardData == null) || (_cardDecks.CurrentlySelectedCardDeck == null)) return;
+            if ((_selectedCard == null) || (_selectedCard != cardData))
+            {
+                _selectedCard = cardData;
+                return;
+            }
+            
+            _selectedCard = null;
+            _cardDecks.CurrentlySelectedCardDeck.AddCardData(cardData);
+            
+            ClearCardDeckArea();
+            CreateCardObjectsInCardDeck();
         }
     }
 }

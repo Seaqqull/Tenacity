@@ -2090,7 +2090,7 @@ MonoBehaviour:
   _enemy: {fileID: 1125217500}
   _turnStateTextField: {fileID: 341974909}
   _endTurnButton: {fileID: 936644744}
-  _waitNextTurnTime: 0.4
+  _waitNextTurnTime: 0.2
 --- !u!4 &605581204
 Transform:
   m_ObjectHideFlags: 0
@@ -4153,7 +4153,7 @@ MonoBehaviour:
   _isEnemyPlayer: 0
   _enemyAI:
     Enemy: {fileID: 1238671963}
-    _threshold: 6
+    _threshold: 5
 --- !u!4 &1125217501
 Transform:
   m_ObjectHideFlags: 0
@@ -4580,7 +4580,7 @@ MonoBehaviour:
   _isEnemyPlayer: 1
   _enemyAI:
     Enemy: {fileID: 1125217500}
-    _threshold: 6
+    _threshold: 5
 --- !u!4 &1238671965
 Transform:
   m_ObjectHideFlags: 0
