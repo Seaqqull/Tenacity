@@ -18,7 +18,7 @@ namespace Tenacity.General.Events.Actions
 
         public override bool Perform()
         {
-            return false;
+            return true;
         }
         
         public void Perform(IntegerVariable levelId)
