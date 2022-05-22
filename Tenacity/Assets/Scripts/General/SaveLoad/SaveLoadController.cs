@@ -42,15 +42,6 @@ namespace Tenacity.General.SaveLoad
 
         private void LoadSnapshots(FileStream stream)
         {
-            // if (!File.Exists(_database)) return;
-            //
-            // IFormatter formatter = new BinaryFormatter();
-            // FileStream stream = new FileStream(_database, FileMode.Open);
-            // stream.Position = 0;
-            //
-            // if (stream.Length != 0)
-            //     _snapshots = (formatter.Deserialize(stream) as List<Data.SaveSnapshot>);
-            // stream.Close();
             try
             {
                 var importer = new BinaryImporter(_workDatabasePath, _databaseFile);
@@ -65,13 +56,6 @@ namespace Tenacity.General.SaveLoad
 
         private void SaveSnapshots(FileStream stream)
         {
-            // IFormatter formatter = new BinaryFormatter();
-            // FileStream stream = new FileStream(_workDatabasePath, FileMode.Create);
-            //
-            // formatter.Serialize(stream, _snapshots);
-            // stream.Close();
-            // ClearSnapshot();
-            
             try
             {
                 var exporter = new BinaryExporter(_workDatabasePath, _databaseFile);
@@ -96,13 +80,6 @@ namespace Tenacity.General.SaveLoad
                 
                 LoadSnapshots(stream);
                 _database.Snapshots.Add(_snapshot);
-            
-                // IFormatter formatter = new BinaryFormatter();
-                // FileStream stream = new FileStream(_workDatabasePath, FileMode.Create);
-                //
-                // formatter.Serialize(stream, _snapshots);
-                // stream.Close();
-                // ClearSnapshot();
                 SaveSnapshots(stream);
             }
             catch (Exception e)
