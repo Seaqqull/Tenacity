@@ -16,12 +16,5 @@ MonoBehaviour:
   _maxSize: 0
   _cards:
   - {fileID: 11400000, guid: 150facc42473280439e26175a76729ef, type: 2}
-  - {fileID: 11400000, guid: 6d863d9656dab5d469521a3a1dbdd853, type: 2}
-  - {fileID: 11400000, guid: 150facc42473280439e26175a76729ef, type: 2}
-  - {fileID: 11400000, guid: 150facc42473280439e26175a76729ef, type: 2}
-  - {fileID: 11400000, guid: 6d863d9656dab5d469521a3a1dbdd853, type: 2}
   - {fileID: 11400000, guid: 066c7148e6f31aa4fbbf3de87f27457c, type: 2}
   - {fileID: 11400000, guid: 6d863d9656dab5d469521a3a1dbdd853, type: 2}
-  - {fileID: 11400000, guid: 6d863d9656dab5d469521a3a1dbdd853, type: 2}
-  - {fileID: 11400000, guid: 066c7148e6f31aa4fbbf3de87f27457c, type: 2}
-  - {fileID: 11400000, guid: 066c7148e6f31aa4fbbf3de87f27457c, type: 2}

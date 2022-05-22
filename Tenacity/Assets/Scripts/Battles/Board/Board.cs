@@ -20,17 +20,10 @@ namespace Tenacity.Battles.Boards
            { -1, 0.5f},
            { -1, -0.5f}
         };
-        private List<Land> _startPositions = new List<Land>();
         
         public List<Land> LandCells => _landsMap.Values.ToList();
-        public List<Land> StartPositions => _startPositions;   //tmp
         public int MapRadius => _mapRadius;
-        
 
-        public void AddStartPosition(Land land)
-        {
-            _startPositions.Add(land);
-        }
         
         public List<Land> GetCellNeighbors(Land cell)
         {
@@ -51,7 +44,9 @@ namespace Tenacity.Battles.Boards
         public void AddCell(Land land, float x, float y)
         {
             land.CellId = _landsMap.Count;
-            _landsMap.Add(new Vector2(x, y), land);
+            var cellPosition = new Vector2(x, y);
+            land.CellPosition = cellPosition;
+            _landsMap.Add(cellPosition, land);
         }
     }
 }

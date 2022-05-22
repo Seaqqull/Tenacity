@@ -1,7 +1,7 @@
 using Tenacity.Cards.Data;
 using Tenacity.Base;
 using UnityEngine;
-
+using Tenacity.Battles.Lands;
 
 namespace Tenacity.Cards
 {
@@ -12,8 +12,14 @@ namespace Tenacity.Cards
         [SerializeField] private CardState state;
 
         private int _currentLife;
-        
-        public int CurrentLife => _currentLife;
+
+        public bool IsPlaced => gameObject.transform.parent.GetComponent<Land>();
+        public int CurrentLife
+        {
+            get => _currentLife;
+            set => _currentLife = value;
+        }
+
         public bool IsAvailable
         {
             get => isAvailable;
@@ -40,6 +46,8 @@ namespace Tenacity.Cards
         
         public void GetDamaged(int power)
         {
+            if (power == 0) return;
+
             _currentLife -= power;
             if (_currentLife <= 0)
             {

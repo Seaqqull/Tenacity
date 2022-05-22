@@ -12,5 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68601af91525b78409d74317075d9ab6, type: 3}
   m_Name: Battle Enemy
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 2644899836247186431, guid: f297edcf53f6fdd4489656b180bb9034, type: 3}
-  _health: 15
+  cardId: 0
+  cardName: Boss
+  castingCost: 0
+  life: 15
+  power: 0
+  type: 4
+  rarity: 0
+  cardText: Boss
+  landType: -1
+  landCost: 0
+  range: 0
+  movement: 0
+  evaluation: 0
+  _characterPrefab: {fileID: 1751676914615565923, guid: 4bbb9195fec38bd448ef0c0e754ba2ef, type: 3}
