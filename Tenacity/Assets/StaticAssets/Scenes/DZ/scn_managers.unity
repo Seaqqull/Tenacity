@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 1708094268}
+  m_SkyboxMaterial: {fileID: 1669064594}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5541292, g: 0.69248134, b: 0.7620585, a: 1}
+  m_IndirectSpecularColor: {r: 0.5540932, g: 0.6924584, b: 0.76208866, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1000,8 +1000,8 @@ MonoBehaviour:
   _rewritable: 0
   _dontDestroyOnLoad: 0
   _games:
-  - {fileID: 8306117116626129878, guid: ae73e9c90e5814ca6bf793bf19fee2eb, type: 3}
-  - {fileID: 6499862115100993030, guid: 7b7d1f2867dd54aab8a221208b81c274, type: 3}
+  - {fileID: 5682221995868807177, guid: 6e49cbdc176c34646b926072b39b48b5, type: 3}
+  - {fileID: 1131654974, guid: 135754e9283b4470cb8535f40b1466e3, type: 3}
 --- !u!1 &957274139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1320,7 @@ MonoBehaviour:
   _dontDestroyOnLoad: 0
   _databasePath: /Saves
   _databaseFile: SaveDatabase.data
---- !u!21 &1708094268
+--- !u!21 &1669064594
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
