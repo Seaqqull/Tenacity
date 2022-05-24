@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 173108ef35a1b4876be72e45475c9694, type: 3}
-  m_Name: GoToHub
+  m_Name: Level1
   m_EditorClassIdentifier: 
-  _description: Whether player want to enter hub or no.
-  _value: 0
+  _description: Mountains level
+  _value: 5
