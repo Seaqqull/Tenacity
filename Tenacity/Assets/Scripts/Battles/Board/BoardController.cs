@@ -38,14 +38,15 @@ namespace Tenacity.Battles.Boards
             float colLimit = 2 * (size - 1);
             
             for (float row = -size + 1; row < size; row++)
-            {
                 for (float col = -(colLimit - Mathf.Abs(row)) / 2; col <= (colLimit - Mathf.Abs(row)) / 2; col++)
-                {
-                    bool isAvailable = ((row == -size + 1) && (col == -(colLimit - Mathf.Abs(row)) / 2) || 
-                        (row == size - 1) && (col == (colLimit - Mathf.Abs(row)) / 2)) ? false : true;
-                    CreateLandCell(row, col, isAvailable);
-                }
-            }
+                    CreateLandCell(row, col);
+            InitStartPositions();
+        }
+
+        private void InitStartPositions()
+        {
+            _board.LandCells[0].IsStartPosition = true;
+            _board.LandCells[^1].IsStartPosition = true;
         }
 
         private void SetNeighbors()
@@ -66,21 +67,16 @@ namespace Tenacity.Battles.Boards
             text.text = (id++).ToString();
         }
         
-        private void CreateLandCell(float y, float x, bool isAvailable)
+        private void CreateLandCell(float y, float x)
         {
             var landGO = Instantiate(_emptyLandPrefab.gameObject, new Vector3(x, 0, y), Quaternion.identity);
             landGO.transform.parent = transform;
 
             var land = landGO.GetComponent<Land>();
 
-            if (isAvailable) _board.AddCell(land, x, y);
-            else
-            {
-                land.GetComponent<LandCellController>().enabled = false;
-                _board.AddStartPosition(land);
-            } 
+            _board.AddCell(land, x, y);
 
-            tmpCellCounter(landGO);    
+            //tmpCellCounter(landGO);    
         }
         
     }

@@ -25,9 +25,13 @@ namespace Tenacity.Battles.Lands
             get => _neigborLands;
             set => _neigborLands = value;
         }
+        public bool IsStartPosition
+        {
+            get; set;
+        }
         public bool IsAvailableForCards
         {
-            get => (_type != LandType.None && GetComponentInChildren<Card>() == null);
+            get => (_type != LandType.None && GetComponentInChildren<Card>() == null && !IsStartPosition);
         }
         public LandType Type => _type;
         public bool IsPlacedOnBoard
@@ -39,6 +43,10 @@ namespace Tenacity.Battles.Lands
         {
             get => _cellId;
             set => _cellId = value;
+        }
+        public Vector2 CellPosition
+        {
+            get; set;
         }
 
 
@@ -65,7 +73,7 @@ namespace Tenacity.Battles.Lands
             _meshRenderer.sharedMaterial = outlined ? outliner : _standardMaterial;
         }
         
-        public bool ReplaceLand(Land newLandCard)
+        public bool ReplaceLand(Land newLandCard, bool isEnemy=false)
         {
             if ((newLandCard == null) || (newLandCard._isAvailableForCards)) return false;
             GameObject landGameObject = LoadFromDatabase(newLandCard);
@@ -73,8 +81,9 @@ namespace Tenacity.Battles.Lands
 
             MeshRenderer _meshRenderer = transform.GetComponentInChildren<MeshRenderer>();
             MeshRenderer newLandMeshRenderer = landGameObject.GetComponentInChildren<MeshRenderer>();
-            _meshRenderer.sharedMaterials = newLandMeshRenderer.sharedMaterials;
-            _standardMaterial = newLandMeshRenderer.sharedMaterial;
+             _meshRenderer.sharedMaterials = newLandMeshRenderer.sharedMaterials;
+            _meshRenderer.material.SetFloat("_Metallic", isEnemy ? 0.5f : 0);
+            _standardMaterial = _meshRenderer.material;
 
             _type = landGameObject.GetComponent<Land>().Type;
             _isPlacedOnBoard = true;

@@ -9,130 +9,136 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 
+using static Tenacity.Battles.Lands.BattleConstants;
+using Tenacity.Battles.Enemies;
 
 namespace Tenacity.Battles.Controllers
 {
     public class BattleEnemyController : MonoBehaviour
     {
-        [SerializeField] private BattleEnemy _enemy;
-        [SerializeField] private CardDeckManager _enemyCardDeck;
-        [SerializeField] private List<Land> _enemyLandDeck;
+        [SerializeField] private BattleCharacterSO _enemy;
+        [SerializeField] private Vector3 _enemyPos;
+        [SerializeField] private BattleCardDeckManager _enemyCardDeck;
+        [SerializeField] private LandTypesSO _landTypes;
         [SerializeField] private TextMeshProUGUI _manaUI;
         [SerializeField] private float _yPos = 0.61f;
-        [SerializeField] private float _skipPobability;
         [SerializeField] private Material _enemyMaterial;
+        [SerializeField] private bool _isEnemyPlayer;
+        [SerializeField] private BattleEnemyAI _enemyAI;
 
-        private List<Card> _enemyCards = new List<Card>();
+
+        private Card _heroCard;
         private int _currentMana;
+        private List<Card> _enemyCards => _enemyCardDeck.CardPack;
+        private List<Card> _allBattleMinions = new();
+        private Dictionary<LandType, int> _landCounts;
+        private List<Land> _enemyLandDeck => _landTypes.LandReferences;
+        private HeroLandCellsController _availableLandCellsController = new();
 
-        public bool IsGameOver => _enemyCards.Where(item => item != null).Count() == 0;
 
+        public Card Hero => _heroCard;
+        public Dictionary<LandType, int> LandCounts => _landCounts;
+        public List<Card> AvailableHandCards => _enemyCards.FindAll(card =>
+            card.State == CardState.InCardDeck
+            && _currentMana >= card.Data.CastingCost);
+        public List<Land> FreeAvailableLands => _availableLandCellsController.FreeAvailableLands;
+        public List<Card> Minions => _enemyCards.FindAll(card => card.State == CardState.OnBoard);
+        public List<Card> Hand => _enemyCards.FindAll(card => card.State == CardState.InCardDeck);
 
-        private void Start()
+        public int MinionsRating
         {
-            _enemyCards = _enemyCardDeck.CardPack;
+            get
+            {
+                int sum = 0;
+                foreach (Card minion in Minions) sum += CountMinionRating(minion);
+                return sum;
+            }
+        }   
+        public int AdditionalRating => 
+            BattleEnemyTrainController.Instance.IsGameOver
+            ? ((IsGameOver ? -1 : 1) * GameStateRatings.HeroIsDeadRating)
+            : 0;
+        public int HeroRating => _heroCard.Data.CardRating;
+        public int PersonalRating => BoardRating + HandRating;
+        public int BoardRating => MinionsRating + HeroRating + LandRating;
+        public int LandRating => GetNonWastedLandsAround(_heroCard).Count();
+        public int HandRating => Hand.Count * GameStateRatings.HandCardWeightPerHandCard;
+
+        public bool IsGameOver => (_heroCard.CurrentLife <= 0 || _enemyCards.Count <= 0);
+        public List<Land> AvailableLandCells => _availableLandCellsController.AvailableLands.ToList();
+
+
+        private void Awake()
+        {
+            _enemyAI.Player = this;
+            _landCounts = _enemyLandDeck.GroupBy(x => x.Type).ToDictionary(x => x.Key, x => 0);
         }
 
-        
-        private bool DecideToMove()
+        public void Init(Land startLand)
         {
-            return Random.value > _skipPobability; // alg.
+            var enemy = Instantiate(_enemy.CharacterPrefab, startLand.transform);
+            _heroCard = enemy.GetComponent<Card>();
+            _heroCard.Data = _enemy;
+            _heroCard.CurrentLife = _enemy.Life;
+
+            enemy.transform.localPosition = _enemyPos;
+            _availableLandCellsController.AddAvailableLand(startLand);
+        }
+        private void OnTurnStart()
+        {
+            _enemyCardDeck.ClearEmpty();
+            _enemyCards.ForEach(card => card.IsAvailable = true);
+            _enemyCardDeck.AddNewRandomCards();
+
+            UpdateMana(BattleConstants.ROUND_MANA, false);
+        }
+        private void ManageCards()
+        {
+            _enemyAI.ManageAllCardsActions();
         }
 
-        private bool DecideToAttack()
-        {
-            return Random.value > _skipPobability; // alg.
-        }
-        
-        //common
         private void UpdateMana(int dtMana, bool isReduced)
         {
             _currentMana += (isReduced ? -dtMana : dtMana);
             _manaUI.text = "Mana: " + _currentMana;
         }
+ 
 
-        //place a land
-        private Land SelectLandFromDeck()
+        public void PlaceLands(LandType landType, Land targetLand)
         {
-            if (_enemyLandDeck.Count == 0) return null;
-            
-            List<LandType> availableCardTypes = _enemyCards.GroupBy(card => card.Data.Land).Select(o => o.FirstOrDefault().Data.Land).ToList();
-            List<Land> filteredLands = _enemyLandDeck.FindAll(land => availableCardTypes.Contains(land.Type));
-            
-            if (filteredLands.Count == 0) return null;
-            var randomNum = Random.Range(0, filteredLands.Count);
-            Land land = filteredLands[randomNum];
-            
-            return land;
+            for (int i = 0; i < LandConstants.GetLandCellsCount(landType); i++)
+                PlaceLandOnBoard(landType, targetLand);
         }
-        
-        private Land SelectCellToPlaceLand(List<Land> landList)
+        public bool Attack(Card minion, Card attackedEnemy)
         {
-            List<Land> emptyLands = landList.FindAll((el) => el.Type == LandType.None);
-            if (emptyLands.Count == 0) return null;
-
-            int landId = Random.Range(0, emptyLands.Count);
-            Land landToPlace = emptyLands[landId];
+            if (minion == null || attackedEnemy == null) return false;
             
-            return landToPlace;
-        }
-        
-        private bool PlaceLandOnBoard(List<Land> availablePlaces)
-        {
-            Land landToPlace = SelectLandFromDeck();
-            Land targetPlace = SelectCellToPlaceLand(availablePlaces);
-            if (targetPlace == null || landToPlace == null) return false;
-
-            targetPlace.ReplaceLand(landToPlace);
+            int figthBack = attackedEnemy.Data.Power;
+            attackedEnemy.GetDamaged(minion.Data.Power);
+            minion.GetDamaged(figthBack);
             return true;
         }
-
-        //(common) attack cards
-        private bool Attack(Card selectedCard)
+        public void MoveMinion(Card selectedMinion, Land selectedLand)
         {
-            List<Card> creaturesToAttack = GetCreaturesToAttack(selectedCard);
-            if (creaturesToAttack?.Count == 0) return false;
-
-            Card cardToAttack = creaturesToAttack.OrderBy(el => el.Data.Power / el.Data.Life).FirstOrDefault();
-            if (cardToAttack == null) return false;
-
-            int figthBack = cardToAttack.Data.Power;
-            cardToAttack.GetDamaged(selectedCard.Data.Power);
-            selectedCard.GetDamaged(figthBack);
-            return true;
-        }
-
-        private List<Card> GetCreaturesToAttack(Card selectedCard)
-        {
-            if (selectedCard == null) return null;
-            Land land = selectedCard.transform.parent?.GetComponent<Land>();
-            return land.NeighborLands?
-                    .FindAll(el => el.GetComponentInChildren<Card>() != null && !_enemyCards.Contains(el.GetComponentInChildren<Card>()))
-                    .Select(el => el.GetComponentInChildren<Card>())
-                    .ToList();
-        }
-
-        //move a card
-        private void MoveCard(Card selectedCard)
-        {
-            Land selectedLand = SelectNeighborLand(selectedCard.transform.parent?.GetComponent<Land>());
             if (selectedLand == null) return;
-            
-            DropCardIntoLand(selectedCard, selectedLand);
+            if ((selectedMinion.Transform.parent != null ? selectedMinion.GetComponentInParent<Land>() : null) != null)
+                selectedMinion.Transform.SetParent(selectedLand.gameObject.transform);
+            selectedMinion.Transform.localPosition = new Vector3(0, _yPos, 0);
         }
-
-        private Land SelectNeighborLand(Land land)
+        public bool PlaceLandOnBoard(LandType landType, Land targetLand)
         {
-            return SelectLandToPlaceCard(land.NeighborLands, land.Type);
+            if (targetLand == null) return false;
+            
+            Land landToPlace = _enemyLandDeck.First(land => land.Type == landType);
+            targetLand.ReplaceLand(landToPlace, !_isEnemyPlayer);
+            _availableLandCellsController.AddAvailableLand(targetLand);
+            _landCounts[landToPlace.Type]++;
+            return true;
         }
-
-
-        //place a card (replace)
-        private void PlaceCard(Card selectedCard, List<Land> places)
+        public void PlaceHandCardOnBoard(Card selectedCard, Land selectedLand)
         {
             if (selectedCard.Data.CastingCost > _currentMana) return;
-
-            Land selectedLand = SelectLandToPlaceCard(places, selectedCard.Data.Land);
+            if (selectedCard.Data.LandCost > _landCounts[selectedCard.Data.Land]) return;
             if (selectedLand == null) return;
 
             Card creatureCard = CardManager.CreateCardCreatureOnBoard(selectedCard, selectedLand);
@@ -141,83 +147,67 @@ namespace Tenacity.Battles.Controllers
 
             _enemyCards.Remove(selectedCard);
             _enemyCards.Add(creatureCard);
+            _allBattleMinions.Add(creatureCard);
+
             UpdateMana(selectedCard.Data.CastingCost, true);
         }
 
-        private void DropCardIntoLand(Card selectedCard, Land selectedLand)
+        public List<Land> GetNonWastedLandsAround(Card card)
         {
-            if ((selectedCard.Transform.parent != null ? selectedCard.Transform.parent.GetComponent<Land>() : null) != null)
-                selectedCard.Transform.SetParent(selectedLand.gameObject.transform);
-            selectedCard.Transform.localPosition = new Vector3(0, _yPos, 0);
+            Land land = card.GetComponentInParent<Land>();
+            return land.NeighborLands.FindAll(l => l.Type != LandType.None).ToList();
+        }
+        public List<Card> GetCreaturesToAttack(Land cardPlace)
+        {
+            if (cardPlace == null) return null;
+            return cardPlace.NeighborLands
+                    .Select(el => el.GetComponentInChildren<Card>())
+                    .ToList()
+                    .FindAll(el =>  el != null
+                        && !_enemyCards.Contains(el)
+                        && el != Hero )
+                    .ToList();
+        }
+        public List<Card> GetNearestMinions(Land cardPlace)
+        {
+            if (cardPlace == null) return null;
+            return cardPlace.NeighborLands
+                    .Select(el => el.GetComponentInChildren<Card>())
+                    .ToList()
+                    .FindAll(el => el != null
+                        && _enemyCards.Contains(el))
+                    .ToList();
         }
 
-        private Land SelectLandToPlaceCard(List<Land> landList, LandType cardLandType)
+        public int CountMinionRating(Card minion)
         {
-            if (landList == null) return null;
-            List<Land> availableLands = landList.FindAll((el) => el.IsAvailableForCards && el.Type.HasFlag(cardLandType));
-            if (availableLands.Count == 0) return null;
-
-            Land selectedLand = availableLands.FindAll(cell => cell.NeighborLands.Any(el => !availableLands.Contains(el))).FirstOrDefault();
-            if (selectedLand == null)
-            {
-                int landId = Random.Range(0, availableLands.Count);
-                selectedLand = availableLands[landId];
-            }
-            return selectedLand;
+            if (minion == null) return 0;
+            return minion.Data.CardRating + CountEnemiesInRangeRating(minion.GetComponentInParent<Land>());
+        }
+        public int CountMinionsInRangeRating(Land land)
+        {
+            if (land == null) return 0;
+            var res = GetNearestMinions(land).Select(el =>
+               GameStateRatings.MinionMovedRating).Sum();
+            return (int)(res/2);
+        }
+        public int CountEnemiesInRangeRating(Land land)
+        {
+            if (land == null) return 0;
+            return GetCreaturesToAttack(land).Select(el =>
+                    (el.Data.Type == CardType.Hero)
+                    ? GameStateRatings.MinionHasEnemyHeroInRangeRating
+                    : GameStateRatings.MinionHasEnemyInRange).Sum();
         }
 
-
-        private void TryMakeMove(Card selectedCard, List<Land> places)
-        {
-            if ((selectedCard == null) || !selectedCard.IsAvailable) return;
-
-            if (selectedCard.State == CardState.OnBoard)
-            {
-                bool isDamaged = false;
-                if (DecideToAttack()) 
-                    isDamaged = Attack(selectedCard);
-                if (!isDamaged) 
-                    MoveCard(selectedCard);
-            }
-            else if (selectedCard.State == CardState.InCardDeck)
-            {
-                PlaceCard(selectedCard, places);
-            }
-        }
-
-        private void OnStartTurn()
-        {
-            _enemyCards = _enemyCards.Where(item => item != null).ToList();
-            _enemyCards.ForEach(card => card.IsAvailable = true);
-            
-            UpdateMana(BattleConstants.ROUND_MANA, false);
-        }
-
-        private void PlaceLands(List<Land> places)
-        {
-            Land selectedLand = SelectLandFromDeck();
-            for (int i = 0; i < BattleConstants.LandConstants.GetLandCellsCount(selectedLand.Type); i++)
-                PlaceLandOnBoard(places);
-        }
-
-        private void ManageCards(List<Land> places)
-        {
-            for (int i = 0; i < _enemyCards.Count; i++)
-            {
-                TryMakeMove(_enemyCards[i], places);
-                if (_currentMana == 0) break;
-            }
-        }
-
-        public IEnumerator MakeMove(List<Land> places, float time)
+        public IEnumerator MakeMove(float time)
         {
             if (IsGameOver) yield return null;
 
-            OnStartTurn();
-            PlaceLands(places);
+            OnTurnStart();
             yield return new WaitForSeconds(time);
-            
-            ManageCards(places);
+
+            ManageCards();
             yield return new WaitForSeconds(time);
         }
     }

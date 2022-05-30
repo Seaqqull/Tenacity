@@ -32,7 +32,8 @@ namespace Tenacity.Battles.Lands
                 }
                 else
                 {
-                    _currentlySelectedLand.GetComponent<Outline>().enabled = false;
+                    if (_currentlySelectedLand != null)
+                        _currentlySelectedLand.GetComponent<Outline>().enabled = false;
                     _currentlySelectedLand = null;
                     _availableLansCardsCount = 0;
                 }
@@ -48,14 +49,27 @@ namespace Tenacity.Battles.Lands
         private void Update()
         {
             if (CurrentlySelectedLand == null) return;
-            if ((CurrentlySelectedLand != null) && !IsRechangable) _player.CurrentPlayerMode = PlayerActionMode.PlacingLand;
+            if (CurrentlySelectedLand != null && !IsRechangable) return;
             else if (_player.CurrentPlayerMode == PlayerActionMode.None) CurrentlySelectedLand = null;
         }
 
-        
+        private void OnDisable()
+        {
+            CurrentlySelectedLand = null;
+        }
+
         public void SelectLand(Land land)
         {
             if (_battle.CurrentBattleState != BattleState.WaitingForPlayerTurn) return;
+            if (CurrentlySelectedLand != null) {
+                if (CurrentlySelectedLand == land)
+                {
+                    _player.CurrentPlayerMode = PlayerActionMode.PlacingLand;
+                    _currentlySelectedLand.GetComponent<Outline>().enabled = true;
+                }
+                return;
+            }
+            if (CurrentlySelectedLand != null) return;
             
             CurrentlySelectedLand = land;
             _player.CurrentPlayerMode = PlayerActionMode.PlacingLand;
@@ -67,7 +81,6 @@ namespace Tenacity.Battles.Lands
         public void DecreaseAvailableLandCardsCount()
         {
             _availableLansCardsCount--;
-            
             if (_availableLansCardsCount <= 0)
             {
                 CurrentlySelectedLand = null;

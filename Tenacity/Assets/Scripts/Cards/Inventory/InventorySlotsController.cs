@@ -6,17 +6,14 @@ namespace Tenacity.Cards.Inventory
 {
     public class InventorySlotsController : MonoBehaviour, IPointerDownHandler
     {
-        [SerializeField] private GameObject detailsViewScreen;
+        [SerializeField] private Card _cardView;
+        [SerializeField] private InventoryCardDeck _cardDeck;
 
-        private Card _item;
 
-        
         private void Start()
         {
-            if (detailsViewScreen == null)
-                return;
-            _item = detailsViewScreen.GetComponentInChildren<Card>();
-            _item.gameObject.SetActive(false);
+            if (_cardView != null)
+                _cardView.gameObject.SetActive(false);
         }
 
         
@@ -28,15 +25,18 @@ namespace Tenacity.Cards.Inventory
             {
                 if (go.GetComponent<Card>())
                 {
-                    _item.GetComponent<Card>().Data = go.GetComponent<Card>().Data;
-                    _item.GetComponent<CardDataDisplay>().DisplayCardValues();
-                    _item.gameObject.SetActive(true);
+                    _cardView.GetComponent<Card>().Data = go.GetComponent<Card>().Data;
+                    _cardView.GetComponent<CardDataDisplay>().DisplayCardValues();
+                    _cardView.gameObject.SetActive(true);
+
+                    if (_cardDeck != null)
+                        _cardDeck.AddCardIntoCardDeck(go.GetComponent<Card>().Data);
                 }
                 //... for different items
             }
             else
             {
-                _item.gameObject.SetActive(false);
+                _cardView.gameObject.SetActive(false);
             }
         } 
     }

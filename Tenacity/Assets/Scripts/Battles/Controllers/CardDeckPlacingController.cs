@@ -10,7 +10,8 @@ namespace Tenacity.Battles.Controllers
     {
         [SerializeField] private BattleManager _battle;
         [SerializeField] private RayPointerController _rayPointerController;
-        
+
+
         private BattlePlayerController _player;
         private Card _currentlySelectedCard;
         
@@ -33,8 +34,7 @@ namespace Tenacity.Battles.Controllers
 
         private void Update()
         {
-            if ((CurrentlySelectedCard != null) && 
-                (_player.CurrentPlayerMode == PlayerActionMode.None))
+            if ((CurrentlySelectedCard != null) && (_player.CurrentPlayerMode == PlayerActionMode.None))
             {
                 CurrentlySelectedCard = null;
             }
@@ -43,6 +43,9 @@ namespace Tenacity.Battles.Controllers
         
         public void SelectCard(Card card)
         {
+            if (_player.CurrentMana < card.Data.CastingCost) return;
+            if (_player.LandCounts[card.Data.Land] < card.Data.LandCost) return;
+
             CurrentlySelectedCard = card;
             var cardRectTransform = card.GetComponent<RectTransform>();
             

@@ -19,7 +19,7 @@ namespace Tenacity.UI.Menus
         public void OnStartAction()
         {
             MenuManager.Instance.CloseMenu(this);
-            SceneManager.Instance.LoadMainGame(2, "Intro");
+            SceneManager.Instance.LoadMainGame(2, "Swamps");
         }
 
         public void OnSaveLoadAction()

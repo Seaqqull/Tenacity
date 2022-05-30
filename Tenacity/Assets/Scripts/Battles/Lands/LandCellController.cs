@@ -45,19 +45,24 @@ namespace Tenacity.Battles.Lands
 
                 case PlayerActionMode.None | PlayerActionMode.MovingCreature:
                     return;
+
                 case PlayerActionMode.PlacingLand:
-                    if (_land.Type != LandType.None) return;
+                    if (_land.Type != LandType.None || _land.IsStartPosition || !_battle.Player.AvailableLandCellsController.IsLandAvailable(_land)) return;
 
                     bool isPlaced = _land.ReplaceLand(player.LandDeckInputController.CurrentlySelectedLand);
-                    if (isPlaced) 
+                    if (isPlaced)
+                    {
                         player.LandDeckInputController.DecreaseAvailableLandCardsCount();
+                        player.AddLandCount(_land.Type);
+                        player.AvailableLandCellsController.AddAvailableLand(_land);
+                    }
                     return;
+
                 case PlayerActionMode.PlacingCard:
                     if (_land.Type == LandType.None) return;
 
                     bool isCardPlaced = player.PlaceDeckCardOnLand(_land);
-                    if (isCardPlaced) 
-                        player.CurrentPlayerMode = PlayerActionMode.None;
+                    if (isCardPlaced) player.CurrentPlayerMode = PlayerActionMode.None;
                     return;
             }
         }

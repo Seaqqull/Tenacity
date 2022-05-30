@@ -39,6 +39,14 @@ MonoBehaviour:
     m_Key: NoItems
     m_Metadata:
       m_Items: []
+  - m_Id: 46013013394710528
+    m_Key: GoToIntro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46013013398904832
+    m_Key: GoToLevel1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

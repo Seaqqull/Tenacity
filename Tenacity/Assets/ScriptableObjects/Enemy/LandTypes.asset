@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd3adc36003d424a8d1634323ab7fab, type: 3}
+  m_Name: LandTypes
+  m_EditorClassIdentifier: 
+  _landReferences:
+  - {fileID: 993733810039103287, guid: e563a1537b810b240b1f3d6023bbadbe, type: 3}
+  - {fileID: 5627179963964878470, guid: e92c805c48f72eb4cb5f207a2c4804a9, type: 3}
+  - {fileID: 529592647451411558, guid: 3fe1b06ae711d5343b4d5243fcc21256, type: 3}
+  - {fileID: 2651659424827118159, guid: 870fe96ea1ec9e74f9db220f179240cd, type: 3}
