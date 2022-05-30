@@ -36,6 +36,15 @@ namespace Tenacity.UI
         }
 
 
+        public void CloseAllMenus()
+        {
+            while(_openMenus.Count != 0)
+            {
+                var currentMenu = _openMenus.Peek();
+                currentMenu.OnBackAction();
+            }
+        }
+
         public void CloseTopMenu()
         {
             var instance = _openMenus.Pop();

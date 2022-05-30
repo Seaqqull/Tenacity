@@ -58,6 +58,26 @@ MonoBehaviour:
     m_Localized: Time scale
     m_Metadata:
       m_Items: []
+  - m_Id: 48291623321198592
+    m_Localized: Save/Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48293813272174592
+    m_Localized: Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48293813276368896
+    m_Localized: Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48293813276368897
+    m_Localized: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56631411900145664
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

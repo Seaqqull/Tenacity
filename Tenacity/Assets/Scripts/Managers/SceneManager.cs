@@ -31,11 +31,11 @@ namespace Tenacity.Managers
         [SerializeField] private VectorEvent _onMouseMove;
         [SerializeField] private VectorEvent _onMouseClick;
 
-        private List<Dialog> _activeDialogs = new List<Dialog>();
+        private List<Dialog> _activeDialogs = new ();
         private Coroutine _hideDialogDelayCoroutine;
+        private Coroutine _blockMouseClickCoroutine;
         private Coroutine _hideMouseDelayCoroutine;
         private Coroutine _mouseHoverRoutine;
-        private int _levelIndex = - 1;
         
         public event UnityAction<MouseHitInfo> MouseClick
         {
@@ -47,12 +47,15 @@ namespace Tenacity.Managers
             add { _onMouseMove.AddListener(value); }
             remove { _onMouseMove.RemoveListener(value); }
         }
+        public int LevelIndex { get; private set; } = -1;
+        public string LevelName { get; private set; }
+        public bool MouseHoverVisible { get; set; } = true;
         public bool MouseClickBlocked { get; set; }
         public bool MouseActionAllowed
         {
             get => (_activeDialogs.Count == 0) && (_hideDialogDelayCoroutine == null) && !MouseClickBlocked;
         }
-
+        
 
         private void Start()
         {
@@ -92,9 +95,12 @@ namespace Tenacity.Managers
             _hideDialogDelayCoroutine = null;
         }
         
-        private IEnumerator UnblockMouseRoutine()
+        private IEnumerator UnblockMouseRoutine(float period = -1.0f, bool blockMouse = false)
         {
-            yield return new WaitForSeconds(HIDE_DIALOG_DELAY);
+            if (blockMouse)
+                MouseClickBlocked = true;
+            
+            yield return new WaitForSeconds((period <= 0.0f) ? HIDE_DIALOG_DELAY : period);
             
             _hideMouseDelayCoroutine = null;
             MouseClickBlocked = false;
@@ -108,7 +114,9 @@ namespace Tenacity.Managers
             {
                 var mouseHitInfo = RaycastManager.Instance.GetMovementPoint();
                 
-                if (mouseHitInfo.HitSomePosition != _mouseHover.activeSelf)
+                if (!MouseHoverVisible && _mouseHover.activeSelf)
+                    _mouseHover.SetActive(false);
+                else if (MouseHoverVisible && (mouseHitInfo.HitSomePosition != _mouseHover.activeSelf))
                     _mouseHover.SetActive(mouseHitInfo.HitSomePosition);
                 if (mouseHitInfo.HitSomePosition)
                 {
@@ -145,28 +153,24 @@ namespace Tenacity.Managers
             
             loader.Load(sceneToLoad);
         }
-
-
-        public void LoadMainMenu()
-        {
-            StartCoroutine(LoadScene(_levelIndex, 0));
-            _levelIndex = -1;
-        }
+        
 
         public void LoadMainGame(int levelIndex = 1, string screenName = "")
         {
-            StartCoroutine(LoadScene((_levelIndex == -1) ? 1 : _levelIndex, levelIndex, screenName));
-            _levelIndex = levelIndex;
+            StartCoroutine(LoadScene((LevelIndex == -1) ? 1 : LevelIndex, levelIndex, screenName));
+
+            LevelIndex = levelIndex;
+            LevelName = screenName;
         }
-        
+
         public void HideMouseClick()
         {
             _mouseClick.SetActive(false);
         }
 
-        public void UnblockMouseWithDelay()
+        public void UnblockMouseWithDelay(float period = -1.0f, bool blockMouse = false)
         {
-            _hideMouseDelayCoroutine = StartCoroutine(UnblockMouseRoutine());
+            _hideMouseDelayCoroutine = StartCoroutine(UnblockMouseRoutine(period, blockMouse));
         }
 
         public void SetClickPosition(Vector3 position)
@@ -176,8 +180,13 @@ namespace Tenacity.Managers
             _mouseClick.transform.rotation = Quaternion.FromToRotation(Vector3.up, mouseHitInfo.HitData.Normal);
             _mouseClick.transform.position = mouseHitInfo.HitData.Position + (mouseHitInfo.HitData.Normal * _mouseUpShiftPositioning);
         }
-        
 
+
+        public Dialog GetLastDialog()
+        {
+            return (_activeDialogs.Count == 0) ? null : _activeDialogs[^1];
+        }
+        
         public void AttachDialog(Dialog dialog)
         {
             if(!IsDialogAttached(dialog))

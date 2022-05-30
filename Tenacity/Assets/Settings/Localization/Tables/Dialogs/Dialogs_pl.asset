@@ -59,6 +59,14 @@ MonoBehaviour:
       wr\xF3ci\u0107 p\xF3\u017Aniej."
     m_Metadata:
       m_Items: []
+  - m_Id: 46013013394710528
+    m_Localized: "Chcesz wej\u015B\u0107 na bagna?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46013013398904832
+    m_Localized: "Chcesz p\xF3j\u015B\u0107 w g\xF3ry?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -19,10 +19,7 @@ namespace Tenacity.General.Events.Actions
 
         public void SwitchGameTime(bool timePaused)
         {
-            if(timePaused)
-                EnvironmentManager.Instance.PauseGameTime();
-            else
-                EnvironmentManager.Instance.ResumeGameTime();
+            EnvironmentManager.Instance.GameTimePaused = timePaused;
         }
     }
 }

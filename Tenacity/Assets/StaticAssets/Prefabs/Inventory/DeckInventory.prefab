@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Save
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -93,10 +93,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 44.75
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 6326692115982675745}
   - component: {fileID: 6640236273516621111}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SaveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.43529415, g: 0.35686275, b: 0.31764707, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -388,7 +388,7 @@ MonoBehaviour:
   _content: {fileID: 4950459357709837307}
   _cardDeckButtonsArea: {fileID: 4950459357425678353}
   _cardDeckLine: {fileID: 7550727413399992892, guid: 346eaefd68d8aaa4090530c8547d2b1e, type: 3}
-  _cardDeckButton: {fileID: 9201744931969882725, guid: f21c8090847dc3a4c85ac7879ea7beed, type: 3}
+  _cardDeckButton: {fileID: 7127692843589154267, guid: f21c8090847dc3a4c85ac7879ea7beed, type: 3}
 --- !u!1 &4950459357425678354
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 4950459357800835558}
   - component: {fileID: 4950459357800835545}
   m_Layer: 5
-  m_Name: DeckCollectionsList
+  m_Name: DeckButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.105882354}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1139,7 +1139,6 @@ GameObject:
   - component: {fileID: 4950459358812695001}
   - component: {fileID: 4950459358812695002}
   - component: {fileID: 4950459358812695003}
-  - component: {fileID: 4950459358812695000}
   m_Layer: 5
   m_Name: CardDeckArea
   m_TagString: Untagged
@@ -1167,8 +1166,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -109.63733}
-  m_SizeDelta: {x: 356, y: 860.7253}
+  m_AnchoredPosition: {x: 0, y: 11}
+  m_SizeDelta: {x: 319.4, y: 629.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4950459358812695001
 CanvasRenderer:
@@ -1191,15 +1190,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.11372549}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35605fd1308ebd24982da76bc01e6320, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1238,23 +1237,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4950459358812695000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4950459358812695005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a668ce8df9554884cb7ff5d1f6efcad9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardDecks: {fileID: 0}
-  _content: {fileID: 0}
-  _cardDeckButtonsArea: {fileID: 0}
-  _cardDeckLine: {fileID: 7550727413399992892, guid: 346eaefd68d8aaa4090530c8547d2b1e, type: 3}
-  _cardDeckButton: {fileID: 0}
 --- !u!1 &4950459358840826208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1880,7 @@ PrefabInstance:
     - target: {fileID: 7483335539855598512, guid: 01407044717d83649a17ec60f397fb4d, type: 3}
       propertyPath: _cardDeck
       value: 
-      objectReference: {fileID: 4950459358812695000}
+      objectReference: {fileID: 3559957878303569529}
     - target: {fileID: 7483335539855598512, guid: 01407044717d83649a17ec60f397fb4d, type: 3}
       propertyPath: _detailsViewScreen
       value: 

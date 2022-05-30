@@ -54,6 +54,14 @@ MonoBehaviour:
       later.
     m_Metadata:
       m_Items: []
+  - m_Id: 46013013394710528
+    m_Localized: Do you want to go to the swamps?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46013013398904832
+    m_Localized: Do you want to go to the mountains?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
