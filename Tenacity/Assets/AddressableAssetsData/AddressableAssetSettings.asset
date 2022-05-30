@@ -116,5 +116,3 @@ MonoBehaviour:
     m_GlobalProfileVariablesInfos:
     - key: PrivateIpAddress
       value: 172.20.10.9
-    - key: PrivateIpAddress_1
-      value: 172.23.129.106

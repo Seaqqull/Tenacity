@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 1669064594}
+  m_SkyboxMaterial: {fileID: 1836819897}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5540932, g: 0.6924584, b: 0.76208866, a: 1}
+  m_IndirectSpecularColor: {r: 0.6287556, g: 0.49227864, b: 0.759361, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1320,7 +1320,17 @@ MonoBehaviour:
   _dontDestroyOnLoad: 0
   _databasePath: /Saves
   _databaseFile: SaveDatabase.data
---- !u!21 &1669064594
+--- !u!1 &1758224290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 575561249003568636, guid: 7fe63c77f61454433a852f085c7c3d23, type: 3}
+  m_PrefabInstance: {fileID: 785738075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1758224292 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2711392042438622503, guid: 7fe63c77f61454433a852f085c7c3d23, type: 3}
+  m_PrefabInstance: {fileID: 785738075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!21 &1836819897
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1608,16 +1618,6 @@ Material:
     - _Vector1: {r: 0, g: 1, b: 0, a: 0}
     - _water: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
---- !u!1 &1758224290 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 575561249003568636, guid: 7fe63c77f61454433a852f085c7c3d23, type: 3}
-  m_PrefabInstance: {fileID: 785738075}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1758224292 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2711392042438622503, guid: 7fe63c77f61454433a852f085c7c3d23, type: 3}
-  m_PrefabInstance: {fileID: 785738075}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1859168008
 GameObject:
   m_ObjectHideFlags: 0

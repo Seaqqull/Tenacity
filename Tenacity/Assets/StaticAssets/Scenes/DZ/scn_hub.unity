@@ -8700,14 +8700,18 @@ PrefabInstance:
     - target: {fileID: 8260398170506624234, guid: 8ece97921be9b40c791ce7516316b01a, type: 3}
       propertyPath: _dialog
       value: 
-      objectReference: {fileID: 11400000, guid: 023479d3c7a4a42729b764de74845a0d, type: 2}
+      objectReference: {fileID: 11400000, guid: ae44d8aced83b40cda1da9ccacf40096, type: 2}
     - target: {fileID: 8260398170506624234, guid: 8ece97921be9b40c791ce7516316b01a, type: 3}
       propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 70fe90a5719404f71911f553367a5d7d, type: 2}
+      objectReference: {fileID: 11400000, guid: bfcbdf5ab5c834c1492146b5e6fba07d, type: 2}
     - target: {fileID: 8260398170506624234, guid: 8ece97921be9b40c791ce7516316b01a, type: 3}
       propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Perform
+      objectReference: {fileID: 0}
+    - target: {fileID: 8260398170506624234, guid: 8ece97921be9b40c791ce7516316b01a, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Tenacity.General.Events.Actions.LoadLevelAfterMiniGameSO, Tenacity.General.Events
       objectReference: {fileID: 0}
     - target: {fileID: 8260398170506624234, guid: 8ece97921be9b40c791ce7516316b01a, type: 3}
       propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument

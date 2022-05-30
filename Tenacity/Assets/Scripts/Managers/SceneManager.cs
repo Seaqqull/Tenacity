@@ -181,6 +181,11 @@ namespace Tenacity.Managers
             _mouseClick.transform.position = mouseHitInfo.HitData.Position + (mouseHitInfo.HitData.Normal * _mouseUpShiftPositioning);
         }
 
+
+        public Dialog GetLastDialog()
+        {
+            return (_activeDialogs.Count == 0) ? null : _activeDialogs[^1];
+        }
         
         public void AttachDialog(Dialog dialog)
         {
