@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using Tenacity.Battles.Boards;
 using Tenacity.Battles.Data;
-using TMPro;
+using Tenacity.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +15,7 @@ namespace Tenacity.Battles.Controllers
         [SerializeField] private BattleEnemyController _player;
         [SerializeField] private BattleEnemyController _enemy;
         [Header("UI objects")]
-        [SerializeField] private TextMeshProUGUI _turnStateTextField;
+        [SerializeField] private ImageMapper _turnState;
         [SerializeField] private Button _endTurnButton;
         [Header("The floats")]
         [SerializeField] private float _waitNextTurnTime = 0.5f;
@@ -50,7 +50,7 @@ namespace Tenacity.Battles.Controllers
 
         private void EndGame()
         {
-            _turnStateTextField.text = "YOU " + CurrentBattleState;
+            _turnState.Value = (int)CurrentBattleState;
         }
 
         private void InitGame()
@@ -62,7 +62,7 @@ namespace Tenacity.Battles.Controllers
         private IEnumerator PlayerTurn(float waitTime)
         {
             CurrentBattleState = BattleState.WaitingForPlayerTurn;
-            _turnStateTextField.text = _turnStateText[0];
+            _turnState.Value = (int)CurrentBattleState;
 
             yield return new WaitForSeconds(waitTime);
             yield return _player.MakeMove(waitTime);
@@ -97,7 +97,7 @@ namespace Tenacity.Battles.Controllers
         private IEnumerator EnemyTurn(float waitTime)
         {
             CurrentBattleState = BattleState.WaitingForEnemyTurn;
-            _turnStateTextField.text = _turnStateText[1];
+            _turnState.Value = (int)CurrentBattleState;
 
             yield return new WaitForSeconds(waitTime);
             yield return _enemy.MakeMove(waitTime);

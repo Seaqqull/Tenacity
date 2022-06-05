@@ -1,5 +1,7 @@
+using static Tenacity.Battles.Lands.BattleConstants;
 using Tenacity.Battles.Lands.Data;
 using System.Collections.Generic;
+using Tenacity.Battles.Enemies;
 using Tenacity.Cards.Managers;
 using Tenacity.Battles.Lands;
 using Tenacity.Cards.Data;
@@ -7,10 +9,8 @@ using System.Collections;
 using Tenacity.Cards;
 using System.Linq;
 using UnityEngine;
-using TMPro;
+using Tenacity.UI;
 
-using static Tenacity.Battles.Lands.BattleConstants;
-using Tenacity.Battles.Enemies;
 
 namespace Tenacity.Battles.Controllers
 {
@@ -20,7 +20,7 @@ namespace Tenacity.Battles.Controllers
         [SerializeField] private Vector3 _enemyPos;
         [SerializeField] private BattleCardDeckManager _enemyCardDeck;
         [SerializeField] private LandTypesSO _landTypes;
-        [SerializeField] private TextMeshProUGUI _manaUI;
+        [SerializeField] private ManaUI _manaUI;
         [SerializeField] private float _yPos = 0.61f;
         [SerializeField] private Material _enemyMaterial;
         [SerializeField] private bool _isEnemyPlayer;
@@ -100,7 +100,7 @@ namespace Tenacity.Battles.Controllers
         private void UpdateMana(int dtMana, bool isReduced)
         {
             _currentMana += (isReduced ? -dtMana : dtMana);
-            _manaUI.text = "Mana: " + _currentMana;
+            _manaUI.Amount = _currentMana;
         }
  
 
