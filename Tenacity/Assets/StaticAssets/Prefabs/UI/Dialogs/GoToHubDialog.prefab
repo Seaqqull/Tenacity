@@ -7,6 +7,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7262046472838002418, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046472838002418, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046472838002418, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046472838002418, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046472838002421, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_fontSize
+      value: 42.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473876743911, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473876743911, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -227.99991
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473876743911, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473876743911, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 14.00005
+      objectReference: {fileID: 0}
     - target: {fileID: 7262046473895867887, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_Name
       value: GoToHubDialog
@@ -150,6 +186,22 @@ PrefabInstance:
     - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Tenacity.Properties.IntegerVariable, Properties
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473945182490, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473945182490, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473945182490, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473945182490, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 7262046474265085314, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_AnchoredPosition.y
