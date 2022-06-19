@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using Tenacity.Battles.Boards;
+﻿using Tenacity.Battles.Boards;
 using Tenacity.Battles.Data;
+using System.Collections;
+using UnityEngine.UI;
 using Tenacity.UI;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 namespace Tenacity.Battles.Controllers
 {

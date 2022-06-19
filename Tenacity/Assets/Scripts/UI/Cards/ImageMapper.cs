@@ -1,4 +1,3 @@
-using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -26,7 +25,6 @@ namespace Tenacity.UI
             set
             {
                 if (value == _value) return;
-                
                 
                 foreach (var mappedImage in _mappedImages)
                 {
