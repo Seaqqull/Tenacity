@@ -78,6 +78,10 @@ MonoBehaviour:
     m_Localized: Back
     m_Metadata:
       m_Items: []
+  - m_Id: 66044345176809472
+    m_Localized: Battery mode
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

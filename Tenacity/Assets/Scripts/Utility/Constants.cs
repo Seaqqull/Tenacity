@@ -27,6 +27,7 @@ namespace Tenacity.Utility.Constants
     public static class Game
     {
         public const string TIME_SCALE = "TimeScale";
+        public const string BATTERY_MODE = "BatteryMode";
         
         public const float TIME_SCALE_MIN = 1.0f;
         public const float TIME_SCALE_MAX = 100;

@@ -6,12 +6,8 @@ using TMPro;
 
 namespace Tenacity.UI.Additional
 {
-    public class SnapshotItem : MonoBehaviour
+    public class SnapshotItem : SwitchableButton
     {
-        [SerializeField] private bool _selected;
-        [Header("UI")] 
-        [SerializeField] private GameObject _ordinalBackground;
-        [SerializeField] private GameObject _selectedBackground;
         [Space] 
         [SerializeField] private TMP_Text _screenText;
         [SerializeField] private TMP_Text _title;
@@ -37,40 +33,17 @@ namespace Tenacity.UI.Additional
         {
             set => _title.text = value;
         }
-        public bool Selected
-        {
-            get => _selected;
-        }
         public DateTime Date
         {
             set => _date.text = value.ToString(_dateFormat);
         }
 
 
-        private void Awake()
-        {
-            SwitchButtons(_selected);
-        }
-
-
-        private void SwitchButtons(bool enable)
-        {
-            _selectedBackground.SetActive(enable);
-            _ordinalBackground.SetActive(!enable);
-        }
-
-        
-        public void SwitchSelection()
-        {
-            SetSelection(!_selected);
-        }
-
-        public void SetSelection(bool selection)
+        public override void SetSelection(bool selection)
         {
             if (_selected == selection) return;
 
-            _selected = selection;
-            SwitchButtons(_selected);
+            base.SetSelection(selection);
             _onChangeState?.Invoke(this);
         }
     }
