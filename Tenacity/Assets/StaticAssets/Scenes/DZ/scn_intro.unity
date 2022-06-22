@@ -5592,14 +5592,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1261087921}
-    - target: {fileID: 5219455134548904474, guid: c77304363e22f478b8efec89a7b07abe, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: d56988b167a6042ed9fbc89fc65aacb2, type: 2}
-    - target: {fileID: 5219455134548904474, guid: c77304363e22f478b8efec89a7b07abe, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5219455134548904477, guid: c77304363e22f478b8efec89a7b07abe, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0

@@ -654,8 +654,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 48}
-  m_SizeDelta: {x: -80, y: 64}
+  m_AnchoredPosition: {x: 0, y: 65}
+  m_SizeDelta: {x: -80, y: 83.2}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7262046473945182492
 CanvasRenderer:
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 128, y: 64}
+  m_CellSize: {x: 166.2, y: 83.2}
   m_Spacing: {x: 16, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -783,14 +783,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 13.6
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

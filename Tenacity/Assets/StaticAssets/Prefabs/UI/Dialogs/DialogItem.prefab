@@ -39,6 +39,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6364433361920527663}
     m_Modifications:
+    - target: {fileID: 1682290896600182809, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_CellSize.x
+      value: 166.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682290896600182809, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_CellSize.y
+      value: 83.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7262046472838002418, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_SizeDelta.x
       value: -80
@@ -189,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7262046473945182490, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 64
+      value: 83.2
       objectReference: {fileID: 0}
     - target: {fileID: 7262046473945182490, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -197,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7262046473945182490, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 48
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7262046474265085314, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_AnchoredPosition.y
