@@ -79,6 +79,18 @@ MonoBehaviour:
     m_Key: BatteryMode
     m_Metadata:
       m_Items: []
+  - m_Id: 66996718057545728
+    m_Key: Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66996718061740032
+    m_Key: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31473712226305
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -42,6 +42,10 @@ MonoBehaviour:
     m_Localized: "Zrozumia\u0142em, dzi\u0119kuj\u0119"
     m_Metadata:
       m_Items: []
+  - m_Id: 56363628310290432
+    m_Localized: "Dzi\u0119kuj\u0119"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
