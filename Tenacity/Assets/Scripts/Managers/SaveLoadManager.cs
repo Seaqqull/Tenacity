@@ -38,7 +38,7 @@ namespace Tenacity.Managers
         {
             FromSnap(snap);
             if (snap != null)
-                SceneManager.Instance.LoadMainGame(snap.SceneIndex, snapshot.Title);
+                SceneManager.Instance.LoadLevel(snap.SceneIndex, snapshot.Title);
         }
         
         

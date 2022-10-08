@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/StaticAssets/Scenes/DZ/scn_loader.unity
-    guid: b51be2b4cd7da4815a90979447dedf01
-  - enabled: 1
     path: Assets/StaticAssets/Scenes/scn_menu.unity
     guid: 5484bc6d7801e41cd89abe98d6c98710
+  - enabled: 1
+    path: Assets/StaticAssets/Scenes/DZ/scn_managers.unity
+    guid: f8f02c2d5ccfe44d79f6928e190d6064
+  - enabled: 1
+    path: Assets/StaticAssets/Scenes/DZ/scn_loader.unity
+    guid: b51be2b4cd7da4815a90979447dedf01
   - enabled: 1
     path: Assets/StaticAssets/Scenes/DZ/scn_intro.unity
     guid: c5229808e1ac64dec91e1b77fe8b37a0

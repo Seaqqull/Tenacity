@@ -34,7 +34,7 @@ namespace Tenacity.General.Events.Actions
             MiniGameManager.Instance.Show(_miniGameId.Value, (result) => {
                 _onClose.Invoke();
                 if (result)
-                    SceneManager.Instance.LoadMainGame(levelIndex, _sceneName);
+                    SceneManager.Instance.LoadLevel(levelIndex, _sceneName);
             });
         }
     }

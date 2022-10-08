@@ -16,7 +16,9 @@ namespace Tenacity.Managers
     {
         #region Constants
         private const float HIDE_DIALOG_DELAY = 0.1f;
+        private const int TEMPORARY_SCENE_INDEX = 2;
         #endregion
+        
         [Serializable]
         private class VectorEvent : UnityEvent<MouseHitInfo> { }
 
@@ -133,7 +135,7 @@ namespace Tenacity.Managers
         {
             MouseClickBlocked = true;
             // Load loading scene
-            var asyncLoad = UnityScenes.SceneManager.LoadSceneAsync(0, UnityScenes.LoadSceneMode.Additive);
+            var asyncLoad = UnityScenes.SceneManager.LoadSceneAsync(TEMPORARY_SCENE_INDEX, UnityScenes.LoadSceneMode.Additive);
             while (!asyncLoad.isDone)
                 yield return null;
             
@@ -141,7 +143,7 @@ namespace Tenacity.Managers
             loader.SceneName = loadSceneName;
             loader.OnLoad += () =>
             {
-                UnityScenes.SceneManager.UnloadScene(0);
+                UnityScenes.SceneManager.UnloadScene(TEMPORARY_SCENE_INDEX);
                 _onLoadScene?.Invoke();
                 
                 MouseClickBlocked = false;
@@ -154,23 +156,15 @@ namespace Tenacity.Managers
             loader.Load(sceneToLoad);
         }
         
-
-        public void LoadMainGame(int levelIndex = 1, string screenName = "")
-        {
-            StartCoroutine(LoadScene((LevelIndex == -1) ? 1 : LevelIndex, levelIndex, screenName));
-
-            LevelIndex = levelIndex;
-            LevelName = screenName;
-        }
-
+        
         public void HideMouseClick()
         {
             _mouseClick.SetActive(false);
         }
 
-        public void UnblockMouseWithDelay(float period = -1.0f, bool blockMouse = false)
+        public void UpdateLevelIndex(int index)
         {
-            _hideMouseDelayCoroutine = StartCoroutine(UnblockMouseRoutine(period, blockMouse));
+            LevelIndex = index;
         }
 
         public void SetClickPosition(Vector3 position)
@@ -180,7 +174,20 @@ namespace Tenacity.Managers
             _mouseClick.transform.rotation = Quaternion.FromToRotation(Vector3.up, mouseHitInfo.HitData.Normal);
             _mouseClick.transform.position = mouseHitInfo.HitData.Position + (mouseHitInfo.HitData.Normal * _mouseUpShiftPositioning);
         }
+        
+        public void LoadLevel(int newLevelIndex, string screenName = "")
+        {
+            StartCoroutine(LoadScene(LevelIndex, newLevelIndex, screenName));
 
+            LevelIndex = newLevelIndex;
+            LevelName = screenName;
+        }
+
+        public void UnblockMouseWithDelay(float period = -1.0f, bool blockMouse = false)
+        {
+            _hideMouseDelayCoroutine = StartCoroutine(UnblockMouseRoutine(period, blockMouse));
+        }
+        
 
         public Dialog GetLastDialog()
         {

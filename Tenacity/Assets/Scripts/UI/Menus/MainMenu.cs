@@ -10,6 +10,11 @@ namespace Tenacity.UI.Menus
 {
     public class MainMenu : SingleMenu<MainMenu>
     {
+        #region Constants
+        private const int FIRST_LEVEL = 3;
+        #endregion
+        
+        
         private void Start()
         {
             MenuManager.Instance.OpenMenu(this);
@@ -19,7 +24,7 @@ namespace Tenacity.UI.Menus
         public void OnStartAction()
         {
             MenuManager.Instance.CloseMenu(this);
-            SceneManager.Instance.LoadMainGame(2, "Swamps");
+            SceneManager.Instance.LoadLevel(FIRST_LEVEL, "Swamps");
         }
 
         public void OnSaveLoadAction()
