@@ -105,6 +105,7 @@ namespace Tenacity.Managers
         {
             var saveData = new SaveLoadSnap(this)
             {
+                TargetFramerate = StorageManager.Instance.TargetFramerate,
                 GameTimeScale = EnvironmentManager.Instance.GameTimeScale, 
                 GameTime = EnvironmentManager.Instance.GameTime,
                 Date = DateTime.Now.ToBinary(),
@@ -126,7 +127,9 @@ namespace Tenacity.Managers
             StorageManager.Instance.UpdateTime(savedData.GameTime);
             StorageManager.Instance.UpdateTimeScale(savedData.GameTimeScale);
             StorageManager.Instance.UpdatePlayerPosition(savedData.PlayerPosition);
-            
+            StorageManager.Instance.UpdateTargetFramerate(savedData.TargetFramerate);
+
+            GameStorageUpdateManager.Instance.UpdateGame(StorageManager.Instance);
         }
         #endregion
     }

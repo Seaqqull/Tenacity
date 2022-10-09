@@ -1732,7 +1732,7 @@ MonoBehaviour:
   _rewritable: 0
   _dontDestroyOnLoad: 1
   _singleOnly: 1
-  _sceneIndex: {fileID: 11400000, guid: 6b0302e2d54bb4d08bc39e0f867549c0, type: 2}
+  _preloadSceneIndex: {fileID: 11400000, guid: 6b0302e2d54bb4d08bc39e0f867549c0, type: 2}
   _currentSceneIndex: {fileID: 11400000, guid: ee84289e556bb4db3b279dbe689bac22, type: 2}
 --- !u!1001 &643187186
 PrefabInstance:
