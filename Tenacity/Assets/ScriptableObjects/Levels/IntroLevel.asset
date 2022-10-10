@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: IntroLevel
   m_EditorClassIdentifier: 
   _description: Swamp level
-  _value: 2
+  _value: 3

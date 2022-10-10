@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -27,7 +28,7 @@ namespace Tenacity.Utility.Constants
     public static class Game
     {
         public const string TIME_SCALE = "TimeScale";
-        public const string BATTERY_MODE = "BatteryMode";
+        public const string FRAMERATE = "Framerate";
         
         public const float TIME_SCALE_MIN = 1.0f;
         public const float TIME_SCALE_MAX = 100;
@@ -52,6 +53,30 @@ namespace Tenacity.Utility.Constants
     {
         public const int MAIN_MENU = 0;
         public const int MAIN_GAME = 0;
+    }
+
+    public static class Framerate
+    {
+        public static List<int> FRAME_RATES = new() { 30, 60, 120 };
+        public const int DEFAULT_REFRESH_RATE = 60;
+
+        private static List<int> _allowed_framerate;
+
+        public static List<int> ALLOWED_FRAMERATE
+        {
+            get => _allowed_framerate ??= IsDefaultRefreshRate ? FRAME_RATES.GetRange(0, 2) : FRAME_RATES;
+        }
+
+
+        public static bool IsDefaultRefreshRate
+        {
+            get => Screen.currentResolution.refreshRate <= DEFAULT_REFRESH_RATE;
+        }
+
+        public static int FramerateFromIndex(int index)
+        {
+            return ALLOWED_FRAMERATE[index];
+        }
     }
 
     public static class Debug

@@ -32,6 +32,7 @@ namespace Tenacity.Managers.Additional
         public long Date;
         
         // Environment/Storage managers
+        public int TargetFramerate;
         public float GameTimeScale;
         public float GameTime;
         

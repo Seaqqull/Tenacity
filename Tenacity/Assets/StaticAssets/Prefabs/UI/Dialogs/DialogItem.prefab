@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: m_CellSize.y
       value: 83.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2448265242257381399, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7262046472838002418, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_SizeDelta.x
       value: -80

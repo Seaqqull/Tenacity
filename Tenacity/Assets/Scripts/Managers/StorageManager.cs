@@ -15,6 +15,7 @@ namespace Tenacity.Managers
         
         public Camera MainCamera { get; private set; }
         public Camera UICamera { get; private set; }
+        public int TargetFramerate { get; private set; }
         public float TimeScale { get; private set; }
         public float Time { get; private set; }
 
@@ -24,6 +25,8 @@ namespace Tenacity.Managers
             Time = EnvironmentManager.TimeFromDate(DateTime.Now);
             TimeScale = PlayerPrefsManager.Instance.GetFloat(Utility.Constants.Game.TIME_SCALE,
                 Utility.Constants.Game.TIME_SCALE_MIN);
+            TargetFramerate = PlayerPrefsManager.Instance.GetInt(Utility.Constants.Game.FRAMERATE, 
+                Utility.Constants.Framerate.DEFAULT_REFRESH_RATE);
         }
         
 
@@ -69,6 +72,21 @@ namespace Tenacity.Managers
 
             if (EnvironmentManager.Instance != null)
                 EnvironmentManager.Instance.GameTimeScale = TimeScale;
+        }
+
+        public void UpdateTargetFramerate(int framerate)
+        {
+            PlayerPrefsManager.Instance.SetInt(Utility.Constants.Game.FRAMERATE, framerate);
+            TargetFramerate = framerate;
+        }
+        
+        
+        public static int GetSavedFramerate()
+        {
+            var savedFramerate = PlayerPrefsManager.Instance.
+                GetInt(Utility.Constants.Game.FRAMERATE, Utility.Constants.Framerate.DEFAULT_REFRESH_RATE);
+
+            return savedFramerate;
         }
     }
 }

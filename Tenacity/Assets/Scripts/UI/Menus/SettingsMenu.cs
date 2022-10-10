@@ -20,8 +20,7 @@ namespace Tenacity.UI.Menus
         [SerializeField] private Slider _effectsSlider;
         [SerializeField] private Slider _timeScaleSlider;
         [SerializeField] private TMP_Dropdown _languageSelect;
-        [Header("BatteryMode")] 
-        [SerializeField] private BatterySaveMode _modeListener;
+        [Header("BatteryMode")]
         [SerializeField] private TMP_Dropdown _batteryModeSelect;
 
         private void Start()
@@ -56,12 +55,11 @@ namespace Tenacity.UI.Menus
             _languageSelect.SetValueWithoutNotify(LocalizationManager.Instance.SelectedLocaleIndex);
 
             // Initialization of battery
-            _batteryModeSelect.options = new ()
-            {
-                new TMP_Dropdown.OptionData("Off"), new TMP_Dropdown.OptionData("On") 
-            };
-            _batteryModeSelect.value = 
-                PlayerPrefsManager.Instance.GetInt(Utility.Constants.Game.BATTERY_MODE, 0);
+            _batteryModeSelect.options =
+                Utility.Constants.Framerate.ALLOWED_FRAMERATE.Select(framerate =>
+                    new TMP_Dropdown.OptionData(framerate.ToString())).ToList();
+            _batteryModeSelect.value = Utility.Constants.Framerate.ALLOWED_FRAMERATE.
+                IndexOf(StorageManager.Instance.TargetFramerate);
             
             // Activate tab
             OnTabClick(_settingTabs[_selectedTab]);
@@ -164,8 +162,31 @@ namespace Tenacity.UI.Menus
         
         public void OnChangeBatteryMode(int modeIndex)
         {
-            _modeListener.OnBatteryModeClick((modeIndex != 0));
-            PlayerPrefsManager.Instance.SetInt(Utility.Constants.Game.BATTERY_MODE, modeIndex);
+            var framerate = Utility.Constants.Framerate.FramerateFromIndex(modeIndex);
+            
+            UpdateFrameRate(framerate);
+            StorageManager.Instance.UpdateTargetFramerate(framerate);
+        }
+        
+        public static void UpdateFrameRate(int targetFramerate)
+        {
+            QualitySettings.vSyncCount = Application.isMobilePlatform ? 0 : 1; // 1 for Standalone - if component is hidden on that platform 
+            if (Application.isMobilePlatform)
+            {
+                Application.targetFrameRate = targetFramerate;
+            }
+#if UNITY_EDITOR
+            else
+            {
+                Application.targetFrameRate = targetFramerate;
+            }
+#endif
+        }
+        
+        public static void SetFrameRate()
+        {
+            var savedFramerate = StorageManager.GetSavedFramerate();
+            UpdateFrameRate(savedFramerate);
         }
     }
 }

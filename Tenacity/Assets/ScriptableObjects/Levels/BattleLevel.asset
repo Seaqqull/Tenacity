@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BattleLevel
   m_EditorClassIdentifier: 
   _description: Battle level
-  _value: 4
+  _value: 5

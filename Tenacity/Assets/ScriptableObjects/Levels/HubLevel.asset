@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HubLevel
   m_EditorClassIdentifier: 
   _description: Hub level
-  _value: 3
+  _value: 4
