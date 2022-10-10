@@ -75,8 +75,8 @@ MonoBehaviour:
     m_Key: Back
     m_Metadata:
       m_Items: []
-  - m_Id: 66044345176809472
-    m_Key: BatteryMode
+  - m_Id: 106572495987924992
+    m_Key: MaximumFrameRate
     m_Metadata:
       m_Items: []
   - m_Id: 66996718057545728
@@ -89,6 +89,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 31473712226305
     m_Key: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106568794103603200
+    m_Key: Loading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106570607934562304
+    m_Key: ClickTo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106570607934562305
+    m_Key: Continue
     m_Metadata:
       m_Items: []
   m_Metadata:

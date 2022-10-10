@@ -21,6 +21,15 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  <TitleReference>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:95456386437c04dc48c89f56b3c7cc11
+    m_TableEntryReference:
+      m_KeyId: 351393538054
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <Answers>k__BackingField:
   - Text: {fileID: 11400000, guid: 7fbbdc5da073b4de2a39fbb7ce1de3d8, type: 2}
     SpecialId:

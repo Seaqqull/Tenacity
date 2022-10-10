@@ -78,16 +78,28 @@ MonoBehaviour:
     m_Localized: Back
     m_Metadata:
       m_Items: []
-  - m_Id: 66044345176809472
-    m_Localized: Battery mode
-    m_Metadata:
-      m_Items: []
   - m_Id: 66996718057545728
     m_Localized: Game
     m_Metadata:
       m_Items: []
   - m_Id: 66996718061740032
     m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106568794103603200
+    m_Localized: Loading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106570607934562304
+    m_Localized: Click to continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106570607934562305
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106572495987924992
+    m_Localized: Maximum frame rate
     m_Metadata:
       m_Items: []
   references:
