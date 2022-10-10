@@ -622,8 +622,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ad0b5b265a3d4ad48d236fec5141950, type: 2}
-  m_sharedMaterial: {fileID: -7780097744406052579, guid: 0ad0b5b265a3d4ad48d236fec5141950, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -872,8 +872,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Maximum frame rate
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ad0b5b265a3d4ad48d236fec5141950, type: 2}
-  m_sharedMaterial: {fileID: -7780097744406052579, guid: 0ad0b5b265a3d4ad48d236fec5141950, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -897,10 +897,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 36
   m_fontStyle: 0
@@ -2265,10 +2265,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.6
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -4013,6 +4013,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709895284808240170}
     m_Modifications:
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1984606724800314971, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4479,6 +4487,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Max framerate
       objectReference: {fileID: 0}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1984606724800314971, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4724,6 +4740,26 @@ PrefabInstance:
     - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
       propertyPath: m_text
       value: Time scale
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984606724800314971, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4977,6 +5013,14 @@ PrefabInstance:
     - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
       propertyPath: m_text
       value: Effects
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861595642764075391, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1984606724800314971, guid: 16950e07662464ba6a4d58ac1c5c0e83, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
