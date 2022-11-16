@@ -25,7 +25,7 @@ namespace Tenacity.Cards.Managers
 
         private static GameObject LoadFromDatabase(Card newCard)
         {
-            return Resources.Load<GameObject>($"Creatures/{newCard.Data.Type}_{newCard.Data.CardId}");
+            return Resources.Load<GameObject>($"Creatures/{newCard.Data.Type}_{newCard.Data.Id}");
         }
     }
 }

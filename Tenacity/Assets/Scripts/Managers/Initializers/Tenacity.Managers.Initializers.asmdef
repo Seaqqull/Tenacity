@@ -1,0 +1,20 @@
+{
+    "name": "Managers.Initializers",
+    "rootNamespace": "Tenacity.Managers.Initializers",
+    "references": [
+        "GUID:af8157267ee6c4108bc3bacbe8366672",
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618",
+        "GUID:42fc222381b7d45f58ef51c0c53f0a54",
+        "GUID:13ea7ebe5cb9543c9a40a6fb7ad52824",
+        "GUID:5ff1d489b8b344f54ab483f01efb7d82"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

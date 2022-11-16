@@ -78,8 +78,28 @@ MonoBehaviour:
     m_Localized: "Powr\xF3t"
     m_Metadata:
       m_Items: []
-  - m_Id: 66044345176809472
-    m_Localized: Tryb baterii
+  - m_Id: 66996718057545728
+    m_Localized: Gra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66996718061740032
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106568794103603200
+    m_Localized: "\u0141adowanie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106570607934562304
+    m_Localized: "Kliknij, aby kontynuowa\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106570607934562305
+    m_Localized: "Kontynuowa\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106572495987924992
+    m_Localized: "Maksymalna liczba klatek na sekund\u0119"
     m_Metadata:
       m_Items: []
   references:

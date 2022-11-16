@@ -23,7 +23,7 @@ namespace Tenacity.General.Events.Actions
         
         public void Perform(IntegerVariable levelId)
         {
-            SceneManager.Instance.LoadMainGame(levelId.Value, _sceneName);
+            SceneManager.Instance.LoadLevel(levelId.Value, _sceneName);
         }
     }
 }

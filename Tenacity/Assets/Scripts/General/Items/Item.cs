@@ -1,63 +1,19 @@
-using Tenacity.Utility.Interfaces;
 using UnityEngine;
-using System;
 
 
 namespace Tenacity.General.Items
 {
-    public abstract class Item : Base.BaseMono, Utility.Interfaces.IPickable, IEquatable<Item>
+    public abstract class Item<T> : MonoBehaviour, IItem
+        where T : ItemSO<T>
     {
-        private static int _idCounter;
+        [SerializeField] private T _data;
+        [Space] 
+        [SerializeField] private bool _overrideName;
+        [SerializeField] private string _itemName;
 
-
-        [SerializeField] protected ItemType _type;
-
-        protected bool _isPickable;
-        protected int _id;
-
-        public ItemType Type
-        {
-            get => _type;
-        }
-
-        public int Id
-        {
-            get { return this._id; }
-        }
-
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            _id = _idCounter++;
-        }
-
-
-        public virtual bool SetPickable(bool flag)
-        {
-            _isPickable = flag;
-            return true;
-        }
-
-
-        public override int GetHashCode()
-        {
-            return this._id.GetHashCode();
-        }
-
-        public bool Equals(Item obj)
-        {
-            return (obj != null) && (this._id == obj._id);
-        }
-
-        public override bool Equals(System.Object obj)
-        {
-            if ((obj == null) ||
-                !(this.GetType().Equals(obj.GetType())))
-                return false;
-
-            return this.Equals(obj as Item);
-        }
+        public ItemRarity ItemRarity => _data.ItemRarity;
+        public ItemType ItemType => _data.ItemType;
+        public string Name => (_overrideName) ? _itemName : _data.Name;
+        public int Id => _data.Id;
     }
 }

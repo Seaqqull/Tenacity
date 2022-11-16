@@ -39,6 +39,10 @@ MonoBehaviour:
     m_Key: NoItemsResponse
     m_Metadata:
       m_Items: []
+  - m_Id: 56363628310290432
+    m_Key: Thanks
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

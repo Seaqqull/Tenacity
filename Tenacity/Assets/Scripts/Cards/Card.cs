@@ -7,7 +7,7 @@ namespace Tenacity.Cards
 {
     public class Card : BaseMono
     {
-        [SerializeField] private CardDataSO data;
+        [SerializeField] private CardSO data;
         [SerializeField] private bool isAvailable;
         [SerializeField] private CardState state;
 
@@ -30,7 +30,7 @@ namespace Tenacity.Cards
             get => state;
             set => state = value;
         }
-        public CardDataSO Data
+        public CardSO Data
         {
             get => data;
             set => data = value;

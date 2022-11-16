@@ -11,6 +11,7 @@ namespace Tenacity.Dialogs
 {
     public class Dialog : MonoBehaviour
     {
+        [SerializeField] private LocalizeStringEvent _title;
         [SerializeField] private LocalizeStringEvent _text;
         [SerializeField] private DialogReference _dialog;
         [SerializeField] private GameObject _actionObject;
@@ -53,6 +54,7 @@ namespace Tenacity.Dialogs
             
             
             // Update dialog text
+            _title.StringReference = _dialog.TitleReference;
             _text.StringReference = _dialog.StringReference;
             
             // Generate answers
@@ -88,7 +90,7 @@ namespace Tenacity.Dialogs
         }
 
         
-        public void ShowDialog()
+        public void ShowDialog() // Here we can send dialog storage
         {
             if (!_initialized)
             {

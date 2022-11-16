@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MainMenuLevel
   m_EditorClassIdentifier: 
   _description: Main menu level
-  _value: 1
+  _value: 0

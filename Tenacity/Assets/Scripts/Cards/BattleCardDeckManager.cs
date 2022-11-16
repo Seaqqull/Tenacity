@@ -11,7 +11,7 @@ namespace Tenacity.Cards
         [SerializeField] private Card _cardPrefab;
         [SerializeField] private Transform[] _cardPositions;
         [SerializeField] private CardDecksSO _cardDecks;
-        [SerializeField] private List<CardDataSO> _cardsDataPack = new List<CardDataSO>();
+        [SerializeField] private List<CardSO> _cardsDataPack = new List<CardSO>();
 
         private CardDeck _cardDeck => _cardDecks.CurrentlySelectedCardDeck;
         public List<Card> CardPack { get; private set; } = new List<Card>();
@@ -26,11 +26,11 @@ namespace Tenacity.Cards
         }
 
         
-        private void InitCardDeck(List<CardDataSO> cardDataPack)
+        private void InitCardDeck(List<CardSO> cardDataPack)
         {
             if (cardDataPack.Count <= 0) return;
 
-            var copyPack = new List<CardDataSO>(cardDataPack);
+            var copyPack = new List<CardSO>(cardDataPack);
             for (int i = 0; i < _cardPositions.Length; i++)
             {
                 var cardData = copyPack[Random.Range(0, copyPack.Count)];
@@ -41,7 +41,7 @@ namespace Tenacity.Cards
             }
         }
 
-        private Card CreateHandCardInDeck(CardDataSO cardData, int slotId)
+        private Card CreateHandCardInDeck(CardSO cardData, int slotId)
         {
             Card card = Instantiate(_cardPrefab, _cardPositions[slotId]);
             card.GetComponent<RectTransform>().SetParent(_cardPositions[slotId]);
@@ -52,10 +52,10 @@ namespace Tenacity.Cards
             return card;
         }
 
-        private List<CardDataSO> GetRandomCardsFromDeck(List<CardDataSO> list, int number)
+        private List<CardSO> GetRandomCardsFromDeck(List<CardSO> list, int number)
         {
-            var tmpList = new List<CardDataSO>(list);
-            var newList = new List<CardDataSO>();
+            var tmpList = new List<CardSO>(list);
+            var newList = new List<CardSO>();
 
             while (newList.Count < number)
             {
@@ -72,7 +72,7 @@ namespace Tenacity.Cards
         public void AddNewRandomCards() {
             for (int i = 0; i < _cardPositions.Length; i++)
             {
-                CardDataSO data = _cardDeck.Cards[Random.Range(0, _cardDeck.Cards.Count)];
+                CardSO data = _cardDeck.Cards[Random.Range(0, _cardDeck.Cards.Count)];
                 if (!_cardPositions[i].GetComponentInChildren<Card>())
                 {
                     Card createdCard = CreateHandCardInDeck(data, i);

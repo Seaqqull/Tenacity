@@ -686,6 +686,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3004824136976508158}
     m_Modifications:
+    - target: {fileID: 5232032087333812454, guid: b10d0168009744f97be36e61ee9ef58d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5232032087333812454, guid: b10d0168009744f97be36e61ee9ef58d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7534629081049407698, guid: b10d0168009744f97be36e61ee9ef58d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -774,6 +782,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Time
       objectReference: {fileID: 0}
+    - target: {fileID: 7534629081603125208, guid: b10d0168009744f97be36e61ee9ef58d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7534629081603125208, guid: b10d0168009744f97be36e61ee9ef58d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b10d0168009744f97be36e61ee9ef58d, type: 3}
 --- !u!224 &3004824136846578517 stripped

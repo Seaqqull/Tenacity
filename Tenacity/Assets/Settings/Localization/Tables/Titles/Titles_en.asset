@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Titles_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 95456386437c04dc48c89f56b3c7cc11, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 351380955136
+    m_Localized: Title example
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351393538048
+    m_Localized: Second title example
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351393538049
+    m_Localized: City entrance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351393538050
+    m_Localized: Trader greeting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351393538051
+    m_Localized: Trader talks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351393538052
+    m_Localized: Swamps entrance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351393538053
+    m_Localized: Mountains entrance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351393538054
+    m_Localized: FINAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351393538055
+    m_Localized: Mountains deeper entrance
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
