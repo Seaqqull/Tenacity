@@ -3,12 +3,6 @@
 
 namespace Tenacity.Cards.Data
 {
-    public enum RarityType
-    {
-        Common = 0,
-        Rare = 1,
-        Legendary = 2,
-    }
     public enum CardState
     {
         InCardDeck,

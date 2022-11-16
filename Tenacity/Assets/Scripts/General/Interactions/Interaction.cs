@@ -1,4 +1,3 @@
-using Tenacity.General.Items;
 using Tenacity.Base;
 using UnityEngine;
 
@@ -7,16 +6,11 @@ namespace Tenacity.General.Interactions
 {
     public class Interaction : BaseMono
     {
-        [SerializeField] protected Item _itemToInteract;
         [SerializeField] protected GameObject _owner;
         [SerializeField] protected Actions.InteractionAction _action;
         
         protected Sequence.SequentialExecutor[] _modes;
         
-        public Item ObjectToInteract
-        {
-            get { return _itemToInteract; }
-        }
         public virtual bool IsActive
         {
             get { return gameObject.activeSelf; }
