@@ -1,0 +1,14 @@
+{
+    "name": "Tenacity.General.Items",
+    "rootNamespace": "Tenacity.General.Items",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
