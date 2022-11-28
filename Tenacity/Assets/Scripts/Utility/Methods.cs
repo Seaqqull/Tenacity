@@ -1,4 +1,5 @@
-
+using UnityEngine.Events;
+using System;
 
 
 namespace Tenacity.Utility.Methods
@@ -20,6 +21,17 @@ namespace Tenacity.Utility.Methods
         public static float Map(this float value, float istart, float istop, float ostart, float ostop)
         {
             return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+        }
+    }
+
+    public static class ButtonHelper
+    {
+        public static void SetAction(this UnityEvent evt, Action act) {
+            evt.RemoveAllListeners();
+            if (act != null)
+            {
+                evt.AddListener(new UnityAction(act));                
+            }
         }
     }
 }

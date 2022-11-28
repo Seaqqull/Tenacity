@@ -1,4 +1,5 @@
 using Tenacity.General.Items.Consumables;
+using Tenacity.General.Inventory;
 using Tenacity.Cards.Inventory;
 using Tenacity.General.Items;
 using UnityEngine;
@@ -11,16 +12,23 @@ namespace Tenacity.Player
     {
         [SerializeField] private EntityInventory _inventory;
 
+        public IInventory<IItem> Inventory => _inventory;
         public int Currency => _inventory.Currency;
         
 
-        private void GainCurrency(Coin coin, ConsumableTrigger consumeType)
+        private void GainCurrency(Coin coin, ConsumableTrigger consumeTrigger)
         {
             _inventory.GainCurrency(coin.Count);
-            coin.Consume(consumeType);
+            coin.Consume(consumeTrigger);
         }
-        
-        
+
+        private void AddStoryItems(StoryItem storyItem, ConsumableTrigger consumeTrigger)
+        {
+            if (_inventory.AddStoryItem(storyItem))
+                storyItem.Consume(consumeTrigger);
+        }
+
+
         public void Consume(IItem item, ConsumableTrigger consumeType)
         {
             switch (item)
@@ -28,8 +36,11 @@ namespace Tenacity.Player
                 case Coin coin:
                     GainCurrency(coin, consumeType);
                     break;
+                case StoryItem book:
+                    AddStoryItems(book, consumeType);
+                    break;
                 default:
-                    throw new Exception();
+                    throw new Exception("Undefined consume action");
             }
         }
     }

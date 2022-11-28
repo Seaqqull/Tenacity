@@ -1,15 +1,22 @@
+using Tenacity.General.Items.Consumables;
+using System.Collections.Generic;
+using Tenacity.General.Inventory;
+using Tenacity.General.Items;
 using UnityEngine;
+using System.Linq;
 
 
 namespace Tenacity.Cards.Inventory
 {
     [CreateAssetMenu(fileName = "EntityInventory", menuName = "Inventory/Entity")]
-    public class EntityInventory : ScriptableObject
+    public class EntityInventory : ScriptableObject, IInventory<IItem>
     {
         [SerializeField] private int _currency;
         [Space] 
-        [SerializeField] private CardsInventory _items;
-        
+        [SerializeField] private CardsInventory _cardsInventory;
+        [SerializeField] private StoriesInventory _storiesInventory;
+
+        public IReadOnlyList<IItem> Items => _cardsInventory.Items.Concat<IItem>(_storiesInventory.Items).ToList().AsReadOnly();
         public int Currency => _currency;
         
         
@@ -33,9 +40,14 @@ namespace Tenacity.Cards.Inventory
         }
         
 
-        public void AddItem()
+        public void AddItem(IItem item)
         {
             
+        }
+        
+        public bool AddStoryItem(StoryItem item)
+        {
+            return _storiesInventory.AddItem(item);
         }
 
         public void GetItem()
@@ -43,7 +55,7 @@ namespace Tenacity.Cards.Inventory
             
         }
 
-        public void RemoveItem()
+        public void RemoveItem(IItem item)
         {
             
         }

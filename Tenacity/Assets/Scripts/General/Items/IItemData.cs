@@ -1,4 +1,4 @@
-
+using UnityEngine;
 
 
 namespace Tenacity.General.Items
@@ -21,5 +21,10 @@ namespace Tenacity.General.Items
         ItemType ItemType { get; }
         string Name { get; }
         int Id { get; }
+    }
+
+    public interface IInventoryItem : IItem
+    {
+        Sprite InventoryView { get; }
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce18ff8e0ef14445ae262d3aa6d5e546, type: 3}
   m_Name: 1_Triton
   m_EditorClassIdentifier: 
+  <UniqueStorageItem>k__BackingField: 0
   cardId: 1
   cardName: Triton
   castingCost: 1
@@ -22,3 +23,7 @@ MonoBehaviour:
   cardText: Jump Deal 3 damage to all adjacent enemies where this lands.
   landType: 2
   landCost: 0
+  range: 0
+  movement: 0
+  evaluation: 0
+  <InventoryView>k__BackingField: {fileID: 21300000, guid: bbff78eccfb1900498389396de5bc0c2, type: 3}

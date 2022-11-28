@@ -10,7 +10,7 @@ namespace Tenacity.Cards.Inventory
         public override bool AddItem(Card item)
         {
             if (_items.Count == _size) return false;
-            if (_items.Contains(item.Data)) return false;
+            if (HasItem(item.Data)) return false;
 
             _items.Add(item.Data);
             return true;
@@ -18,7 +18,7 @@ namespace Tenacity.Cards.Inventory
 
         public override bool RemoveItem(Card item)
         {
-            if (!_items.Contains(item.Data))
+            if (!HasItem(item.Data))
                 return false;
 
             _items.Remove(item.Data);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce18ff8e0ef14445ae262d3aa6d5e546, type: 3}
   m_Name: 2_Orc
   m_EditorClassIdentifier: 
+  <UniqueStorageItem>k__BackingField: 0
   cardId: 2
   cardName: Orc
   castingCost: 2
@@ -22,3 +23,7 @@ MonoBehaviour:
   cardText: Charge 3
   landType: 4
   landCost: 1
+  range: 0
+  movement: 0
+  evaluation: 0
+  <InventoryView>k__BackingField: {fileID: 21300000, guid: c35a9da1fb55d764bbdb8ccaf0e21451, type: 3}

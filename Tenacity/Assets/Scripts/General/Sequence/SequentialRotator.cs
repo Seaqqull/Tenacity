@@ -6,6 +6,8 @@ namespace Tenacity.General.Sequence
     public class SequentialRotator : SequentialExecutor
     {
         [SerializeField] private Vector3 _rotateByAngle;
+        [SerializeField] private Vector3 _endAngle;
+
 
         private Quaternion _originRotation;
         private Quaternion _currentRotation;
@@ -25,7 +27,7 @@ namespace Tenacity.General.Sequence
         {
             _currentRotation = new Quaternion();
             _currentRotation.eulerAngles = 
-                Vector3.Lerp(_originRotation.eulerAngles, _rotateByAngle, progress);
+                Vector3.Lerp(_endAngle, _rotateByAngle, progress);
             
             _objectToChange.localRotation = _currentRotation;
         }

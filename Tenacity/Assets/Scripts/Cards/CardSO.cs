@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Tenacity.Cards
 {
     [CreateAssetMenu(fileName = "Card Template", menuName = "Card")]
-    public class CardSO : ItemSO<EmptyItemSO>
+    public class CardSO : ItemSO<EmptyItemSO>, IInventoryItem
     {
         [SerializeField] private int cardId;
         [SerializeField] private string cardName;
@@ -24,6 +24,9 @@ namespace Tenacity.Cards
         [SerializeField] private int range;
         [SerializeField] private int movement;
         [SerializeField] private int evaluation;
+        [field: Space]
+        [field: SerializeField] public Sprite InventoryView { get; private set; }
+
         
         public override ItemType ItemType => ItemType.Card;
         public override ItemRarity ItemRarity => rarity;
