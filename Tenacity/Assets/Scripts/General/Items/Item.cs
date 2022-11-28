@@ -15,5 +15,6 @@ namespace Tenacity.General.Items
         public ItemType ItemType => _data.ItemType;
         public string Name => (_overrideName) ? _itemName : _data.Name;
         public int Id => _data.Id;
+        public T Data => _data;
     }
 }

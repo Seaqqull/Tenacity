@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   _currency: 12000
-  _items: {fileID: 11400000, guid: 1853af5babeae874f9afcbeef6976fde, type: 2}
+  _cardsInventory: {fileID: 11400000, guid: 1853af5babeae874f9afcbeef6976fde, type: 2}
+  _storiesInventory: {fileID: 11400000, guid: e57a59e71e6b6431e90fd74286a45d3e, type: 2}

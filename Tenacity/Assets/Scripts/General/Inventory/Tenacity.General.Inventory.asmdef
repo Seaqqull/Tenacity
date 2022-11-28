@@ -1,13 +1,7 @@
 {
     "name": "Tenacity.General.Inventory",
     "rootNamespace": "Tenacity.General.Inventory",
-    "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:6442bf360e58040fea7d60cc7b1151a3",
-        "GUID:6a20d89f842ea4e3d83481f4bfa79424",
-        "GUID:05d9f1ff5db24456dbb33be62d4cb618",
-        "GUID:13ea7ebe5cb9543c9a40a6fb7ad52824"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

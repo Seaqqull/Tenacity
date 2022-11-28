@@ -16,6 +16,7 @@ namespace Tenacity.Cards.Inventory
         [SerializeField] private Card inventoryItemPrefab;
         [SerializeField] private GameObject pageButtonPrefab;
         [SerializeField] private GameObject pageButtonsField;
+        [SerializeField] private  int _pagesToShow = 5;
 
         private List<(int Index, GameObject Object)> _buttons = new ();
         private List<CardSO> _cards = new List<CardSO>();
@@ -29,7 +30,7 @@ namespace Tenacity.Cards.Inventory
                 || (pageButtonPrefab == null)) 
                 return;
 
-            _cards = data.Cards;
+            _cards = data.Items.ToList();
             _currentPage = 0;
             _pageCount = Mathf.CeilToInt(1.0f * _cards.Count / cardSlots.Length);
 
@@ -41,64 +42,21 @@ namespace Tenacity.Cards.Inventory
         private void CreatePageButtonList()
         {
             if ((pageButtonsField == null) || (pageButtonPrefab == null)) return;
+            var pages = GetPages(_currentPage, _pagesToShow, _pageCount);
 
-            List<(int Index, GameObject Object)> distinctButtons;
                 
             _pageText.text = $"{_currentPage + 1}/{_pageCount}";
             foreach (var button in _buttons)
                 Destroy(button.Object);
             _buttons.Clear();
-            
-            var addedButtons = 0;
-            
-            _buttons.Add((0, CreatePageButton(0, "1")));
-            _buttons.Add(((_pageCount - 1), CreatePageButton((_pageCount - 1), $"{_pageCount}")));
-            
-            for (int i = -1; i < 2 && addedButtons < 3; i++)
-            {
-                var buttonPage = (_currentPage + i);
-                if (buttonPage < 0 || buttonPage >= _pageCount)
-                    continue;
-                
-                addedButtons++;
-                _buttons.Add((buttonPage, CreatePageButton(
-                    buttonPage,
-                    (_currentPage + i + 1).ToString()
-                )));
-            }
 
-            distinctButtons = _buttons.GroupBy(button => button.Index)
-                .Select(button => button.First()).ToList();
-            _buttons.ForEach(button => {
-                if (!distinctButtons.Contains(button)) Destroy(button.Object);
-            });
-            _buttons = distinctButtons;
-            
-            if (_buttons.Count < 5)
+            foreach (var page in pages)
             {
-                var pageRelation = (float)_currentPage / _pageCount;
-                var direction = (pageRelation >= 0.5f) ? -1 : 1;
-                for (int i = (5 - _buttons.Count); i > 0; i--)
-                {
-                    var pageNumber = _currentPage + (direction * (1 + i));
-                    _buttons.Add((pageNumber, CreatePageButton(
-                        pageNumber,
-                        (pageNumber + 1).ToString()
-                    )));
-                }
-            }
+                var button = CreatePageButton(page, (page + 1).ToString());
+                button.transform.parent = pageButtonsField.transform;
 
-            distinctButtons = _buttons.GroupBy(button => button.Index).
-                Select(button => button.First()).
-                Where(button => (button.Index < _pageCount) && (button.Index >= 0)).
-                OrderBy(button => button.Index).ToList();
-            _buttons.ForEach(button => {
-                if (!distinctButtons.Contains(button)) Destroy(button.Object);
-            });
-            _buttons = distinctButtons;
-            
-            foreach (var button in _buttons)
-                button.Object.transform.parent = pageButtonsField.transform;
+                _buttons.Add((page, button));
+            }
         }
         
         private void CreateCard(int slotId)
@@ -108,6 +66,47 @@ namespace Tenacity.Cards.Inventory
 
             card.Data = _cards[slotId + _currentPage * cardSlots.Length];
             cardTransform.localPosition = Vector3.zero;
+        }
+        
+        private List<int> GetPages(int currentPage, int pagesPool, int pagesCount)
+        {
+            var distinctPages = new List<int>();
+            
+            // Min - Max pages
+            distinctPages.Add(0);
+            distinctPages.Add(pagesCount - 1);
+            
+            // Nearest pages
+            var addedButtons = 0;
+            for (int i = -1; i < 2 && addedButtons < 3; i++)
+            {
+                var buttonPage = (currentPage + i);
+                if (buttonPage < 0 || buttonPage >= pagesCount)
+                    continue;
+                
+                addedButtons++;
+                distinctPages.Add(buttonPage);
+            }
+            // Store only distinct pages
+            distinctPages = distinctPages.GroupBy(pageIndex => pageIndex)
+                .Select(pageIndex => pageIndex.First()).ToList();
+            
+            
+            if (distinctPages.Count < pagesPool)
+            {
+                var pageRelation = (float)currentPage / pagesCount;
+                var direction = (pageRelation >= 0.5f) ? -1 : 1;
+                for (int i = (pagesPool - distinctPages.Count); i > 0; i--)
+                {
+                    var pageNumber = currentPage + (direction * (1 + i));
+                    distinctPages.Add(pageNumber);
+                }
+            }
+
+            return distinctPages.GroupBy(pageIndex => pageIndex).
+                Select(pageIndex => pageIndex.First()).
+                Where(pageIndex => (pageIndex < pagesCount) && (pageIndex >= 0)).
+                OrderBy(pageIndex => pageIndex).ToList();
         }
 
         private GameObject CreatePageButton(int pageNum, string text)

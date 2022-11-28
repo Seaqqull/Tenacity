@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2fefbe1291a462c981fd1cfcb2852b2, type: 3}
-  m_Name: Coin
+  m_Name: BronzeCoin10
   m_EditorClassIdentifier: 
-  _visualization: {fileID: 6327167719756804252, guid: 87c1deeceda6e461391fd0f8a150a371, type: 3}
+  _visualization: {fileID: 5720711519941588570, guid: dcd994e82fe7a4a6ebe28abf7a126ed0, type: 3}
   _id: 0
-  _name: Coin
+  _name: Bronze coin 10
   _type: 3
   _rarity: 0
+  <Count>k__BackingField: 10

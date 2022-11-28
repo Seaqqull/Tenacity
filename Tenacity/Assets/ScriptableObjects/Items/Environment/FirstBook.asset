@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f036c3486c4b3cae069046577d82c1, type: 3}
+  m_Name: FirstBook
+  m_EditorClassIdentifier: 
+  <UniqueStorageItem>k__BackingField: 0
+  _visualization: {fileID: 318061612, guid: d0afc698c20b0450299619c55a9f255f, type: 3}
+  _id: 0
+  _name: First book
+  _type: 1
+  _rarity: 0
+  <Pages>k__BackingField:
+  - Picture: {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+    Text:
+      m_TableReference:
+        m_TableCollectionName: GUID:3dacea5eb0030467fba23cda2de5776f
+      m_TableEntryReference:
+        m_KeyId: 328559747072
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - Picture: {fileID: 21300000, guid: 13e7e6fe43a8aa049bcd610bbc1f5ff8, type: 3}
+    Text:
+      m_TableReference:
+        m_TableCollectionName: GUID:3dacea5eb0030467fba23cda2de5776f
+      m_TableEntryReference:
+        m_KeyId: 328576524288
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - Picture: {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
+    Text:
+      m_TableReference:
+        m_TableCollectionName: GUID:3dacea5eb0030467fba23cda2de5776f
+      m_TableEntryReference:
+        m_KeyId: 328576524289
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  <InventoryView>k__BackingField: {fileID: 21300000, guid: 9f1bff341384744a9add90fb1cf1b99a, type: 3}
+  references:
+    version: 2
+    RefIds: []
