@@ -11,7 +11,7 @@ namespace Tenacity.Cards
     public class CardDataDisplay : BaseMono
     {
         private Dictionary<string, Transform> cardComponents;
-        private Card card;
+        private CardItem card;
 
         
         private void Start()
@@ -26,7 +26,7 @@ namespace Tenacity.Cards
             if (card == null) TryGetComponent(out card);
             
             cardComponents = Transform.GetComponentsInChildren<Transform>().ToDictionary(item => item.name, item => item);
-            SetCardValue(cardComponents[nameof(Card.Data.Life)], card.CurrentLife.ToString());
+            SetCardValue(cardComponents[nameof(CardItem.Data.Life)], card.CurrentLife.ToString());
         }
 
         public void DisplayCardValues()

@@ -7,13 +7,13 @@ using TMPro;
 
 namespace Tenacity.Cards.Inventory
 {
-    public class InventoryMenu : MonoBehaviour // Make as SingleMenu
+    public class CardsMenu : MonoBehaviour // Make as SingleMenu
     {
         [SerializeField] private CardsInventory data;
         [SerializeField] private TMP_Text _pageText;
         [Space]
         [SerializeField] private GameObject[] cardSlots;
-        [SerializeField] private Card inventoryItemPrefab;
+        [SerializeField] private CardItem inventoryItemPrefab;
         [SerializeField] private GameObject pageButtonPrefab;
         [SerializeField] private GameObject pageButtonsField;
         [SerializeField] private  int _pagesToShow = 5;

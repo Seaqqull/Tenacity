@@ -30,14 +30,14 @@ namespace Tenacity.Battles.Controllers
         private Dictionary<LandType, int> _landCounts;
 
         public HeroLandCellsController AvailableLandCellsController => _availableLandCellsController;
-        public List<Card> PlayerCards => _playerCardDeck != null ? _playerCardDeck.CardPack : null;
+        public List<CardItem> PlayerCards => _playerCardDeck != null ? _playerCardDeck.CardPack : null;
         public LandDeckPlacingController LandDeckInputController => _landDeckInputController;
         public CardDeckPlacingController CardDeckInputController => _cardDeckInputController;
         public Dictionary<LandType, int> LandCounts => _landCounts;
         public PlayerActionMode CurrentPlayerMode { get; set; }
         public bool IsGameOver => (Player.CurrentLife <= 0 ||  PlayerCards.Count <= 0);
         public int CurrentMana { get; private set; }
-        public Card Player { get; private set; }
+        public CardItem Player { get; private set; }
 
 
         private void Awake()
@@ -62,7 +62,7 @@ namespace Tenacity.Battles.Controllers
         public void Init(Land startLand)
         {
             var player = Instantiate(_player.CharacterPrefab, startLand.transform);
-            Player = player.GetComponent<Card>();
+            Player = player.GetComponent<CardItem>();
             Player.Data = _player;
             Player.CurrentLife = _player.Life;
             player.transform.localPosition = _playerPos;
@@ -72,14 +72,14 @@ namespace Tenacity.Battles.Controllers
 
         public bool PlaceDeckCardOnLand(Land land)
         {
-            Card selectedCard = _cardDeckInputController.CurrentlySelectedCard;
+            CardItem selectedCard = _cardDeckInputController.CurrentlySelectedCard;
 
             if (selectedCard.Data.CastingCost > CurrentMana) return false;
             if (!(land.IsAvailableForCards && land.Type.HasFlag(selectedCard.Data.Land)) ) return false;
             if (!_availableLandCellsController.IsLandAvailable(land)) return false;
 
             PlayerCards.Remove(selectedCard);
-            Card creature = CardManager.CreateCardCreatureOnBoard(selectedCard, land);
+            CardItem creature = CardManager.CreateCardCreatureOnBoard(selectedCard, land);
             PlayerCards.Add(creature);
 
             if (creature.State == CardState.OnBoard) UpdateMana(creature.Data.CastingCost, true);

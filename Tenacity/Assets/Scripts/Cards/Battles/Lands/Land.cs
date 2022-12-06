@@ -31,7 +31,7 @@ namespace Tenacity.Battles.Lands
         }
         public bool IsAvailableForCards
         {
-            get => (_type != LandType.None && GetComponentInChildren<Card>() == null && !IsStartPosition);
+            get => (_type != LandType.None && GetComponentInChildren<CardItem>() == null && !IsStartPosition);
         }
         public LandType Type => _type;
         public bool IsPlacedOnBoard
@@ -62,9 +62,9 @@ namespace Tenacity.Battles.Lands
         }
 
 
-        public Card GetPlacedCreature()
+        public CardItem GetPlacedCreature()
         {
-            return transform.GetComponentInChildren<Card>();
+            return transform.GetComponentInChildren<CardItem>();
         }
        
         public void OutlineLand(bool outlined)

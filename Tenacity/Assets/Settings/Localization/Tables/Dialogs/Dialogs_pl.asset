@@ -75,6 +75,10 @@ MonoBehaviour:
     m_Localized: "Czy chcesz i\u015B\u0107 do upad\u0142ego miasta?"
     m_Metadata:
       m_Items: []
+  - m_Id: 116187376835878912
+    m_Localized: "Zr\xF3bmy jaki\u015B handel?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

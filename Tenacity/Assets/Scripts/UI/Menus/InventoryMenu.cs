@@ -1,10 +1,8 @@
-using MainPlayer = Tenacity.Player.Player;
 using System.Collections.Generic;
-using Tenacity.General.Inventory;
+using Tenacity.Cards.Inventory;
 using Tenacity.UI.Menus.Views;
 using Tenacity.General.Items;
 using Tenacity.UI.Additional;
-using Tenacity.Managers;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Linq;
@@ -20,7 +18,8 @@ namespace Tenacity.UI.Menus
         private const int SILVER_CURRENCY_RATIO = 100;
         private const int GOLD_CURRENCY_RATIO = 10000;
         #endregion
-        
+
+        [SerializeField] private EntityInventory _inventory;
         [Space]
         [SerializeField] private TMP_Text _goldText;
         [SerializeField] private TMP_Text _silverText;
@@ -32,7 +31,7 @@ namespace Tenacity.UI.Menus
         [SerializeField] private ClickableImage[] _itemSlots;
         [SerializeField] private GameObject _pageButtonPrefab;
         [SerializeField] private GameObject _pageButtonsField;
-        [SerializeField] private  int _pagesToShow = 5;
+        [SerializeField] private int _pagesToShow = 5;
         
         private List<IInventoryItem> ViewableItems
         {
@@ -44,7 +43,6 @@ namespace Tenacity.UI.Menus
         }
 
         private List<(int Index, GameObject Object)> _buttons = new ();
-        private IInventory<IItem> _inventory;
         private ItemType? _viewCategory;
         private int _currentPage;
         private int _pageCount;
@@ -53,29 +51,19 @@ namespace Tenacity.UI.Menus
         protected override void Awake()
         {
             base.Awake();
+            
+            if (_inventory != null)
+                UpdateView();
+        }
 
-            var player = PlayerManager.Instance.GetComponent<MainPlayer>();
-            var currency = player.Currency;
+        private void UpdateView()
+        {
+            HandleCurrency(_inventory.Currency);
             
-            _inventory = player.Inventory;
-            
-            HandleCurrency(currency);
             DisplayItemsOnPage(_currentPage);
             CreatePageButtonList();
         }
-
-
-        private void UpdateView(IInventoryItem item)
-        {
-            foreach (var itemView in _views)
-            {
-                var viewCompatible = (item != null) && itemView.IsItemCompatible(item);
-                itemView.SwitchView(viewCompatible);
-                            
-                if (viewCompatible)
-                    itemView.ShowItemData(item);
-            }
-        }
+        
 
         private void DisplayItemsOnPage(int page)
         {
@@ -93,7 +81,7 @@ namespace Tenacity.UI.Menus
                     var item = itemsToView.ElementAt(itemIndex);
                     _itemSlots[i].AssignAction(item.InventoryView, () =>
                     {
-                        UpdateView(item);
+                        UpdateItemView(item);
                     });
                 }
                 else
@@ -116,6 +104,24 @@ namespace Tenacity.UI.Menus
             _bronzeText.text = bronze.ToString();
         }
         
+        private void UpdateItemView(IInventoryItem item)
+        {
+            foreach (var itemView in _views)
+            {
+                var viewCompatible = (item != null) && itemView.IsItemCompatible(item);
+                itemView.SwitchView(viewCompatible);
+                            
+                if (viewCompatible)
+                    itemView.ShowItemData(item);
+            }
+        }
+        
+        private List<IInventoryItem> ViewableItemsWithCategory()
+        {
+            return (!_viewCategory.HasValue) ? ViewableItems : 
+                ViewableItems.Where(inventoryItem => inventoryItem.ItemType == _viewCategory).ToList();
+        }
+        
         private GameObject CreatePageButton(int pageNum, string text)
         {
             var pageBtn = Instantiate(_pageButtonPrefab, _pageButtonsField.transform);
@@ -131,12 +137,6 @@ namespace Tenacity.UI.Menus
             });
             pageBtn.GetComponentInChildren<TextMeshProUGUI>().text = text;
             return pageBtn;
-        }
-        
-        private List<IInventoryItem> ViewableItemsWithCategory()
-        {
-            return (!_viewCategory.HasValue) ? ViewableItems : 
-                ViewableItems.Where(inventoryItem => inventoryItem.ItemType == _viewCategory).ToList();
         }
         
 #region Pages
@@ -209,7 +209,7 @@ namespace Tenacity.UI.Menus
             _currentPage = 0;
 
             
-            UpdateView(null);
+            UpdateItemView(null);
             
             DisplayItemsOnPage(_currentPage);
             CreatePageButtonList();

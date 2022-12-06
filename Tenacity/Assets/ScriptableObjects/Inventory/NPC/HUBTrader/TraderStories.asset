@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c63f726c5d64d6693951dd161866d3e, type: 3}
-  m_Name: StoriesInventory
+  m_Name: TraderStories
   m_EditorClassIdentifier: 
   _size: 100
-  _items: []
+  _items:
+  - {fileID: 11400000, guid: 771f36249170546168dc73ad48f9d494, type: 2}

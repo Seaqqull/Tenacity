@@ -2,11 +2,21 @@ using Tenacity.Cards.Data;
 using Tenacity.Base;
 using UnityEngine;
 using Tenacity.Battles.Lands;
+using Tenacity.General.Items;
+using Tenacity.General.Items.Consumables;
 
 namespace Tenacity.Cards
 {
-    public class Card : BaseMono
+    public class CardItem : EnvironmentItem<CardSO, CardItem>, IConsumable
     {
+        public ConsumableTrigger Trigger => ConsumableTrigger.Pickup;
+        public int ReusableCount => int.MaxValue;
+
+        
+        public void Consume(ConsumableTrigger trigger)
+        {
+            Destroy(gameObject);
+        }
         [SerializeField] private CardSO data;
         [SerializeField] private bool isAvailable;
         [SerializeField] private CardState state;

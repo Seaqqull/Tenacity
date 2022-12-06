@@ -7,12 +7,12 @@ namespace Tenacity.Battles.Controllers
     public class CreatureController : MonoBehaviour
     {
         private CreatureDragging _creatureDragging;
-        private Card _cardCreature;
+        private CardItem _cardCreature;
 
 
         private void Awake()
         {
-            _cardCreature = GetComponent<Card>();
+            _cardCreature = GetComponent<CardItem>();
             _cardCreature.enabled = false;
             
             if (GetComponentInParent<CreatureDragging>() != null)
@@ -29,13 +29,13 @@ namespace Tenacity.Battles.Controllers
         }
         
         
-        public void Attack(Card cardToAttack)
+        public void Attack(CardItem cardToAttack)
         {
             if (cardToAttack == null) return;
 
             int figthBackPower = cardToAttack.Data.Power;
             cardToAttack.GetDamaged(_cardCreature.Data.Power);
-            GetComponent<Card>().GetDamaged(figthBackPower);
+            GetComponent<CardItem>().GetDamaged(figthBackPower);
             _cardCreature.enabled = false;
         }
     }

@@ -1,20 +1,20 @@
 using System.Collections.Generic;
-using System.Linq;
 using Tenacity.Cards.Inventory;
 using UnityEngine;
+using System.Linq;
 
 
 namespace Tenacity.Cards
 {
     public class BattleCardDeckManager : MonoBehaviour
     {
-        [SerializeField] private Card _cardPrefab;
+        [SerializeField] private CardItem _cardPrefab;
         [SerializeField] private Transform[] _cardPositions;
         [SerializeField] private CardDecksSO _cardDecks;
-        [SerializeField] private List<CardSO> _cardsDataPack = new List<CardSO>();
+        [SerializeField] private List<CardSO> _cardsDataPack = new ();
 
         private CardDeck _cardDeck => _cardDecks.CurrentlySelectedCardDeck;
-        public List<Card> CardPack { get; private set; } = new List<Card>();
+        public List<CardItem> CardPack { get; private set; } = new ();
 
 
         private void Awake()
@@ -41,9 +41,9 @@ namespace Tenacity.Cards
             }
         }
 
-        private Card CreateHandCardInDeck(CardSO cardData, int slotId)
+        private CardItem CreateHandCardInDeck(CardSO cardData, int slotId)
         {
-            Card card = Instantiate(_cardPrefab, _cardPositions[slotId]);
+            CardItem card = Instantiate(_cardPrefab, _cardPositions[slotId]);
             card.GetComponent<RectTransform>().SetParent(_cardPositions[slotId]);
             card.gameObject.SetActive(true);
             card.Data = cardData;
@@ -73,9 +73,9 @@ namespace Tenacity.Cards
             for (int i = 0; i < _cardPositions.Length; i++)
             {
                 CardSO data = _cardDeck.Cards[Random.Range(0, _cardDeck.Cards.Count)];
-                if (!_cardPositions[i].GetComponentInChildren<Card>())
+                if (!_cardPositions[i].GetComponentInChildren<CardItem>())
                 {
-                    Card createdCard = CreateHandCardInDeck(data, i);
+                    CardItem createdCard = CreateHandCardInDeck(data, i);
                     CardPack.Add(createdCard);
                     break;
                 }

@@ -1,3 +1,4 @@
+using Tenacity.General.Items.Modes;
 using UnityEngine;
 
 
@@ -9,21 +10,32 @@ namespace Tenacity.General.Items
         Rare = 1,
         Legendary = 2
     }
-    
+
     public enum ItemType
     {
-        Card, Story, Key, Currency
+        /*None = -1, */
+        Card,
+        Story,
+        Key,
+        Currency
     }
 
     public interface IItem
     {
         ItemRarity ItemRarity { get; }
         ItemType ItemType { get; }
+        ItemMode[] Modes { get; }
         string Name { get; }
         int Id { get; }
     }
 
-    public interface IInventoryItem : IItem
+    public interface IDataItem : IItem
+    {
+        public bool UniqueStorageItem { get; }
+    }
+    
+
+    public interface IInventoryItem : IDataItem
     {
         Sprite InventoryView { get; }
     }

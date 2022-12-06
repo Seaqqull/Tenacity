@@ -70,6 +70,10 @@ MonoBehaviour:
     m_Localized: Do you want to go to the fallen city?
     m_Metadata:
       m_Items: []
+  - m_Id: 116187376835878912
+    m_Localized: Let's make some trade?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

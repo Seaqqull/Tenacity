@@ -40,24 +40,64 @@ namespace Tenacity.Cards.Inventory
         }
         
 
-        public void AddItem(IItem item)
+        public bool AddItem(IItem item)
         {
-            
+            switch (item.ItemType)
+            {
+                case ItemType.Card:
+                    return _cardsInventory.AddItem(item as CardItem);
+                case ItemType.Story:
+                    return _storiesInventory.AddItem(item as StoryItemSO);
+                case ItemType.Key:
+                case ItemType.Currency:
+                default:
+                    return false;
+            }
+        }
+
+        public bool RemoveItem(IItem item)
+        {
+            switch (item.ItemType)
+            {
+                case ItemType.Card:
+                    return _cardsInventory.RemoveItem(item as CardItem);
+                case ItemType.Story:
+                    return _storiesInventory.RemoveItem(item as StoryItem);
+                case ItemType.Key:
+                case ItemType.Currency:
+                default:
+                    return false;
+            }
         }
         
-        public bool AddStoryItem(StoryItem item)
+        public bool AddItem(IDataItem item)
         {
-            return _storiesInventory.AddItem(item);
+            switch (item.ItemType)
+            {
+                case ItemType.Card:
+                    return _cardsInventory.AddItem(item as CardSO);
+                case ItemType.Story:
+                    return _storiesInventory.AddItem(item as StoryItemSO);
+                case ItemType.Key:
+                case ItemType.Currency:
+                default:
+                    return false;
+            }
         }
 
-        public void GetItem()
+        public bool RemoveItem(IDataItem item)
         {
-            
-        }
-
-        public void RemoveItem(IItem item)
-        {
-            
+            switch (item.ItemType)
+            {
+                case ItemType.Card:
+                    return _cardsInventory.RemoveItem(item as CardSO);
+                case ItemType.Story:
+                    return _storiesInventory.RemoveItem(item as StoryItemSO);
+                case ItemType.Key:
+                case ItemType.Currency:
+                default:
+                    return false;
+            }
         }
     }
 }

@@ -284,15 +284,20 @@ Light:
   m_ShadowAngle: 0
 --- !u!21 &608734395
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sky 02
   m_Shader: {fileID: 4800000, guid: 6fc9318f5193c094c98c0d450cd61e3b, type: 3}
-  m_ShaderKeywords: _BACKGROUNDMODE_COLORS _ENABLECLOUDSROTATION_ON _ENABLECLOUDS_ON
-    _ENABLEPATTERNOVERLAY_ON _ENABLESUN_ON
+  m_ValidKeywords:
+  - _BACKGROUNDMODE_COLORS
+  - _ENABLECLOUDSROTATION_ON
+  - _ENABLECLOUDS_ON
+  - _ENABLEPATTERNOVERLAY_ON
+  - _ENABLESUN_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -1217,6 +1222,7 @@ MonoBehaviour:
   - {fileID: 8939480345808879828, guid: 0fca13e1e267445cb93b07a4d319aa02, type: 3}
   - {fileID: 4436136292395347322, guid: 225814853a55e4df9aaed2cffaa8755e, type: 3}
   - {fileID: 700055194410323407, guid: 2a9b0d6506dc64fbfb7aa22ea8be31aa, type: 3}
+  - {fileID: 6756860869770744471, guid: 886d314c96361450bb2c5b9450081da2, type: 3}
 --- !u!4 &788686658
 Transform:
   m_ObjectHideFlags: 0
@@ -1381,6 +1387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

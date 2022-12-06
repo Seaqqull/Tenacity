@@ -24,7 +24,7 @@ namespace Tenacity.Battles.Enemies
 
         private void HandCardsAction()
         {
-            DecidePlaceHandCard(out Card minionToPlace, out Land landToPlace);
+            DecidePlaceHandCard(out CardItem minionToPlace, out Land landToPlace);
 
             if (minionToPlace == null || landToPlace == null)
             {
@@ -41,7 +41,7 @@ namespace Tenacity.Battles.Enemies
             Player.PlaceHandCardOnBoard(minionToPlace, landToPlace);
         }
 
-        private void MinionAction(Card minion)
+        private void MinionAction(CardItem minion)
         {
             int currentMinionRating = Player.CountMinionRating(minion);
 
@@ -81,7 +81,7 @@ namespace Tenacity.Battles.Enemies
             Player.PlaceLandOnBoard(landType, targetLand);
         }
 
-        private bool DecidePlaceHandCard(out Card minionToPlace, out Land landToPlace)
+        private bool DecidePlaceHandCard(out CardItem minionToPlace, out Land landToPlace)
         {
             int maxPlaceRating = 0;
             minionToPlace = null;
@@ -123,7 +123,7 @@ namespace Tenacity.Battles.Enemies
             }
             return null;
          */
-        private Land SelectLandToMoveMinion(Card minion, int currentMinionRating, List<Land> landsToPlace, out int maxActionRating)
+        private Land SelectLandToMoveMinion(CardItem minion, int currentMinionRating, List<Land> landsToPlace, out int maxActionRating)
         {
             float currentDistance = FindDistanceToEnemyHero(minion.GetComponentInParent<Land>());
 
@@ -146,13 +146,13 @@ namespace Tenacity.Battles.Enemies
             return selectedLand;
         }
 
-        private Land AnalizeWastedLandsToMoveMinion(Card minion, int currentMinionRating, out int maxActionRating)
+        private Land AnalizeWastedLandsToMoveMinion(CardItem minion, int currentMinionRating, out int maxActionRating)
         {
             List<Land> availableLands = minion.GetComponentInParent<Land>().NeighborLands.FindAll((el) => el.Type == Lands.Data.LandType.None);
             return SelectLandToMoveMinion(minion, currentMinionRating, availableLands, out maxActionRating);
         }
 
-        private Land DecideMinionMove(Card minion, int currentMinionRating, out int maxActionRating)
+        private Land DecideMinionMove(CardItem minion, int currentMinionRating, out int maxActionRating)
         {
             maxActionRating = 0;
             if (minion == null) return null;
@@ -162,14 +162,14 @@ namespace Tenacity.Battles.Enemies
         }
 
 
-        private Card DecideMinionAttackMode(Card minion, int currentMinionRating, out int maxActionRating)
+        private CardItem DecideMinionAttackMode(CardItem minion, int currentMinionRating, out int maxActionRating)
         {
             maxActionRating = 0;
             if (minion == null) return null;
 
-            Card selectedCreatureToAttack = null;
+            CardItem selectedCreatureToAttack = null;
 
-            foreach (Card creatureToAttack in Player.GetCreaturesToAttack(minion.GetComponentInParent<Land>()))
+            foreach (CardItem creatureToAttack in Player.GetCreaturesToAttack(minion.GetComponentInParent<Land>()))
             {
                 var attackRating = currentMinionRating + Enemy.CountMinionRating(creatureToAttack) + GameStateRatings.MinionAttackRating;
                 if (creatureToAttack.CurrentLife - minion.Data.Power <= 0) attackRating += GameStateRatings.MinionKillerRating;
@@ -205,7 +205,7 @@ namespace Tenacity.Battles.Enemies
         public void ManageAllCardsActions()
         {
             HandCardsAction();
-            foreach (Card minion in Player.Minions) MinionAction(minion);
+            foreach (CardItem minion in Player.Minions) MinionAction(minion);
         }
 
     }

@@ -6,7 +6,7 @@ namespace Tenacity.Cards.Inventory
 {
     public class InventorySlotsController : MonoBehaviour, IPointerDownHandler
     {
-        [SerializeField] private Card _cardView;
+        [SerializeField] private CardItem _cardView;
         [SerializeField] private InventoryCardDeck _cardDeck;
 
 
@@ -23,14 +23,14 @@ namespace Tenacity.Cards.Inventory
 
             if (go != null)
             {
-                if (go.GetComponent<Card>())
+                if (go.GetComponent<CardItem>())
                 {
-                    _cardView.GetComponent<Card>().Data = go.GetComponent<Card>().Data;
+                    _cardView.GetComponent<CardItem>().Data = go.GetComponent<CardItem>().Data;
                     _cardView.GetComponent<CardDataDisplay>().DisplayCardValues();
                     _cardView.gameObject.SetActive(true);
 
                     if (_cardDeck != null)
-                        _cardDeck.AddCardIntoCardDeck(go.GetComponent<Card>().Data);
+                        _cardDeck.AddCardIntoCardDeck(go.GetComponent<CardItem>().Data);
                 }
                 //... for different items
             }

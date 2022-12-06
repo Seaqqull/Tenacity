@@ -13,10 +13,10 @@ namespace Tenacity.Battles.Controllers
 
 
         private BattlePlayerController _player;
-        private Card _currentlySelectedCard;
+        private CardItem _currentlySelectedCard;
         
         public bool IsCurrentlyPlacingCard => _player.CurrentPlayerMode == PlayerActionMode.PlacingCard;
-        public Card CurrentlySelectedCard
+        public CardItem CurrentlySelectedCard
         {
             get => _currentlySelectedCard;
             set
@@ -41,7 +41,7 @@ namespace Tenacity.Battles.Controllers
         }
 
         
-        public void SelectCard(Card card)
+        public void SelectCard(CardItem card)
         {
             if (_player.CurrentMana < card.Data.CastingCost) return;
             if (_player.LandCounts[card.Data.Land] < card.Data.LandCost) return;
