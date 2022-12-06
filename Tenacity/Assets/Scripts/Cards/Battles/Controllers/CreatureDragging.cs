@@ -17,7 +17,7 @@ namespace Tenacity.Battles.Controllers
         
         private Vector3 _selectedCreaturePosition;
         private BattlePlayerController _player;
-        private Card _selectedCreature;
+        private CardItem _selectedCreature;
 
         public bool IsCurrentlyMovingCreature =>
             _player.CurrentPlayerMode == PlayerActionMode.MovingCreature;
@@ -48,7 +48,7 @@ namespace Tenacity.Battles.Controllers
 
             var mousePos = EngineInput.mousePosition;
             var creaturePos = new Vector3(mousePos.x, mousePos.y, _movingCreatureZPos);
-            _selectedCreature.Transform.position = Camera.main.ScreenToWorldPoint(creaturePos);
+            _selectedCreature.transform.position = Camera.main.ScreenToWorldPoint(creaturePos);
         }
 
         private void DropCreature()
@@ -73,8 +73,8 @@ namespace Tenacity.Battles.Controllers
                 return;
             }
             
-            if (detectedLand.GetComponentInChildren<Card>())
-                DropCreatureOnEnemy(detectedLand.GetComponentInChildren<Card>());
+            if (detectedLand.GetComponentInChildren<CardItem>())
+                DropCreatureOnEnemy(detectedLand.GetComponentInChildren<CardItem>());
             GetBackSelectedCreature();
         }
 
@@ -86,21 +86,21 @@ namespace Tenacity.Battles.Controllers
         
         private void PlaceCreature(Land land)
         {
-            _selectedCreature.Transform.SetParent(land.transform);
-            _selectedCreature.Transform.localPosition = new Vector3(0, land.TopPoint, 0);
+            _selectedCreature.transform.SetParent(land.transform);
+            _selectedCreature.transform.localPosition = new Vector3(0, land.TopPoint, 0);
             _selectedCreature.enabled = false;
             DeselectCreature();
         }
         
         private void GetBackSelectedCreature()
         {
-            _selectedCreature.Transform.position = _selectedCreaturePosition;
+            _selectedCreature.transform.position = _selectedCreaturePosition;
             DeselectCreature();
         }
         
-        private void DropCreatureOnEnemy(Card enemyCard)
+        private void DropCreatureOnEnemy(CardItem enemyCard)
         {
-            var targetCreature = enemyCard.gameObject.GetComponentInChildren<Card>();
+            var targetCreature = enemyCard.gameObject.GetComponentInChildren<CardItem>();
             if (!_player.PlayerCards.Contains(targetCreature) && _player.Player != enemyCard)
                  _selectedCreature.gameObject.GetComponent<CreatureController>()?.Attack(targetCreature);
         }
@@ -115,12 +115,12 @@ namespace Tenacity.Battles.Controllers
         }
 
 
-        public void SelectCreature(Card card)
+        public void SelectCreature(CardItem card)
         {
             if (!_player.PlayerCards.Contains(card)) return;
 
             _selectedCreature = card;
-            _selectedCreaturePosition = card.Transform.position;
+            _selectedCreaturePosition = card.transform.position;
             _player.CurrentPlayerMode = PlayerActionMode.MovingCreature;
         }
     }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5a57c11551246178872a6ee3a08335c, type: 3}
-  m_Name: NoItems
+  m_Name: HubTradeItems
   m_EditorClassIdentifier: 
   <StringReference>k__BackingField:
     m_TableReference:
       m_TableCollectionName: GUID:4d5965fc6d1054fd1824446c19057447
     m_TableEntryReference:
-      m_KeyId: 25960193358553088
+      m_KeyId: 116187376835878912
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -31,7 +31,16 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   <Answers>k__BackingField:
-  - Text: {fileID: 11400000, guid: 4d83331a0664f486ea02951d1b0c22c8, type: 2}
+  - Text: {fileID: 11400000, guid: 445737d974a34434ca572da8ed21e42a, type: 2}
+    SpecialId:
+      UseConstant: 0
+      ConstantValue: 0
+      Variable: {fileID: 11400000, guid: 0959225e6123c48d995b25de01895185, type: 2}
+    Action: 2
+    Type: 1
+    RelationInfluence: 5
+    NextDialog: {fileID: 0}
+  - Text: {fileID: 11400000, guid: a5e6e9b45ff8241989814dafa8ce820a, type: 2}
     SpecialId:
       UseConstant: 0
       ConstantValue: 0

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc402d45de5b4921be5f533b4b24a4d4, type: 3}
+  m_Name: HUB_TradeWithPlayer
+  m_EditorClassIdentifier: 
+  _sourceInventory: {fileID: 11400000, guid: cdcf024c9e8fd459d83b96c11369758d, type: 2}
+  _sourcePriceModifier: {fileID: 11400000, guid: 508a81bf14aea48f99672e0c2fd54db5, type: 2}
+  _targetPriceModifier: {fileID: 11400000, guid: 35dcb1da540454a6092fef8b1cc49f55, type: 2}
+  _onPerform:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7ac196d2049f74cdebb42ecb1ad2045a, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.RemoveLastDialogFromStackSO,
+          Tenacity.General.Events
+        m_MethodName: PerformDialogClosing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2bb340a03ff1545e4b2f15ba607c7cba, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.SwitchMouseClickSO,
+          Tenacity.General.Events
+        m_MethodName: BlockMouse
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _onClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 2bb340a03ff1545e4b2f15ba607c7cba, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.SwitchMouseClickSO,
+          Tenacity.General.Events
+        m_MethodName: BlockMouse
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

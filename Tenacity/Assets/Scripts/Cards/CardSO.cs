@@ -8,8 +8,8 @@ using UnityEngine;
 
 namespace Tenacity.Cards
 {
-    [CreateAssetMenu(fileName = "Card Template", menuName = "Card")]
-    public class CardSO : ItemSO<EmptyItemSO>, IInventoryItem
+    [CreateAssetMenu(fileName = "Card Template", menuName = "Items/Card")]
+    public class CardSO : BaseEnvironmentItemSO<CardSO, CardItem>, IInventoryItem
     {
         [SerializeField] private int cardId;
         [SerializeField] private string cardName;

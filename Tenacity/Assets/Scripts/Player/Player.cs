@@ -24,7 +24,7 @@ namespace Tenacity.Player
 
         private void AddStoryItems(StoryItem storyItem, ConsumableTrigger consumeTrigger)
         {
-            if (_inventory.AddStoryItem(storyItem))
+            if (_inventory.AddItem(storyItem.Data))
                 storyItem.Consume(consumeTrigger);
         }
 
@@ -36,8 +36,9 @@ namespace Tenacity.Player
                 case Coin coin:
                     GainCurrency(coin, consumeType);
                     break;
-                case StoryItem book:
-                    AddStoryItems(book, consumeType);
+                // case CardItem
+                case StoryItem story:
+                    AddStoryItems(story, consumeType);
                     break;
                 default:
                     throw new Exception("Undefined consume action");

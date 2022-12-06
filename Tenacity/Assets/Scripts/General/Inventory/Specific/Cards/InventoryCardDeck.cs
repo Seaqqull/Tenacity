@@ -15,7 +15,7 @@ namespace Tenacity.Cards.Inventory
         [SerializeField] private GameObject _cardDeckLine;
         [SerializeField] private DeckSwitcher _cardDeckButton;
 
-        private List<Card> _cardDeckLines = new();
+        private List<CardItem> _cardDeckLines = new();
         private DeckSwitcher _selectedSwitcher;
         private DeckSwitcher[] _switchers;
         private CardSO _selectedCard;
@@ -58,7 +58,7 @@ namespace Tenacity.Cards.Inventory
         
         private void ClearCardDeckArea()
         {
-            if (_content.GetComponentsInChildren<Card>().Length == 0) return;
+            if (_content.GetComponentsInChildren<CardItem>().Length == 0) return;
             foreach (Transform child in _content.transform)
             {
                 Destroy(child.gameObject);
@@ -75,7 +75,7 @@ namespace Tenacity.Cards.Inventory
                 eventID = EventTriggerType.PointerClick
             };
             entry.callback.AddListener((data) => {
-                RemoveCardFromCardDeck(cardDeckLine.GetComponent<Card>());
+                RemoveCardFromCardDeck(cardDeckLine.GetComponent<CardItem>());
             });
             trigger.triggers.Add(entry);
 
@@ -89,7 +89,7 @@ namespace Tenacity.Cards.Inventory
             for (int i = 0; i < CardDeck.Capacity; i++)
             {
                 var cardDeckLine = CreateCardDeckLine();
-                var lineCardObject = cardDeckLine.GetComponent<Card>();
+                var lineCardObject = cardDeckLine.GetComponent<CardItem>();
                 
                 if (i < CardDeck.Cards.Count)
                 {
@@ -104,7 +104,7 @@ namespace Tenacity.Cards.Inventory
             }
         }
         
-        private void RemoveCardFromCardDeck(Card card)
+        private void RemoveCardFromCardDeck(CardItem card)
         {
             if (!_cardDeckLines.Contains(card)) return;
             if ((_selectedCard == null) || (_selectedCard != card.Data))

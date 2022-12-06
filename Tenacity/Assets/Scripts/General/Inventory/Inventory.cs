@@ -18,7 +18,8 @@ namespace Tenacity.General.Inventory
         }
 
         public abstract bool AddItem(Vdata item);
-
+        public abstract bool AddItem(Tstore item);
         public abstract bool RemoveItem(Vdata item);
+        public abstract bool RemoveItem(Tstore item);
     }
 }

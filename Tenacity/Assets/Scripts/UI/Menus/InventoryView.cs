@@ -1,0 +1,235 @@
+using System.Collections.Generic;
+using Tenacity.Cards.Inventory;
+using Tenacity.UI.Menus.Views;
+using Tenacity.General.Items;
+using Tenacity.UI.Additional;
+using UnityEngine.UI;
+using UnityEngine;
+using System.Linq;
+using System;
+using TMPro;
+using UnityEngine.Events;
+
+
+namespace Tenacity.UI.Menus
+{ // As items view, to view certain inventory, other class just changes the inventory
+    public class InventoryView : MonoBehaviour
+    {
+        [System.Serializable]
+        public class ItemEvent : UnityEvent<IDataItem> { }
+        
+        #region Constants
+        private const int SILVER_CURRENCY_RATIO = 100;
+        private const int GOLD_CURRENCY_RATIO = 10000;
+        #endregion
+
+        [SerializeField] private EntityInventory _inventory;
+        [Space]
+        [SerializeField] private TMP_Text _goldText;
+        [SerializeField] private TMP_Text _silverText;
+        [SerializeField] private TMP_Text _bronzeText;
+        [SerializeField] private ItemView[] _views;
+        [Space]
+        [SerializeField] private TMP_Text _pageText;
+        [Space]
+        [SerializeField] private ClickableImage[] _itemSlots;
+        [SerializeField] private GameObject _pageButtonPrefab;
+        [SerializeField] private GameObject _pageButtonsField;
+        [SerializeField] private int _pagesToShow = 5;
+        [Header("Events")]
+        [SerializeField] private ItemEvent _onItemSelect;
+        
+        private List<IInventoryItem> ViewableItems
+        {
+            get
+            {
+                return _inventory.Items.Select(item => item as IInventoryItem).
+                    Where(inventoryItem => inventoryItem != null).ToList();
+            }
+        }
+
+        private List<(int Index, GameObject Object)> _buttons = new ();
+        private ItemType? _viewCategory;
+        private int _currentPage;
+        private int _pageCount;
+        
+        
+        private void Awake()
+        {
+            UpdateView();
+        }
+
+
+        private void DisplayItemsOnPage(int page)
+        {
+            var itemsToView = ViewableItemsWithCategory();
+            
+            _pageCount = Mathf.CeilToInt((float)itemsToView.Count / _itemSlots.Length);
+            _currentPage = page;
+            
+            for (int i = 0; i < _itemSlots.Length; i++)
+            {
+                int itemIndex = (_currentPage * _itemSlots.Length) + i;
+                
+                if (itemIndex < itemsToView.Count())
+                {
+                    var item = itemsToView.ElementAt(itemIndex);
+                    _itemSlots[i].AssignAction(item.InventoryView, () =>
+                    {
+                        UpdateItemView(item);
+                    });
+                }
+                else
+                {
+                    _itemSlots[i].AssignAction(null, null);
+                }
+            }
+        }
+        
+        private void HandleCurrency(int currency)
+        {
+            var gold = currency / GOLD_CURRENCY_RATIO;
+            currency -= (gold * GOLD_CURRENCY_RATIO);
+            var silver = currency / SILVER_CURRENCY_RATIO;
+            currency -= (silver * SILVER_CURRENCY_RATIO);
+            var bronze = currency % SILVER_CURRENCY_RATIO;
+            
+            _goldText.text = gold.ToString();
+            _silverText.text = silver.ToString();
+            _bronzeText.text = bronze.ToString();
+        }
+        
+        private void UpdateItemView(IInventoryItem item)
+        {
+            foreach (var itemView in _views)
+            {
+                var viewCompatible = (item != null) && itemView.IsItemCompatible(item);
+                itemView.SwitchView(viewCompatible);
+                            
+                if (viewCompatible)
+                    itemView.ShowItemData(item);
+            }
+            
+            _onItemSelect.Invoke(item);
+        }
+        
+        private List<IInventoryItem> ViewableItemsWithCategory()
+        {
+            return (!_viewCategory.HasValue) ? ViewableItems : 
+                ViewableItems.Where(inventoryItem => inventoryItem.ItemType == _viewCategory).ToList();
+        }
+        
+        private GameObject CreatePageButton(int pageNum, string text)
+        {
+            var pageBtn = Instantiate(_pageButtonPrefab, _pageButtonsField.transform);
+            var pageTransform = pageBtn.transform;
+            
+            pageTransform.localPosition = Vector3.zero;
+            pageTransform.localScale = Vector3.one;
+            
+            pageBtn.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                DisplayItemsOnPage(pageNum);
+                CreatePageButtonList();
+            });
+            pageBtn.GetComponentInChildren<TextMeshProUGUI>().text = text;
+            return pageBtn;
+        }
+        
+#region Pages
+        private void CreatePageButtonList()
+        {
+            if ((_pageButtonsField == null) || (_pageButtonPrefab == null)) return;
+            var pages = GetPages(_currentPage, _pagesToShow, _pageCount);
+
+                
+            _pageText.text = $"{_currentPage + 1}/{_pageCount}";
+            foreach (var button in _buttons)
+                Destroy(button.Object);
+            _buttons.Clear();
+
+            foreach (var page in pages)
+            {
+                var button = CreatePageButton(page, (page + 1).ToString());
+                button.transform.parent = _pageButtonsField.transform;
+
+                _buttons.Add((page, button));
+            }
+        }
+
+        private List<int> GetPages(int currentPage, int pagesPool, int pagesCount)
+        {
+            var distinctPages = new List<int>();
+            
+            // Min - Max pages
+            distinctPages.Add(0);
+            distinctPages.Add(pagesCount - 1);
+            
+            // Nearest pages
+            var addedButtons = 0;
+            for (int i = -1; i < 2 && addedButtons < 3; i++)
+            {
+                var buttonPage = (currentPage + i);
+                if (buttonPage < 0 || buttonPage >= pagesCount)
+                    continue;
+                
+                addedButtons++;
+                distinctPages.Add(buttonPage);
+            }
+            // Store only distinct pages
+            distinctPages = distinctPages.GroupBy(pageIndex => pageIndex)
+                .Select(pageIndex => pageIndex.First()).ToList();
+            
+            
+            if (distinctPages.Count < pagesPool)
+            {
+                var pageRelation = (float)currentPage / pagesCount;
+                var direction = (pageRelation >= 0.5f) ? -1 : 1;
+                for (int i = (pagesPool - distinctPages.Count); i > 0; i--)
+                {
+                    var pageNumber = currentPage + (direction * (1 + i));
+                    distinctPages.Add(pageNumber);
+                }
+            }
+
+            return distinctPages.GroupBy(pageIndex => pageIndex).
+                Select(pageIndex => pageIndex.First()).
+                Where(pageIndex => (pageIndex < pagesCount) && (pageIndex >= 0)).
+                OrderBy(pageIndex => pageIndex).ToList();
+        }
+#endregion
+
+
+        public void UpdateView(bool hideItemView = false)
+        {
+            if (_inventory == null) return;
+            
+            if (hideItemView)
+                UpdateItemView(null);
+            HandleCurrency(_inventory.Currency);
+                    
+            DisplayItemsOnPage(_currentPage);
+            CreatePageButtonList();
+        }
+
+        public void SetFiltering(int filterIndex)
+        {
+            _viewCategory = (Enum.IsDefined(typeof(ItemType), filterIndex)) ? (ItemType) filterIndex : null;
+            _currentPage = 0;
+
+            
+            UpdateItemView(null);
+            
+            DisplayItemsOnPage(_currentPage);
+            CreatePageButtonList();
+        }
+        
+        public void UpdateView(EntityInventory inventory)
+        {
+            _inventory = inventory;
+            if (_inventory == null) return;
+
+            UpdateView();
+        }
+    }
+}

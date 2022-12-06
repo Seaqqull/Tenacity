@@ -21,7 +21,7 @@ namespace Tenacity.Battles.Controllers
         {
             if ((_cardDeck == null) || (!_cardDeck.enabled) || (_cardDeck.IsCurrentlyPlacingCard)) return;
 
-            _cardDeck.SelectCard(gameObject.GetComponent<Card>());
+            _cardDeck.SelectCard(gameObject.GetComponent<CardItem>());
         }
     }
 }

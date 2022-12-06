@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4d75606753049eaae87901b05758d31, type: 3}
+  m_Name: TradingInventory
+  m_EditorClassIdentifier: 
+  _currency: 0
+  _cardsInventory: {fileID: 11400000, guid: 880c50a4bb6784c44a9b022a557014da, type: 2}
+  _storiesInventory: {fileID: 11400000, guid: bf9937ffa31ff4bafbab30df4808f8f2, type: 2}

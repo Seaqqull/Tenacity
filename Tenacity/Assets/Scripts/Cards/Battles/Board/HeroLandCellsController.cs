@@ -12,7 +12,7 @@ namespace Tenacity.Battles.Controllers
         private HashSet<Land> _availableLands = new HashSet<Land>();
 
         public List<Land> AvailableLands => _availableLands.ToList();
-        public List<Land> FreeAvailableLands => AvailableLands.FindAll(land => !land.GetComponentInChildren<Card>()).ToList();
+        public List<Land> FreeAvailableLands => AvailableLands.FindAll(land => !land.GetComponentInChildren<CardItem>()).ToList();
             
         public void AddAvailableLand(Land land)
         {

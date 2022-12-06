@@ -366,7 +366,7 @@ MonoBehaviour:
   m_ChildAlignment: 3
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 32}
+  m_CellSize: {x: 128, y: 64}
   m_Spacing: {x: 12, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -2885,6 +2885,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Stories
       objectReference: {fileID: 0}
+    - target: {fileID: 8018715642390758515, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018715642390758515, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 8018715642543078670, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3038,6 +3046,14 @@ PrefabInstance:
     - target: {fileID: 8018715642390758515, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
       propertyPath: m_text
       value: Cards
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018715642390758515, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018715642390758515, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8018715642543078670, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
       propertyPath: m_Pivot.x
@@ -5682,6 +5698,14 @@ PrefabInstance:
       propertyPath: m_text
       value: All
       objectReference: {fileID: 0}
+    - target: {fileID: 8018715642390758515, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018715642390758515, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 8018715642543078670, guid: f15b8daafe7cdca40845c07234b27bb9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6049,6 +6073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyOnClose: 1
   _disableBelowMenus: 1
+  _inventory: {fileID: 11400000, guid: cdcf024c9e8fd459d83b96c11369758d, type: 2}
   _goldText: {fileID: 3788091087736157704}
   _silverText: {fileID: 2005011038295090068}
   _bronzeText: {fileID: 2478924952339149314}

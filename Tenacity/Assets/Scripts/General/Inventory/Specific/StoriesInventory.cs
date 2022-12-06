@@ -9,18 +9,28 @@ namespace Tenacity.General.Inventory
     {
         public override bool AddItem(StoryItem item)
         {
-            if ((_items.Count == _size) || 
-                (item.Data.UniqueStorageItem && HasItem(item.Data))) return false;
-
-            _items.Add(item.Data);
-            return true;
+            return AddItem(item.Data);
         }
 
         public override bool RemoveItem(StoryItem item)
         {
-            if (!HasItem(item.Data)) return false;
+            return RemoveItem(item.Data);
+        }
+        
+        public override bool AddItem(StoryItemSO itemData)
+        {
+            if ((_items.Count == _size) || 
+                (itemData.UniqueStorageItem && HasItem(itemData))) return false;
 
-            _items.Remove(item.Data);
+            _items.Add(itemData);
+            return true;
+        }
+
+        public override bool RemoveItem(StoryItemSO itemData)
+        {
+            if (!HasItem(itemData)) return false;
+
+            _items.Remove(itemData);
             return true;
         }
     }

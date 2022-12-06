@@ -27,30 +27,30 @@ namespace Tenacity.Battles.Controllers
         [SerializeField] private BattleEnemyAI _enemyAI;
 
 
-        private Card _heroCard;
+        private CardItem _heroCard;
         private int _currentMana;
-        private List<Card> _enemyCards => _enemyCardDeck.CardPack;
-        private List<Card> _allBattleMinions = new();
+        private List<CardItem> _enemyCards => _enemyCardDeck.CardPack;
+        private List<CardItem> _allBattleMinions = new();
         private Dictionary<LandType, int> _landCounts;
         private List<Land> _enemyLandDeck => _landTypes.LandReferences;
         private HeroLandCellsController _availableLandCellsController = new();
 
 
-        public Card Hero => _heroCard;
+        public CardItem Hero => _heroCard;
         public Dictionary<LandType, int> LandCounts => _landCounts;
-        public List<Card> AvailableHandCards => _enemyCards.FindAll(card =>
+        public List<CardItem> AvailableHandCards => _enemyCards.FindAll(card =>
             card.State == CardState.InCardDeck
             && _currentMana >= card.Data.CastingCost);
         public List<Land> FreeAvailableLands => _availableLandCellsController.FreeAvailableLands;
-        public List<Card> Minions => _enemyCards.FindAll(card => card.State == CardState.OnBoard);
-        public List<Card> Hand => _enemyCards.FindAll(card => card.State == CardState.InCardDeck);
+        public List<CardItem> Minions => _enemyCards.FindAll(card => card.State == CardState.OnBoard);
+        public List<CardItem> Hand => _enemyCards.FindAll(card => card.State == CardState.InCardDeck);
 
         public int MinionsRating
         {
             get
             {
                 int sum = 0;
-                foreach (Card minion in Minions) sum += CountMinionRating(minion);
+                foreach (CardItem minion in Minions) sum += CountMinionRating(minion);
                 return sum;
             }
         }   
@@ -77,7 +77,7 @@ namespace Tenacity.Battles.Controllers
         public void Init(Land startLand)
         {
             var enemy = Instantiate(_enemy.CharacterPrefab, startLand.transform);
-            _heroCard = enemy.GetComponent<Card>();
+            _heroCard = enemy.GetComponent<CardItem>();
             _heroCard.Data = _enemy;
             _heroCard.CurrentLife = _enemy.Life;
 
@@ -109,7 +109,7 @@ namespace Tenacity.Battles.Controllers
             for (int i = 0; i < LandConstants.GetLandCellsCount(landType); i++)
                 PlaceLandOnBoard(landType, targetLand);
         }
-        public bool Attack(Card minion, Card attackedEnemy)
+        public bool Attack(CardItem minion, CardItem attackedEnemy)
         {
             if (minion == null || attackedEnemy == null) return false;
             
@@ -118,12 +118,12 @@ namespace Tenacity.Battles.Controllers
             minion.GetDamaged(figthBack);
             return true;
         }
-        public void MoveMinion(Card selectedMinion, Land selectedLand)
+        public void MoveMinion(CardItem selectedMinion, Land selectedLand)
         {
             if (selectedLand == null) return;
-            if ((selectedMinion.Transform.parent != null ? selectedMinion.GetComponentInParent<Land>() : null) != null)
-                selectedMinion.Transform.SetParent(selectedLand.gameObject.transform);
-            selectedMinion.Transform.localPosition = new Vector3(0, _yPos, 0);
+            if ((selectedMinion.transform.parent != null ? selectedMinion.GetComponentInParent<Land>() : null) != null)
+                selectedMinion.transform.SetParent(selectedLand.gameObject.transform);
+            selectedMinion.transform.localPosition = new Vector3(0, _yPos, 0);
         }
         public bool PlaceLandOnBoard(LandType landType, Land targetLand)
         {
@@ -135,13 +135,13 @@ namespace Tenacity.Battles.Controllers
             _landCounts[landToPlace.Type]++;
             return true;
         }
-        public void PlaceHandCardOnBoard(Card selectedCard, Land selectedLand)
+        public void PlaceHandCardOnBoard(CardItem selectedCard, Land selectedLand)
         {
             if (selectedCard.Data.CastingCost > _currentMana) return;
             if (selectedCard.Data.LandCost > _landCounts[selectedCard.Data.Land]) return;
             if (selectedLand == null) return;
 
-            Card creatureCard = CardManager.CreateCardCreatureOnBoard(selectedCard, selectedLand);
+            CardItem creatureCard = CardManager.CreateCardCreatureOnBoard(selectedCard, selectedLand);
             creatureCard.GetComponent<MeshRenderer>().materials = new Material[] { _enemyMaterial };
             creatureCard.IsAvailable = false;
 
@@ -152,34 +152,34 @@ namespace Tenacity.Battles.Controllers
             UpdateMana(selectedCard.Data.CastingCost, true);
         }
 
-        public List<Land> GetNonWastedLandsAround(Card card)
+        public List<Land> GetNonWastedLandsAround(CardItem card)
         {
             Land land = card.GetComponentInParent<Land>();
             return land.NeighborLands.FindAll(l => l.Type != LandType.None).ToList();
         }
-        public List<Card> GetCreaturesToAttack(Land cardPlace)
+        public List<CardItem> GetCreaturesToAttack(Land cardPlace)
         {
             if (cardPlace == null) return null;
             return cardPlace.NeighborLands
-                    .Select(el => el.GetComponentInChildren<Card>())
+                    .Select(el => el.GetComponentInChildren<CardItem>())
                     .ToList()
                     .FindAll(el =>  el != null
                         && !_enemyCards.Contains(el)
                         && el != Hero )
                     .ToList();
         }
-        public List<Card> GetNearestMinions(Land cardPlace)
+        public List<CardItem> GetNearestMinions(Land cardPlace)
         {
             if (cardPlace == null) return null;
             return cardPlace.NeighborLands
-                    .Select(el => el.GetComponentInChildren<Card>())
+                    .Select(el => el.GetComponentInChildren<CardItem>())
                     .ToList()
                     .FindAll(el => el != null
                         && _enemyCards.Contains(el))
                     .ToList();
         }
 
-        public int CountMinionRating(Card minion)
+        public int CountMinionRating(CardItem minion)
         {
             if (minion == null) return 0;
             return minion.Data.CardRating + CountEnemiesInRangeRating(minion.GetComponentInParent<Land>());

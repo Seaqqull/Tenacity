@@ -7,7 +7,7 @@ namespace Tenacity.Cards.Managers
 {
     public class CardManager : MonoBehaviour
     {
-        public static Card CreateCardCreatureOnBoard(Card newCard, Land landToPlace)
+        public static CardItem CreateCardCreatureOnBoard(CardItem newCard, Land landToPlace)
         {
             GameObject loadedCreatureObject = LoadFromDatabase(newCard);
             if (loadedCreatureObject == null) return null;
@@ -15,7 +15,7 @@ namespace Tenacity.Cards.Managers
             var creatureGO = Instantiate(loadedCreatureObject, landToPlace.transform);
             creatureGO.transform.localPosition = new Vector3(0, landToPlace.TopPoint, 0);
 
-            var cardComponent = creatureGO.GetComponent<Card>();
+            var cardComponent = creatureGO.GetComponent<CardItem>();
             cardComponent.State = CardState.OnBoard;
             cardComponent.Data = newCard.Data;
             
@@ -23,7 +23,7 @@ namespace Tenacity.Cards.Managers
             return cardComponent;
         }
 
-        private static GameObject LoadFromDatabase(Card newCard)
+        private static GameObject LoadFromDatabase(CardItem newCard)
         {
             return Resources.Load<GameObject>($"Creatures/{newCard.Data.Type}_{newCard.Data.Id}");
         }
