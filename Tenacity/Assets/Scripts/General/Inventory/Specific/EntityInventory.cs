@@ -76,9 +76,9 @@ namespace Tenacity.Cards.Inventory
             {
                 case ItemType.Card:
                     return _cardsInventory.AddItem(item as CardSO);
+                case ItemType.Key:
                 case ItemType.Story:
                     return _storiesInventory.AddItem(item as StoryItemSO);
-                case ItemType.Key:
                 case ItemType.Currency:
                 default:
                     return false;
