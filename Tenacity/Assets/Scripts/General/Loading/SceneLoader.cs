@@ -9,9 +9,9 @@ namespace Tenacity.General.Loading
 {
     public class SceneLoader : MonoBehaviour
     {
-        [SerializeField] private Text _sceneNameText;
+        [SerializeField] private TMPro.TMP_Text _sceneNameText;
         [SerializeField] private string _loadingTextMask;
-        [SerializeField] private Text _progressText;
+        [SerializeField] private TMPro.TMP_Text _progressText;
         [SerializeField] private Image _filledImage;
         [SerializeField] private GameObject _skipKeyText;
         [SerializeField] private  GameObject _continueUI;

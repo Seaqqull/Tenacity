@@ -145,12 +145,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6180517429324023253, guid: ac189b2272def461aa7d870729d78d25, type: 3}
       propertyPath: m_Name
-      value: OrderedMatchMiniGame_
+      value: OrderedMatchMiniGame
       objectReference: {fileID: 0}
     - target: {fileID: 6180517429324023253, guid: ac189b2272def461aa7d870729d78d25, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6180517429369794501, guid: ac189b2272def461aa7d870729d78d25, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 833c13fab3627464ead46b9ff3673cbe, type: 2}
+    - target: {fileID: 6180517429369794501, guid: ac189b2272def461aa7d870729d78d25, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6447228962482213810, guid: 833c13fab3627464ead46b9ff3673cbe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac189b2272def461aa7d870729d78d25, type: 3}
 --- !u!224 &1982002050557405450 stripped
