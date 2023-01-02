@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -29,7 +30,12 @@ namespace Tenacity.General.Interactions
 
             NeedToShow(false);
         }
-        
+
+        public void OnDestroy()
+        {
+            Destroy(_objectToShow);
+        }
+
 
         protected virtual void NeedToShow(bool flag)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Tenacity.General.Interactions.Actions
 {
-    [CreateAssetMenu(menuName = "Action/Interaction/ShowDialog")]
+    [CreateAssetMenu(menuName = "Action/Interaction/ShowDialog", fileName = "ShowDialog")]
     public class ShowDialogAction : InteractionAction
     {
         public override void Execute(Interaction interaction, Collider intruder)
