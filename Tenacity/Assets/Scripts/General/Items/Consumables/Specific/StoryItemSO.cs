@@ -11,7 +11,7 @@ namespace Tenacity.General.Items.Consumables
         public LocalizedString Text;
     }
     
-    [CreateAssetMenu(fileName = "Book", menuName = "Items/Book")]
+    [CreateAssetMenu(fileName = "Story", menuName = "Items/Story")]
     public class StoryItemSO : BaseEnvironmentItemSO<StoryItemSO, StoryItem>, IInventoryItem
     {
         [field: Space] 

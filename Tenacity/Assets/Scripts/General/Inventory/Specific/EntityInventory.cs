@@ -9,14 +9,14 @@ using System.Linq;
 namespace Tenacity.Cards.Inventory
 {
     [CreateAssetMenu(fileName = "EntityInventory", menuName = "Inventory/Entity")]
-    public class EntityInventory : ScriptableObject, IInventory<IItem>
+    public class EntityInventory : ScriptableObject, IInventory<IDataItem>
     {
         [SerializeField] private int _currency;
         [Space] 
         [SerializeField] private CardsInventory _cardsInventory;
         [SerializeField] private StoriesInventory _storiesInventory;
 
-        public IReadOnlyList<IItem> Items => _cardsInventory.Items.Concat<IItem>(_storiesInventory.Items).ToList().AsReadOnly();
+        public IReadOnlyList<IDataItem> Items => _cardsInventory.Items.Concat<IDataItem>(_storiesInventory.Items).ToList().AsReadOnly();
         public int Currency => _currency;
         
         
@@ -50,6 +50,8 @@ namespace Tenacity.Cards.Inventory
                     return _storiesInventory.AddItem(item as StoryItemSO);
                 case ItemType.Key:
                 case ItemType.Currency:
+                    GainCurrency((item as Coin).Data.Count);
+                    return true;
                 default:
                     return false;
             }
@@ -80,6 +82,8 @@ namespace Tenacity.Cards.Inventory
                 case ItemType.Story:
                     return _storiesInventory.AddItem(item as StoryItemSO);
                 case ItemType.Currency:
+                    GainCurrency((item as CoinSO).Count);
+                    return true;
                 default:
                     return false;
             }
@@ -91,9 +95,9 @@ namespace Tenacity.Cards.Inventory
             {
                 case ItemType.Card:
                     return _cardsInventory.RemoveItem(item as CardSO);
+                case ItemType.Key:
                 case ItemType.Story:
                     return _storiesInventory.RemoveItem(item as StoryItemSO);
-                case ItemType.Key:
                 case ItemType.Currency:
                 default:
                     return false;

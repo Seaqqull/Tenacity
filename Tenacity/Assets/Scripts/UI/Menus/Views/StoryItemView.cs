@@ -19,7 +19,7 @@ namespace Tenacity.UI.Menus.Views
         private StoryItemSO _storyItem;
         private int _pageIndex;
 
-        public override ItemType ViewType => ItemType.Story;
+        public override ItemType ViewType => ItemType.Story | ItemType.Key;
 
         
         private void UpdatePages(int pageIndex)

@@ -1,3 +1,4 @@
+using System;
 using Tenacity.General.Items.Modes;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Tenacity.General.Items
         Legendary = 2
     }
 
+    [Flags]
     public enum ItemType
     {
         /*None = -1, */

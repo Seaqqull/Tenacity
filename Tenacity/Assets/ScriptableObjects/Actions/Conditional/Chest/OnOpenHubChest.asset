@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea0d30b261141268f4ef55899d27ce2, type: 3}
+  m_Name: OnOpenHubChest
+  m_EditorClassIdentifier: 
+  _delay: 0
+  _actions:
+  - {fileID: 11400000, guid: f1e2356eea57e4e19ad9b38d6ed49b50, type: 2}
+  - {fileID: 11400000, guid: b34f8d3c852534dd6bb8b549fff51454, type: 2}
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 9d26d9a1bf9da4d10b282ad815ad5a60, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.RemoveItemFromPlayerSO,
+          Tenacity.General.Events
+        m_MethodName: RemoveItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 59ac197b32d5a489a85d9fe7224f2314, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.GainCurrencySO,
+          Tenacity.General.Events
+        m_MethodName: GainCurrency
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

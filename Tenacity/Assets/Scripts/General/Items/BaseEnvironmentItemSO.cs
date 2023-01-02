@@ -1,3 +1,4 @@
+using Tenacity.Properties;
 using UnityEngine;
 
 
@@ -8,7 +9,7 @@ namespace Tenacity.General.Items
         where V : EnvironmentItem<T, V>
     {
         [Space]
-        [SerializeField] private int _id;
+        [SerializeField] private IntegerReference _id;
         [SerializeField] private string _name;
         [SerializeField] private ItemType _type;
         [SerializeField] private ItemRarity _rarity;
@@ -16,6 +17,6 @@ namespace Tenacity.General.Items
         public override ItemRarity ItemRarity { get => _rarity; }
         public override ItemType ItemType { get => _type; }
         public override string Name { get => _name; }
-        public override int Id { get => _id; }
+        public override int Id { get => _id.Value; }
     }
 }
