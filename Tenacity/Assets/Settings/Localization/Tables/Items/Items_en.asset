@@ -30,6 +30,10 @@ MonoBehaviour:
     m_Localized: This is the third page of the book.
     m_Metadata:
       m_Items: []
+  - m_Id: 10044175922749440
+    m_Localized: Some old key, is it from the chest?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

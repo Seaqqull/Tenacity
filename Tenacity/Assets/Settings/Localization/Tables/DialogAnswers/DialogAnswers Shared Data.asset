@@ -43,6 +43,14 @@ MonoBehaviour:
     m_Key: Thanks
     m_Metadata:
       m_Items: []
+  - m_Id: 121014069685641216
+    m_Key: Open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121018933492834304
+    m_Key: Close
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

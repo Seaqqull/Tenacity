@@ -54,6 +54,10 @@ MonoBehaviour:
     m_Localized: "G\xF3ry g\u0142\u0119bsze wej\u015Bcie"
     m_Metadata:
       m_Items: []
+  - m_Id: 25071992699871232
+    m_Localized: Stara skrzynia
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

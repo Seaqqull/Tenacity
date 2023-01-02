@@ -59,6 +59,14 @@ MonoBehaviour:
     m_Key: HubTraderItems_1
     m_Metadata:
       m_Items: []
+  - m_Id: 121033740426141696
+    m_Key: CheskNoKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121033740430336000
+    m_Key: ChestHasKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
