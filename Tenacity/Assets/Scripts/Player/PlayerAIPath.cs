@@ -38,7 +38,8 @@ namespace Tenacity.Player
         {
             base.OnPathComplete(newPath);
             
-            SceneManager.Instance.SetClickPosition(newPath.vectorPath[newPath.vectorPath.Count - 1]);
+            if (newPath.vectorPath.Count != 0)
+                SceneManager.Instance.SetClickPosition(newPath.vectorPath[newPath.vectorPath.Count - 1]);
         }
 
         private void OnMouseClick(Utility.Data.MouseHitInfo mouseInfo)

@@ -131,7 +131,7 @@ namespace Tenacity.Managers
             }
         }
 
-        private IEnumerator LoadScene(int sceneToUnload, int sceneToLoad, string loadSceneName = "")
+        private IEnumerator LoadScene(int sceneToUnload, int sceneToLoad, string loadSceneName = "", Action onLoad = null)
         {
             MouseClickBlocked = true;
             // Load loading scene
@@ -145,6 +145,7 @@ namespace Tenacity.Managers
             {
                 UnityScenes.SceneManager.UnloadScene(TEMPORARY_SCENE_INDEX);
                 _onLoadScene?.Invoke();
+                onLoad?.Invoke();
                 
                 MouseClickBlocked = false;
             };
@@ -167,17 +168,25 @@ namespace Tenacity.Managers
             LevelIndex = index;
         }
 
+        public void UpdateLevelName(string name)
+        {
+            LevelName = name;
+        }
+
         public void SetClickPosition(Vector3 position)
         {
             var mouseHitInfo = RaycastManager.Instance.GetMovementPoint(position);
-            
-            _mouseClick.transform.rotation = Quaternion.FromToRotation(Vector3.up, mouseHitInfo.HitData.Normal);
-            _mouseClick.transform.position = mouseHitInfo.HitData.Position + (mouseHitInfo.HitData.Normal * _mouseUpShiftPositioning);
+            if (mouseHitInfo.HitSomePosition)
+            {
+                _mouseClick.transform.rotation = Quaternion.FromToRotation(Vector3.up, mouseHitInfo.HitData.Normal);
+                _mouseClick.transform.position = mouseHitInfo.HitData.Position +
+                                                 (mouseHitInfo.HitData.Normal * _mouseUpShiftPositioning);
+            }
         }
         
-        public void LoadLevel(int newLevelIndex, string screenName = "")
+        public void LoadLevel(int newLevelIndex, string screenName = "", Action onLoad = null)
         {
-            StartCoroutine(LoadScene(LevelIndex, newLevelIndex, screenName));
+            StartCoroutine(LoadScene(LevelIndex, newLevelIndex, screenName, onLoad));
 
             LevelIndex = newLevelIndex;
             LevelName = screenName;

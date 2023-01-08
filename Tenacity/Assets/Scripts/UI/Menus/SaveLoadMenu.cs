@@ -1,3 +1,4 @@
+using Tenacity.General.SaveLoad.Implementation;
 using Tenacity.General.SaveLoad.Data;
 using System.Collections.Generic;
 using Tenacity.UI.Additional;
@@ -120,7 +121,8 @@ namespace Tenacity.UI
         {
             if (_selectedSnapshot == null)
                 return;
-            
+
+            World.Instance.Clear();
             MenuManager.Instance.CloseAllMenus();
             SaveLoadManager.Instance.Load(_snapshots.IndexOf(_selectedSnapshot));
         }

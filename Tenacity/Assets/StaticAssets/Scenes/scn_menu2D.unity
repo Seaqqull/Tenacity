@@ -318,6 +318,7 @@ MonoBehaviour:
   _singleOnly: 1
   _preloadSceneIndex: {fileID: 11400000, guid: 6b0302e2d54bb4d08bc39e0f867549c0, type: 2}
   _currentSceneIndex: {fileID: 11400000, guid: 746f592804a354925b7b8a03a7f26246, type: 2}
+  _currentSceneName: {fileID: 11400000, guid: dd718e485affc4d5f82c6bc98c96283d, type: 2}
 --- !u!1 &291817800
 GameObject:
   m_ObjectHideFlags: 0

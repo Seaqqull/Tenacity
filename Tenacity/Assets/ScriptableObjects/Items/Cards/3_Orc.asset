@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: 3_Orc
   m_EditorClassIdentifier: 
   <UniqueStorageItem>k__BackingField: 0
+  <Modes>k__BackingField: []
+  _visualization: {fileID: 0}
+  _id:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: adfa5a4d9add04a78933b82c1f51f5c8, type: 2}
+  _name: 
+  _type: 0
+  _rarity: 0
   cardId: 3
   cardName: Super orc
   castingCost: 3

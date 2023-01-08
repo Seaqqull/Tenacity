@@ -17,7 +17,11 @@ namespace Tenacity.General.Interactions.Actions
         public override void Execute(Interaction interaction, Collider intruder)
         {
             T entity = intruder.GetComponent<T>();
-            if (entity == null) return;
+            if (entity == null)
+            {
+                Debug.LogError("[Interaction] Error: Interactable entity doesn't have required component.", this);
+                return;
+            }
 
             
             Interaction = interaction;

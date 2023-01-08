@@ -1,3 +1,4 @@
+using Tenacity.General.SaveLoad.Implementation;
 using Tenacity.Properties;
 using Tenacity.Managers;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Tenacity.General.Events.Actions
     public class LoadLevelSO : ActionSO<bool>
     {
         [SerializeField] private string _sceneName;
+        [SerializeField] private bool _clearGame;
         
         
         protected override bool PerformAction()
@@ -23,7 +25,14 @@ namespace Tenacity.General.Events.Actions
         
         public void Perform(IntegerVariable levelId)
         {
-            SceneManager.Instance.LoadLevel(levelId.Value, _sceneName);
+            if (_clearGame)
+                World.Instance.Clear();
+
+            SceneManager.Instance.LoadLevel(levelId.Value, _sceneName, () =>
+            {
+                if (_clearGame)
+                    PlayerManager.Instance.gameObject.GetComponent<Player.Player>().ResetInventory();
+            });
         }
     }
 }

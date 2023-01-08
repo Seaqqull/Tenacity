@@ -1,0 +1,21 @@
+{
+    "name": "Tenacity.General.SaveLoad.Implementation.Specific",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d295b32726be049cfb2fd798cda2d63f",
+        "GUID:712fbbb5dc65c418385ecb74c42a919a",
+        "GUID:232e6b056d61b487ca7933527d870191",
+        "GUID:6442bf360e58040fea7d60cc7b1151a3",
+        "GUID:ad1ed217a63e54674a41222f0fd4bb20",
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

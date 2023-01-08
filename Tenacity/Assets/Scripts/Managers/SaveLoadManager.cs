@@ -20,7 +20,7 @@ namespace Tenacity.Managers
                 return SaveLoadController.Instance.Snapshots;
             }
         }
-        public int Id { get; private set; }
+        public string Id { get; private set; }
         public event Action OnSave
         {
             add { _onSave += value; }
@@ -30,15 +30,27 @@ namespace Tenacity.Managers
 
         private void Start()
         {
-            Id = GetInstanceID();
+            Id = SaveSnap.GetHash(this);
         }
 
 
         private void FromSnapshot(SaveSnapshot snapshot, SaveLoadSnap snap)
         {
             FromSnap(snap);
+
             if (snap != null)
-                SceneManager.Instance.LoadLevel(snap.SceneIndex, snapshot.Title);
+            {
+                SceneManager.Instance.LoadLevel(snap.SceneIndex, snapshot.Title, () =>
+                {
+                    foreach (var savable in _savables)
+                    {
+                        foreach (var snap in snapshot.Data)
+                        {
+                            savable.FromSnap(snap);
+                        }
+                    }
+                });
+            }
         }
         
         
@@ -61,7 +73,7 @@ namespace Tenacity.Managers
         {
             var snapshot = SaveLoadController.Instance.GetLastSnapshot();
         }
-        
+
         public void Load(int snapshotIndex)
         {
             var snapshot = SaveLoadController.Instance.GetSnapshot(snapshotIndex);
@@ -77,9 +89,9 @@ namespace Tenacity.Managers
             FromSnapshot(snapshot, snapData);
         }
 
-        public void RemoveFromSavable(int id)
+        public void RemoveFromSavable(string id)
         {
-            var savableIndex = _savables.FindIndex(savable => savable.Id == id);
+            var savableIndex = _savables.FindIndex(savable => savable.Id.Equals(id));
             if (savableIndex != -1)
                 _savables.RemoveAt(savableIndex);
         }

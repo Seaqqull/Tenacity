@@ -31,9 +31,11 @@ namespace Tenacity.General
         
         private void LateUpdate()
         {
+            var currentPosition = _transform.position;
+            
             _transform.position = Vector3.Lerp(
-                _transform.position, 
-                _transform.position + Vector3.Scale(_alignVector, (_offset + (_followTarget.position - _transform.position))), 
+                currentPosition, 
+                currentPosition + Vector3.Scale(_alignVector, (_offset + (_followTarget.position - currentPosition))), 
                 _followTime);
         }
     }

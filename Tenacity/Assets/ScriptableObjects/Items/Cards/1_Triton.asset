@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: 1_Triton
   m_EditorClassIdentifier: 
   <UniqueStorageItem>k__BackingField: 0
+  <Modes>k__BackingField: []
+  _visualization: {fileID: 0}
+  _id:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 7e725d72b020b45d3b455f1d098aba79, type: 2}
+  _name: 
+  _type: 0
+  _rarity: 0
   cardId: 1
   cardName: Triton
   castingCost: 1

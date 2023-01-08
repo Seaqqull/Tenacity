@@ -17,7 +17,7 @@ namespace Tenacity.General.Interactions.Actions
 
         public void Execute(Interaction interaction)
         {
-            Execute(interaction, (interaction as GraphicalInteraction).Collision);
+            Execute(interaction, (interaction as GraphicalInteraction)?.Collision);
         }
 
         public override void Execute(Interaction interaction, Collider intruder)

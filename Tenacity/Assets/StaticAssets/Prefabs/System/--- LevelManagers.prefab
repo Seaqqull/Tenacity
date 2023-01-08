@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7712530290369834007}
   - component: {fileID: 7712530290369834000}
+  - component: {fileID: 7270775983891933992}
   m_Layer: 0
   m_Name: --- LevelManagers
   m_TagString: Untagged
@@ -48,7 +49,26 @@ MonoBehaviour:
   _dontDestroyOnLoad: 0
   _gameTime: 0
   _timeText: {fileID: 0}
+  <GameTimePaused>k__BackingField: 0
   <GameTimeScale>k__BackingField: 1
   _sky: {fileID: 0}
   _light: {fileID: 0}
   _dayNightParameters: {fileID: 11400000, guid: 4bd879413f044400bb1e37aa5ed31238, type: 2}
+--- !u!114 &7270775983891933992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712530290369834001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af96dd79a69346909c88d4ec5c93ba07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewritable: 1
+  _dontDestroyOnLoad: 0
+  _id:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: d25f7315b32dd4fd3881e448f553443f, type: 2}
