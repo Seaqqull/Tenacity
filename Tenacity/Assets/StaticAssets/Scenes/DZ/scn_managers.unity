@@ -1085,6 +1085,8 @@ GameObject:
   - component: {fileID: 788686661}
   - component: {fileID: 788686652}
   - component: {fileID: 788686659}
+  - component: {fileID: 788686662}
+  - component: {fileID: 788686663}
   m_Layer: 0
   m_Name: --- Managers
   m_TagString: Untagged
@@ -1310,6 +1312,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rewritable: 0
   _dontDestroyOnLoad: 0
+--- !u!114 &788686662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788686651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c2878b630d4e96871827bc68dd57e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewritable: 0
+  _dontDestroyOnLoad: 0
+--- !u!114 &788686663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788686651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff247f075c2400a903cc542f99e0c0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewritable: 0
+  _dontDestroyOnLoad: 0
+  _stories:
+  - {fileID: 11400000, guid: 345f196ef321b425896d3e59fd8e9a5b, type: 2}
+  - {fileID: 11400000, guid: cc96d0bcacce34bb8894aa1d7bc5f93f, type: 2}
+  - {fileID: 11400000, guid: 771f36249170546168dc73ad48f9d494, type: 2}
+  _cards:
+  - {fileID: 11400000, guid: 150facc42473280439e26175a76729ef, type: 2}
+  - {fileID: 11400000, guid: 066c7148e6f31aa4fbbf3de87f27457c, type: 2}
+  - {fileID: 11400000, guid: 6d863d9656dab5d469521a3a1dbdd853, type: 2}
 --- !u!1 &957274139
 GameObject:
   m_ObjectHideFlags: 0

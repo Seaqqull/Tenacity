@@ -1,4 +1,5 @@
-using Tenacity.Managers;
+using UnityEngine.Events;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #else
@@ -13,6 +14,8 @@ namespace Tenacity.UI.Menus
         #region Constants
         private const int FIRST_LEVEL = 3;
         #endregion
+
+        [SerializeField] private UnityEvent _onStartAction;
         
         
         private void Start()
@@ -24,7 +27,8 @@ namespace Tenacity.UI.Menus
         public void OnStartAction()
         {
             MenuManager.Instance.CloseMenu(this);
-            SceneManager.Instance.LoadLevel(FIRST_LEVEL, "Swamps");
+
+            _onStartAction?.Invoke();
         }
 
         public void OnSaveLoadAction()

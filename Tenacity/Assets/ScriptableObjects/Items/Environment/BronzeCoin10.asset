@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fefbe1291a462c981fd1cfcb2852b2, type: 3}
   m_Name: BronzeCoin10
   m_EditorClassIdentifier: 
+  <UniqueStorageItem>k__BackingField: 0
+  <Modes>k__BackingField: []
   _visualization: {fileID: 5720711519941588570, guid: dcd994e82fe7a4a6ebe28abf7a126ed0, type: 3}
-  _id: 0
+  _id:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 64aa9a91dca1e414cb349e2d5abbc505, type: 2}
   _name: Bronze coin 10
   _type: 3
   _rarity: 0

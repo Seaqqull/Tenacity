@@ -117,9 +117,9 @@ namespace Tenacity.General.SaveLoad
             return _database.Snapshots[^1];
         }
         
-        public void RemoveFromSnapshot(int id)
+        public void RemoveFromSnapshot(string id)
         {
-            _snapshot.Data.RemoveWhere(snap => snap.Id == id);
+            _snapshot.Data.RemoveWhere(snap => snap.Id.Equals(id));
         }
         
         public void AddToSnapshot(SaveSnap saveData)

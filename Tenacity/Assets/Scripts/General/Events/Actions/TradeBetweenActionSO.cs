@@ -1,3 +1,4 @@
+using Tenacity.General.SaveLoad.Implementation;
 using Tenacity.General.Items.Modifiers;
 using Tenacity.Cards.Inventory;
 using UnityEngine.Events;
@@ -27,6 +28,12 @@ namespace Tenacity.General.Events.Actions
         protected override bool PerformAction()
         {
             return true;
+        }
+        
+        
+        public void UpdateItemState(LocationItem item)
+        {
+            TradeMenu.Instance.OnClose += item.UpdateItemState;
         }
 
         public void Perform(EntityInventory inventoryToTradeWIth)

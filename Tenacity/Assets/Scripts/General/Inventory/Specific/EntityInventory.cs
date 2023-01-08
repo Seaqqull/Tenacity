@@ -46,11 +46,11 @@ namespace Tenacity.Cards.Inventory
             {
                 case ItemType.Card:
                     return _cardsInventory.AddItem(item as CardItem);
-                case ItemType.Story:
-                    return _storiesInventory.AddItem(item as StoryItemSO);
                 case ItemType.Key:
+                case ItemType.Story:
+                    return _storiesInventory.AddItem(item as StoryItem);
                 case ItemType.Currency:
-                    GainCurrency((item as Coin).Data.Count);
+                    GainCurrency((item as Coin).Count);
                     return true;
                 default:
                     return false;
@@ -63,9 +63,9 @@ namespace Tenacity.Cards.Inventory
             {
                 case ItemType.Card:
                     return _cardsInventory.RemoveItem(item as CardItem);
+                case ItemType.Key:
                 case ItemType.Story:
                     return _storiesInventory.RemoveItem(item as StoryItem);
-                case ItemType.Key:
                 case ItemType.Currency:
                 default:
                     return false;
@@ -102,6 +102,20 @@ namespace Tenacity.Cards.Inventory
                 default:
                     return false;
             }
+        }
+
+        public void InitializeInventory(int currency, IEnumerable<IDataItem> items)
+        {
+            _currency = currency;
+            
+            // Remove old
+            var oldItems = Items.ToList();
+            foreach (var oldItem in oldItems)
+                RemoveItem(oldItem);
+            
+            // Add new
+            foreach (var newItem in items)
+                AddItem(newItem);
         }
     }
 }

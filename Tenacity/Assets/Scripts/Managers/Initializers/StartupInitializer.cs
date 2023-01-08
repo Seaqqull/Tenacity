@@ -14,6 +14,7 @@ namespace Tenacity.Managers
         [SerializeField] private IntegerVariable _preloadSceneIndex;
         [Space] 
         [SerializeField] private IntegerVariable _currentSceneIndex;
+        [SerializeField] private StringVariable _currentSceneName;
         
         
         protected override void Awake()
@@ -27,6 +28,8 @@ namespace Tenacity.Managers
         private void Start()
         {
             SceneManager.Instance.UpdateLevelIndex(_currentSceneIndex.Value);
+            SceneManager.Instance.UpdateLevelName(_currentSceneName.Value);
+            
             SettingsMenu.SetFrameRate();
         }
     }

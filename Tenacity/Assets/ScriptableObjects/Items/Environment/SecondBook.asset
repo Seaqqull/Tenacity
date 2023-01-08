@@ -16,7 +16,10 @@ MonoBehaviour:
   <Modes>k__BackingField:
   - {fileID: 11400000, guid: f06b52331169746ff885bac2efa93573, type: 2}
   _visualization: {fileID: 318061612, guid: d0afc698c20b0450299619c55a9f255f, type: 3}
-  _id: 0
+  _id:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 473d17f74140842ee8c256078ab370f9, type: 2}
   _name: Second book
   _type: 1
   _rarity: 0
