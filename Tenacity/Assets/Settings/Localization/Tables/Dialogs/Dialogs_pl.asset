@@ -79,6 +79,15 @@ MonoBehaviour:
     m_Localized: "Zr\xF3bmy jaki\u015B handel?"
     m_Metadata:
       m_Items: []
+  - m_Id: 121033740426141696
+    m_Localized: "Wygl\u0105da na to, \u017Ce nie mam klucza do otwarcia tej skrzyni,
+      musz\u0119 go znale\u017A\u0107."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121033740430336000
+    m_Localized: Mam klucz do otwarcia tej skrzyni.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

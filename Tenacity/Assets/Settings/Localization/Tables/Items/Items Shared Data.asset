@@ -27,6 +27,10 @@ MonoBehaviour:
     m_Key: book_first_3
     m_Metadata:
       m_Items: []
+  - m_Id: 10044175922749440
+    m_Key: chest_key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

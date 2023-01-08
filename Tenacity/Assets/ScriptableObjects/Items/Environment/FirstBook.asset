@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: FirstBook
   m_EditorClassIdentifier: 
   <UniqueStorageItem>k__BackingField: 0
+  <Modes>k__BackingField:
+  - {fileID: 11400000, guid: f4956c7638cea4401ba1b382a6e90044, type: 2}
   _visualization: {fileID: 318061612, guid: d0afc698c20b0450299619c55a9f255f, type: 3}
   _id: 0
   _name: First book

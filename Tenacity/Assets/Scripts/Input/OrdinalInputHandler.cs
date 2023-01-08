@@ -11,11 +11,11 @@ namespace Tenacity.Input
         
         public bool MiddleMouseButton
         {
-            get { return (_mouseButtons & 2) != 0; }
+            get { return (_mouseButtons & 4) != 0; }
         }
         public bool RightMouseButton
         {
-            get { return (_mouseButtons & 4) != 0; }
+            get { return (_mouseButtons & 2) != 0; }
         }
         public bool LeftMouseButton
         {

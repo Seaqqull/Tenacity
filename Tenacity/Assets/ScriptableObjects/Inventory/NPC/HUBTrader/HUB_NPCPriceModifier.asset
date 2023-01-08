@@ -15,6 +15,6 @@ MonoBehaviour:
   _itemTypeModifiers:
   - Type: 0
     Modificator: 0.5
-  - Type: 0
+  - Type: 1
     Modificator: 0.5
-  _baseItemModificator: {fileID: 0}
+  _baseItemModificator: {fileID: 11400000, guid: 508a81bf14aea48f99672e0c2fd54db5, type: 2}

@@ -87,6 +87,10 @@ namespace Tenacity.Managers
         {
             get => (Instance._pressedButtons & Input.Data.PressedButton.Back) != 0;
         }
+        public static bool RightMousePressed
+        {
+            get => OrdinalInputHandler.Instance.RightMouseButton;
+        }
         public static bool LeftMousePressed
         {
             get => OrdinalInputHandler.Instance.LeftMouseButton;
@@ -129,17 +133,17 @@ namespace Tenacity.Managers
                 }
                 else if((horizontal == HorizontalButton.Right))
                 {
-                    if(InputHasValue((int)VerticalButton.Bottom))
-                        _pressedButtons = SwitchInput((int)(HorizontalButton.Right | HorizontalButton.Left));
-                    else
+                    // if(InputHasValue((int)VerticalButton.Bottom))
+                    //     _pressedButtons = SwitchInput((int)(HorizontalButton.Right | HorizontalButton.Left));
+                    // else
                         _pressedButtons = AddInput((int)HorizontalButton.Right);
                     _horizontalButtonAction?.Invoke(horizontal);
                 }
                 else if((horizontal == HorizontalButton.Left))
                 {
-                    if(InputHasValue((int)VerticalButton.Bottom))
-                        _pressedButtons = SwitchInput((int)(HorizontalButton.Right | HorizontalButton.Left));
-                    else
+                    // if(InputHasValue((int)VerticalButton.Bottom))
+                    //     _pressedButtons = SwitchInput((int)(HorizontalButton.Right | HorizontalButton.Left));
+                    // else
                         _pressedButtons = AddInput((int)HorizontalButton.Left);
                     _horizontalButtonAction?.Invoke(horizontal);
                 }
@@ -208,6 +212,13 @@ namespace Tenacity.Managers
             {
                 _pressedButtons = SwitchInput((int)PressedButton.LeftMouseButton);
                 _mouseLeftButtonAction?.Invoke(mouseLeft);
+            }
+            
+            var mouseRight = Input.OrdinalInputHandler.Instance.RightMouseButton;
+            if (mouseRight !=  InputHasValue((int)PressedButton.RightMouseButton))
+            {
+                _pressedButtons = SwitchInput((int)PressedButton.RightMouseButton);
+                _mouseLeftButtonAction?.Invoke(mouseRight);
             }
         }
         

@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: StoriesInventory
   m_EditorClassIdentifier: 
   _size: 100
-  _items:
-  - {fileID: 11400000, guid: cc96d0bcacce34bb8894aa1d7bc5f93f, type: 2}
+  _items: []

@@ -1,7 +1,9 @@
 {
     "name": "Tenacity.General.Items",
     "rootNamespace": "Tenacity.General.Items",
-    "references": [],
+    "references": [
+        "GUID:42fc222381b7d45f58ef51c0c53f0a54"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

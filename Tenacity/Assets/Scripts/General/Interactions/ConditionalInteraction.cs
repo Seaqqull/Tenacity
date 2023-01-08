@@ -8,10 +8,8 @@ namespace Tenacity.General.Interactions
         protected bool _isInteractable;
         protected Collider _collision;
         
-        public override bool IsActive
-        {
-            get { return base.IsActive && _isInteractable; }
-        }
+        public override bool IsActive =>  base.IsActive && _isInteractable;
+        public Collider Collision => _collision;
 
 
         public override void OnTriggerEnter(Collider collision)

@@ -25,9 +25,15 @@ namespace Tenacity.Dialogs
         [SerializeField] private UnityEvent _onHide;
 
         private List<Answer> _availableAnswers =
-            new List<Answer>();
+            new ();
         private bool _initialized;
         private bool _showed;
+
+        public DialogReference Reference
+        {
+            get => _dialog;
+            set => _dialog = value;
+        }
 
 
         private void OnDisable()

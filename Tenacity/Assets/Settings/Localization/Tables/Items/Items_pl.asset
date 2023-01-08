@@ -30,6 +30,10 @@ MonoBehaviour:
     m_Localized: "To jest trzecia strona ksi\u0105\u017Cki."
     m_Metadata:
       m_Items: []
+  - m_Id: 10044175922749440
+    m_Localized: "Jaki\u015B stary klucz, czy to ze skrzyni?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

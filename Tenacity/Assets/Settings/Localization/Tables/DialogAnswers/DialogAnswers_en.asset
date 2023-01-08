@@ -46,6 +46,14 @@ MonoBehaviour:
     m_Localized: Thanks
     m_Metadata:
       m_Items: []
+  - m_Id: 121014069685641216
+    m_Localized: Open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121018933492834304
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

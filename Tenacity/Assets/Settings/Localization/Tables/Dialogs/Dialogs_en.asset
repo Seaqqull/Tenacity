@@ -74,6 +74,15 @@ MonoBehaviour:
     m_Localized: Let's make some trade?
     m_Metadata:
       m_Items: []
+  - m_Id: 121033740426141696
+    m_Localized: Seems like I don't have a key to open this chest, I need to find
+      one.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121033740430336000
+    m_Localized: I have a key to open this chest.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

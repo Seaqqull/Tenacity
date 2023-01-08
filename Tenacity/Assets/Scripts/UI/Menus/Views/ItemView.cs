@@ -19,7 +19,7 @@ namespace Tenacity.UI.Menus.Views
         
         public virtual bool IsItemCompatible(IItem item)
         {
-            return (item.ItemType == ViewType);
+            return (item.ItemType & ViewType) != 0;
         }
     }
 }
