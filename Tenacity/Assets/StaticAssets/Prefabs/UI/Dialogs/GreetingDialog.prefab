@@ -123,6 +123,46 @@ PrefabInstance:
       propertyPath: _dialog
       value: 
       objectReference: {fileID: 11400000, guid: aada4ba5af3bd41f29660563bfd2e4f7, type: 2}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].AnswerId.Variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 797ec0fa8b8f14121865902c66a45092, type: 2}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: f27095f01c3c54ae58e19a8195c2b7df, type: 2}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Perform
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Tenacity.General.Events.Actions.LoadLevelSO, Tenacity.General.Events
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: d25a35a6290b2415d968911f039037db, type: 2}
+    - target: {fileID: 7262046473895867889, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
+      propertyPath: _reponses.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Tenacity.Properties.IntegerVariable, Properties
+      objectReference: {fileID: 0}
     - target: {fileID: 7262046473945182490, guid: 3e6377cee3d7d4ed0bce7335eab45a95, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

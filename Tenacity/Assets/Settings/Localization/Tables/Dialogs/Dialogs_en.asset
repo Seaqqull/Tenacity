@@ -83,6 +83,14 @@ MonoBehaviour:
     m_Localized: I have a key to open this chest.
     m_Metadata:
       m_Items: []
+  - m_Id: 132636495469076480
+    m_Localized: You have found a creature nest. Do you want to fight them?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 132890703069962240
+    m_Localized: It is dangerous to enter Fallen City without a compass.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

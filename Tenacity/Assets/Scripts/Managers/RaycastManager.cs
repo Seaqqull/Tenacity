@@ -7,7 +7,7 @@ namespace Tenacity.Managers
     public class RaycastManager : Base.SingleBehaviour<RaycastManager>
     {
         [System.Serializable]
-        private class RaycastInfo
+        public class RaycastInfo
         {
             public float Distance;
             public LayerMask TargetLayer;
@@ -83,6 +83,11 @@ namespace Tenacity.Managers
         public (bool HitSomePosition, MouseHitInfo HitData) GetMovementPoint(Vector3 position)
         {
             return GetHitInfoFromPoint(position, _movement);
+        }
+        
+        public (bool HitSomePosition, MouseHitInfo HitData) GetPoint(RaycastInfo raycastData)
+        {
+            return GetHitInfoFromCamera(raycastData);
         }
     }
 }

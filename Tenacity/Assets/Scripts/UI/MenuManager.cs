@@ -95,7 +95,7 @@ namespace Tenacity.UI
             {
 			    if (instance.DisableBelowMenus)
 			    {
-				    foreach (var menu in _openMenus)
+				    foreach (var menu in _openMenus)//
 				    {
 					    menu.gameObject.SetActive(false);
 

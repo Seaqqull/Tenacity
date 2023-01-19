@@ -58,6 +58,10 @@ MonoBehaviour:
     m_Localized: Stara skrzynia
     m_Metadata:
       m_Items: []
+  - m_Id: 36672043578548224
+    m_Localized: "Gniazdo stworze\u0144"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -29,7 +29,7 @@ MonoBehaviour:
       m_TableReference:
         m_TableCollectionName: GUID:3dacea5eb0030467fba23cda2de5776f
       m_TableEntryReference:
-        m_KeyId: 328559747072
+        m_KeyId: 21988272728170496
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -39,17 +39,7 @@ MonoBehaviour:
       m_TableReference:
         m_TableCollectionName: GUID:3dacea5eb0030467fba23cda2de5776f
       m_TableEntryReference:
-        m_KeyId: 328576524288
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - Picture: {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
-    Text:
-      m_TableReference:
-        m_TableCollectionName: GUID:3dacea5eb0030467fba23cda2de5776f
-      m_TableEntryReference:
-        m_KeyId: 328576524289
+        m_KeyId: 21988272732364800
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0

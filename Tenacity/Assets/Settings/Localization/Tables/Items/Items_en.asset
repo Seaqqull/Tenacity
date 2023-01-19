@@ -19,19 +19,27 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 328559747072
-    m_Localized: This is the first page of the book.
+    m_Localized: The key was stolen from the city.
     m_Metadata:
       m_Items: []
   - m_Id: 328576524288
-    m_Localized: This is the second page of the book.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 328576524289
-    m_Localized: This is the third page of the book.
+    m_Localized: A locked chest was seen in the city.
     m_Metadata:
       m_Items: []
   - m_Id: 10044175922749440
     m_Localized: Some old key, is it from the chest?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21988272728170496
+    m_Localized: It is better to enter Fallen City with a compass.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21988272732364800
+    m_Localized: Some creatures still attack the city.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22022117435367424
+    m_Localized: Allows to enter Fallen City.
     m_Metadata:
       m_Items: []
   references:

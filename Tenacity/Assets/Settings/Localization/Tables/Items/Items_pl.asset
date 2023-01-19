@@ -19,19 +19,27 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 328559747072
-    m_Localized: "To jest pierwsza strona ksi\u0105\u017Cki."
+    m_Localized: "Klucz zosta\u0142 skradziony z miasta."
     m_Metadata:
       m_Items: []
   - m_Id: 328576524288
-    m_Localized: "To jest druga strona ksi\u0105\u017Cki."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 328576524289
-    m_Localized: "To jest trzecia strona ksi\u0105\u017Cki."
+    m_Localized: "W mie\u015Bcie widziano zamkni\u0119t\u0105 skrzyni\u0119."
     m_Metadata:
       m_Items: []
   - m_Id: 10044175922749440
     m_Localized: "Jaki\u015B stary klucz, czy to ze skrzyni?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21988272728170496
+    m_Localized: "Do Fallen City lepiej wej\u015B\u0107 z kompasem."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21988272732364800
+    m_Localized: "Niekt\xF3re stwory wci\u0105\u017C atakuj\u0105 miasto."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22022117435367424
+    m_Localized: "Pozwala wej\u015B\u0107 do Upad\u0142ego Miasta."
     m_Metadata:
       m_Items: []
   references:

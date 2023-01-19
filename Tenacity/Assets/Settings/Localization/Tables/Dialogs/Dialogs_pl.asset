@@ -88,6 +88,14 @@ MonoBehaviour:
     m_Localized: Mam klucz do otwarcia tej skrzyni.
     m_Metadata:
       m_Items: []
+  - m_Id: 132636495469076480
+    m_Localized: "Znalaz\u0142e\u015B gniazdo potwor\xF3w. Chcesz z nimi walczy\u0107?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 132890703069962240
+    m_Localized: "Wej\u015Bcie do Upad\u0142ego Miasta bez kompasu jest niebezpieczne."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

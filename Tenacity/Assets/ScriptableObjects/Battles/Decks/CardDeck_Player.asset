@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f3b50086d6f40408f7ecf23055a2b0a, type: 3}
+  m_Name: CardDeck_Player
+  m_EditorClassIdentifier: 
+  _capacity: 10
+  _cards:
+  - {fileID: 11400000, guid: 8049e4540ccd140119381251309bc376, type: 2}
+  - {fileID: 11400000, guid: 6d863d9656dab5d469521a3a1dbdd853, type: 2}
+  - {fileID: 11400000, guid: 066c7148e6f31aa4fbbf3de87f27457c, type: 2}
+  - {fileID: 11400000, guid: 150facc42473280439e26175a76729ef, type: 2}

@@ -26,6 +26,20 @@ namespace Tenacity.General.SaveLoad.Implementation
         }
 
 
+        public void UpdateItemExistence(SaveSnap existingItemSnap)
+        {
+            var itemSnapshot = _itemsSnapshot.SingleOrDefault(item => item.Id.Equals(existingItemSnap.Id));
+            if (itemSnapshot == null) return;
+            
+            _itemsSnapshot = _itemsSnapshot.Where(item => !item.Id.Equals(existingItemSnap.Id)).ToList();
+            _itemsSnapshot.Add(existingItemSnap);
+            
+            if (_locationItems.SingleOrDefault(item => item.Id.Equals(existingItemSnap.Id)) is LocationItem locationItem)
+                locationItem.FromSnap(existingItemSnap);
+            
+            World.Instance.UpdateLocation(this);
+        }
+
         public void AddItem(LocationItem newItem)
         {
             if (!_locationItems.Contains(newItem))

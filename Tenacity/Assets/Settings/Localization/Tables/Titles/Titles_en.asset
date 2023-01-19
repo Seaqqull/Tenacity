@@ -58,6 +58,10 @@ MonoBehaviour:
     m_Localized: Old chest
     m_Metadata:
       m_Items: []
+  - m_Id: 36672043578548224
+    m_Localized: Creatures nest
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

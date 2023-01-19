@@ -41,7 +41,7 @@ namespace Tenacity.UI.Menus
             } 
             else if (component.TryGetComponent(out SpriteRenderer cardSprite))
             {
-                cardSprite.sprite = Resources.Load<Sprite>($"Sprites/Cards/card_{value}");
+                cardSprite.sprite = Resources.Load<Sprite>($"Sprites/Cards/{value}");
             }
             else if (component.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI textField))
             {
@@ -49,7 +49,7 @@ namespace Tenacity.UI.Menus
             }
             else if (component.TryGetComponent<Image>(out Image image))
             {
-                image.sprite = Resources.Load<Sprite>($"Sprites/Cards/card_{value}");
+                image.sprite = Resources.Load<Sprite>($"Sprites/Cards/{value}");
             }
         }
         
