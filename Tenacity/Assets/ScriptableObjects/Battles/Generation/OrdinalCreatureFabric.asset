@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbe50779235456c85cfedc9f7c8c152, type: 3}
+  m_Name: OrdinalCreatureFabric
+  m_EditorClassIdentifier: 
+  _players:
+  - Team: 1
+    Prefab: {fileID: 136711532378020939, guid: 95ee1db9c40184a5f8f14a939b5fb517, type: 3}
+  - Team: 2
+    Prefab: {fileID: -4173605630388473564, guid: 27d7f762318dd4beebcf017093a6944a, type: 3}
+  _creatures:
+  - Team: -1
+    Type: 8
+    Prefab: {fileID: 6056434097290767740, guid: 6f2cc34a3e0494fac8dbbc151b6ff72a, type: 3}
+  - Team: -1
+    Type: 16
+    Prefab: {fileID: 3148068096428703882, guid: d3646f09a36994df09a6b1cdef60a5ab, type: 3}
+  - Team: -1
+    Type: 4
+    Prefab: {fileID: 4980369815893795341, guid: 2f83d6375fa9b49d293d5d1d09fdc422, type: 3}
+  - Team: -1
+    Type: 30
+    Prefab: {fileID: 1550497283574328520, guid: dd7dad985c2c0486bac4e59ae755e4ca, type: 3}

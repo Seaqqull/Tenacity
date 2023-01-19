@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Key: ChestTitle
     m_Metadata:
       m_Items: []
+  - m_Id: 36672043578548224
+    m_Key: StartBattle_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

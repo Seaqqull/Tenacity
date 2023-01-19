@@ -1,0 +1,19 @@
+{
+    "name": "Tenacity.Battles.Generators",
+    "rootNamespace": "Tenacity.Battles.Generators",
+    "references": [
+        "GUID:2f3ac488739ba45ca936eac6bebc4224",
+        "GUID:6a20d89f842ea4e3d83481f4bfa79424",
+        "GUID:e93d752bf27a04750ba59d0ddb1a89dc",
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

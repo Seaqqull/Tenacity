@@ -6,11 +6,11 @@ namespace Tenacity.Battles.Lands.Data
     [Flags] 
     public enum LandType
     {
-        None = 0,
-        Ice = 1 << 0,
-        Water = 1 << 1,
-        Fire = 1 << 2,
-        Earth = 1 << 3,
-        Neutral = ~0,
+        Neutral =  Ice | Water | Fire | Earth,
+        None = 1,
+        Ice =   2,
+        Water = 4,
+        Fire =  8,
+        Earth = 16
     }
 }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - UICamera
+  - Land
+  - Card
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Interaction
   - InteractionAction
   - Avatar
-  - 
+  - BattleCell
   - 
   - 
   - 

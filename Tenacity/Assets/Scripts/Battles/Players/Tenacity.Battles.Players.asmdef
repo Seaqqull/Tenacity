@@ -1,0 +1,21 @@
+{
+    "name": "Tenacity.Battles.Players",
+    "rootNamespace": "Tenacity.Battles.Players",
+    "references": [
+        "GUID:e93d752bf27a04750ba59d0ddb1a89dc",
+        "GUID:2f3ac488739ba45ca936eac6bebc4224",
+        "GUID:6a20d89f842ea4e3d83481f4bfa79424",
+        "GUID:5dd408f8d44fe4a1eadf5b78aa4968cd",
+        "GUID:df11cc85634ef42cfa7c1abca4e6a97d",
+        "GUID:6442bf360e58040fea7d60cc7b1151a3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

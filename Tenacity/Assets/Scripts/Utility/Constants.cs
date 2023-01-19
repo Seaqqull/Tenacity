@@ -40,7 +40,7 @@ namespace Tenacity.Utility.Constants
         public const string MUSIC_COLUME = "MusicVolume";
 
         public const float MIN_LOUDNESS = -80;
-        public const float MAX_LOUDNESS = 0;
+        public const float MAX_LOUDNESS = 20;
 
     }
 

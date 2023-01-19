@@ -19,15 +19,7 @@ namespace Tenacity.Cards
             if (TryGetComponent(out card))
                 DisplayCardValues();
         }
-
         
-        public void UpdateLife()
-        {
-            if (card == null) TryGetComponent(out card);
-            
-            cardComponents = Transform.GetComponentsInChildren<Transform>().ToDictionary(item => item.name, item => item);
-            SetCardValue(cardComponents[nameof(CardItem.Data.Life)], card.CurrentLife.ToString());
-        }
 
         public void DisplayCardValues()
         {
@@ -52,7 +44,7 @@ namespace Tenacity.Cards
             } 
             else if (component.TryGetComponent(out SpriteRenderer cardSprite))
             {
-                cardSprite.sprite = Resources.Load<Sprite>($"Sprites/Cards/card_{value}");
+                cardSprite.sprite = Resources.Load<Sprite>($"Sprites/Cards/{value}");
             }
             else if (component.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI textField))
             {
@@ -60,7 +52,7 @@ namespace Tenacity.Cards
             }
             else if (component.TryGetComponent<Image>(out Image image))
             {
-                image.sprite = Resources.Load<Sprite>($"Sprites/Cards/card_{value}");
+                image.sprite = Resources.Load<Sprite>($"Sprites/Cards/{value}");
             }
         }
     }

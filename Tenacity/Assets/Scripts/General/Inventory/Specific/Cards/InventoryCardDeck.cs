@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Tenacity.Cards.Cards.Data;
 using UnityEngine.EventSystems;
 using Tenacity.UI.Cards;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Tenacity.Cards.Inventory
 {
     public class InventoryCardDeck : MonoBehaviour
     {
-        [SerializeField] private CardDecksSO _cardDecks;
+        [SerializeField] private CardDeckSO _cardDeck;
         [SerializeField] private GameObject _content;
         [SerializeField] private RectTransform _cardDeckButtonsArea;
         [Space]
@@ -17,52 +18,36 @@ namespace Tenacity.Cards.Inventory
 
         private List<CardItem> _cardDeckLines = new();
         private DeckSwitcher _selectedSwitcher;
-        private DeckSwitcher[] _switchers;
+        private DeckSwitcher _switcher;
         private CardSO _selectedCard;
         
-        private CardDeck CardDeck => _cardDecks.CurrentlySelectedCardDeck;
-
 
         private void Awake()
         {
-            if (CardDeck == null) return;
+            if (_cardDeck == null) return;
+            _cardDeck.Cards.Clear();
 
             InitDeckButtons();
             CreateCardObjectsInCardDeck();
-            _selectedSwitcher = _switchers[_cardDecks.CurrentlySelectedCardDeckId];
-            _selectedSwitcher.Switch();
+            
+            _switcher.Switch();
         }
 
         
         private void InitDeckButtons()
         {
-            _switchers = new DeckSwitcher[_cardDecks.MaxCardDeckQuantity];
-            for (int i = 0; i < _cardDecks.MaxCardDeckQuantity; i++)
-            {
-                if (i >= _cardDecks.CurrentQuantity) _cardDecks.AddCardDeck(new CardDeck());
-                var deckButton = Instantiate(_cardDeckButton, _cardDeckButtonsArea);
+            _switcher = Instantiate(_cardDeckButton, _cardDeckButtonsArea);
 
-                deckButton.Text = (i + 1).ToString();
-                var id = i;
-                deckButton.OnClickAction += (switcher) => {
-                    var isSelected = _cardDecks.SelectCardDeck(id);
-                    if (!isSelected) return;
-                    
-                    CreateCardObjectsInCardDeck();
-                    _selectedSwitcher.Switch();
-                    _selectedSwitcher = switcher;
-                };
-                _switchers[i] = deckButton;
-            }
+            _switcher.Text = "1";
+            _switcher.OnClickAction += (switcher) => { };
         }
         
         private void ClearCardDeckArea()
         {
             if (_content.GetComponentsInChildren<CardItem>().Length == 0) return;
             foreach (Transform child in _content.transform)
-            {
                 Destroy(child.gameObject);
-            }
+
             _cardDeckLines.Clear();
         }
         
@@ -86,14 +71,14 @@ namespace Tenacity.Cards.Inventory
         {
             ClearCardDeckArea();
             
-            for (int i = 0; i < CardDeck.Capacity; i++)
+            for (int i = 0; i < _cardDeck.Capacity; i++)
             {
                 var cardDeckLine = CreateCardDeckLine();
                 var lineCardObject = cardDeckLine.GetComponent<CardItem>();
                 
-                if (i < CardDeck.Cards.Count)
+                if (i < _cardDeck.Cards.Count)
                 {
-                    lineCardObject.Data = CardDeck.Cards[i];
+                    lineCardObject.Data = _cardDeck.Cards[i];
                     cardDeckLine.GetComponent<CardDataDisplay>().DisplayCardValues();
                 }
                 else
@@ -113,7 +98,7 @@ namespace Tenacity.Cards.Inventory
                 return;
             }
             _selectedCard = null;
-            _cardDecks.CurrentlySelectedCardDeck.RemoveCardFromCardDeck(card.Data);
+            _cardDeck.RemoveCardFromCardDeck(card.Data);
 
             var line = _cardDeckLines.Find(c => c == card);
             line.Data = null;
@@ -124,7 +109,7 @@ namespace Tenacity.Cards.Inventory
         
         public void AddCardIntoCardDeck(CardSO cardData)
         {
-            if ((cardData == null) || (_cardDecks.CurrentlySelectedCardDeck == null)) return;
+            if ((cardData == null) || (_cardDeck == null)) return;
             if ((_selectedCard == null) || (_selectedCard != cardData))
             {
                 _selectedCard = cardData;
@@ -132,7 +117,7 @@ namespace Tenacity.Cards.Inventory
             }
             
             _selectedCard = null;
-            _cardDecks.CurrentlySelectedCardDeck.AddCardData(cardData);
+            _cardDeck.AddCardData(cardData);
             
             ClearCardDeckArea();
             CreateCardObjectsInCardDeck();

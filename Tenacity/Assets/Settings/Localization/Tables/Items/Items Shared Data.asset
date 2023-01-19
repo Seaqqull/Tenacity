@@ -23,12 +23,20 @@ MonoBehaviour:
     m_Key: book_first_2
     m_Metadata:
       m_Items: []
-  - m_Id: 328576524289
-    m_Key: book_first_3
-    m_Metadata:
-      m_Items: []
   - m_Id: 10044175922749440
     m_Key: chest_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21988272728170496
+    m_Key: book_second_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21988272732364800
+    m_Key: book_second_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22022117435367424
+    m_Key: compas
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -1,0 +1,27 @@
+{
+    "name": "Tenacity.Battles.Controllers",
+    "rootNamespace": "Tenacity.Battles.Controllers",
+    "references": [
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618",
+        "GUID:e93d752bf27a04750ba59d0ddb1a89dc",
+        "GUID:2f3ac488739ba45ca936eac6bebc4224",
+        "GUID:d5f92c79f605e4a41ae473a3aa4e1055",
+        "GUID:6a20d89f842ea4e3d83481f4bfa79424",
+        "GUID:fe3ede25f29704000a542272045d04ef",
+        "GUID:af8157267ee6c4108bc3bacbe8366672",
+        "GUID:df11cc85634ef42cfa7c1abca4e6a97d",
+        "GUID:6442bf360e58040fea7d60cc7b1151a3",
+        "GUID:5dd408f8d44fe4a1eadf5b78aa4968cd",
+        "GUID:5ff1d489b8b344f54ab483f01efb7d82",
+        "GUID:13ea7ebe5cb9543c9a40a6fb7ad52824"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

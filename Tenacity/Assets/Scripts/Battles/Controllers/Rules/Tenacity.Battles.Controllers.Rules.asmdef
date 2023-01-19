@@ -1,0 +1,18 @@
+{
+    "name": "Tenacity.Battles.Controllers.Rules",
+    "rootNamespace": "Tenacity.Battles.Controllers.Rules",
+    "references": [
+        "GUID:6a20d89f842ea4e3d83481f4bfa79424",
+        "GUID:2f3ac488739ba45ca936eac6bebc4224",
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -21,13 +21,13 @@ EditorBuildSettings:
     path: Assets/StaticAssets/Scenes/DZ/scn_hub.unity
     guid: fc1ecb82ed5b54cb2bd3d343ecee6be4
   - enabled: 1
-    path: Assets/StaticAssets/Scenes/AV/scn_battle.unity
-    guid: 8646e36070e279d4fa7c8de20a71080a
+    path: Assets/StaticAssets/Scenes/DZ/scn_battle.unity
+    guid: 53cc3a7d2102542fdaebef13d4d5370a
   - enabled: 1
     path: Assets/StaticAssets/Scenes/DZ/scn_level1.unity
     guid: c748099bff0b649468fe3eb6fc2dec14
   - enabled: 1
-    path: Assets/StaticAssets/Scenes/AV/scn_tmp_card_deck.unity
+    path: Assets/StaticAssets/Scenes/AV/scn_card_deck.unity
     guid: 71d2240b144c042489d68a48824ddbcf
   - enabled: 1
     path: Assets/StaticAssets/Scenes/DZ/scn_level2.unity

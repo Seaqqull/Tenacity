@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec63706ac82e401d931d6667ecd98bb5, type: 3}
+  m_Name: EnterLevel2WithCompass
+  m_EditorClassIdentifier: 
+  _delay: 0
+  _requiredId:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: ed9b9c8154dcb4b559092249f57e9c5a, type: 2}
+  _onYes: {fileID: 11400000, guid: 135442404618346219ddd46db82e7e7e, type: 2}
+  _onNo: {fileID: 11400000, guid: c6349668fce124c81a3995ed2063e350, type: 2}
+  _onEnter: {fileID: 0}
+  _onExit: {fileID: 0}

@@ -19,20 +19,14 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 7e725d72b020b45d3b455f1d098aba79, type: 2}
-  _name: 
+  _name: Triton
   _type: 0
   _rarity: 0
-  cardId: 1
-  cardName: Triton
   castingCost: 1
   life: 4
   power: 3
-  type: 0
-  rarity: 0
-  cardText: Jump Deal 3 damage to all adjacent enemies where this lands.
-  landType: 2
+  cardText: Ordinal card, can walk on any land.
+  landType: 30
   landCost: 0
-  range: 0
-  movement: 0
-  evaluation: 0
-  <InventoryView>k__BackingField: {fileID: 21300000, guid: bbff78eccfb1900498389396de5bc0c2, type: 3}
+  range: 1
+  <InventoryView>k__BackingField: {fileID: 21300000, guid: e3d139ce21f7346c0b861e3c1a0b2df1, type: 3}

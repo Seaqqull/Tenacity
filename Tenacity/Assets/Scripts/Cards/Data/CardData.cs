@@ -3,14 +3,6 @@
 
 namespace Tenacity.Cards.Data
 {
-    public enum CardState
-    {
-        InCardDeck,
-        OnBoard,
-        InHub,
-        InInventory
-    }
-    
     public enum CardType
     {
         Creature = 0,

@@ -1,15 +1,26 @@
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 
 
 namespace Tenacity.Utility
 {
-    public class PriorityQueue<TObject> 
+    public class PriorityQueue<TObject>  : IEnumerable<(double Priority, TObject Object)>
     {
         private List<(double Priority, TObject Object)> _queue =
             new List<(double Priority, TObject Object)>();
 
         public int Count { get => _queue.Count; }
+        public IEnumerable<TObject> RawObjects
+        {
+            get => _queue.Select(queueObject => queueObject.Object);
+        }
 
+
+        public void Clear()
+        {
+            _queue.Clear();
+        }
 
         public TObject Peek()
         {
@@ -49,6 +60,20 @@ namespace Tenacity.Utility
             }
             
             _queue.Insert(insertIndex, (priority, item));
+        }
+
+        
+        public IEnumerator<(double Priority, TObject Object)> GetEnumerator()
+        {
+            foreach (var item in _queue)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

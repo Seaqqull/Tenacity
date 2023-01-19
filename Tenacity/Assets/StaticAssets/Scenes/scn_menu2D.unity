@@ -2097,6 +2097,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9221448201373243669, guid: 53a192827e27a426994c05e97563c6ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53a192827e27a426994c05e97563c6ff, type: 3}
 --- !u!1 &1328401780

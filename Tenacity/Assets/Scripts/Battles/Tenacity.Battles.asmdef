@@ -1,0 +1,17 @@
+{
+    "name": "Tenacity.Battles",
+    "rootNamespace": "Tenacity.Battles",
+    "references": [
+        "GUID:05d9f1ff5db24456dbb33be62d4cb618",
+        "GUID:af8157267ee6c4108bc3bacbe8366672"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

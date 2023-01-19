@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3be28e52924b889b5139a353cf608a, type: 3}
+  m_Name: StartBattle_1
+  m_EditorClassIdentifier: 
+  _onWin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1ab78c0dc19f847bda6192c5fc5125db, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.GainCurrencySO,
+          Tenacity.General.Events
+        m_MethodName: GainCurrency
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: d202d99a362c9404d9a0d57ce7bcedfd, type: 2}
+        m_TargetAssemblyTypeName: Tenacity.General.Events.Actions.DelayedMarkItemExistenceAcionSO,
+          Tenacity.General.Events
+        m_MethodName: MarkItemAsExistence
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onLose:
+    m_PersistentCalls:
+      m_Calls: []
+  _field: "_***   \n*****  \n****** \n*******\n ******\n  *****\n   ***_"
+  _playerDeck: {fileID: 11400000, guid: fc78797d8525c4781a4d0620d3837265, type: 2}
+  _playerData: {fileID: 11400000, guid: c20d010b3446949f4a5a7e6e82b374de, type: 2}
+  _aiWeights: {fileID: 11400000, guid: 19114728e82ee4ae28f37ceadfdeb2b4, type: 2}
+  _opponentDeck: {fileID: 11400000, guid: cc29c63144026454d9c78d818a7b6457, type: 2}
+  _opponentData: {fileID: 11400000, guid: 11928e09a91cc41f3a3c690f38872058, type: 2}
