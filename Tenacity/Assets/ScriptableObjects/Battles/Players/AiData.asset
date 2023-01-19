@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Enemy
   <MaxHealth>k__BackingField: 30
-  <Health>k__BackingField: 1
+  <Health>k__BackingField: 30
   <Mana>k__BackingField: 0
   <HandSize>k__BackingField: 5
   <IsAi>k__BackingField: 1
