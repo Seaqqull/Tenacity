@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d75606753049eaae87901b05758d31, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  _currency: 11990
+  _currency: 10
   _cardsInventory: {fileID: 11400000, guid: 1853af5babeae874f9afcbeef6976fde, type: 2}
   _storiesInventory: {fileID: 11400000, guid: e57a59e71e6b6431e90fd74286a45d3e, type: 2}

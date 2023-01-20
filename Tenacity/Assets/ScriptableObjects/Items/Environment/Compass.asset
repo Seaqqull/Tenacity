@@ -21,7 +21,7 @@ MonoBehaviour:
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: ed9b9c8154dcb4b559092249f57e9c5a, type: 2}
   _name: Compass
-  _type: 1
+  _type: 2
   _rarity: 0
   <Pages>k__BackingField:
   - Picture: {fileID: 21300000, guid: 5989163e024ef4a71a2e9527ef17ae00, type: 3}

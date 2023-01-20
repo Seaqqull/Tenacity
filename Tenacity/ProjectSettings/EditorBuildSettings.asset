@@ -32,9 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/StaticAssets/Scenes/DZ/scn_level2.unity
     guid: ceb1e99dfba9043bbbf0bbbc0d6a5560
-  - enabled: 1
-    path: Assets/StaticAssets/Scenes/scn_menu.unity
-    guid: 5484bc6d7801e41cd89abe98d6c98710
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 5612c2a28c469493e80326a8ee5691d9, type: 2}
     com.unity.localization.addressable-group-rules: {fileID: 0}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173108ef35a1b4876be72e45475c9694, type: 3}
   m_Name: DeckLevel
   m_EditorClassIdentifier: 
-  _description: 
+  _description: Deck level
   _value: 7
