@@ -62,9 +62,9 @@ namespace Tenacity.UI.Menus
             BronzeText.text = bronze.ToString();
         }
 
-        private void UpdateTradeInfo(int itemPrice, string allowTradeText)
+        private void UpdateTradeInfo(EntityInventory fromInventory, EntityInventory toInventory, int itemPrice, string allowTradeText)
         {
-            var itemAllowable = (itemPrice >= 0) && (itemPrice <= SourceInventory.Currency);
+            var itemAllowable = (itemPrice >= 0) && (itemPrice <= toInventory.Currency);
             
             ConfirmationText.text = itemAllowable ? allowTradeText : (itemPrice < 0) ? NO_TRADE_TEXT : NO_MONEY_TEXT;
             ConfirmationButton.interactable = itemAllowable;
@@ -109,7 +109,7 @@ namespace Tenacity.UI.Menus
                 Sum(priceMode => priceMode.Price);
             itemPrice = (int)(itemPrice * _targetPriceModifier.GetTradeValue(item.ItemType));
             
-            UpdateTradeInfo(itemPrice, SELL_TEXT);
+            UpdateTradeInfo(SourceInventory, TargetInventory, itemPrice, SELL_TEXT);
 
             ConfirmationButton.onClick.RemoveAllListeners();
             ConfirmationButton.onClick.AddListener(() =>
@@ -144,7 +144,7 @@ namespace Tenacity.UI.Menus
                 Sum(priceMode => priceMode.Price);
             itemPrice = (int)(itemPrice * _sourcePriceModifier.GetTradeValue(item.ItemType));
             
-            UpdateTradeInfo(itemPrice, BUY_TEXT);
+            UpdateTradeInfo(TargetInventory, SourceInventory, itemPrice, BUY_TEXT);
 
             ConfirmationButton.onClick.RemoveAllListeners();
             ConfirmationButton.onClick.AddListener(() =>
