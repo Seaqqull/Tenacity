@@ -9,6 +9,7 @@ using Tenacity.Battles.Lands.Data;
 using Tenacity.UI.Menus.UI.Menus;
 using System.Collections.Generic;
 using Tenacity.Battles.Players;
+using Tenacity.Utility.Methods;
 using Tenacity.Battles.Data;
 using Tenacity.Managers;
 using Tenacity.Cards;
@@ -66,14 +67,16 @@ namespace Tenacity.Battles.Controllers
         private IReadOnlyList<Player> _players;
         private CellController[][] _field;
         private int _activePlayerIndex;
+        private int _turnsCount;
 
         private LandType _selectedLand = LandType.None;
         private CellController _selectedCreatureCell;
         private int _selectedHandCardIndex;
 
-        private bool CardSelected => _selectedHandCardIndex != NO_SELECTION; 
-        private bool LandSelected => _selectedLand != LandType.None; 
-        
+        public bool CardSelected => _selectedHandCardIndex != NO_SELECTION;
+        public bool LandSelected => _selectedLand != LandType.None; 
+        public bool CellSelected => _selectedCreatureCell != null;
+
         public Player ActivePlayer { get => _players[_activePlayerIndex]; }
         public NewBattleState State { get; private set; }
 
@@ -141,7 +144,8 @@ namespace Tenacity.Battles.Controllers
                 
                 return;
             }
-            
+
+            _turnsCount++;
             StartTurn();
         }
 
@@ -592,21 +596,22 @@ namespace Tenacity.Battles.Controllers
 
         private IEnumerable<CardSO> GetRandomCards(IEnumerable<CardSO> storage, IEnumerable<CardSO> source, int seed, int desiredCount)
         {
+            var cardsShuffler = new System.Random(seed + _turnsCount + (int)Hasher.CurrentTimeMillis());
+
             var selectedCards = storage.ToList();
             var cardsToAdd = (desiredCount - selectedCards.Count);
             var sourceCardsCount = source.Count();
             var takeIndex = 0;
-            source = source.OrderBy(card => seed);
+            source = source.OrderBy(card => cardsShuffler.Next());
 
             for (int i = 0; i < cardsToAdd && sourceCardsCount != 0; i++, takeIndex++)
             {
-                selectedCards.Add(source.ElementAt(takeIndex % sourceCardsCount));
+                selectedCards.Add(source.ElementAt(takeIndex++ % sourceCardsCount));
                 if ((takeIndex == (sourceCardsCount - 1)) && (selectedCards.Count < desiredCount))
                 {
-                    takeIndex = 0;
                     seed *= 2;
                     
-                    source = source.OrderBy(card => seed);
+                    source = source.OrderBy(card => cardsShuffler.Next());
                 }
             }
             

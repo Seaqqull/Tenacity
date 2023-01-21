@@ -17,6 +17,10 @@ namespace Tenacity.Battles.Data
 
     public interface IBoard
     {
+        public bool CardSelected { get; }
+        public bool LandSelected { get; }
+        public bool CellSelected { get; }
+        
         // public Player
         public IReadOnlyList<IPlayer> Players { get; }
         // public TurnRuleSO Rule { get; }
