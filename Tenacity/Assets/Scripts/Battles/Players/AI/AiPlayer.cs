@@ -9,6 +9,7 @@ using System.Linq;
 using UnityEngine;
 using System;
 using System.Collections;
+using System.Runtime.InteropServices;
 using Tenacity.Utility.Methods;
 
 
@@ -30,6 +31,9 @@ namespace Tenacity.Battles.Players
         
         
         #region Constants
+        private LandType[] NON_EXISTING_LANDS = { LandType.Ice }; 
+        private const float USE_CREATURE_DECISION_TIME = 0.5f;
+        private const float PLACE_LAND_DECISION_TIME = 0.75f;
         private int DEFAULT_ATTACK_RANGE = 1;
         #endregion
         
@@ -75,26 +79,29 @@ namespace Tenacity.Battles.Players
         private void EvaluateCards()
         {
             var handCards = Hand.Cards.ToList();
-            var possibleLands = !_allowedActions.ContainsKey(TurnMoveType.Nothing) ? 
-                Array.Empty<LandAiEvaluation>() :
-                _allowedActions[TurnMoveType.Nothing].Where(action => 
-                    (action.Object.Type == TurnMoveType.PlaceLand)
-                ).Select(action => (action.Object as LandAiEvaluation));
-
+            // var placedLands = !_allowedActions.ContainsKey(TurnMoveType.Nothing) ? 
+            //     Array.Empty<LandAiEvaluation>() :
+            //     _allowedActions[TurnMoveType.Nothing].Where(action => 
+            //         (action.Object.Type == TurnMoveType.PlaceLand)
+            //     ).Select(action => (action.Object as LandAiEvaluation)).ToArray();
+            var placedLands = !_allowedActions.ContainsKey(TurnMoveType.Nothing)
+                ? Array.Empty<LandAiEvaluation>()
+                : _allowedActions[TurnMoveType.Nothing].Select(action => (action.Object as LandAiEvaluation))
+                    .Where(action => action.Land.State.LandType != LandType.None).ToArray();
             var playableCards = handCards.Where(card => 
                 (card.CastingCost <= Mana) &&
                 ((card.LandCost == 0) || 
-                 (card.LandCost <= (possibleLands.Count(land => (land.Land.State.LandType == card.Land)) + 1)))).
+                 (card.LandCost <= (placedLands.Count(land => (land.Land.State.LandType == card.Land)) + 1)))).
                 GroupBy(card => card.Name).
                 Select(cardGroup => cardGroup.First());
 
             foreach (var card in playableCards)
             {
-                var cardLandsPlaced = possibleLands.Count(land => (land.Land.State.LandType == card.Land));
+                var cardLandsPlaced = placedLands.Count(land => (land.Land.State.LandType == card.Land));
                 var evaluatedCells = Array.Empty<CellEvaluation>();
                 var availableCells = Array.Empty<ICell>();
                 
-                if ((cardLandsPlaced != 0) && (card.LandCost <= cardLandsPlaced))
+                if ((cardLandsPlaced != 0) || (card.LandCost <= cardLandsPlaced))
                 {
                     _board.SelectCard(Id, handCards.IndexOf(card)); // Needed to make sure, we select only with [SelectionState = InteractionState.Active] 
 
@@ -231,13 +238,14 @@ namespace Tenacity.Battles.Players
 
         private IEnumerator MakeTurn()
         {
-            System.Random stepsShuffler = new System.Random(Seed +
+            var stepsShuffler = new System.Random(Seed +
                                                            (int) Hasher.CurrentTimeMillis());
             // Stages to determine best movements
             // 1. Evaluate lands for [Evaluate cards] movement
             // 2. Place cards on field, if possible
             // 3. Place remaining fields, if possible
             // 4. Analyze the best movement for the existing creatures => perform movement
+
 
             // --- 1: Evaluate lands for [Evaluate cards] movement
             // Evaluation
@@ -262,14 +270,14 @@ namespace Tenacity.Battles.Players
                 var handIndex = Hand.IndexOf(action.Card);
                 if ((handIndex == -1) || (_board.Field[action.CellToPlace.x][action.CellToPlace.y].State.Type == CellType.Creature)) continue;
 
-                if (action.LandType != LandType.None)
+                if ((action.LandType != LandType.None) && _board.SelectLand(Id, action.LandType))
+                    _board.SelectCell(action.CellToPlace);
+
+                if (_board.SelectCard(Id, handIndex))
                 {
-                    _board.SelectLand(Id, action.LandType);
+                    yield return new WaitForSeconds(USE_CREATURE_DECISION_TIME);
                     _board.SelectCell(action.CellToPlace);
                 }
-
-                _board.SelectCard(Id, handIndex);
-                _board.SelectCell(action.CellToPlace);
             }
             yield return null;
             
@@ -291,8 +299,11 @@ namespace Tenacity.Battles.Players
             {
                 foreach (LandType land in (LandType[]) Enum.GetValues(typeof(LandType)))
                 {
-                    _board.SelectLand(Id, land);
-                    _board.SelectCell(action.CellToPlace);   
+                    if (NON_EXISTING_LANDS.All(nonExistingLand => nonExistingLand != land) && _board.SelectLand(Id, land))
+                    {
+                        yield return new WaitForSeconds(PLACE_LAND_DECISION_TIME);
+                        _board.SelectCell(action.CellToPlace);
+                    }   
                 }
             }
             yield return null;
@@ -315,8 +326,13 @@ namespace Tenacity.Battles.Players
             foreach (var action in creaturesMovements)
             {
                 if (action.CreaturePosition == action.CellToMove) continue;
+                
                 _board.SelectCell(action.CreaturePosition);
-                _board.SelectCell(action.CellToMove);
+                if (_board.CellSelected)
+                {
+                    yield return new WaitForSeconds(USE_CREATURE_DECISION_TIME);
+                    _board.SelectCell(action.CellToMove);
+                }
             }
             
             
