@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _players:
   - Team: 1
-    Prefab: {fileID: 136711532378020939, guid: 95ee1db9c40184a5f8f14a939b5fb517, type: 3}
-  - Team: 2
     Prefab: {fileID: -4173605630388473564, guid: 27d7f762318dd4beebcf017093a6944a, type: 3}
+  - Team: 2
+    Prefab: {fileID: 136711532378020939, guid: 95ee1db9c40184a5f8f14a939b5fb517, type: 3}
   _creatures:
   - Team: -1
     Type: 8
