@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21988272728170496
-    m_Localized: It is better to enter Fallen City with a compass.
+    m_Localized: It is better to enter fallen city with a compass.
     m_Metadata:
       m_Items: []
   - m_Id: 21988272732364800
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22022117435367424
-    m_Localized: Allows to enter Fallen City.
+    m_Localized: Allows to enter fallen city.
     m_Metadata:
       m_Items: []
   references:

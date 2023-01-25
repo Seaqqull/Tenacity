@@ -19,11 +19,11 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 351380955136
-    m_Localized: "Przyk\u0142ad tytu\u0142u"
+    m_Localized: "Znak podr\xF3\u017Cy"
     m_Metadata:
       m_Items: []
   - m_Id: 351393538048
-    m_Localized: "Drugi przyk\u0142ad tytu\u0142u"
+    m_Localized: "Znak podr\xF3\u017Cy"
     m_Metadata:
       m_Items: []
   - m_Id: 351393538049

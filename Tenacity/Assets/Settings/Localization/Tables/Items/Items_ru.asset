@@ -35,8 +35,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21988272728170496
-    m_Localized: "\u0412\u0445\u043E\u0434\u0438\u0442\u044C \u0432 Fallen City \u043B\u0443\u0447\u0448\u0435
-      \u0441 \u043A\u043E\u043C\u043F\u0430\u0441\u043E\u043C."
+    m_Localized: "\u0412\u0445\u043E\u0434\u0438\u0442\u044C \u0432 \u043F\u0430\u0432\u0448\u0438\u0439
+      \u0433\u043E\u0440\u043E\u0434 \u043B\u0443\u0447\u0448\u0435 \u0441 \u043A\u043E\u043C\u043F\u0430\u0441\u043E\u043C."
     m_Metadata:
       m_Items: []
   - m_Id: 21988272732364800
@@ -47,7 +47,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 22022117435367424
     m_Localized: "\u041F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u0432\u043E\u0439\u0442\u0438
-      \u0432 \u041F\u0430\u0432\u0448\u0438\u0439 \u0413\u043E\u0440\u043E\u0434."
+      \u0432 \u043F\u0430\u0432\u0448\u0438\u0439 \u0433\u043E\u0440\u043E\u0434."
     m_Metadata:
       m_Items: []
   references:

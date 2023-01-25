@@ -31,7 +31,7 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   <Answers>k__BackingField:
-  - Text: {fileID: 11400000, guid: 013a66e96290040e2a4a13fa20be6712, type: 2}
+  - Text: {fileID: 11400000, guid: 445737d974a34434ca572da8ed21e42a, type: 2}
     SpecialId:
       UseConstant: 1
       ConstantValue: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
     Type: 0
     RelationInfluence: 50
     NextDialog: {fileID: 11400000, guid: 9722488f9bb8543f39ab1557343afc9c, type: 2}
-  - Text: {fileID: 11400000, guid: f5f0cad8477c845739f63d2766a4e689, type: 2}
+  - Text: {fileID: 11400000, guid: a5e6e9b45ff8241989814dafa8ce820a, type: 2}
     SpecialId:
       UseConstant: 1
       ConstantValue: 0

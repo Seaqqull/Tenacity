@@ -36,14 +36,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2860088564899840
-    m_Localized: "To jest przyk\u0142ad pierwszego okna dialogowego. Mo\u017Cesz
-      nacisn\u0105\u0107 \u201EOK\u201D, aby wy\u015Bwietli\u0107 nast\u0119pne okno
-      dialogowe lub \u201EAnuluj\u201D, aby zamkn\u0105\u0107 bie\u017C\u0105ce."
+    m_Localized: "Litery s\u0105 s\u0142abo widoczne, chcesz spr\xF3bowa\u0107 je
+      przeczyta\u0107?"
     m_Metadata:
       m_Items: []
   - m_Id: 2860088564899841
-    m_Localized: "To jest drugie okno dialogowe. Tutaj mo\u017Cesz tylko nacisn\u0105\u0107
-      \u201EOK\u201D."
+    m_Localized: "Jedyne wej\u015Bcie do upad\u0142ego miasta prowadzi przez g\xF3ry.
+      Jednak ..."
     m_Metadata:
       m_Items: []
   - m_Id: 25745058509611008
@@ -93,7 +92,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 132890703069962240
-    m_Localized: "Wej\u015Bcie do Upad\u0142ego Miasta bez kompasu jest niebezpieczne."
+    m_Localized: "Wej\u015Bcie do upad\u0142ego miasta bez kompasu jest niebezpieczne."
     m_Metadata:
       m_Items: []
   references:

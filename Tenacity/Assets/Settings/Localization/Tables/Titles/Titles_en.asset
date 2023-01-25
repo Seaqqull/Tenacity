@@ -19,11 +19,11 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 351380955136
-    m_Localized: Title example
+    m_Localized: Travel sign
     m_Metadata:
       m_Items: []
   - m_Id: 351393538048
-    m_Localized: Second title example
+    m_Localized: Travel sign
     m_Metadata:
       m_Items: []
   - m_Id: 351393538049

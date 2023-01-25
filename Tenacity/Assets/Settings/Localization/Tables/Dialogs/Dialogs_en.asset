@@ -33,12 +33,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2860088564899840
-    m_Localized: This is example of the first dialog. You can press "Ok" in order
-      to see next dialog or "Cancel" to close current.
+    m_Localized: The letters are hard to see, want to try to read them?
     m_Metadata:
       m_Items: []
   - m_Id: 2860088564899841
-    m_Localized: This is the second dialog. You only can press "Ok" here.
+    m_Localized: The only entrance left to the fallen city is through the mountains.
+      But ...
     m_Metadata:
       m_Items: []
   - m_Id: 25745058509611008
@@ -88,7 +88,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 132890703069962240
-    m_Localized: It is dangerous to enter Fallen City without a compass.
+    m_Localized: It is dangerous to enter fallen city without a compass.
     m_Metadata:
       m_Items: []
   references:
