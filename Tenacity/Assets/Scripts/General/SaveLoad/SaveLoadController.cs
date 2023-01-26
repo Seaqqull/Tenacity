@@ -34,6 +34,11 @@ namespace Tenacity.General.SaveLoad
 
         private FileStream GetDatabaseStream()
         {
+            if (!Directory.Exists(_workDatabasePath + "/"))
+                Directory.CreateDirectory(_workDatabasePath + "/");
+            if (!File.Exists(_workDatabasePath + "/" + _databaseFile))
+                File.Create(_workDatabasePath + "/" + _databaseFile);
+            
             return new FileStream(_workDatabasePath + "/" + _databaseFile, 
                 FileMode.OpenOrCreate, 
                 FileAccess.ReadWrite, 
