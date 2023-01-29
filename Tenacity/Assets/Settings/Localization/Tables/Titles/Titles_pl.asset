@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 351393538050
-    m_Localized: "Powitanie przedsi\u0119biorcy"
+    m_Localized: Powitanie kupca
     m_Metadata:
       m_Items: []
   - m_Id: 351393538051
@@ -51,7 +51,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 351393538055
-    m_Localized: "G\xF3ry g\u0142\u0119bsze wej\u015Bcie"
+    m_Localized: "Wej\u015Bcie g\u0142\u0119boko w g\xF3ry"
     m_Metadata:
       m_Items: []
   - m_Id: 25071992699871232

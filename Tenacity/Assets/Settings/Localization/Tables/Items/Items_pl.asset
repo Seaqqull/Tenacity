@@ -23,11 +23,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 328576524288
-    m_Localized: "W mie\u015Bcie widziano zamkni\u0119t\u0105 skrzyni\u0119."
+    m_Localized: "W mie\u015Bcie dostrze\u017Cono zamkni\u0119t\u0105 skrzyni\u0119."
     m_Metadata:
       m_Items: []
   - m_Id: 10044175922749440
-    m_Localized: "Jaki\u015B stary klucz, czy to ze skrzyni?"
+    m_Localized: "Jaki\u015B stary klucz. Czy to od skrzyni?"
     m_Metadata:
       m_Items: []
   - m_Id: 21988272728170496

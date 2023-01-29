@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 1943073185792
-    m_Localized: "Rozpocz\u0105\u0107 gr\u0119"
+    m_Localized: "Zacznij gr\u0119"
     m_Metadata:
       m_Items: []
   - m_Id: 1943123517440
@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1943131906048
-    m_Localized: Autorski
+    m_Localized: Autorzy
     m_Metadata:
       m_Items: []
   - m_Id: 1943131906049
@@ -51,7 +51,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1047748957691904
-    m_Localized: "G\u0142\xF3wne menu "
+    m_Localized: "Strona g\u0142\xF3wna"
     m_Metadata:
       m_Items: []
   - m_Id: 46005889126096896
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 48293813276368897
-    m_Localized: "Usun\u0105\u0107"
+    m_Localized: "Usu\u0144"
     m_Metadata:
       m_Items: []
   - m_Id: 56631411900145664
@@ -79,11 +79,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 66996718057545728
-    m_Localized: Gra
+    m_Localized: Game
     m_Metadata:
       m_Items: []
   - m_Id: 66996718061740032
-    m_Localized: Audio
+    m_Localized: "D\u017Awi\u0119k"
     m_Metadata:
       m_Items: []
   - m_Id: 106568794103603200
@@ -95,7 +95,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 106570607934562305
-    m_Localized: "Kontynuowa\u0107"
+    m_Localized: Kontynuj
     m_Metadata:
       m_Items: []
   - m_Id: 106572495987924992

@@ -87,10 +87,6 @@ MonoBehaviour:
     m_Key: Audio
     m_Metadata:
       m_Items: []
-  - m_Id: 31473712226305
-    m_Key: Language
-    m_Metadata:
-      m_Items: []
   - m_Id: 106568794103603200
     m_Key: Loading
     m_Metadata:

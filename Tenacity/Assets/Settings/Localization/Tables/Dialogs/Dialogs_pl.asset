@@ -36,8 +36,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2860088564899840
-    m_Localized: "Litery s\u0105 s\u0142abo widoczne, chcesz spr\xF3bowa\u0107 je
-      przeczyta\u0107?"
+    m_Localized: "Litery s\u0105 s\u0142abo widoczne, czy chcesz spr\xF3bowa\u0107
+      je odczyta\u0107?"
     m_Metadata:
       m_Items: []
   - m_Id: 2860088564899841
@@ -46,24 +46,24 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 25745058509611008
-    m_Localized: "Chcesz wej\u015B\u0107 do miasta?"
+    m_Localized: "Czy chcesz wej\u015B\u0107 do miasta?"
     m_Metadata:
       m_Items: []
   - m_Id: 25960193354358784
-    m_Localized: 'Pozdrawiam nieznajomy. '
+    m_Localized: 'Witam, nieznajomy. '
     m_Metadata:
       m_Items: []
   - m_Id: 25960193358553088
-    m_Localized: "Obecnie nie mam ze mn\u0105 \u017Cadnych przedmiot\xF3w, mo\u017Cesz
-      wr\xF3ci\u0107 p\xF3\u017Aniej."
+    m_Localized: "W tej chwili nie mam \u017Cadnych przedmiot\xF3w do wymiany z Tob\u0105,
+      mo\u017Cesz przyj\u015B\u0107 p\xF3\u017Aniej."
     m_Metadata:
       m_Items: []
   - m_Id: 46013013394710528
-    m_Localized: "Chcesz wej\u015B\u0107 na bagna?"
+    m_Localized: "Czy chcesz wej\u015B\u0107 na bagna?"
     m_Metadata:
       m_Items: []
   - m_Id: 46013013398904832
-    m_Localized: "Chcesz p\xF3j\u015B\u0107 w g\xF3ry?"
+    m_Localized: "Czy chcesz p\xF3j\u015B\u0107 w g\xF3ry?"
     m_Metadata:
       m_Items: []
   - m_Id: 56383274870628352
@@ -88,7 +88,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 132636495469076480
-    m_Localized: "Znalaz\u0142e\u015B gniazdo potwor\xF3w. Chcesz z nimi walczy\u0107?"
+    m_Localized: "Znalaz\u0142e\u015B gniazdo potwor\xF3w. Czy chcesz z nimi walczy\u0107?"
     m_Metadata:
       m_Items: []
   - m_Id: 132890703069962240
